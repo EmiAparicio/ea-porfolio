@@ -46,6 +46,8 @@ export default function LandingPage() {
       <div className="bgImg">
         <div id="cursor" className="cursor" />
         <div className="lighter" />
+        <div className="lighter2" />
+        <div className="lighter3" />
         {/* <div className="titleLighter" /> */}
       </div>
       <h1 className="title">EMILIANO APARICIO</h1>

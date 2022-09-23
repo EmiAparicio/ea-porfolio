@@ -4,6 +4,7 @@
   width: 100%;
   height: 100%;
   background-color: #09a27a;
+  /* background-color: #000; */
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -25,7 +26,7 @@
 }
 
 .title:hover {
-  text-shadow: 0 0 10px #067c57,0 0 10px #067c57,0 0 10px #067c57;
+  text-shadow: 0 0 10px #067c57, 0 0 10px #067c57, 0 0 10px #067c57;
 }
 
 .subtitle {
@@ -121,6 +122,65 @@
   }
   to {
     left: 150%;
+  }
+}
+
+.lighter2 {
+  position: absolute;
+  padding: 200px;
+  left: 60%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 188, 0.1) 7%,
+    rgba(0, 255, 188, 0.05) 50%,
+    rgba(0, 255, 188, 0.02) 100%
+  );
+  animation: lighter2Animation linear 7s infinite;
+}
+
+@keyframes lighter2Animation {
+  from {
+    opacity: 0;
+  }
+  15% {
+    left: 60%;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  to {
+    left: 350%;
+  }
+}
+
+.lighter3 {
+  position: absolute;
+  padding: 200px;
+  left: 60%;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 188, 0.1) 7%,
+    rgba(0, 255, 188, 0.05) 50%,
+    rgba(0, 255, 188, 0.02) 100%
+  );
+  border-radius: 50%;
+  animation: lighter3Animation linear 7s infinite;
+}
+
+@keyframes lighter3Animation {
+  from {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  30% {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
   }
 }
 
