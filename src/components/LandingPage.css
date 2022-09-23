@@ -23,6 +23,7 @@
   top: 40px;
   left: 40px;
   transition: text-shadow 0.3s linear;
+  text-shadow: 0 0 5px black;
 }
 
 .title:hover {
@@ -36,6 +37,7 @@
   color: #f0f0f0;
   font-size: 50px;
   pointer-events: none;
+  text-shadow: 0 0 3px black;
 
   z-index: 2;
   position: absolute;
