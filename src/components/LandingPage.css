@@ -110,7 +110,7 @@
   /* mix-blend-mode: saturation; */
   /* mix-blend-mode: color; */
   /* mix-blend-mode: luminosity; */
-  animation: lighterAnimation linear 7s infinite;
+  animation: lighterAnimation linear 10s infinite;
 }
 
 @keyframes lighterAnimation {
@@ -136,7 +136,7 @@
     rgba(0, 255, 188, 0.05) 50%,
     rgba(0, 255, 188, 0.02) 100%
   );
-  animation: lighter2Animation linear 7s infinite;
+  animation: lighter2Animation linear 10s infinite;
 }
 
 @keyframes lighter2Animation {
@@ -166,18 +166,20 @@
     rgba(0, 255, 188, 0.02) 100%
   );
   border-radius: 50%;
-  animation: lighter3Animation linear 7s infinite;
+  animation: lighter3Animation linear 10s infinite;
 }
 
 @keyframes lighter3Animation {
   from {
     opacity: 0;
+    padding: 200px;
   }
   20% {
     opacity: 0.8;
   }
   30% {
     opacity: 0;
+    padding: 300px;
   }
   to {
     opacity: 0;
