@@ -1,5 +1,7 @@
 :root {
   --btn-left: 1542px;
+  --title-left: 70px;
+  --title-top: 40px;
 }
 
 .bg {
@@ -32,8 +34,8 @@
 
   z-index: 10;
   position: absolute;
-  top: 40px;
-  left: 60px;
+  top: var(--title-top);
+  left: var(--title-left);
   transition: text-shadow 0.3s linear, color 0.1s linear;
   text-shadow: 0 0 5px #f0f0f0;
 }
@@ -54,8 +56,8 @@
 
   z-index: 10;
   position: absolute;
-  top: 140px;
-  left: 80px;
+  top: calc(var(--title-top) + 100px);
+  left: calc(var(--title-left) + 20px);
 }
 
 .aboutContainer {
@@ -138,6 +140,7 @@ b::selection {
 }
 
 .pointer {
+  transform: translate(-50%, -50%) scale(0);
   pointer-events: none;
   position: absolute;
   padding: 10px;
@@ -317,8 +320,19 @@ b::selection {
   filter: drop-shadow(0 0 10px #f0f0f0);
 }
 
+.imgContainer {
+  position: relative;
+}
+
 .img {
   position: absolute;
-  width: 20px;
-  height: 15px;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  transform: translate(-55%, -50%);
+}
+
+.btn:hover .img {
+  filter: drop-shadow(0 0 1px #f0f0f0) drop-shadow(0 0 1px #f0f0f0)
+    drop-shadow(0 0 1px #f0f0f0);
 }

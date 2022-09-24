@@ -1,7 +1,11 @@
 import "./LandingPage.css";
 import { useEffect, useState } from "react";
 
+import { IconContext } from "react-icons";
+import { BsFillShareFill, BsFillHexagonFill } from "react-icons/bs";
+
 import textFrame from "./textFrame.png";
+import menuBtn from "./menuBtn.png"
 
 export default function LandingPage() {
   useEffect(() => {
@@ -69,7 +73,9 @@ export default function LandingPage() {
               setBtn((prev) => !prev);
             }}
           >
-            <img alt="" className="img"></img>
+            <div className="imgContainer">
+              <img src={`${menuBtn}`} alt="menu" className="img"/>
+            </div>
           </span>
           <div className="aboutContainer">
             <div className="aboutRel">
@@ -92,3 +98,17 @@ export default function LandingPage() {
     </>
   );
 }
+
+            {/* <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "35px",
+                  title: "menu",
+                  className: "img",
+                }}
+              >
+                <BsFillShareFill className="hexLink"/>
+                <BsFillHexagonFill className="hex"/>
+              </IconContext.Provider>
+            </div> */}
