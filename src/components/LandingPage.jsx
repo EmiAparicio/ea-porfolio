@@ -1,6 +1,8 @@
 import "./LandingPage.css";
 import { useEffect, useState } from "react";
 
+import textFrame from "./textFrame.png";
+
 export default function LandingPage() {
   useEffect(() => {
     const buttons = document.querySelectorAll("span.btn");
@@ -57,9 +59,9 @@ export default function LandingPage() {
           <div id="cursor" className="cursor" />
           <div id="pointer" className="pointer" />
 
-          {/* <div className="lighter" />
+          <div className="lighter" />
           <div className="lighter2" />
-          <div className="lighter3" /> */}
+          <div className="lighter3" />
 
           <span
             className={btnActive ? "btnActive" : "btn"}
@@ -69,6 +71,20 @@ export default function LandingPage() {
           >
             <img alt="" className="img"></img>
           </span>
+          <div className="aboutContainer">
+            <div className="aboutRel">
+              <p className="about">
+                I am a <b>bioengineer</b>, <b>full stack developer</b>, almost
+                doctor of engineering, symphonic metal absolutist,{" "}
+                <b>videogame designer</b> wannabe, and forever a cat lover. I'm
+                interested in technology and programming since I can remember.
+                Nowadays, I'm starting my own videogame project while working as
+                a web dev.
+              </p>
+              <img className="aboutFrame" src={`${textFrame}`} alt="" />
+              <img className="aboutFrame1" src={`${textFrame}`} alt="" />
+            </div>
+          </div>
         </div>
         <h1 className="title">EMILIANO APARICIO</h1>
         <h2 className="subtitle">Full Stack Web Developer</h2>
