@@ -68,13 +68,13 @@ export default function LandingPage() {
           <div className="lighter3" />
 
           <span
-            className={btnActive ? "btnActive" : "btn"}
+            className={btnActive ? "btnActive menuBtn" : "btn menuBtn"}
             onClick={() => {
               setBtn((prev) => !prev);
             }}
           >
             <div className="imgContainer">
-              <img src={`${menuBtn}`} alt="menu" className="img"/>
+              <img src={`${menuBtn}`} alt="menu" className="imgMenu"/>
             </div>
           </span>
           <div className="aboutContainer">

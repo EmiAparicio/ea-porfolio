@@ -91,13 +91,13 @@
 .about::-moz-selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0;
-  background-color: #067c57;
+  background-color: rgba(6, 124, 87, 0.8);
 }
 
 .about::selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0;
-  background-color: #067c57;
+  background-color: rgba(6, 124, 87, 0.8);
 }
 
 b {
@@ -107,13 +107,13 @@ b {
 b::-moz-selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0;
-  background-color: #067c57;
+  background-color: rgba(6, 124, 87, 0.8);
 }
 
 b::selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0;
-  background-color: #067c57;
+  background-color: rgba(6, 124, 87, 0.8);
 }
 
 .aboutFrame {
@@ -266,8 +266,6 @@ b::selection {
   vertical-align: middle;
   user-select: none;
 
-  top: 718px;
-  left: var(--btn-left);
   padding: 57px 66px;
 
   --btn-raise: 33px;
@@ -300,8 +298,6 @@ b::selection {
   vertical-align: middle;
   user-select: none;
 
-  top: 718px;
-  left: var(--btn-left);
   padding: 57px 66px;
 
   --btn-raise: 33px;
@@ -320,11 +316,17 @@ b::selection {
   filter: drop-shadow(0 0 10px #f0f0f0);
 }
 
+.menuBtn {
+  top: 718px;
+  left: var(--btn-left);
+}
+
 .imgContainer {
   position: relative;
 }
 
-.img {
+.imgMenu {
+  pointer-events: none;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -332,7 +334,7 @@ b::selection {
   transform: translate(-55%, -50%);
 }
 
-.btn:hover .img {
+.btn:hover .imgMenu {
   filter: drop-shadow(0 0 1px #f0f0f0) drop-shadow(0 0 1px #f0f0f0)
     drop-shadow(0 0 1px #f0f0f0);
 }
