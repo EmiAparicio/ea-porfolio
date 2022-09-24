@@ -1,3 +1,7 @@
+:root {
+  --btn-left: 1542px;
+}
+
 .bg {
   width: 100%;
   height: 100%;
@@ -169,6 +173,8 @@
 
 .btn {
   background-image: url("./buttonSmall.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   cursor: none;
   position: absolute;
   z-index: 10;
@@ -178,11 +184,11 @@
   vertical-align: middle;
   user-select: none;
 
-  top: 725px;
-  right: 177px;
-  padding: 60px 66px;
+  top: 718px;
+  left: var(--btn-left);
+  padding: 57px 66px;
 
-  --btn-raise: 40px;
+  --btn-raise: 33px;
   clip-path: polygon(
     var(--btn-raise) 0%,
     calc(100% - var(--btn-raise)) 0%,
@@ -196,4 +202,44 @@
 .btn:hover {
   cursor: none;
   filter: drop-shadow(0 0 10px #383838);
+}
+
+.btnActive {
+  background-image: url("./buttonActiveSmall.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: none;
+  position: absolute;
+  z-index: 10;
+  filter: drop-shadow(0 0 10px #84ffd4);
+
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+
+  top: 718px;
+  left: var(--btn-left);
+  padding: 57px 66px;
+
+  --btn-raise: 33px;
+  clip-path: polygon(
+    var(--btn-raise) 0%,
+    calc(100% - var(--btn-raise)) 0%,
+    100% 50%,
+    calc(100% - var(--btn-raise)) 100%,
+    var(--btn-raise) 100%,
+    0 50%
+  );
+}
+
+.btnActive:hover {
+  cursor: none;
+  filter: drop-shadow(0 0 10px #f0f0f0);
+}
+
+.img {
+  position: absolute;
+  width: 20px;
+  height: 15px;
 }

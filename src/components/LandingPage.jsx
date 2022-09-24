@@ -1,5 +1,5 @@
 import "./LandingPage.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function LandingPage() {
   useEffect(() => {
@@ -48,6 +48,8 @@ export default function LandingPage() {
     window.addEventListener("mouseout", editCursorOut);
   }, []);
 
+  const [btnActive, setBtn] = useState(false);
+
   return (
     <>
       <div className="bg">
@@ -55,11 +57,18 @@ export default function LandingPage() {
           <div id="cursor" className="cursor" />
           <div id="pointer" className="pointer" />
 
-          <div className="lighter" />
+          {/* <div className="lighter" />
           <div className="lighter2" />
-          <div className="lighter3" />
+          <div className="lighter3" /> */}
 
-          <span className="btn">Call</span>
+          <span
+            className={btnActive ? "btnActive" : "btn"}
+            onClick={() => {
+              setBtn((prev) => !prev);
+            }}
+          >
+            <img alt="" className="img"></img>
+          </span>
         </div>
         <h1 className="title">EMILIANO APARICIO</h1>
         <h2 className="subtitle">Full Stack Web Developer</h2>
