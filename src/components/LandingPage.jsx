@@ -82,9 +82,13 @@ export default function LandingPage() {
               <img src={`${menuBtn}`} alt="menu" className="imgMenu" />
             </div>
           </span>
-          <h3 id={btnActive ? "menuHidden" : "menuCircle"} className="rotation">
+          <h3
+            id={btnActive ? "btnCircleHidden" : "menuCircle"}
+            className="rotation"
+          >
             • Menu •• Menu •• Menu •• Menu •• Menu •• Menu •
           </h3>
+
           <div className="aboutContainer">
             <div className="aboutRel">
               <p className="about">

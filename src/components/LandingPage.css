@@ -1,5 +1,6 @@
 :root {
-  --btn-left: 1542px;
+  --btnMenu-left: 1542px;
+  --btnMenu-top: 718px;
   --title-left: 70px;
   --title-top: 40px;
 }
@@ -317,8 +318,8 @@ b::selection {
 }
 
 .menuBtn {
-  top: 718px;
-  left: var(--btn-left);
+  top: var(--btnMenu-top);
+  left: var(--btnMenu-left);
 }
 
 .imgContainer {
@@ -339,18 +340,7 @@ b::selection {
     drop-shadow(0 0 1px #f0f0f0);
 }
 
-#menuCircle {
-  position: absolute;
-  top: -2000px;
-}
-
-.btn:hover + #menuCircle {
-  position: absolute;
-  top: 687px;
-  left: calc(var(--btn-left) + 66px);
-}
-
-#menuHidden {
+#btnCircleHidden {
   position: absolute;
   visibility: hidden;
 }
@@ -372,4 +362,15 @@ b::selection {
   to {
     rotate: 360deg;
   }
+}
+
+#menuCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + #menuCircle {
+  position: absolute;
+  top: calc(var(--btnMenu-top) - 31px);
+  left: calc(var(--btnMenu-left) + 66px);
 }
