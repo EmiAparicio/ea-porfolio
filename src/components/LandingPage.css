@@ -338,3 +338,38 @@ b::selection {
   filter: drop-shadow(0 0 1px #f0f0f0) drop-shadow(0 0 1px #f0f0f0)
     drop-shadow(0 0 1px #f0f0f0);
 }
+
+#menuCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + #menuCircle {
+  position: absolute;
+  top: 687px;
+  left: calc(var(--btn-left) + 66px);
+}
+
+#menuHidden {
+  position: absolute;
+  visibility: hidden;
+}
+
+.btn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 19px;
+  user-select: none;
+  text-shadow: 0 0 5px #383838, 0 0 5px #383838;
+}
+
+@keyframes rotationAnimation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}

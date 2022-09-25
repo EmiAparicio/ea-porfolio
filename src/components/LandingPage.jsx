@@ -1,11 +1,12 @@
 import "./LandingPage.css";
 import { useEffect, useState } from "react";
+import CircleType from "circletype";
 
 import { IconContext } from "react-icons";
 import { BsFillShareFill, BsFillHexagonFill } from "react-icons/bs";
 
 import textFrame from "./textFrame.png";
-import menuBtn from "./menuBtn.png"
+import menuBtn from "./menuBtn.png";
 
 export default function LandingPage() {
   useEffect(() => {
@@ -54,6 +55,10 @@ export default function LandingPage() {
     window.addEventListener("mouseout", editCursorOut);
   }, []);
 
+  useEffect(() => {
+    new CircleType(document.getElementById("menuCircle"));
+  }, []);
+
   const [btnActive, setBtn] = useState(false);
 
   return (
@@ -74,9 +79,12 @@ export default function LandingPage() {
             }}
           >
             <div className="imgContainer">
-              <img src={`${menuBtn}`} alt="menu" className="imgMenu"/>
+              <img src={`${menuBtn}`} alt="menu" className="imgMenu" />
             </div>
           </span>
+          <h3 id={btnActive ? "menuHidden" : "menuCircle"} className="rotation">
+            • Menu •• Menu •• Menu •• Menu •• Menu •• Menu •
+          </h3>
           <div className="aboutContainer">
             <div className="aboutRel">
               <p className="about">
@@ -99,7 +107,8 @@ export default function LandingPage() {
   );
 }
 
-            {/* <div className="imgContainer">
+{
+  /* <div className="imgContainer">
               <IconContext.Provider
                 value={{
                   color: "#383838",
@@ -111,4 +120,5 @@ export default function LandingPage() {
                 <BsFillShareFill className="hexLink"/>
                 <BsFillHexagonFill className="hex"/>
               </IconContext.Provider>
-            </div> */}
+            </div> */
+}
