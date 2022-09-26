@@ -66,13 +66,16 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
+    new CircleType(document.getElementById("CVCircle"));
     new CircleType(document.getElementById("menuCircle"));
     new CircleType(document.getElementById("skillsCircle"));
-    new CircleType(document.getElementById("CVCircle"));
+    new CircleType(document.getElementById("followCircle"));
+    
   }, []);
 
   const [btnMenuActive, setMenuBtn] = useState(false);
   const [btnSkillsActive, setSkillsBtn] = useState(false);
+  const [btnFollowActive, setFollowBtn] = useState(false);
 
   return (
     <>
@@ -112,7 +115,9 @@ export default function LandingPage() {
             className={btnMenuActive ? "btnActive menuBtn" : "btn menuBtn"}
             onClick={() => {
               setMenuBtn((prev) => {
-                if (!prev) setSkillsBtn(false);
+                if (!prev) {
+                  setFollowBtn(false);
+                  setSkillsBtn(false);}
                 return !prev;
               });
             }}
@@ -162,6 +167,44 @@ export default function LandingPage() {
 
           {btnMenuActive ? (
             <img src={`${hexLink1}`} alt="" className="hexLink1" />
+          ) : (
+            <></>
+          )}
+
+          <span
+            className={
+              btnFollowActive && btnMenuActive
+                ? "btnActive followBtn"
+                : !btnMenuActive
+                ? "btn followBtn invisible"
+                : "btn followBtn"
+            }
+            onClick={() => {
+              setFollowBtn((prev) => !prev);
+            }}
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "55px",
+                  title: "follow",
+                  className: "img",
+                }}
+              >
+                <GiTechnoHeart className="imgFollow" />
+              </IconContext.Provider>
+            </div>
+          </span>
+          <h3
+            id={btnSkillsActive ? "btnCircleHidden" : "followCircle"}
+            className="rotation"
+          >
+            • Follow Me •• Follow Me •• Follow Me •• Follow Me •
+          </h3>
+
+          {btnMenuActive ? (
+            <img src={`${hexLink1}`} alt="" className="hexLink2" />
           ) : (
             <></>
           )}

@@ -13,6 +13,8 @@
   --btnMenu-top: calc(718px - (3 * 64px));
   --btnSkills-left: calc(var(--btnMenu-left) - (2 * 37px));
   --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px));
+  --btnFollow-left: calc(var(--btnMenu-left) + (4 * 37px));
+  --btnFollow-top: calc(var(--btnMenu-top) - (0 * 64px));
 }
 
 .bg {
@@ -417,9 +419,9 @@ b::selection {
   vertical-align: middle;
   user-select: none;
 
-  padding: 57px 66px;
+  padding: 38px 44px;
 
-  --btn-raise: 33px;
+  --btn-raise: 22px;
   clip-path: polygon(
     var(--btn-raise) 0%,
     calc(100% - var(--btn-raise)) 0%,
@@ -536,4 +538,50 @@ b::selection {
   position: absolute;
   top: calc(var(--btnSkills-top) - 31px);
   left: calc(var(--btnSkills-left) + 66px);
+}
+
+/* Follow me */
+
+.hexLink2 {
+  position: absolute;
+  transform: rotate(120deg);
+  width: 60px;
+  opacity: 0.6;
+  top: calc(var(--btnMenu-top) + 29px);
+  left: calc(var(--btnMenu-left) + 110px);
+}
+
+.followBtn {
+  top: var(--btnFollow-top);
+  left: var(--btnFollow-left);
+}
+
+.followBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 18px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+.imgFollow {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -47%);
+}
+
+#followCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + #followCircle {
+  position: absolute;
+  top: calc(var(--btnFollow-top) - 31px);
+  left: calc(var(--btnFollow-left) + 66px);
 }
