@@ -5,11 +5,20 @@ import CircleType from "circletype";
 import CV from "../EmilianoAparicio-CV.pdf";
 
 import { IconContext } from "react-icons";
-import { BsLinkedin, BsGithub, BsFillFilePersonFill } from "react-icons/bs";
+import { BsLinkedin } from "react-icons/bs";
 import { SiMusicbrainz, SiGmail } from "react-icons/si";
-import { GiTechnoHeart } from "react-icons/gi";
-import { BiDna } from "react-icons/bi";
-import { FaGraduationCap } from "react-icons/fa";
+import {
+  GiTechnoHeart,
+  GiHeadshot,
+  GiBiceps,
+  GiBrain,
+  GiConsoleController,
+  GiDiploma,
+  GiDna1,
+  GiLaptop,
+  GiProcessor,
+} from "react-icons/gi";
+import { FaGraduationCap, FaFileDownload, FaGithub } from "react-icons/fa";
 
 import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
@@ -103,12 +112,12 @@ export default function LandingPage() {
               <IconContext.Provider
                 value={{
                   color: "#383838",
-                  size: "40px",
+                  size: "38px",
                   title: "CV",
                   className: "img",
                 }}
               >
-                <BsFillFilePersonFill className="imgCV" />
+                <FaFileDownload className="imgCV" />
               </IconContext.Provider>
             </div>
           </a>
@@ -164,7 +173,7 @@ export default function LandingPage() {
                   className: "img",
                 }}
               >
-                <SiMusicbrainz className="imgSkills" />
+                <GiBrain className="imgSkills" />
               </IconContext.Provider>
             </div>
           </span>
@@ -270,7 +279,7 @@ export default function LandingPage() {
                   className: "img",
                 }}
               >
-                <BsGithub className="imgGithub" />
+                <FaGithub className="imgGithub" />
               </IconContext.Provider>
             </div>
           </a>
