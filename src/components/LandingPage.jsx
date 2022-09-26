@@ -3,8 +3,16 @@ import { useEffect, useState } from "react";
 import CircleType from "circletype";
 
 import { IconContext } from "react-icons";
-import { BsFillShareFill, BsFillHexagonFill } from "react-icons/bs";
-import { SiMusicbrainz } from "react-icons/si";
+import {
+  BsTwitter,
+  BsLinkedin,
+  BsGithub,
+  BsFillFilePersonFill,
+} from "react-icons/bs";
+import { SiMusicbrainz, SiGmail } from "react-icons/si";
+import { GiTechnoHeart } from "react-icons/gi";
+import { BiDna } from "react-icons/bi";
+import { FaGraduationCap } from "react-icons/fa";
 
 import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
