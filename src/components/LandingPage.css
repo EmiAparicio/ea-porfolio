@@ -9,12 +9,12 @@
 
   --btnCVDefault-top: 737px;
   --btnCVDefault-left: 560px;
-  --btnMenu-left: calc(1542px - (3 * 37px));
-  --btnMenu-top: calc(718px - (3 * 64px));
-  --btnSkills-left: calc(var(--btnMenu-left) - (2 * 37px));
+  --btnMenu-left: calc(1540px - (6 * 37px));
+  --btnMenu-top: calc(717px - (4 * 64px));
+  --btnSkills-left: calc(var(--btnMenu-left) + (2 * 37px));
   --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px));
-  --btnFollow-left: calc(var(--btnMenu-left) + (4 * 37px));
-  --btnFollow-top: calc(var(--btnMenu-top) - (0 * 64px));
+  --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px));
+  --btnFollow-top: calc(var(--btnMenu-top) + (2 * 64px));
 }
 
 .bg {
@@ -507,12 +507,13 @@ b::selection {
 
 /* Skills */
 
-.hexLink1 {
+.hexLink1Skills {
   position: absolute;
+  transform: rotate(60deg);
   width: 60px;
   opacity: 0.6;
   top: calc(var(--btnMenu-top) - 34px);
-  left: calc(var(--btnMenu-left) - 1px);
+  left: calc(var(--btnMenu-left) - 1px + (2 * 37px));
 }
 
 .skillsBtn {
@@ -542,13 +543,13 @@ b::selection {
 
 /* Follow me */
 
-.hexLink2 {
+.hexLink1Follow {
   position: absolute;
-  transform: rotate(120deg);
+  transform: rotate(180deg);
   width: 60px;
   opacity: 0.6;
-  top: calc(var(--btnMenu-top) + 29px);
-  left: calc(var(--btnMenu-left) + 110px);
+  top: calc(var(--btnMenu-top) + 29px + (1 * 64px));
+  left: calc(var(--btnMenu-left) + 110px - (1 * 37px));
 }
 
 .followBtn {
@@ -572,7 +573,7 @@ b::selection {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -47%);
+  transform: translate(-50%, -44%);
 }
 
 #followCircle {
@@ -584,4 +585,86 @@ b::selection {
   position: absolute;
   top: calc(var(--btnFollow-top) - 31px);
   left: calc(var(--btnFollow-left) + 66px);
+}
+
+.hexLink2Follow {
+  position: absolute;
+  transform: rotate(180deg);
+  width: 170px;
+  opacity: 0.6;
+  top: calc(var(--btnFollow-top) + 89px);
+  left: calc(var(--btnFollow-left) + 58px);
+}
+/* Follow me / Linkedin */
+
+.linkedinBtn {
+  top: calc(var(--btnFollow-top) + 148px);
+  left: calc(var(--btnFollow-left) + 23px);
+}
+
+.linkedinBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 18px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#linkedinCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #linkedinCircle {
+  position: absolute;
+  top: calc(var(--btnFollow-top) + 123px);
+  left: calc(var(--btnFollow-left) + 67px);
+}
+
+.imgLinkedin {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Follow me / GitHub */
+
+.githubBtn {
+  top: calc(var(--btnFollow-top) + 148px - 65px);
+  left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
+}
+
+.githubBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 16px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#githubCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #githubCircle {
+  position: absolute;
+  top: calc(var(--btnFollow-top) + 123px - 65px);
+  left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
+}
+
+.imgGithub {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

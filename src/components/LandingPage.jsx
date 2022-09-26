@@ -14,6 +14,7 @@ import { FaGraduationCap } from "react-icons/fa";
 import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
 import hexLink1 from "./hexLink1.png";
+import hexLink2 from "./hexLink2.png";
 
 export default function LandingPage() {
   useEffect(() => {
@@ -70,7 +71,8 @@ export default function LandingPage() {
     new CircleType(document.getElementById("menuCircle"));
     new CircleType(document.getElementById("skillsCircle"));
     new CircleType(document.getElementById("followCircle"));
-    
+    new CircleType(document.getElementById("linkedinCircle"));
+    new CircleType(document.getElementById("githubCircle"));
   }, []);
 
   const [btnMenuActive, setMenuBtn] = useState(false);
@@ -88,6 +90,7 @@ export default function LandingPage() {
           <div className="lighter2" />
           <div className="lighter3" />
 
+          {/* CV Button */}
           <a
             href={`${CV}`}
             className="smallBtn CVBtnDefault"
@@ -110,14 +113,17 @@ export default function LandingPage() {
           <h3 id="CVCircle" className="rotation">
             • Download CV •• Download CV •• Download CV •
           </h3>
+          {/* CV Button */}
 
+          {/* Menu Button */}
           <span
             className={btnMenuActive ? "btnActive menuBtn" : "btn menuBtn"}
             onClick={() => {
               setMenuBtn((prev) => {
-                if (!prev) {
+                if (prev) {
                   setFollowBtn(false);
-                  setSkillsBtn(false);}
+                  setSkillsBtn(false);
+                }
                 return !prev;
               });
             }}
@@ -132,7 +138,9 @@ export default function LandingPage() {
           >
             • Menu •• Menu •• Menu •• Menu •• Menu •• Menu •
           </h3>
+          {/* Menu Button */}
 
+          {/* Skills Button */}
           <span
             className={
               btnSkillsActive && btnMenuActive
@@ -166,11 +174,13 @@ export default function LandingPage() {
           </h3>
 
           {btnMenuActive ? (
-            <img src={`${hexLink1}`} alt="" className="hexLink1" />
+            <img src={`${hexLink1}`} alt="" className="hexLink1Skills" />
           ) : (
             <></>
           )}
+          {/* Skills Button */}
 
+          {/* Follow Button */}
           <span
             className={
               btnFollowActive && btnMenuActive
@@ -204,11 +214,74 @@ export default function LandingPage() {
           </h3>
 
           {btnMenuActive ? (
-            <img src={`${hexLink1}`} alt="" className="hexLink2" />
+            <img src={`${hexLink1}`} alt="" className="hexLink1Follow" />
           ) : (
             <></>
           )}
+          {/* ****** Follow Options */}
+          <a
+            href="https://www.linkedin.com/in/emiliano-aparicio-8b9757236/"
+            target="_blank"
+            className={
+              btnFollowActive
+                ? "smallBtn linkedinBtn"
+                : "smallBtn linkedinBtn invisible"
+            }
+            rel="noreferrer"
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "39px",
+                  title: "linkedin",
+                  className: "img",
+                }}
+              >
+                <BsLinkedin className="imgLinkedin" />
+              </IconContext.Provider>
+            </div>
+          </a>
+          <h3 id="linkedinCircle" className="rotation">
+            • LinkedIn •• LinkedIn •• LinkedIn •
+          </h3>
 
+          <a
+            href="https://github.com/NoahReaver"
+            target="_blank"
+            className={
+              btnFollowActive
+                ? "smallBtn githubBtn"
+                : "smallBtn githubBtn invisible"
+            }
+            rel="noreferrer"
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "39px",
+                  title: "linkedin",
+                  className: "img",
+                }}
+              >
+                <BsGithub className="imgGithub" />
+              </IconContext.Provider>
+            </div>
+          </a>
+          <h3 id="githubCircle" className="rotation">
+            • GitHub •• GitHub •• GitHub •• GitHub •
+          </h3>
+
+          {btnFollowActive ? (
+            <img src={`${hexLink2}`} alt="" className="hexLink2Follow" />
+          ) : (
+            <></>
+          )}
+          {/* ****** Follow Options */}
+          {/* Follow Button */}
+
+          {/* About Section */}
           <div className="aboutContainer">
             <div className="aboutRel">
               <p className="about">
