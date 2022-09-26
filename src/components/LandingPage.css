@@ -148,6 +148,31 @@ b::selection {
   right: 0px;
 }
 
+.CVBtn {
+  bottom: -104px;
+  left: 359px;
+}
+
+#CVCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #CVCircle {
+  position: absolute;
+  top: 379px;
+  left: 403px;
+}
+
+.imgCV {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .pointer {
   transform: translate(-50%, -50%) scale(0);
   pointer-events: none;
@@ -343,6 +368,79 @@ b::selection {
   text-shadow: 0 0 5px #383838, 0 0 5px #383838;
 }
 
+.smallBtn {
+  background-image: url("./buttonSmall.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: none;
+  position: absolute;
+  z-index: 10;
+
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+
+  padding: 38px 44px;
+
+  --btn-raise: 22px;
+  clip-path: polygon(
+    var(--btn-raise) 0%,
+    calc(100% - var(--btn-raise)) 0%,
+    100% 50%,
+    calc(100% - var(--btn-raise)) 100%,
+    var(--btn-raise) 100%,
+    0 50%
+  );
+}
+
+.smallBtn:hover {
+  cursor: none;
+  filter: drop-shadow(0 0 10px #383838);
+}
+
+.smallBtnActive {
+  background-image: url("./buttonActiveSmall.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: none;
+  position: absolute;
+  z-index: 10;
+  filter: drop-shadow(0 0 10px #84ffd4);
+
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+
+  padding: 57px 66px;
+
+  --btn-raise: 33px;
+  clip-path: polygon(
+    var(--btn-raise) 0%,
+    calc(100% - var(--btn-raise)) 0%,
+    100% 50%,
+    calc(100% - var(--btn-raise)) 100%,
+    var(--btn-raise) 100%,
+    0 50%
+  );
+}
+
+.smallBtnActive:hover {
+  cursor: none;
+  filter: drop-shadow(0 0 10px #f0f0f0);
+}
+
+.smallBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 15px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
 .rotation {
   user-select: none;
   z-index: 15;
@@ -382,6 +480,10 @@ b::selection {
     drop-shadow(0 0 1px #f0f0f0);
 }
 
+.smallBtn:hover * {
+  filter: drop-shadow(0 0 1px #f0f0f0) drop-shadow(0 0 1px #f0f0f0);
+}
+
 #menuCircle {
   position: absolute;
   top: -2000px;
@@ -416,7 +518,6 @@ b::selection {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* width: 50px; */
   transform: translate(-55%, -50%);
 }
 

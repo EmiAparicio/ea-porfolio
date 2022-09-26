@@ -2,13 +2,10 @@ import "./LandingPage.css";
 import { useEffect, useState } from "react";
 import CircleType from "circletype";
 
+import CV from "../EmilianoAparicio-CV.pdf";
+
 import { IconContext } from "react-icons";
-import {
-  BsTwitter,
-  BsLinkedin,
-  BsGithub,
-  BsFillFilePersonFill,
-} from "react-icons/bs";
+import { BsLinkedin, BsGithub, BsFillFilePersonFill } from "react-icons/bs";
 import { SiMusicbrainz, SiGmail } from "react-icons/si";
 import { GiTechnoHeart } from "react-icons/gi";
 import { BiDna } from "react-icons/bi";
@@ -68,6 +65,7 @@ export default function LandingPage() {
   useEffect(() => {
     new CircleType(document.getElementById("menuCircle"));
     new CircleType(document.getElementById("skillsCircle"));
+    new CircleType(document.getElementById("CVCircle"));
   }, []);
 
   const [btnMenuActive, setMenuBtn] = useState(false);
@@ -154,6 +152,28 @@ export default function LandingPage() {
               </p>
               <img className="aboutFrame" src={`${textFrame}`} alt="" />
               <img className="aboutFrame1" src={`${textFrame}`} alt="" />
+
+              <a
+                href={`${CV}`}
+                className="smallBtn CVBtn"
+                download="EmilianoAparicio-CV"
+              >
+                <div className="imgContainer">
+                  <IconContext.Provider
+                    value={{
+                      color: "#383838",
+                      size: "40px",
+                      title: "CV",
+                      className: "img",
+                    }}
+                  >
+                    <BsFillFilePersonFill className="imgCV" />
+                  </IconContext.Provider>
+                </div>
+              </a>
+              <h3 id="CVCircle" className="rotation">
+                • Download CV •• Download CV •• Download CV •
+              </h3>
             </div>
           </div>
         </div>
