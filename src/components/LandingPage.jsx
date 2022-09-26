@@ -73,11 +73,13 @@ export default function LandingPage() {
     new CircleType(document.getElementById("followCircle"));
     new CircleType(document.getElementById("linkedinCircle"));
     new CircleType(document.getElementById("githubCircle"));
+    new CircleType(document.getElementById("mailCircle"));
   }, []);
 
   const [btnMenuActive, setMenuBtn] = useState(false);
   const [btnSkillsActive, setSkillsBtn] = useState(false);
   const [btnFollowActive, setFollowBtn] = useState(false);
+  const [btnMailActive, setMailBtn] = useState(false);
 
   return (
     <>
@@ -190,7 +192,10 @@ export default function LandingPage() {
                 : "btn followBtn"
             }
             onClick={() => {
-              setFollowBtn((prev) => !prev);
+              setFollowBtn((prev) => {
+                if (prev) setMailBtn(false);
+                return !prev;
+              });
             }}
           >
             <div className="imgContainer">
@@ -271,6 +276,38 @@ export default function LandingPage() {
           </a>
           <h3 id="githubCircle" className="rotation">
             • GitHub •• GitHub •• GitHub •• GitHub •
+          </h3>
+
+          <span
+            className={
+              btnFollowActive && btnMailActive
+                ? "smallBtnActive mailBtn"
+                : !btnFollowActive
+                ? "smallBtn mailBtn invisible"
+                : "smallBtn mailBtn"
+            }
+            onClick={() => {
+              setMailBtn((prev) => !prev);
+            }}
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "40px",
+                  title: "mail",
+                  className: "img",
+                }}
+              >
+                <SiGmail className="imgMail" />
+              </IconContext.Provider>
+            </div>
+          </span>
+          <h3
+            id={btnMailActive ? "btnCircleHidden" : "mailCircle"}
+            className="rotation"
+          >
+            • E-mail •• E-mail •• E-mail •• E-mail •
           </h3>
 
           {btnFollowActive ? (

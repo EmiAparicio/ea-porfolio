@@ -668,3 +668,40 @@ b::selection {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Follow me / Mail */
+
+.mailBtn {
+  top: calc(var(--btnFollow-top) + 148px - 65px + (2 * 64px));
+  left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
+}
+
+.mailBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 17px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#mailCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #mailCircle {
+  position: absolute;
+  top: calc(var(--btnFollow-top) + 123px - 65px + (2 * 64px));
+  left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
+}
+
+.imgMail {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
