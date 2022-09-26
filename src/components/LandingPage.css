@@ -499,6 +499,8 @@ b::selection {
   visibility: hidden;
 }
 
+/* Skills */
+
 .hexLink1 {
   position: absolute;
   width: 60px;
@@ -531,3 +533,5 @@ b::selection {
   top: calc(var(--btnSkills-top) - 31px);
   left: calc(var(--btnSkills-left) + 66px);
 }
+
+

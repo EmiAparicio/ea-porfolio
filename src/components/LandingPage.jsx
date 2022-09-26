@@ -17,7 +17,8 @@ import hexLink1 from "./hexLink1.png";
 
 export default function LandingPage() {
   useEffect(() => {
-    const buttons = document.querySelectorAll("span.btn");
+    const buttons = document.querySelectorAll(".btn");
+    const smallButtons = document.querySelectorAll(".smallBtn");
     const cursor = document.getElementById("cursor");
     const pointer = document.getElementById("pointer");
 
@@ -33,6 +34,8 @@ export default function LandingPage() {
 
     buttons.forEach((b) => b.addEventListener("mousemove", animateit));
     buttons.forEach((b) => b.addEventListener("mouseout", animateit));
+    smallButtons.forEach((b) => b.addEventListener("mousemove", animateit));
+    smallButtons.forEach((b) => b.addEventListener("mouseout", animateit));
 
     const editCursor = (e) => {
       const { clientX: x, clientY: y } = e;
