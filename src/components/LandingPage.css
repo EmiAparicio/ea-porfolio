@@ -1,9 +1,14 @@
 :root {
+  --bg-color: #09a27a;
+  /* --bg-color: rgb(255, 107, 107); */
+
   /* Vertical 64px*/
   /* Horizontal 37px*/
   --title-left: 70px;
   --title-top: 40px;
 
+  --btnCVDefault-top: 737px;
+  --btnCVDefault-left: 560px;
   --btnMenu-left: calc(1542px - (3 * 37px));
   --btnMenu-top: calc(718px - (3 * 64px));
   --btnSkills-left: calc(var(--btnMenu-left) - (2 * 37px));
@@ -14,8 +19,7 @@
   user-select: none;
   width: 100%;
   height: 100%;
-  background-color: #09a27a;
-  /* background-color: rgb(255, 107, 107); */
+  background-color: var(--bg-color);
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -148,9 +152,9 @@ b::selection {
   right: 0px;
 }
 
-.CVBtn {
-  bottom: -104px;
-  left: 359px;
+.CVBtnDefault {
+  top: var(--btnCVDefault-top);
+  left: var(--btnCVDefault-left);
 }
 
 #CVCircle {
@@ -160,8 +164,8 @@ b::selection {
 
 .smallBtn:hover + #CVCircle {
   position: absolute;
-  top: 379px;
-  left: 403px;
+  top: calc(var(--btnCVDefault-top) - 32px);
+  left: calc(var(--btnCVDefault-left) + 43px);
 }
 
 .imgCV {
@@ -533,5 +537,3 @@ b::selection {
   top: calc(var(--btnSkills-top) - 31px);
   left: calc(var(--btnSkills-left) + 66px);
 }
-
-

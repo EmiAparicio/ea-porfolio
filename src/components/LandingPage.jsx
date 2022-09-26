@@ -85,6 +85,29 @@ export default function LandingPage() {
           <div className="lighter2" />
           <div className="lighter3" />
 
+          <a
+            href={`${CV}`}
+            className="smallBtn CVBtnDefault"
+            download="EmilianoAparicio-CV"
+            draggable="false"
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "40px",
+                  title: "CV",
+                  className: "img",
+                }}
+              >
+                <BsFillFilePersonFill className="imgCV" />
+              </IconContext.Provider>
+            </div>
+          </a>
+          <h3 id="CVCircle" className="rotation">
+            • Download CV •• Download CV •• Download CV •
+          </h3>
+
           <span
             className={btnMenuActive ? "btnActive menuBtn" : "btn menuBtn"}
             onClick={() => {
@@ -155,28 +178,6 @@ export default function LandingPage() {
               </p>
               <img className="aboutFrame" src={`${textFrame}`} alt="" />
               <img className="aboutFrame1" src={`${textFrame}`} alt="" />
-
-              <a
-                href={`${CV}`}
-                className="smallBtn CVBtn"
-                download="EmilianoAparicio-CV"
-              >
-                <div className="imgContainer">
-                  <IconContext.Provider
-                    value={{
-                      color: "#383838",
-                      size: "40px",
-                      title: "CV",
-                      className: "img",
-                    }}
-                  >
-                    <BsFillFilePersonFill className="imgCV" />
-                  </IconContext.Provider>
-                </div>
-              </a>
-              <h3 id="CVCircle" className="rotation">
-                • Download CV •• Download CV •• Download CV •
-              </h3>
             </div>
           </div>
         </div>
