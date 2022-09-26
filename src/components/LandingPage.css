@@ -1,15 +1,21 @@
 :root {
-  --btnMenu-left: 1542px;
-  --btnMenu-top: 718px;
+  /* Vertical 64px*/
+  /* Horizontal 37px*/
   --title-left: 70px;
   --title-top: 40px;
+
+  --btnMenu-left: calc(1542px - (3 * 37px));
+  --btnMenu-top: calc(718px - (3 * 64px));
+  --btnSkills-left: calc(var(--btnMenu-left) - (2 * 37px));
+  --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px));
 }
 
 .bg {
+  user-select: none;
   width: 100%;
   height: 100%;
   background-color: #09a27a;
-  /* background-color: #000; */
+  /* background-color: rgb(255, 107, 107); */
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -17,6 +23,7 @@
 }
 
 .bgImg {
+  user-select: none;
   background-image: url("hexBG.png");
   width: 100%;
   height: 100%;
@@ -74,6 +81,7 @@
 }
 
 .about {
+  user-select: text;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
   font-size: 28px;
@@ -166,6 +174,7 @@ b::selection {
 }
 
 .lighter {
+  user-select: none;
   position: absolute;
   height: 150%;
   width: 150%;
@@ -194,6 +203,7 @@ b::selection {
 }
 
 .lighter2 {
+  user-select: none;
   position: absolute;
   padding: 200px;
   left: 60%;
@@ -223,6 +233,7 @@ b::selection {
 }
 
 .lighter3 {
+  user-select: none;
   position: absolute;
   padding: 200px;
   left: 60%;
@@ -317,29 +328,6 @@ b::selection {
   filter: drop-shadow(0 0 10px #f0f0f0);
 }
 
-.menuBtn {
-  top: var(--btnMenu-top);
-  left: var(--btnMenu-left);
-}
-
-.imgContainer {
-  position: relative;
-}
-
-.imgMenu {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50px;
-  transform: translate(-55%, -50%);
-}
-
-.btn:hover .imgMenu {
-  filter: drop-shadow(0 0 1px #f0f0f0) drop-shadow(0 0 1px #f0f0f0)
-    drop-shadow(0 0 1px #f0f0f0);
-}
-
 #btnCircleHidden {
   position: absolute;
   visibility: hidden;
@@ -355,6 +343,11 @@ b::selection {
   text-shadow: 0 0 5px #383838, 0 0 5px #383838;
 }
 
+.rotation {
+  user-select: none;
+  z-index: 15;
+}
+
 @keyframes rotationAnimation {
   from {
     rotate: 0deg;
@@ -362,6 +355,31 @@ b::selection {
   to {
     rotate: 360deg;
   }
+}
+
+.menuBtn {
+  top: var(--btnMenu-top);
+  left: var(--btnMenu-left);
+}
+
+.imgContainer {
+  user-select: none;
+  position: relative;
+}
+
+.imgMenu {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  transform: translate(-55%, -50%);
+}
+
+.btn:hover * {
+  filter: drop-shadow(0 0 1px #f0f0f0) drop-shadow(0 0 1px #f0f0f0)
+    drop-shadow(0 0 1px #f0f0f0);
 }
 
 #menuCircle {
@@ -373,4 +391,42 @@ b::selection {
   position: absolute;
   top: calc(var(--btnMenu-top) - 31px);
   left: calc(var(--btnMenu-left) + 66px);
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.hexLink1 {
+  position: absolute;
+  width: 60px;
+  opacity: 0.6;
+  top: calc(var(--btnMenu-top) - 34px);
+  left: calc(var(--btnMenu-left) - 1px);
+}
+
+.skillsBtn {
+  top: var(--btnSkills-top);
+  left: var(--btnSkills-left);
+}
+
+.imgSkills {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* width: 50px; */
+  transform: translate(-55%, -50%);
+}
+
+#skillsCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + #skillsCircle {
+  position: absolute;
+  top: calc(var(--btnSkills-top) - 31px);
+  left: calc(var(--btnSkills-left) + 66px);
 }

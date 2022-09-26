@@ -4,9 +4,11 @@ import CircleType from "circletype";
 
 import { IconContext } from "react-icons";
 import { BsFillShareFill, BsFillHexagonFill } from "react-icons/bs";
+import { SiMusicbrainz } from "react-icons/si";
 
 import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
+import hexLink1 from "./hexLink1.png";
 
 export default function LandingPage() {
   useEffect(() => {
@@ -57,9 +59,11 @@ export default function LandingPage() {
 
   useEffect(() => {
     new CircleType(document.getElementById("menuCircle"));
+    new CircleType(document.getElementById("skillsCircle"));
   }, []);
 
-  const [btnActive, setBtn] = useState(false);
+  const [btnMenuActive, setMenuBtn] = useState(false);
+  const [btnSkillsActive, setSkillsBtn] = useState(false);
 
   return (
     <>
@@ -73,9 +77,12 @@ export default function LandingPage() {
           <div className="lighter3" />
 
           <span
-            className={btnActive ? "btnActive menuBtn" : "btn menuBtn"}
+            className={btnMenuActive ? "btnActive menuBtn" : "btn menuBtn"}
             onClick={() => {
-              setBtn((prev) => !prev);
+              setMenuBtn((prev) => {
+                if (!prev) setSkillsBtn(false);
+                return !prev;
+              });
             }}
           >
             <div className="imgContainer">
@@ -83,11 +90,49 @@ export default function LandingPage() {
             </div>
           </span>
           <h3
-            id={btnActive ? "btnCircleHidden" : "menuCircle"}
+            id={btnMenuActive ? "btnCircleHidden" : "menuCircle"}
             className="rotation"
           >
             • Menu •• Menu •• Menu •• Menu •• Menu •• Menu •
           </h3>
+
+          <span
+            className={
+              btnSkillsActive && btnMenuActive
+                ? "btnActive skillsBtn"
+                : !btnMenuActive
+                ? "btn skillsBtn invisible"
+                : "btn skillsBtn"
+            }
+            onClick={() => {
+              setSkillsBtn((prev) => !prev);
+            }}
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "55px",
+                  title: "skills",
+                  className: "img",
+                }}
+              >
+                <SiMusicbrainz className="imgSkills" />
+              </IconContext.Provider>
+            </div>
+          </span>
+          <h3
+            id={btnSkillsActive ? "btnCircleHidden" : "skillsCircle"}
+            className="rotation"
+          >
+            • Skills •• Skills •• Skills •• Skills •• Skills •• Skills •
+          </h3>
+
+          {btnMenuActive ? (
+            <img src={`${hexLink1}`} alt="" className="hexLink1" />
+          ) : (
+            <></>
+          )}
 
           <div className="aboutContainer">
             <div className="aboutRel">
