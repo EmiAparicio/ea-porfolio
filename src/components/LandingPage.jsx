@@ -331,7 +331,7 @@ export default function LandingPage() {
             </div>
           </span>
           <h3
-            id={btnSkillsActive ? "btnCircleHidden" : "followCircle"}
+            id={btnFollowActive ? "btnCircleHidden" : "followCircle"}
             className="rotation"
           >
             • Follow Me •• Follow Me •• Follow Me •• Follow Me •

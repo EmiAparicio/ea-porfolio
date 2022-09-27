@@ -4,11 +4,11 @@
 
   /* Vertical 64px*/
   /* Horizontal 37px*/
-  --title-left: calc(751px - (2 * 37px));
+  --title-left: calc(750px - (3 * 37px));
   --title-top: calc(40px - (0 * 64px));
 
-  --btnCVDefault-top: 737px;
-  --btnCVDefault-left: 1229px;
+  --btnCVDefault-top: calc(var(--title-top) + 697px);
+  --btnCVDefault-left: calc(var(--title-left) + 478px);
   --btnMenu-left: calc(313px - (6 * 37px));
   --btnMenu-top: calc(717px - (5 * 64px));
   --btnSkills-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
@@ -76,13 +76,13 @@
 
 .aboutContainer {
   position: absolute;
-  top: calc(var(--title-top) - 40px + 326px);
-  left: calc(var(--title-left) - 751px + 870px);
+  top: calc(var(--title-top) + 286px);
+  left: calc(var(--title-left) + 82px);
 }
 
 .aboutRel {
   position: relative;
-  width: 806px;
+  width: 881px;
   height: 383px;
 }
 
@@ -155,8 +155,8 @@ b::selection {
 }
 
 .CVBtnDefault {
-  top: calc(var(--title-top) - 40px + var(--btnCVDefault-top));
-  left: calc(var(--title-left) - 751px + var(--btnCVDefault-left));
+  top: var(--btnCVDefault-top);
+  left: var(--btnCVDefault-left);
 }
 
 #CVCircle {
@@ -167,7 +167,7 @@ b::selection {
 .smallBtn:hover + #CVCircle {
   position: absolute;
   top: calc(var(--btnCVDefault-top) - 32px);
-  left: calc(var(--btnCVDefault-left) + 43px);
+  left: calc(var(--btnCVDefault-left) + 44px);
 }
 
 .imgCV {
@@ -271,9 +271,9 @@ b::selection {
 
   background: radial-gradient(
     circle,
-    rgba(0, 255, 188, 0.1) 7%,
-    rgba(0, 255, 188, 0.05) 50%,
-    rgba(0, 255, 188, 0.02) 100%
+    rgba(0, 255, 188, 0.15) 7%,
+    rgba(0, 255, 188, 0.07) 50%,
+    rgba(0, 255, 188, 0.03) 100%
   );
   border-radius: 50%;
   animation: lighter3Animation linear 10s infinite;
@@ -635,7 +635,7 @@ b::selection {
 /* Follow me / GitHub */
 
 .githubBtn {
-  top: calc(var(--btnFollow-top) + 148px - 65px);
+  top: calc(var(--btnFollow-top) + 83px);
   left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
 }
 
@@ -656,7 +656,7 @@ b::selection {
 
 .smallBtn:hover + #githubCircle {
   position: absolute;
-  top: calc(var(--btnFollow-top) + 123px - 65px);
+  top: calc(var(--btnFollow-top) + 58px);
   left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
 }
 
@@ -672,7 +672,7 @@ b::selection {
 /* Follow me / Mail */
 
 .mailBtn {
-  top: calc(var(--btnFollow-top) + 148px - 65px + (2 * 64px));
+  top: calc(var(--btnFollow-top) + 83px + (2 * 64px));
   left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
 }
 
@@ -693,7 +693,7 @@ b::selection {
 
 .smallBtn:hover + #mailCircle {
   position: absolute;
-  top: calc(var(--btnFollow-top) + 123px - 65px + (2 * 64px));
+  top: calc(var(--btnFollow-top) + 58px + (2 * 64px));
   left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
 }
 
@@ -717,7 +717,7 @@ b::selection {
 }
 
 .webBtn {
-  top: calc(var(--btnSkills-top) + 148px - 67px - (4 * 64px));
+  top: calc(var(--btnSkills-top) + 81px - (4 * 64px));
   left: calc(var(--btnSkills-left) + 23px + (3 * 37px));
 }
 
@@ -738,7 +738,7 @@ b::selection {
 
 .smallBtn:hover + #webCircle {
   position: absolute;
-  top: calc(var(--btnSkills-top) + 123px - 67px - (4 * 64px));
+  top: calc(var(--btnSkills-top) + 56px - (4 * 64px));
   left: calc(var(--btnSkills-left) + 67px + (3 * 37px));
 }
 
@@ -754,7 +754,7 @@ b::selection {
 /* Skills / Bioengineering */
 
 .bioBtn {
-  top: calc(var(--btnSkills-top) + 148px - 66px - (2 * 64px));
+  top: calc(var(--btnSkills-top) + 82px - (2 * 64px));
   left: calc(var(--btnSkills-left) + 23px + (3 * 37px));
 }
 
@@ -775,7 +775,7 @@ b::selection {
 
 .smallBtn:hover + #bioCircle {
   position: absolute;
-  top: calc(var(--btnSkills-top) + 123px - 65px - (2 * 64px));
+  top: calc(var(--btnSkills-top) + 58px - (2 * 64px));
   left: calc(var(--btnSkills-left) + 67px + (3 * 37px));
 }
 
@@ -791,7 +791,7 @@ b::selection {
 /* Skills / Game Design */
 
 .gameBtn {
-  top: calc(var(--btnSkills-top) + 148px - 66px - (3 * 64px));
+  top: calc(var(--btnSkills-top) + 82px - (3 * 64px));
   left: calc(var(--btnSkills-left) + 22px + (0 * 37px));
 }
 
@@ -812,7 +812,7 @@ b::selection {
 
 .smallBtn:hover + #gameCircle {
   position: absolute;
-  top: calc(var(--btnSkills-top) + 123px - 65px - (3 * 64px));
+  top: calc(var(--btnSkills-top) + 57px - (3 * 64px));
   left: calc(var(--btnSkills-left) + 66px + (0 * 37px));
 }
 
