@@ -11,10 +11,10 @@
   --btnCVDefault-left: 560px;
   --btnMenu-left: calc(1540px - (6 * 37px));
   --btnMenu-top: calc(717px - (4 * 64px));
-  --btnSkills-left: calc(var(--btnMenu-left) + (2 * 37px));
-  --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px));
-  --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px));
-  --btnFollow-top: calc(var(--btnMenu-top) + (2 * 64px));
+  --btnSkills-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
+  --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px) - 1px);
+  --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
+  --btnFollow-top: calc(var(--btnMenu-top) + (2 * 64px) + 1px);
 }
 
 .bg {
@@ -512,8 +512,8 @@ b::selection {
   transform: rotate(60deg);
   width: 60px;
   opacity: 0.6;
-  top: calc(var(--btnMenu-top) - 34px);
-  left: calc(var(--btnMenu-left) - 1px + (2 * 37px));
+  top: calc(var(--btnMenu-top) - 35px);
+  left: calc(var(--btnMenu-left) - 0px + (2 * 37px));
 }
 
 .skillsBtn {
@@ -548,8 +548,8 @@ b::selection {
   transform: rotate(180deg);
   width: 60px;
   opacity: 0.6;
-  top: calc(var(--btnMenu-top) + 29px + (1 * 64px));
-  left: calc(var(--btnMenu-left) + 110px - (1 * 37px));
+  top: calc(var(--btnMenu-top) + 30px + (1 * 64px));
+  left: calc(var(--btnMenu-left) + 111px - (1 * 37px));
 }
 
 .followBtn {
@@ -587,6 +587,7 @@ b::selection {
   left: calc(var(--btnFollow-left) + 66px);
 }
 
+/* Follow me / Linkedin */
 .hexLink2Follow {
   position: absolute;
   transform: rotate(180deg);
@@ -595,11 +596,10 @@ b::selection {
   top: calc(var(--btnFollow-top) + 89px);
   left: calc(var(--btnFollow-left) + 58px);
 }
-/* Follow me / Linkedin */
 
 .linkedinBtn {
-  top: calc(var(--btnFollow-top) + 148px);
-  left: calc(var(--btnFollow-left) + 23px);
+  top: calc(var(--btnFollow-top) + 147px);
+  left: calc(var(--btnFollow-left) + 22px);
 }
 
 .linkedinBtn:hover + .rotation {
@@ -698,6 +698,125 @@ b::selection {
 }
 
 .imgMail {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Skills / WebDev */
+.hexLink2Skills {
+  position: absolute;
+  transform: rotate(60deg);
+  width: 170px;
+  opacity: 0.6;
+  top: calc(var(--btnSkills-top) - 166px);
+  left: calc(var(--btnSkills-left) + 52px);
+}
+
+.webBtn {
+  top: calc(var(--btnSkills-top) + 148px - 67px - (4 * 64px));
+  left: calc(var(--btnSkills-left) + 23px + (3 * 37px));
+}
+
+.webBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 15px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#webCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #webCircle {
+  position: absolute;
+  top: calc(var(--btnSkills-top) + 123px - 67px - (4 * 64px));
+  left: calc(var(--btnSkills-left) + 67px + (3 * 37px));
+}
+
+.imgWeb {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Skills / Bioengineering */
+
+.bioBtn {
+  top: calc(var(--btnSkills-top) + 148px - 66px - (2 * 64px));
+  left: calc(var(--btnSkills-left) + 23px + (3 * 37px));
+}
+
+.bioBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 17px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#bioCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #bioCircle {
+  position: absolute;
+  top: calc(var(--btnSkills-top) + 123px - 65px - (2 * 64px));
+  left: calc(var(--btnSkills-left) + 67px + (3 * 37px));
+}
+
+.imgBio {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Skills / Game Design */
+
+.gameBtn {
+  top: calc(var(--btnSkills-top) + 148px - 66px - (3 * 64px));
+  left: calc(var(--btnSkills-left) + 22px + (0 * 37px));
+}
+
+.gameBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 14px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#gameCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #gameCircle {
+  position: absolute;
+  top: calc(var(--btnSkills-top) + 123px - 65px - (3 * 64px));
+  left: calc(var(--btnSkills-left) + 66px + (0 * 37px));
+}
+
+.imgGame {
   user-select: none;
   pointer-events: none;
   position: absolute;

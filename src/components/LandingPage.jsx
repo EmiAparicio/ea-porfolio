@@ -83,12 +83,18 @@ export default function LandingPage() {
     new CircleType(document.getElementById("linkedinCircle"));
     new CircleType(document.getElementById("githubCircle"));
     new CircleType(document.getElementById("mailCircle"));
+    new CircleType(document.getElementById("webCircle"));
+    new CircleType(document.getElementById("bioCircle"));
+    new CircleType(document.getElementById("gameCircle"));
   }, []);
 
   const [btnMenuActive, setMenuBtn] = useState(false);
   const [btnSkillsActive, setSkillsBtn] = useState(false);
   const [btnFollowActive, setFollowBtn] = useState(false);
   const [btnMailActive, setMailBtn] = useState(false);
+  const [btnWebActive, setWebBtn] = useState(false);
+  const [btnBioActive, setBioBtn] = useState(false);
+  const [btnGameActive, setGameBtn] = useState(false);
 
   return (
     <>
@@ -189,6 +195,110 @@ export default function LandingPage() {
           ) : (
             <></>
           )}
+
+          {/* ****** Skills Options */}
+          <span
+            className={
+              btnSkillsActive && btnWebActive
+                ? "smallBtnActive webBtn"
+                : !btnSkillsActive
+                ? "smallBtn webBtn invisible"
+                : "smallBtn webBtn"
+            }
+            onClick={() => {
+              setWebBtn((prev) => !prev);
+            }}
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "40px",
+                  title: "web",
+                  className: "img",
+                }}
+              >
+                <GiLaptop className="imgWeb" />
+              </IconContext.Provider>
+            </div>
+          </span>
+          <h3
+            id={btnMailActive ? "btnCircleHidden" : "webCircle"}
+            className="rotation"
+          >
+            • Web Development •• Web Development •
+          </h3>
+
+          <span
+            className={
+              btnSkillsActive && btnBioActive
+                ? "smallBtnActive bioBtn"
+                : !btnSkillsActive
+                ? "smallBtn bioBtn invisible"
+                : "smallBtn bioBtn"
+            }
+            onClick={() => {
+              setBioBtn((prev) => !prev);
+            }}
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "40px",
+                  title: "bio",
+                  className: "img",
+                }}
+              >
+                <GiDna1 className="imgBio" />
+              </IconContext.Provider>
+            </div>
+          </span>
+          <h3
+            id={btnMailActive ? "btnCircleHidden" : "bioCircle"}
+            className="rotation"
+          >
+            • Bioengineering •• Bioengineering •
+          </h3>
+
+          <span
+            className={
+              btnSkillsActive && btnGameActive
+                ? "smallBtnActive gameBtn"
+                : !btnSkillsActive
+                ? "smallBtn gameBtn invisible"
+                : "smallBtn gameBtn"
+            }
+            onClick={() => {
+              setGameBtn((prev) => !prev);
+            }}
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "40px",
+                  title: "game",
+                  className: "img",
+                }}
+              >
+                <GiConsoleController className="imgGame" />
+              </IconContext.Provider>
+            </div>
+          </span>
+          <h3
+            id={btnMailActive ? "btnCircleHidden" : "gameCircle"}
+            className="rotation"
+          >
+            • GameDesign •• GameDesign •• GameDesign •
+          </h3>
+
+          {btnSkillsActive ? (
+            <img src={`${hexLink2}`} alt="" className="hexLink2Skills" />
+          ) : (
+            <></>
+          )}
+          {/* ****** Skills Options */}
           {/* Skills Button */}
 
           {/* Follow Button */}
