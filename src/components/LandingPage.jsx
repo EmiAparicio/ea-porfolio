@@ -197,6 +197,7 @@ export default function LandingPage() {
                   setBioBtn(false);
                   setGameBtn(false);
                   setMailBtn(false);
+                  setBtnCV(false);
                 }
                 return !prev;
               });
@@ -229,6 +230,7 @@ export default function LandingPage() {
                   setWebBtn(false);
                   setBioBtn(false);
                   setGameBtn(false);
+                  if (!btnMailActive) setBtnCV(false);
                 }
                 return !prev;
               });
@@ -270,7 +272,15 @@ export default function LandingPage() {
                 : "smallBtn webBtn"
             }
             onClick={() => {
-              setWebBtn((prev) => !prev);
+              setWebBtn((prev) => {
+                if (!prev) {
+                  setBtnCV(true);
+                  setBioBtn(false);
+                  setGameBtn(false);
+                  setMailBtn(false);
+                } else setBtnCV(false);
+                return !prev;
+              });
             }}
           >
             <div className="imgContainer">
@@ -302,7 +312,15 @@ export default function LandingPage() {
                 : "smallBtn bioBtn"
             }
             onClick={() => {
-              setBioBtn((prev) => !prev);
+              setBioBtn((prev) => {
+                if (!prev) {
+                  setBtnCV(true);
+                  setMailBtn(false);
+                  setGameBtn(false);
+                  setWebBtn(false);
+                } else setBtnCV(false);
+                return !prev;
+              });
             }}
           >
             <div className="imgContainer">
@@ -334,7 +352,15 @@ export default function LandingPage() {
                 : "smallBtn gameBtn"
             }
             onClick={() => {
-              setGameBtn((prev) => !prev);
+              setGameBtn((prev) => {
+                if (!prev) {
+                  setBtnCV(true);
+                  setBioBtn(false);
+                  setMailBtn(false);
+                  setWebBtn(false);
+                } else setBtnCV(false);
+                return !prev;
+              });
             }}
           >
             <div className="imgContainer">
@@ -376,7 +402,10 @@ export default function LandingPage() {
             }
             onClick={() => {
               setFollowBtn((prev) => {
-                if (prev) setMailBtn(false);
+                if (prev) {
+                  setMailBtn(false);
+                  if (btnMailActive) setBtnCV(false);
+                }
                 return !prev;
               });
             }}
@@ -470,7 +499,15 @@ export default function LandingPage() {
                 : "smallBtn mailBtn"
             }
             onClick={() => {
-              setMailBtn((prev) => !prev);
+              setMailBtn((prev) => {
+                if (!prev) {
+                  setBtnCV(true);
+                  setBioBtn(false);
+                  setGameBtn(false);
+                  setWebBtn(false);
+                } else setBtnCV(false);
+                return !prev;
+              });
             }}
           >
             <div className="imgContainer">
