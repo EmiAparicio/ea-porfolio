@@ -159,15 +159,26 @@ b::selection {
   left: var(--btnCVDefault-left);
 }
 
+.CVBtnReplace {
+  top: calc(var(--btnMenu-top) + 19px);
+  left: calc(var(--btnMenu-left) + 171px);
+}
+
 #CVCircle {
   position: absolute;
   top: -2000px;
 }
 
-.smallBtn:hover + #CVCircle {
+.CVBtnDefault:hover + #CVCircle {
   position: absolute;
   top: calc(var(--btnCVDefault-top) - 32px);
   left: calc(var(--btnCVDefault-left) + 44px);
+}
+
+.CVBtnReplace:hover + #CVCircle {
+  position: absolute;
+  top: calc(var(--btnMenu-top) + 19px - 32px);
+  left: calc(var(--btnMenu-left) + 171px + 44px);
 }
 
 .imgCV {

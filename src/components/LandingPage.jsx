@@ -1,6 +1,8 @@
 import "./LandingPage.css";
+import nodemailer from "nodemailer";
 import { useEffect, useState } from "react";
 import CircleType from "circletype";
+import dotenv from "dotenv";
 
 import CV from "../EmilianoAparicio-CV.pdf";
 
@@ -26,6 +28,54 @@ import hexLink1 from "./hexLink1.png";
 import hexLink2 from "./hexLink2.png";
 
 export default function LandingPage() {
+  dotenv.config();
+  const mailPW = process.env.GMAIL_PW;
+
+  // function sendMails(){
+  //   nodemailer.createTestAccount((err, account) => {
+  //     try {
+  //       const htmlEmail = `
+  //           <img src="https://i.ibb.co/SfKhMg2/Sin-t-tulo-1-Mesa-de-trabajo-1.png" width="1100" height="200" title="Logo">
+  //           <h3 style="text-align:center">--> STARCARDS <--</h3>
+
+  //           <h3 style="text-align:center">TOKEN:</h3>
+  //           <h2 style="text-align:center; border: 1px solid red; height: 200; background-color: rgba(0, 0, 0, 0.167)
+  //           ;
+  //           " >${tokenValid}</h2>
+  //           <h4 style="text-align:center">No comparta esta informacion con NADIE. TOKEN de acceso UNICO</h4>
+  //         `;
+
+  //       let transporter = nodemailer.createTransport({
+  //         host: "smtp.gmail.com",
+  //         port: 587,
+  //         auth: {
+  //           user: "emilianojaparicio@gmail.com", //El email del servicio SMTP que va a utilizar (en este caso Gmail)
+  //           pass: mailPW, // La contraseña de dicho SMTP
+  //         },
+  //       });
+
+  //       let mailOptions = {
+  //         from: "emilianojaparicio@gmail.com", // Quien manda el email
+  //         to: contactMail, // El email de destino
+  //         replyTo: "emilianojaparicio@gmail.com",
+  //         subject: "Contact Emiliano Aparicio", // El asunto del email
+  //         // text: contactMsg, // El mensaje
+  //         html: htmlEmail, // La parte HTML del email
+  //       };
+
+  //       transporter.sendMail(mailOptions, (err, info) => {
+  //         if (err) {
+  //           return console.log("err");
+  //         }
+  //         res.send(tokenValid);
+  //         console.log("Mensaje enviado");
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   });
+  // }
+
   useEffect(() => {
     const buttons = document.querySelectorAll(".btn");
     const smallButtons = document.querySelectorAll(".smallBtn");
@@ -88,6 +138,7 @@ export default function LandingPage() {
     new CircleType(document.getElementById("gameCircle"));
   }, []);
 
+  const [btnCVmoved, setBtnCV] = useState(false);
   const [btnMenuActive, setMenuBtn] = useState(false);
   const [btnSkillsActive, setSkillsBtn] = useState(false);
   const [btnFollowActive, setFollowBtn] = useState(false);
@@ -110,7 +161,9 @@ export default function LandingPage() {
           {/* CV Button */}
           <a
             href={`${CV}`}
-            className="smallBtn CVBtnDefault"
+            className={
+              btnCVmoved ? "smallBtn CVBtnReplace" : "smallBtn CVBtnDefault"
+            }
             download="EmilianoAparicio-CV"
             draggable="false"
           >
@@ -140,6 +193,10 @@ export default function LandingPage() {
                 if (prev) {
                   setFollowBtn(false);
                   setSkillsBtn(false);
+                  setWebBtn(false);
+                  setBioBtn(false);
+                  setGameBtn(false);
+                  setMailBtn(false);
                 }
                 return !prev;
               });
@@ -167,7 +224,14 @@ export default function LandingPage() {
                 : "btn skillsBtn"
             }
             onClick={() => {
-              setSkillsBtn((prev) => !prev);
+              setSkillsBtn((prev) => {
+                if (prev) {
+                  setWebBtn(false);
+                  setBioBtn(false);
+                  setGameBtn(false);
+                }
+                return !prev;
+              });
             }}
           >
             <div className="imgContainer">
