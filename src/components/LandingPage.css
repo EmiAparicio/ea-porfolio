@@ -4,13 +4,13 @@
 
   /* Vertical 64px*/
   /* Horizontal 37px*/
-  --title-left: 70px;
-  --title-top: 40px;
+  --title-left: calc(751px - (2 * 37px));
+  --title-top: calc(40px - (0 * 64px));
 
   --btnCVDefault-top: 737px;
-  --btnCVDefault-left: 560px;
-  --btnMenu-left: calc(1540px - (6 * 37px));
-  --btnMenu-top: calc(717px - (4 * 64px));
+  --btnCVDefault-left: 1229px;
+  --btnMenu-left: calc(313px - (6 * 37px));
+  --btnMenu-top: calc(717px - (5 * 64px));
   --btnSkills-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
   --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px) - 1px);
   --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
@@ -64,25 +64,25 @@
   font-family: "Russo One", sans-serif;
   font-weight: 400;
   color: #f0f0f0;
-  font-size: 50px;
+  font-size: 45px;
   pointer-events: none;
   text-shadow: 0 0 3px black;
 
   z-index: 10;
   position: absolute;
   top: calc(var(--title-top) + 100px);
-  left: calc(var(--title-left) + 20px);
+  left: calc(var(--title-left) + 350px);
 }
 
 .aboutContainer {
   position: absolute;
-  top: 326px;
-  left: 201px;
+  top: calc(var(--title-top) - 40px + 326px);
+  left: calc(var(--title-left) - 751px + 870px);
 }
 
 .aboutRel {
   position: relative;
-  width: 807px;
+  width: 806px;
   height: 383px;
 }
 
@@ -155,8 +155,8 @@ b::selection {
 }
 
 .CVBtnDefault {
-  top: var(--btnCVDefault-top);
-  left: var(--btnCVDefault-left);
+  top: calc(var(--title-top) - 40px + var(--btnCVDefault-top));
+  left: calc(var(--title-left) - 751px + var(--btnCVDefault-left));
 }
 
 #CVCircle {
