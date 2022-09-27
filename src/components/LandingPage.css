@@ -59,7 +59,7 @@
   text-shadow: 0 0 10px #067c57, 0 0 10px #067c57, 0 0 10px #067c57;
 }
 
-.subtitle {
+.webSubtitle {
   display: inline-block;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
@@ -71,7 +71,37 @@
   z-index: 10;
   position: absolute;
   top: calc(var(--title-top) + 100px);
-  left: calc(var(--title-left) + 350px);
+  left: calc(var(--title-left) + 370px);
+}
+
+.gameSubtitle {
+  display: inline-block;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 45px;
+  pointer-events: none;
+  text-shadow: 0 0 3px black;
+
+  z-index: 10;
+  position: absolute;
+  top: calc(var(--title-top) + 100px);
+  left: calc(var(--title-left) + 611px);
+}
+
+.bioSubtitle {
+  display: inline-block;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 45px;
+  pointer-events: none;
+  text-shadow: 0 0 3px black;
+
+  z-index: 10;
+  position: absolute;
+  top: calc(var(--title-top) + 100px);
+  left: calc(var(--title-left) + 680px);
 }
 
 .aboutContainer {

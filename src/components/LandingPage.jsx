@@ -147,6 +147,17 @@ export default function LandingPage() {
   const [btnBioActive, setBioBtn] = useState(false);
   const [btnGameActive, setGameBtn] = useState(false);
 
+  const subtitle = btnBioActive
+    ? "Bioengineer"
+    : btnGameActive
+    ? "Game Designer"
+    : "Full Stack Web Developer";
+
+  const subtitleClass = btnBioActive
+    ? "bioSubtitle"
+    : btnGameActive
+    ? "gameSubtitle"
+    : "webSubtitle";
   return (
     <>
       <div className="bg">
@@ -158,385 +169,388 @@ export default function LandingPage() {
           <div className="lighter2" />
           <div className="lighter3" />
 
-          {/* CV Button */}
-          <a
-            href={`${CV}`}
-            className={
-              btnCVmoved ? "smallBtn CVBtnReplace" : "smallBtn CVBtnDefault"
-            }
-            download="EmilianoAparicio-CV"
-            draggable="false"
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "38px",
-                  title: "CV",
-                  className: "img",
-                }}
-              >
-                <FaFileDownload className="imgCV" />
-              </IconContext.Provider>
-            </div>
-          </a>
-          <h3 id="CVCircle" className="rotation">
-            • Download CV •• Download CV •• Download CV •
-          </h3>
-          {/* CV Button */}
+          {/* Buttons*/}
+          <>
+            {/* CV Button */}
+            <a
+              href={`${CV}`}
+              className={
+                btnCVmoved ? "smallBtn CVBtnReplace" : "smallBtn CVBtnDefault"
+              }
+              download="EmilianoAparicio-CV"
+              draggable="false"
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "38px",
+                    title: "CV",
+                    className: "img",
+                  }}
+                >
+                  <FaFileDownload className="imgCV" />
+                </IconContext.Provider>
+              </div>
+            </a>
+            <h3 id="CVCircle" className="rotation">
+              • Download CV •• Download CV •• Download CV •
+            </h3>
+            {/* CV Button */}
 
-          {/* Menu Button */}
-          <span
-            className={btnMenuActive ? "btnActive menuBtn" : "btn menuBtn"}
-            onClick={() => {
-              setMenuBtn((prev) => {
-                if (prev) {
-                  setFollowBtn(false);
-                  setSkillsBtn(false);
-                  setWebBtn(false);
-                  setBioBtn(false);
-                  setGameBtn(false);
-                  setMailBtn(false);
-                  setBtnCV(false);
-                }
-                return !prev;
-              });
-            }}
-          >
-            <div className="imgContainer">
-              <img src={`${menuBtn}`} alt="menu" className="imgMenu" />
-            </div>
-          </span>
-          <h3
-            id={btnMenuActive ? "btnCircleHidden" : "menuCircle"}
-            className="rotation"
-          >
-            • Menu •• Menu •• Menu •• Menu •• Menu •• Menu •
-          </h3>
-          {/* Menu Button */}
+            {/* Menu Button */}
+            <span
+              className={btnMenuActive ? "btnActive menuBtn" : "btn menuBtn"}
+              onClick={() => {
+                setMenuBtn((prev) => {
+                  if (prev) {
+                    setFollowBtn(false);
+                    setSkillsBtn(false);
+                    setWebBtn(false);
+                    setBioBtn(false);
+                    setGameBtn(false);
+                    setMailBtn(false);
+                    setBtnCV(false);
+                  }
+                  return !prev;
+                });
+              }}
+            >
+              <div className="imgContainer">
+                <img src={`${menuBtn}`} alt="menu" className="imgMenu" />
+              </div>
+            </span>
+            <h3
+              id={btnMenuActive ? "btnCircleHidden" : "menuCircle"}
+              className="rotation"
+            >
+              • Menu •• Menu •• Menu •• Menu •• Menu •• Menu •
+            </h3>
+            {/* Menu Button */}
 
-          {/* Skills Button */}
-          <span
-            className={
-              btnSkillsActive && btnMenuActive
-                ? "btnActive skillsBtn"
-                : !btnMenuActive
-                ? "btn skillsBtn invisible"
-                : "btn skillsBtn"
-            }
-            onClick={() => {
-              setSkillsBtn((prev) => {
-                if (prev) {
-                  setWebBtn(false);
-                  setBioBtn(false);
-                  setGameBtn(false);
-                  if (!btnMailActive) setBtnCV(false);
-                }
-                return !prev;
-              });
-            }}
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "55px",
-                  title: "skills",
-                  className: "img",
-                }}
-              >
-                <GiBrain className="imgSkills" />
-              </IconContext.Provider>
-            </div>
-          </span>
-          <h3
-            id={btnSkillsActive ? "btnCircleHidden" : "skillsCircle"}
-            className="rotation"
-          >
-            • Skills •• Skills •• Skills •• Skills •• Skills •• Skills •
-          </h3>
+            {/* Skills Button */}
+            <span
+              className={
+                btnSkillsActive && btnMenuActive
+                  ? "btnActive skillsBtn"
+                  : !btnMenuActive
+                  ? "btn skillsBtn invisible"
+                  : "btn skillsBtn"
+              }
+              onClick={() => {
+                setSkillsBtn((prev) => {
+                  if (prev) {
+                    setWebBtn(false);
+                    setBioBtn(false);
+                    setGameBtn(false);
+                    if (!btnMailActive) setBtnCV(false);
+                  }
+                  return !prev;
+                });
+              }}
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "55px",
+                    title: "skills",
+                    className: "img",
+                  }}
+                >
+                  <GiBrain className="imgSkills" />
+                </IconContext.Provider>
+              </div>
+            </span>
+            <h3
+              id={btnSkillsActive ? "btnCircleHidden" : "skillsCircle"}
+              className="rotation"
+            >
+              • Skills •• Skills •• Skills •• Skills •• Skills •• Skills •
+            </h3>
 
-          {btnMenuActive ? (
-            <img src={`${hexLink1}`} alt="" className="hexLink1Skills" />
-          ) : (
-            <></>
-          )}
+            {btnMenuActive ? (
+              <img src={`${hexLink1}`} alt="" className="hexLink1Skills" />
+            ) : (
+              <></>
+            )}
 
-          {/* ****** Skills Options */}
-          <span
-            className={
-              btnSkillsActive && btnWebActive
-                ? "smallBtnActive webBtn"
-                : !btnSkillsActive
-                ? "smallBtn webBtn invisible"
-                : "smallBtn webBtn"
-            }
-            onClick={() => {
-              setWebBtn((prev) => {
-                if (!prev) {
-                  setBtnCV(true);
-                  setBioBtn(false);
-                  setGameBtn(false);
-                  setMailBtn(false);
-                } else setBtnCV(false);
-                return !prev;
-              });
-            }}
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "40px",
-                  title: "web",
-                  className: "img",
-                }}
-              >
-                <GiLaptop className="imgWeb" />
-              </IconContext.Provider>
-            </div>
-          </span>
-          <h3
-            id={btnMailActive ? "btnCircleHidden" : "webCircle"}
-            className="rotation"
-          >
-            • Web Development •• Web Development •
-          </h3>
+            {/* ****** Skills Options */}
+            <span
+              className={
+                btnSkillsActive && btnWebActive
+                  ? "smallBtnActive webBtn"
+                  : !btnSkillsActive
+                  ? "smallBtn webBtn invisible"
+                  : "smallBtn webBtn"
+              }
+              onClick={() => {
+                setWebBtn((prev) => {
+                  if (!prev) {
+                    setBtnCV(true);
+                    setBioBtn(false);
+                    setGameBtn(false);
+                    setMailBtn(false);
+                  } else setBtnCV(false);
+                  return !prev;
+                });
+              }}
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "40px",
+                    title: "web",
+                    className: "img",
+                  }}
+                >
+                  <GiLaptop className="imgWeb" />
+                </IconContext.Provider>
+              </div>
+            </span>
+            <h3
+              id={btnMailActive ? "btnCircleHidden" : "webCircle"}
+              className="rotation"
+            >
+              • Web Development •• Web Development •
+            </h3>
 
-          <span
-            className={
-              btnSkillsActive && btnBioActive
-                ? "smallBtnActive bioBtn"
-                : !btnSkillsActive
-                ? "smallBtn bioBtn invisible"
-                : "smallBtn bioBtn"
-            }
-            onClick={() => {
-              setBioBtn((prev) => {
-                if (!prev) {
-                  setBtnCV(true);
-                  setMailBtn(false);
-                  setGameBtn(false);
-                  setWebBtn(false);
-                } else setBtnCV(false);
-                return !prev;
-              });
-            }}
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "40px",
-                  title: "bio",
-                  className: "img",
-                }}
-              >
-                <GiDna1 className="imgBio" />
-              </IconContext.Provider>
-            </div>
-          </span>
-          <h3
-            id={btnMailActive ? "btnCircleHidden" : "bioCircle"}
-            className="rotation"
-          >
-            • Bioengineering •• Bioengineering •
-          </h3>
+            <span
+              className={
+                btnSkillsActive && btnBioActive
+                  ? "smallBtnActive bioBtn"
+                  : !btnSkillsActive
+                  ? "smallBtn bioBtn invisible"
+                  : "smallBtn bioBtn"
+              }
+              onClick={() => {
+                setBioBtn((prev) => {
+                  if (!prev) {
+                    setBtnCV(true);
+                    setMailBtn(false);
+                    setGameBtn(false);
+                    setWebBtn(false);
+                  } else setBtnCV(false);
+                  return !prev;
+                });
+              }}
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "40px",
+                    title: "bio",
+                    className: "img",
+                  }}
+                >
+                  <GiDna1 className="imgBio" />
+                </IconContext.Provider>
+              </div>
+            </span>
+            <h3
+              id={btnMailActive ? "btnCircleHidden" : "bioCircle"}
+              className="rotation"
+            >
+              • Bioengineering •• Bioengineering •
+            </h3>
 
-          <span
-            className={
-              btnSkillsActive && btnGameActive
-                ? "smallBtnActive gameBtn"
-                : !btnSkillsActive
-                ? "smallBtn gameBtn invisible"
-                : "smallBtn gameBtn"
-            }
-            onClick={() => {
-              setGameBtn((prev) => {
-                if (!prev) {
-                  setBtnCV(true);
-                  setBioBtn(false);
-                  setMailBtn(false);
-                  setWebBtn(false);
-                } else setBtnCV(false);
-                return !prev;
-              });
-            }}
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "40px",
-                  title: "game",
-                  className: "img",
-                }}
-              >
-                <GiConsoleController className="imgGame" />
-              </IconContext.Provider>
-            </div>
-          </span>
-          <h3
-            id={btnMailActive ? "btnCircleHidden" : "gameCircle"}
-            className="rotation"
-          >
-            • GameDesign •• GameDesign •• GameDesign •
-          </h3>
+            <span
+              className={
+                btnSkillsActive && btnGameActive
+                  ? "smallBtnActive gameBtn"
+                  : !btnSkillsActive
+                  ? "smallBtn gameBtn invisible"
+                  : "smallBtn gameBtn"
+              }
+              onClick={() => {
+                setGameBtn((prev) => {
+                  if (!prev) {
+                    setBtnCV(true);
+                    setBioBtn(false);
+                    setMailBtn(false);
+                    setWebBtn(false);
+                  } else setBtnCV(false);
+                  return !prev;
+                });
+              }}
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "40px",
+                    title: "game",
+                    className: "img",
+                  }}
+                >
+                  <GiConsoleController className="imgGame" />
+                </IconContext.Provider>
+              </div>
+            </span>
+            <h3
+              id={btnMailActive ? "btnCircleHidden" : "gameCircle"}
+              className="rotation"
+            >
+              • GameDesign •• GameDesign •• GameDesign •
+            </h3>
 
-          {btnSkillsActive ? (
-            <img src={`${hexLink2}`} alt="" className="hexLink2Skills" />
-          ) : (
-            <></>
-          )}
-          {/* ****** Skills Options */}
-          {/* Skills Button */}
+            {btnSkillsActive ? (
+              <img src={`${hexLink2}`} alt="" className="hexLink2Skills" />
+            ) : (
+              <></>
+            )}
+            {/* ****** Skills Options */}
+            {/* Skills Button */}
 
-          {/* Follow Button */}
-          <span
-            className={
-              btnFollowActive && btnMenuActive
-                ? "btnActive followBtn"
-                : !btnMenuActive
-                ? "btn followBtn invisible"
-                : "btn followBtn"
-            }
-            onClick={() => {
-              setFollowBtn((prev) => {
-                if (prev) {
-                  setMailBtn(false);
-                  if (btnMailActive) setBtnCV(false);
-                }
-                return !prev;
-              });
-            }}
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "55px",
-                  title: "follow",
-                  className: "img",
-                }}
-              >
-                <GiTechnoHeart className="imgFollow" />
-              </IconContext.Provider>
-            </div>
-          </span>
-          <h3
-            id={btnFollowActive ? "btnCircleHidden" : "followCircle"}
-            className="rotation"
-          >
-            • Follow Me •• Follow Me •• Follow Me •• Follow Me •
-          </h3>
+            {/* Follow Button */}
+            <span
+              className={
+                btnFollowActive && btnMenuActive
+                  ? "btnActive followBtn"
+                  : !btnMenuActive
+                  ? "btn followBtn invisible"
+                  : "btn followBtn"
+              }
+              onClick={() => {
+                setFollowBtn((prev) => {
+                  if (prev) {
+                    setMailBtn(false);
+                    if (btnMailActive) setBtnCV(false);
+                  }
+                  return !prev;
+                });
+              }}
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "55px",
+                    title: "follow",
+                    className: "img",
+                  }}
+                >
+                  <GiTechnoHeart className="imgFollow" />
+                </IconContext.Provider>
+              </div>
+            </span>
+            <h3
+              id={btnFollowActive ? "btnCircleHidden" : "followCircle"}
+              className="rotation"
+            >
+              • Follow Me •• Follow Me •• Follow Me •• Follow Me •
+            </h3>
 
-          {btnMenuActive ? (
-            <img src={`${hexLink1}`} alt="" className="hexLink1Follow" />
-          ) : (
-            <></>
-          )}
-          {/* ****** Follow Options */}
-          <a
-            href="https://www.linkedin.com/in/emiliano-aparicio-8b9757236/"
-            target="_blank"
-            className={
-              btnFollowActive
-                ? "smallBtn linkedinBtn"
-                : "smallBtn linkedinBtn invisible"
-            }
-            rel="noreferrer"
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "39px",
-                  title: "linkedin",
-                  className: "img",
-                }}
-              >
-                <BsLinkedin className="imgLinkedin" />
-              </IconContext.Provider>
-            </div>
-          </a>
-          <h3 id="linkedinCircle" className="rotation">
-            • LinkedIn •• LinkedIn •• LinkedIn •
-          </h3>
+            {btnMenuActive ? (
+              <img src={`${hexLink1}`} alt="" className="hexLink1Follow" />
+            ) : (
+              <></>
+            )}
+            {/* ****** Follow Options */}
+            <a
+              href="https://www.linkedin.com/in/emiliano-aparicio-8b9757236/"
+              target="_blank"
+              className={
+                btnFollowActive
+                  ? "smallBtn linkedinBtn"
+                  : "smallBtn linkedinBtn invisible"
+              }
+              rel="noreferrer"
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "39px",
+                    title: "linkedin",
+                    className: "img",
+                  }}
+                >
+                  <BsLinkedin className="imgLinkedin" />
+                </IconContext.Provider>
+              </div>
+            </a>
+            <h3 id="linkedinCircle" className="rotation">
+              • LinkedIn •• LinkedIn •• LinkedIn •
+            </h3>
 
-          <a
-            href="https://github.com/NoahReaver"
-            target="_blank"
-            className={
-              btnFollowActive
-                ? "smallBtn githubBtn"
-                : "smallBtn githubBtn invisible"
-            }
-            rel="noreferrer"
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "39px",
-                  title: "linkedin",
-                  className: "img",
-                }}
-              >
-                <FaGithub className="imgGithub" />
-              </IconContext.Provider>
-            </div>
-          </a>
-          <h3 id="githubCircle" className="rotation">
-            • GitHub •• GitHub •• GitHub •• GitHub •
-          </h3>
+            <a
+              href="https://github.com/NoahReaver"
+              target="_blank"
+              className={
+                btnFollowActive
+                  ? "smallBtn githubBtn"
+                  : "smallBtn githubBtn invisible"
+              }
+              rel="noreferrer"
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "39px",
+                    title: "linkedin",
+                    className: "img",
+                  }}
+                >
+                  <FaGithub className="imgGithub" />
+                </IconContext.Provider>
+              </div>
+            </a>
+            <h3 id="githubCircle" className="rotation">
+              • GitHub •• GitHub •• GitHub •• GitHub •
+            </h3>
 
-          <span
-            className={
-              btnFollowActive && btnMailActive
-                ? "smallBtnActive mailBtn"
-                : !btnFollowActive
-                ? "smallBtn mailBtn invisible"
-                : "smallBtn mailBtn"
-            }
-            onClick={() => {
-              setMailBtn((prev) => {
-                if (!prev) {
-                  setBtnCV(true);
-                  setBioBtn(false);
-                  setGameBtn(false);
-                  setWebBtn(false);
-                } else setBtnCV(false);
-                return !prev;
-              });
-            }}
-          >
-            <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "40px",
-                  title: "mail",
-                  className: "img",
-                }}
-              >
-                <SiGmail className="imgMail" />
-              </IconContext.Provider>
-            </div>
-          </span>
-          <h3
-            id={btnMailActive ? "btnCircleHidden" : "mailCircle"}
-            className="rotation"
-          >
-            • E-mail •• E-mail •• E-mail •• E-mail •
-          </h3>
+            <span
+              className={
+                btnFollowActive && btnMailActive
+                  ? "smallBtnActive mailBtn"
+                  : !btnFollowActive
+                  ? "smallBtn mailBtn invisible"
+                  : "smallBtn mailBtn"
+              }
+              onClick={() => {
+                setMailBtn((prev) => {
+                  if (!prev) {
+                    setBtnCV(true);
+                    setBioBtn(false);
+                    setGameBtn(false);
+                    setWebBtn(false);
+                  } else setBtnCV(false);
+                  return !prev;
+                });
+              }}
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "40px",
+                    title: "mail",
+                    className: "img",
+                  }}
+                >
+                  <SiGmail className="imgMail" />
+                </IconContext.Provider>
+              </div>
+            </span>
+            <h3
+              id={btnMailActive ? "btnCircleHidden" : "mailCircle"}
+              className="rotation"
+            >
+              • E-mail •• E-mail •• E-mail •• E-mail •
+            </h3>
 
-          {btnFollowActive ? (
-            <img src={`${hexLink2}`} alt="" className="hexLink2Follow" />
-          ) : (
-            <></>
-          )}
-          {/* ****** Follow Options */}
-          {/* Follow Button */}
+            {btnFollowActive ? (
+              <img src={`${hexLink2}`} alt="" className="hexLink2Follow" />
+            ) : (
+              <></>
+            )}
+            {/* ****** Follow Options */}
+            {/* Follow Button */}
+          </>
 
           {/* About Section */}
           <div className="aboutContainer">
@@ -555,7 +569,7 @@ export default function LandingPage() {
           </div>
         </div>
         <h1 className="title">EMILIANO APARICIO</h1>
-        <h2 className="subtitle">Full Stack Web Developer</h2>
+        <h2 className={subtitleClass}>{subtitle}</h2>
       </div>
     </>
   );
