@@ -32,6 +32,9 @@ import menuBtn from "./menuBtn.png";
 import hexLink1 from "./hexLink1.png";
 import hexLink2 from "./hexLink2.png";
 
+const copiedText = { bool: false };
+const timeOut = { id: null };
+
 export default function LandingPage() {
   dotenv.config();
   // const mailPW = process.env.GMAIL_PW;
@@ -91,8 +94,6 @@ export default function LandingPage() {
   //     }, 1000);
   // }, [copiedText]);
 
-  const copiedText = { bool: false };
-
   useEffect(() => {
     const buttons = document.querySelectorAll(".btn");
     const smallButtons = document.querySelectorAll(".smallBtn");
@@ -104,16 +105,27 @@ export default function LandingPage() {
       pointer.style.backgroundColor = `#383838`;
       pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
 
+      if (pointer.className !== "pointer" && e.target.className !== "mail") {
+        clearTimeout(timeOut.id);
+        const pointerText = document.getElementById("copiedBtn");
+        pointer.className = "pointer";
+        pointerText.className = "invisibleText";
+        pointer.style.backgroundColor = `#383838`;
+        pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
+        copiedText.bool = false;
+      }
+
       if (e.type === "mouseout") {
         const pointerText = document.getElementById("copiedBtn");
         if (copiedText.bool) {
-          setTimeout(() => {
+          timeOut.id = setTimeout(() => {
             pointer.className = "pointer";
             pointerText.className = "invisibleText";
             pointer.style.backgroundColor = `#f0f0f0`;
             pointer.style.filter = ``;
             copiedText.bool = false;
-          }, 1000);
+            console.log("asd");
+          }, 500);
         } else {
           pointer.style.backgroundColor = `#f0f0f0`;
           pointer.style.filter = ``;
