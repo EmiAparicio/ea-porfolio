@@ -122,15 +122,24 @@
   font-weight: 400;
   font-size: 28px;
   text-align: center;
-  width: 600px;
+  width: 680px;
 
   z-index: 5;
   position: absolute;
   color: #f0f0f0;
   text-shadow: 0 0 3px #383838;
-  top: 50px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  top: 45px;
+  left: 100px;
+  /* transform: translate(-50%, 0); */
+}
+
+.email {
+  font-size: 20px;
+}
+
+.mail:hover {
+  color: #383838;
+  text-shadow: 0 0 3px #f0f0f0;
 }
 
 .about::-moz-selection {
@@ -145,8 +154,25 @@
   background-color: rgba(6, 124, 87, 0.8);
 }
 
+.mailText::-moz-selection {
+  color: #383838;
+  text-shadow: 0 0 5px #f0f0f0;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+
+.mailText::selection {
+  color: #383838;
+  text-shadow: 0 0 5px #f0f0f0;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+
+br {
+  user-select: none;
+}
+
 b {
   text-shadow: 0 0 7px #383838;
+  position: relative;
 }
 
 b::-moz-selection {
@@ -159,6 +185,10 @@ b::selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0;
   background-color: rgba(6, 124, 87, 0.8);
+}
+
+.copied {
+  position: absolute;
 }
 
 .aboutFrame {
@@ -229,6 +259,40 @@ b::selection {
   filter: drop-shadow(0 0 3px #383838);
   border-radius: 50%;
   z-index: 20;
+}
+
+.copiedPointer {
+  background-color: #383838;
+  pointer-events: none;
+  position: absolute;
+  z-index: 20;
+
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  user-select: none;
+
+  padding: 17px 20px;
+
+  --btn-raise: 20px;
+  clip-path: polygon(
+    var(--btn-raise) 0%,
+    calc(100% - var(--btn-raise)) 0%,
+    100% 50%,
+    calc(100% - var(--btn-raise)) 100%,
+    var(--btn-raise) 100%,
+    0 50%
+  );
+}
+
+.invisibleText {
+  position: absolute;
+  visibility: hidden;
+}
+
+.copiedText {
+  color: #f0f0f0;
+  background-color: #383838;
 }
 
 .cursor {
@@ -745,6 +809,17 @@ b::selection {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#wppCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #wppCircle {
+  position: absolute;
+  top: calc(var(--btnFollow-top) + 55px + (2 * 64px));
+  left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
 }
 
 /* Skills / WebDev */

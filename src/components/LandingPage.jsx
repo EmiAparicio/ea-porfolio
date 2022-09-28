@@ -20,7 +20,12 @@ import {
   GiLaptop,
   GiProcessor,
 } from "react-icons/gi";
-import { FaGraduationCap, FaFileDownload, FaGithub } from "react-icons/fa";
+import {
+  FaGraduationCap,
+  FaFileDownload,
+  FaGithub,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
@@ -29,7 +34,7 @@ import hexLink2 from "./hexLink2.png";
 
 export default function LandingPage() {
   dotenv.config();
-  const mailPW = process.env.GMAIL_PW;
+  // const mailPW = process.env.GMAIL_PW;
 
   // function sendMails(){
   //   nodemailer.createTestAccount((err, account) => {
@@ -76,19 +81,43 @@ export default function LandingPage() {
   //   });
   // }
 
+  // const [copiedText, setCopiedText] = useState({bool: false});
+
+  // useEffect(() => {
+  //   console.log(copiedText);
+  //   if (copiedText)
+  //     setTimeout(() => {
+  //       setCopiedText(false);
+  //     }, 1000);
+  // }, [copiedText]);
+
+  const copiedText = { bool: false };
+
   useEffect(() => {
     const buttons = document.querySelectorAll(".btn");
     const smallButtons = document.querySelectorAll(".smallBtn");
     const cursor = document.getElementById("cursor");
     const pointer = document.getElementById("pointer");
+    const email = document.querySelector(".mail");
 
     const animateit = function (e) {
       pointer.style.backgroundColor = `#383838`;
       pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
 
       if (e.type === "mouseout") {
-        pointer.style.backgroundColor = `#f0f0f0`;
-        pointer.style.filter = ``;
+        const pointerText = document.getElementById("copiedBtn");
+        if (copiedText.bool) {
+          setTimeout(() => {
+            pointer.className = "pointer";
+            pointerText.className = "invisibleText";
+            pointer.style.backgroundColor = `#f0f0f0`;
+            pointer.style.filter = ``;
+            copiedText.bool = false;
+          }, 1000);
+        } else {
+          pointer.style.backgroundColor = `#f0f0f0`;
+          pointer.style.filter = ``;
+        }
       }
     };
 
@@ -96,6 +125,8 @@ export default function LandingPage() {
     buttons.forEach((b) => b.addEventListener("mouseout", animateit));
     smallButtons.forEach((b) => b.addEventListener("mousemove", animateit));
     smallButtons.forEach((b) => b.addEventListener("mouseout", animateit));
+    email.addEventListener("mousemove", animateit);
+    email.addEventListener("mouseout", animateit);
 
     const editCursor = (e) => {
       const { clientX: x, clientY: y } = e;
@@ -132,7 +163,8 @@ export default function LandingPage() {
     new CircleType(document.getElementById("followCircle"));
     new CircleType(document.getElementById("linkedinCircle"));
     new CircleType(document.getElementById("githubCircle"));
-    new CircleType(document.getElementById("mailCircle"));
+    new CircleType(document.getElementById("wppCircle"));
+    // new CircleType(document.getElementById("mailCircle"));
     new CircleType(document.getElementById("webCircle"));
     new CircleType(document.getElementById("bioCircle"));
     new CircleType(document.getElementById("gameCircle"));
@@ -163,7 +195,11 @@ export default function LandingPage() {
       <div className="bg">
         <div className="bgImg">
           <div id="cursor" className="cursor" />
-          <div id="pointer" className="pointer" />
+          <div id="pointer" className="pointer">
+            <span id="copiedBtn" className="invisibleText">
+              Copied!
+            </span>
+          </div>
 
           <div className="lighter" />
           <div className="lighter2" />
@@ -503,7 +539,34 @@ export default function LandingPage() {
               • GitHub •• GitHub •• GitHub •• GitHub •
             </h3>
 
-            <span
+            <a
+              href="https://wa.me/542616060053"
+              target="_blank"
+              className={
+                btnFollowActive
+                  ? "smallBtn mailBtn"
+                  : "smallBtn mailBtn invisible"
+              }
+              rel="noreferrer"
+            >
+              <div className="imgContainer">
+                <IconContext.Provider
+                  value={{
+                    color: "#383838",
+                    size: "39px",
+                    title: "whatsapp",
+                    className: "img",
+                  }}
+                >
+                  <FaWhatsapp className="imgMail" />
+                </IconContext.Provider>
+              </div>
+            </a>
+            <h3 id="wppCircle" className="rotation">
+              • WhatsApp •• WhatsApp •• WhatsApp •
+            </h3>
+
+            {/* <span
               className={
                 btnFollowActive && btnMailActive
                   ? "smallBtnActive mailBtn"
@@ -541,7 +604,7 @@ export default function LandingPage() {
               className="rotation"
             >
               • E-mail •• E-mail •• E-mail •• E-mail •
-            </h3>
+            </h3> */}
 
             {btnFollowActive ? (
               <img src={`${hexLink2}`} alt="" className="hexLink2Follow" />
@@ -562,6 +625,29 @@ export default function LandingPage() {
                 interested in technology and programming since I can remember.
                 Nowadays, I'm starting my own videogame project while working as
                 a web dev.
+                <br />
+                <br />
+                <span className="email">
+                  <span className="mailText">E-mail me at: </span>
+                  <span>
+                    <b
+                      className="mail"
+                      onClick={(e) => {
+                        navigator.clipboard.writeText(e.target.innerText);
+
+                        const pointer = document.getElementById("pointer");
+                        const pointerText =
+                          document.getElementById("copiedBtn");
+
+                        pointer.className = "copiedPointer";
+                        pointerText.className = "copiedText";
+                        copiedText.bool = true;
+                      }}
+                    >
+                      emilianojaparicio@gmail.com
+                    </b>
+                  </span>
+                </span>
               </p>
               <img className="aboutFrame" src={`${textFrame}`} alt="" />
               <img className="aboutFrame1" src={`${textFrame}`} alt="" />
