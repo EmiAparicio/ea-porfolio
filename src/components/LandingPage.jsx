@@ -192,10 +192,10 @@ export default function LandingPage() {
   const [btnGameActive, setGameBtn] = useState(false);
 
   const subtitle = btnBioActive
-    ? "Bioengineer"
+    ? "Bioengineer (PhD)"
     : btnGameActive
     ? "Game Designer"
-    : "Full Stack Web Developer";
+    : "Jr. Full Stack Web Developer";
 
   const subtitleClass = btnBioActive
     ? "bioSubtitle"
@@ -629,41 +629,49 @@ export default function LandingPage() {
 
           {/* About Section */}
           <div className="aboutContainer">
-            <div className="aboutRel">
-              <p className="about">
-                I am a <b>bioengineer</b>, <b>full stack developer</b>, almost
-                doctor of engineering, symphonic metal absolutist,{" "}
-                <b>videogame designer</b> wannabe, and forever a cat lover. I'm
-                interested in technology and programming since I can remember.
-                Nowadays, I'm starting my own videogame project while working as
-                a web dev.
-                <br />
-                <br />
-                <span className="email">
-                  <span className="mailText">E-mail me at: </span>
-                  <span>
-                    <b
-                      className="mail"
-                      onClick={(e) => {
-                        navigator.clipboard.writeText(e.target.innerText);
+            {!btnGameActive && !btnWebActive && !btnBioActive ? (
+              <div className="aboutRel">
+                <p className="about">
+                  I am a <b>bioengineer</b>, <b>full stack developer</b>, almost
+                  doctor of engineering, symphonic metal absolutist,{" "}
+                  <b>videogame designer</b> wannabe, and forever a cat lover.
+                  I'm interested in technology and programming since I can
+                  remember. Nowadays, I'm starting my own videogame project
+                  while working as a web dev.
+                  <br />
+                  <br />
+                  <span className="email">
+                    <span className="mailText">Reach me at: </span>
+                    <span>
+                      <b
+                        className="mail"
+                        onClick={(e) => {
+                          navigator.clipboard.writeText(e.target.innerText);
 
-                        const pointer = document.getElementById("pointer");
-                        const pointerText =
-                          document.getElementById("copiedBtn");
+                          const pointer = document.getElementById("pointer");
+                          const pointerText =
+                            document.getElementById("copiedBtn");
 
-                        pointer.className = "copiedPointer";
-                        pointerText.className = "copiedText";
-                        copiedText.bool = true;
-                      }}
-                    >
-                      emilianojaparicio@gmail.com
-                    </b>
+                          pointer.className = "copiedPointer";
+                          pointerText.className = "copiedText";
+                          copiedText.bool = true;
+                        }}
+                      >
+                        emilianojaparicio@gmail.com
+                      </b>
+                    </span>
                   </span>
-                </span>
-              </p>
-              <img className="aboutFrame" src={`${textFrame}`} alt="" />
-              <img className="aboutFrame1" src={`${textFrame}`} alt="" />
-            </div>
+                </p>
+                <img className="aboutFrame" src={`${textFrame}`} alt="" />
+                <img className="aboutFrame1" src={`${textFrame}`} alt="" />
+              </div>
+            ) : btnWebActive ? (
+              <></>
+            ) : btnBioActive ? (
+              <></>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
         <h1 className="title">EMILIANO APARICIO</h1>

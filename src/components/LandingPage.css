@@ -71,7 +71,7 @@
   z-index: 10;
   position: absolute;
   top: calc(var(--title-top) + 100px);
-  left: calc(var(--title-left) + 370px);
+  left: calc(var(--title-left) + 306px);
 }
 
 .gameSubtitle {
@@ -101,7 +101,7 @@
   z-index: 10;
   position: absolute;
   top: calc(var(--title-top) + 100px);
-  left: calc(var(--title-left) + 680px);
+  left: calc(var(--title-left) + 543px);
 }
 
 .aboutContainer {
