@@ -26,6 +26,7 @@ import {
   FaGithub,
   FaWhatsapp,
 } from "react-icons/fa";
+import { MdWork } from "react-icons/md";
 
 import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
@@ -93,6 +94,95 @@ export default function LandingPage() {
   //       setCopiedText(false);
   //     }, 1000);
   // }, [copiedText]);
+
+  const [btnCVmoved, setBtnCV] = useState(false);
+  const [btnMenuActive, setMenuBtn] = useState(false);
+  const [btnSkillsActive, setSkillsBtn] = useState(false);
+  const [btnFollowActive, setFollowBtn] = useState(false);
+  const [btnMailActive, setMailBtn] = useState(false);
+  const [btnWebActive, setWebBtn] = useState(false);
+  const [btnBioActive, setBioBtn] = useState(false);
+  const [btnGameActive, setGameBtn] = useState(false);
+  const [btnProjectsActive, setProjectsBtn] = useState(false);
+  const [btnPj1Active, setPj1Btn] = useState(false);
+  const [btnPj2Active, setPj2Btn] = useState(false);
+
+  useEffect(() => {
+    if (btnWebActive) {
+      new CircleType(document.getElementById("projectsCircle"));
+      const buttons = document.querySelectorAll(".btn");
+      const smallButtons = document.querySelectorAll(".smallBtn");
+      const cursor = document.getElementById("cursor");
+      const pointer = document.getElementById("pointer");
+      const henryLink = document.getElementById("henry");
+
+      const animateit = function (e) {
+        pointer.style.backgroundColor = `#383838`;
+        pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
+
+        if (pointer.className !== "pointer" && e.target.className !== "mail") {
+          clearTimeout(timeOut.id);
+          const pointerText = document.getElementById("copiedBtn");
+          pointer.className = "pointer";
+          pointerText.className = "invisibleText";
+          pointer.style.backgroundColor = `#383838`;
+          pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
+          copiedText.bool = false;
+        }
+
+        if (e.type === "mouseout") {
+          const pointerText = document.getElementById("copiedBtn");
+          if (copiedText.bool) {
+            timeOut.id = setTimeout(() => {
+              pointer.className = "pointer";
+              pointerText.className = "invisibleText";
+              pointer.style.backgroundColor = `#f0f0f0`;
+              pointer.style.filter = ``;
+              copiedText.bool = false;
+              console.log("asd");
+            }, 500);
+          } else {
+            pointer.style.backgroundColor = `#f0f0f0`;
+            pointer.style.filter = ``;
+          }
+        }
+      };
+
+      buttons.forEach((b) => b.addEventListener("mousemove", animateit));
+      buttons.forEach((b) => b.addEventListener("mouseout", animateit));
+      smallButtons.forEach((b) => b.addEventListener("mousemove", animateit));
+      smallButtons.forEach((b) => b.addEventListener("mouseout", animateit));
+      henryLink.addEventListener("mousemove", animateit);
+      henryLink.addEventListener("mouseout", animateit);
+
+      const editCursor = (e) => {
+        const { clientX: x, clientY: y } = e;
+
+        cursor.style.left = x + "px";
+        cursor.style.top = y + "px";
+        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+        pointer.style.left = x + "px";
+        pointer.style.top = y + "px";
+        pointer.style.transform = "translate(-50%, -50%) scale(1)";
+      };
+
+      const editCursorOut = (e) => {
+        const { clientX: x, clientY: y } = e;
+        if (
+          x <= 0 ||
+          y <= 0 ||
+          x >= window.innerWidth ||
+          y >= window.innerHeight
+        ) {
+          cursor.style.transform = "translate(-50%, -50%) scale(0)";
+          pointer.style.transform = "translate(-50%, -50%) scale(0)";
+        }
+      };
+
+      window.addEventListener("mousemove", editCursor);
+      window.addEventListener("mouseout", editCursorOut);
+    }
+  }, [btnWebActive]);
 
   useEffect(() => {
     const buttons = document.querySelectorAll(".btn");
@@ -181,15 +271,6 @@ export default function LandingPage() {
     new CircleType(document.getElementById("bioCircle"));
     new CircleType(document.getElementById("gameCircle"));
   }, []);
-
-  const [btnCVmoved, setBtnCV] = useState(false);
-  const [btnMenuActive, setMenuBtn] = useState(false);
-  const [btnSkillsActive, setSkillsBtn] = useState(false);
-  const [btnFollowActive, setFollowBtn] = useState(false);
-  const [btnMailActive, setMailBtn] = useState(false);
-  const [btnWebActive, setWebBtn] = useState(false);
-  const [btnBioActive, setBioBtn] = useState(false);
-  const [btnGameActive, setGameBtn] = useState(false);
 
   const subtitle = btnBioActive
     ? "Bioengineer (PhD)"
@@ -628,8 +709,8 @@ export default function LandingPage() {
           </>
 
           {/* About Section */}
-          <div className="aboutContainer">
-            {!btnGameActive && !btnWebActive && !btnBioActive ? (
+          {!btnGameActive && !btnWebActive && !btnBioActive ? (
+            <div className="aboutContainer">
               <div className="aboutRel">
                 <p className="about">
                   I am a <b>bioengineer</b>, <b>full stack developer</b>, almost
@@ -665,14 +746,79 @@ export default function LandingPage() {
                 <img className="aboutFrame" src={`${textFrame}`} alt="" />
                 <img className="aboutFrame1" src={`${textFrame}`} alt="" />
               </div>
-            ) : btnWebActive ? (
-              <></>
-            ) : btnBioActive ? (
-              <></>
-            ) : (
-              <></>
-            )}
-          </div>
+            </div>
+          ) : btnWebActive ? (
+            <div className="aboutContainerWeb">
+              <div className="aboutRel">
+                <p className="aboutWeb">
+                  Graduated from{" "}
+                  <b>
+                    <a
+                      href="https://www.soyhenry.com/"
+                      id="henry"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Henry
+                    </a>
+                  </b>
+                  . My set of abilities:
+                  <br />
+                  <br />• <b>Technologies</b>: HTML, CSS, JavaScript, ReactJS,
+                  NodeJS, Redux, Sequelize, PostgreSQL and Express.
+                  <br />
+                  <br />• <b>Complementary</b>: Git, Trello and ThunderClient.
+                  <br />
+                  <br /> • <b>Main soft skills</b>: leadership, creativity,
+                  problem solving, logical and critical thinking.
+                </p>
+                <img className="aboutFrameWeb" src={`${textFrame}`} alt="" />
+                <img className="aboutFrameWeb1" src={`${textFrame}`} alt="" />
+              </div>
+
+              {/* Projects Button */}
+              <span
+                className={
+                  btnProjectsActive
+                    ? "btnActive projectsBtn"
+                    : "btn projectsBtn"
+                }
+                onClick={() => {
+                  setProjectsBtn((prev) => {
+                    if (prev) {
+                      setPj1Btn(false);
+                      setPj2Btn(false);
+                    }
+                    return !prev;
+                  });
+                }}
+              >
+                <div className="imgContainer">
+                  <IconContext.Provider
+                    value={{
+                      color: "#383838",
+                      size: "55px",
+                      title: "projects",
+                      className: "img",
+                    }}
+                  >
+                    <MdWork className="imgProjects" />
+                  </IconContext.Provider>
+                </div>
+              </span>
+              <h3
+                id={btnProjectsActive ? "btnCircleHidden" : "projectsCircle"}
+                className="rotation"
+              >
+                • Projects •• Projects •• Projects •• Projects •
+              </h3>
+              {/* Projects Button */}
+            </div>
+          ) : btnBioActive ? (
+            <></>
+          ) : (
+            <></>
+          )}
         </div>
         <h1 className="title">EMILIANO APARICIO</h1>
         <h2 className={subtitleClass}>{subtitle}</h2>

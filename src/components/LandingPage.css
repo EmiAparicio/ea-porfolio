@@ -15,6 +15,8 @@
   --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px) - 1px);
   --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
   --btnFollow-top: calc(var(--btnMenu-top) + (2 * 64px) + 1px);
+  --btnProjects-top: calc(var(--title-top) + 351px);
+  --btnProjects-left: calc(var(--title-left) - 265px);
 }
 
 .bg {
@@ -110,6 +112,12 @@
   left: calc(var(--title-left) + 82px);
 }
 
+.aboutContainerWeb {
+  position: absolute;
+  top: calc(var(--title-top) + 286px - 64px);
+  left: calc(var(--title-left) + 82px);
+}
+
 .aboutRel {
   position: relative;
   width: 881px;
@@ -133,6 +141,23 @@
   /* transform: translate(-50%, 0); */
 }
 
+.aboutWeb {
+  user-select: text;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  text-align: center;
+  width: 800px;
+
+  z-index: 5;
+  position: absolute;
+  color: #f0f0f0;
+  text-shadow: 0 0 3px #383838;
+  top: 50px;
+  left: 35px;
+  /* transform: translate(-50%, 0); */
+}
+
 .email {
   font-size: 20px;
 }
@@ -149,6 +174,30 @@
 }
 
 .about::selection {
+  color: #383838;
+  text-shadow: 0 0 5px #f0f0f0;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+
+.aboutWeb::-moz-selection {
+  color: #383838;
+  text-shadow: 0 0 5px #f0f0f0;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+
+.aboutWeb::selection {
+  color: #383838;
+  text-shadow: 0 0 5px #f0f0f0;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+
+.aboutWeb *::-moz-selection {
+  color: #383838;
+  text-shadow: 0 0 5px #f0f0f0;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+
+.aboutWeb *::selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0;
   background-color: rgba(6, 124, 87, 0.8);
@@ -176,15 +225,27 @@ b {
 }
 
 b::-moz-selection {
-  color: #383838;
-  text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0;
-  background-color: rgba(6, 124, 87, 0.8);
+  color: #383838 !important;
+  text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0 !important;
+  background-color: rgba(6, 124, 87, 0.8) !important;
 }
 
 b::selection {
-  color: #383838;
-  text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0;
-  background-color: rgba(6, 124, 87, 0.8);
+  color: #383838 !important;
+  text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0 !important;
+  background-color: rgba(6, 124, 87, 0.8) !important;
+}
+
+b *::-moz-selection {
+  color: #383838 !important;
+  text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0 !important;
+  background-color: rgba(6, 124, 87, 0.8) !important;
+}
+
+b *::selection {
+  color: #383838 !important;
+  text-shadow: 0 0 5px #f0f0f0, 0 0 5px #f0f0f0, 0 0 5px #f0f0f0 !important;
+  background-color: rgba(6, 124, 87, 0.8) !important;
 }
 
 .copied {
@@ -212,6 +273,35 @@ b::selection {
 
   bottom: 0px;
   right: 0px;
+}
+
+.aboutFrameWeb {
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  z-index: 5;
+  width: 180px;
+
+  top: 0px;
+  left: -37px;
+}
+
+.aboutFrameWeb1 {
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(180deg);
+  position: absolute;
+  z-index: 5;
+  width: 180px;
+
+  bottom: 0px;
+  right: -37px;
+}
+
+.aboutWeb a {
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
 }
 
 .CVBtnDefault {
@@ -939,4 +1029,50 @@ b::selection {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Projects */
+
+.hexLink1Projects {
+  position: absolute;
+  transform: rotate(60deg);
+  width: 60px;
+  opacity: 0.6;
+  top: calc(var(--btnMenu-top) - 35px);
+  left: calc(var(--btnMenu-left) - 0px + (2 * 37px));
+}
+
+.projectsBtn {
+  top: var(--btnProjects-top);
+  left: var(--btnProjects-left);
+}
+
+.imgProjects {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#projectsCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + #projectsCircle {
+  position: absolute;
+  top: calc(var(--btnProjects-top) - 32px);
+  left: calc(var(--btnProjects-left) + 66px);
+}
+
+.projectsBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 21px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
 }
