@@ -1,6 +1,6 @@
 :root {
   --bg-color: #09a27a;
-  /* --bg-color: rgb(255, 107, 107); */
+  --bg-color: rgb(255, 107, 107);
 
   /* Vertical 64px*/
   /* Horizontal 37px*/
@@ -15,8 +15,8 @@
   --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px) - 1px);
   --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
   --btnFollow-top: calc(var(--btnMenu-top) + (2 * 64px) + 1px);
-  --btnProjects-top: calc(var(--title-top) + 351px);
-  --btnProjects-left: calc(var(--title-left) - 265px);
+  --btnProjects-top: calc(var(--title-top) + 415px);
+  --btnProjects-left: calc(var(--title-left) - 264px);
 }
 
 .bg {
@@ -1035,11 +1035,20 @@ b *::selection {
 
 .hexLink1Projects {
   position: absolute;
-  transform: rotate(60deg);
-  width: 60px;
+  transform: rotate(120deg);
+  width: 170px;
   opacity: 0.6;
-  top: calc(var(--btnMenu-top) - 35px);
-  left: calc(var(--btnMenu-left) - 0px + (2 * 37px));
+  top: calc(var(--btnProjects-top) - 34px);
+  left: calc(var(--btnProjects-left) - 34px + (4 * 37px));
+}
+
+.hexLink2Projects {
+  position: absolute;
+  transform: rotate(-120deg) scaleX(-1);
+  width: 170px;
+  opacity: 0.6;
+  top: calc(var(--btnProjects-top) - 34px);
+  left: calc(var(--btnProjects-left) - 42px - (3 * 37px));
 }
 
 .projectsBtn {
@@ -1074,5 +1083,42 @@ b *::selection {
   color: #f0f0f0;
   font-size: 21px;
   user-select: none;
+  text-shadow: 0 0 3px #433333, 0 0 3px #383838;
+}
+
+/* Projects / Pj1 */
+
+.pj1Btn {
+  top: calc(var(--btnProjects-top) + 83px - (2 * 64px));
+  left: calc(var(--btnProjects-left) + 21px - (3 * 37px));
+}
+
+.pj1Btn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 18px;
+  user-select: none;
   text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#pj1Circle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #pj1Circle {
+  position: absolute;
+  top: calc(var(--btnProjects-top) + 56px - (2 * 64px));
+  left: calc(var(--btnProjects-left) + 28px - (2 * 37px));
+}
+
+.imgPj1 {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45%, -50%);
 }

@@ -25,6 +25,7 @@ import {
   FaFileDownload,
   FaGithub,
   FaWhatsapp,
+  FaPlane,
 } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 
@@ -32,6 +33,7 @@ import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
 import hexLink1 from "./hexLink1.png";
 import hexLink2 from "./hexLink2.png";
+import hexLink3 from "./hexLink3.png";
 
 const copiedText = { bool: false };
 const timeOut = { id: null };
@@ -110,6 +112,7 @@ export default function LandingPage() {
   useEffect(() => {
     if (btnWebActive) {
       new CircleType(document.getElementById("projectsCircle"));
+      new CircleType(document.getElementById("pj1Circle"));
       const buttons = document.querySelectorAll(".btn");
       const smallButtons = document.querySelectorAll(".smallBtn");
       const cursor = document.getElementById("cursor");
@@ -765,7 +768,7 @@ export default function LandingPage() {
                   . My set of abilities:
                   <br />
                   <br />• <b>Technologies</b>: HTML, CSS, JavaScript, ReactJS,
-                  NodeJS, Redux, Sequelize, PostgreSQL and Express.
+                  NodeJS, Redux, Sequelize, Express and PostgreSQL.
                   <br />
                   <br />• <b>Complementary</b>: Git, Trello and ThunderClient.
                   <br />
@@ -811,6 +814,54 @@ export default function LandingPage() {
                 className="rotation"
               >
                 • Projects •• Projects •• Projects •• Projects •
+              </h3>
+
+              {btnProjectsActive ? (
+                <img src={`${hexLink3}`} alt="" className="hexLink1Projects" />
+              ) : (
+                <></>
+              )}
+              {btnProjectsActive ? (
+                <img src={`${hexLink3}`} alt="" className="hexLink2Projects" />
+              ) : (
+                <></>
+              )}
+
+              <span
+                className={
+                  btnProjectsActive && btnPj1Active
+                    ? "smallBtnActive pj1Btn"
+                    : !btnProjectsActive
+                    ? "smallBtn pj1Btn invisible"
+                    : "smallBtn pj1Btn"
+                }
+                onClick={() => {
+                  setPj1Btn((prev) => {
+                    if (!prev) {
+                      setPj2Btn(false);
+                    }
+                    return !prev;
+                  });
+                }}
+              >
+                <div className="imgContainer">
+                  <IconContext.Provider
+                    value={{
+                      color: "#383838",
+                      size: "40px",
+                      title: "CountriesApp",
+                      className: "img",
+                    }}
+                  >
+                    <FaPlane className="imgPj1" />
+                  </IconContext.Provider>
+                </div>
+              </span>
+              <h3
+                id={btnPj1Active ? "btnCircleHidden" : "pj1Circle"}
+                className="rotation"
+              >
+                • Countries APP •• Countries APP •
               </h3>
               {/* Projects Button */}
             </div>
