@@ -346,6 +346,10 @@ export default function LandingPage() {
     new CircleType(document.getElementById("gameCircle"));
   }, []);
 
+  useEffect(() => {
+    if (btnBioActive || btnGameActive || !btnWebActive) setProjectsBtn(false);
+  }, [btnBioActive, btnWebActive, btnGameActive]);
+
   const subtitle = btnBioActive
     ? "Bioengineer (PhD)"
     : btnGameActive
