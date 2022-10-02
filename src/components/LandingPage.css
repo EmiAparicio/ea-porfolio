@@ -1,6 +1,6 @@
 :root {
   --bg-color: #09a27a;
-  --bg-color: rgb(255, 107, 107);
+  /* --bg-color: rgb(255, 107, 107); */
 
   /* Vertical 64px*/
   /* Horizontal 37px*/
@@ -1121,4 +1121,42 @@ b *::selection {
   top: 50%;
   left: 50%;
   transform: translate(-45%, -50%);
+}
+
+/* Projects / Pj2 */
+
+.pj2Btn {
+  top: calc(var(--btnProjects-top) + 83px - (2 * 64px));
+  left: calc(var(--btnProjects-left) + 22px + (3 * 37px));
+}
+
+.pj2Btn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 17px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#pj2Circle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #pj2Circle {
+  position: absolute;
+  top: calc(var(--btnProjects-top) + 55px - (2 * 64px));
+  left: calc(var(--btnProjects-left) + 29px + (4 * 37px));
+}
+
+.imgPj2 {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
 }

@@ -31,6 +31,7 @@ import { MdWork } from "react-icons/md";
 
 import textFrame from "./textFrame.png";
 import menuBtn from "./menuBtn.png";
+import starcraft from "./starcraft.png";
 import hexLink1 from "./hexLink1.png";
 import hexLink2 from "./hexLink2.png";
 import hexLink3 from "./hexLink3.png";
@@ -113,6 +114,8 @@ export default function LandingPage() {
     if (btnWebActive) {
       new CircleType(document.getElementById("projectsCircle"));
       new CircleType(document.getElementById("pj1Circle"));
+      new CircleType(document.getElementById("pj2Circle"));
+
       const buttons = document.querySelectorAll(".btn");
       const smallButtons = document.querySelectorAll(".smallBtn");
       const cursor = document.getElementById("cursor");
@@ -188,6 +191,75 @@ export default function LandingPage() {
   }, [btnWebActive]);
 
   useEffect(() => {
+    if (!btnBioActive && !btnWebActive && !btnGameActive) {
+      const cursor = document.getElementById("cursor");
+      const pointer = document.getElementById("pointer");
+      const email = document.querySelector(".mail");
+
+      const animateit = function (e) {
+        pointer.style.backgroundColor = `#383838`;
+        pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
+
+        if (pointer.className !== "pointer" && e.target.className !== "mail") {
+          clearTimeout(timeOut.id);
+          const pointerText = document.getElementById("copiedBtn");
+          pointer.className = "pointer";
+          pointerText.className = "invisibleText";
+          pointer.style.backgroundColor = `#383838`;
+          pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
+          copiedText.bool = false;
+        }
+
+        if (e.type === "mouseout") {
+          const pointerText = document.getElementById("copiedBtn");
+          if (copiedText.bool) {
+            timeOut.id = setTimeout(() => {
+              pointer.className = "pointer";
+              pointerText.className = "invisibleText";
+              pointer.style.backgroundColor = `#f0f0f0`;
+              pointer.style.filter = ``;
+              copiedText.bool = false;
+            }, 500);
+          } else {
+            pointer.style.backgroundColor = `#f0f0f0`;
+            pointer.style.filter = ``;
+          }
+        }
+      };
+
+      email.addEventListener("mousemove", animateit);
+      email.addEventListener("mouseout", animateit);
+
+      const editCursor = (e) => {
+        const { clientX: x, clientY: y } = e;
+
+        cursor.style.left = x + "px";
+        cursor.style.top = y + "px";
+        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+        pointer.style.left = x + "px";
+        pointer.style.top = y + "px";
+        pointer.style.transform = "translate(-50%, -50%) scale(1)";
+      };
+
+      const editCursorOut = (e) => {
+        const { clientX: x, clientY: y } = e;
+        if (
+          x <= 0 ||
+          y <= 0 ||
+          x >= window.innerWidth ||
+          y >= window.innerHeight
+        ) {
+          cursor.style.transform = "translate(-50%, -50%) scale(0)";
+          pointer.style.transform = "translate(-50%, -50%) scale(0)";
+        }
+      };
+
+      window.addEventListener("mousemove", editCursor);
+      window.addEventListener("mouseout", editCursorOut);
+    }
+  }, [btnBioActive, btnWebActive, btnGameActive]);
+
+  useEffect(() => {
     const buttons = document.querySelectorAll(".btn");
     const smallButtons = document.querySelectorAll(".smallBtn");
     const cursor = document.getElementById("cursor");
@@ -217,7 +289,6 @@ export default function LandingPage() {
             pointer.style.backgroundColor = `#f0f0f0`;
             pointer.style.filter = ``;
             copiedText.bool = false;
-            console.log("asd");
           }, 500);
         } else {
           pointer.style.backgroundColor = `#f0f0f0`;
@@ -767,8 +838,8 @@ export default function LandingPage() {
                   </b>
                   . My set of abilities:
                   <br />
-                  <br />• <b>Technologies</b>: HTML, CSS, JavaScript, ReactJS,
-                  NodeJS, Redux, Sequelize, Express and PostgreSQL.
+                  <br />• <b>Technologies (PERN)</b>: HTML, CSS, JavaScript,
+                  ReactJS, NodeJS, Redux, Sequelize, Express and PostgreSQL.
                   <br />
                   <br />• <b>Complementary</b>: Git, Trello and ThunderClient.
                   <br />
@@ -862,6 +933,38 @@ export default function LandingPage() {
                 className="rotation"
               >
                 • Countries APP •• Countries APP •
+              </h3>
+
+              <span
+                className={
+                  btnProjectsActive && btnPj2Active
+                    ? "smallBtnActive pj2Btn"
+                    : !btnProjectsActive
+                    ? "smallBtn pj2Btn invisible"
+                    : "smallBtn pj2Btn"
+                }
+                onClick={() => {
+                  setPj2Btn((prev) => {
+                    if (!prev) {
+                      setPj1Btn(false);
+                    }
+                    return !prev;
+                  });
+                }}
+              >
+                <div className="imgContainer">
+                  <img
+                    src={`${starcraft}`}
+                    alt="StarCards"
+                    className="imgPj2"
+                  />
+                </div>
+              </span>
+              <h3
+                id={btnPj2Active ? "btnCircleHidden" : "pj2Circle"}
+                className="rotation"
+              >
+                • StarCards •• StarCards •• StarCards •
               </h3>
               {/* Projects Button */}
             </div>
