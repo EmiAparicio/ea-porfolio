@@ -115,6 +115,8 @@ export default function LandingPage() {
       new CircleType(document.getElementById("projectsCircle"));
       new CircleType(document.getElementById("pj1Circle"));
       new CircleType(document.getElementById("pj2Circle"));
+      new CircleType(document.getElementById("PICircle"));
+      new CircleType(document.getElementById("PGCircle"));
 
       const buttons = document.querySelectorAll(".btn");
       const smallButtons = document.querySelectorAll(".smallBtn");
@@ -698,7 +700,7 @@ export default function LandingPage() {
                   value={{
                     color: "#383838",
                     size: "39px",
-                    title: "linkedin",
+                    title: "github",
                     className: "img",
                   }}
                 >
@@ -936,7 +938,7 @@ export default function LandingPage() {
                 id={btnPj1Active ? "btnCircleHidden" : "pj1Circle"}
                 className="rotation"
               >
-                • Countries APP •• Countries APP •
+                • Invasion Tours •• Invasion Tours •
               </h3>
 
               <span
@@ -970,6 +972,60 @@ export default function LandingPage() {
               >
                 • StarCards •• StarCards •• StarCards •
               </h3>
+
+              <a
+                href="https://github.com/NoahReaver/HenryCountriesPI-InvasionTours"
+                target="_blank"
+                className={
+                  btnProjectsActive
+                    ? "smallBtn PIBtn"
+                    : "smallBtn PIBtn invisible"
+                }
+                rel="noreferrer"
+              >
+                <div className="imgContainer">
+                  <IconContext.Provider
+                    value={{
+                      color: "#383838",
+                      size: "39px",
+                      title: "PI",
+                      className: "img",
+                    }}
+                  >
+                    <FaGithub className="imgPI" />
+                  </IconContext.Provider>
+                </div>
+              </a>
+              <h3 id="PICircle" className="rotation">
+                • Invasion Tours ••• GitHub ••
+              </h3>
+
+              <a
+                href="https://github.com/NoahReaver/Henry-PG-StarCards"
+                target="_blank"
+                className={
+                  btnProjectsActive
+                    ? "smallBtn PGBtn"
+                    : "smallBtn PGBtn invisible"
+                }
+                rel="noreferrer"
+              >
+                <div className="imgContainer">
+                  <IconContext.Provider
+                    value={{
+                      color: "#383838",
+                      size: "39px",
+                      title: "PI",
+                      className: "img",
+                    }}
+                  >
+                    <FaGithub className="imgPG" />
+                  </IconContext.Provider>
+                </div>
+              </a>
+              <h3 id="PGCircle" className="rotation">
+                • StarCards ••• GitHub ••
+              </h3>
               {/* Projects Button */}
             </div>
           ) : btnBioActive ? (
@@ -983,20 +1039,4 @@ export default function LandingPage() {
       </div>
     </>
   );
-}
-
-{
-  /* <div className="imgContainer">
-              <IconContext.Provider
-                value={{
-                  color: "#383838",
-                  size: "35px",
-                  title: "menu",
-                  className: "img",
-                }}
-              >
-                <BsFillShareFill className="hexLink"/>
-                <BsFillHexagonFill className="hex"/>
-              </IconContext.Provider>
-            </div> */
 }

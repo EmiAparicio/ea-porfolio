@@ -1160,3 +1160,77 @@ b *::selection {
   left: 50%;
   transform: translate(-48%, -50%);
 }
+
+/* Projects / PI */
+
+.PIBtn {
+  top: calc(var(--btnProjects-top) + 20px + (1 * 64px));
+  left: calc(var(--btnProjects-left) + 22px - (3 * 37px));
+}
+
+.PIBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 21px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#PICircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #PICircle {
+  position: absolute;
+  top: calc(var(--btnProjects-top) + 56px - (0 * 64px));
+  left: calc(var(--btnProjects-left) + 28px - (2 * 37px));
+}
+
+.imgPI {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Projects / PG */
+
+.PGBtn {
+  top: calc(var(--btnProjects-top) + 84px + (0 * 64px));
+  left: calc(var(--btnProjects-left) + 22px + (3 * 37px));
+}
+
+.PGBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 24px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#PGCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #PGCircle {
+  position: absolute;
+  top: calc(var(--btnProjects-top) + 56px + (0 * 64px));
+  left: calc(var(--btnProjects-left) + 28px + (4 * 37px));
+}
+
+.imgPG {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+}
