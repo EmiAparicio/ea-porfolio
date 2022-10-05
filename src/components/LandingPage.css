@@ -15,8 +15,10 @@
   --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px) - 1px);
   --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
   --btnFollow-top: calc(var(--btnMenu-top) + (2 * 64px) + 1px);
-  --btnProjects-top: calc(var(--title-top) + 415px);
-  --btnProjects-left: calc(var(--title-left) - 264px);
+  --btnProjects-top: calc(var(--title-top) + 678px);
+  --btnProjects-left: calc(var(--title-left) + 456px);
+  --btnPubs-top: calc(var(--title-top) + 678px);
+  --btnPubs-left: calc(var(--title-left) + 456px);
 }
 
 .bg {
@@ -158,6 +160,23 @@
   /* transform: translate(-50%, 0); */
 }
 
+.aboutBio {
+  user-select: text;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  text-align: center;
+  width: 950px;
+
+  z-index: 5;
+  position: absolute;
+  color: #f0f0f0;
+  text-shadow: 0 0 3px #383838;
+  top: -20px;
+  left: -36px;
+  /* transform: translate(-50%, 0); */
+}
+
 .email {
   font-size: 20px;
 }
@@ -179,25 +198,29 @@
   background-color: rgba(6, 124, 87, 0.8);
 }
 
-.aboutWeb::-moz-selection {
+.aboutWeb::-moz-selection,
+.aboutBio::-moz-selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0;
   background-color: rgba(6, 124, 87, 0.8);
 }
 
-.aboutWeb::selection {
+.aboutWeb::selection,
+.aboutBio::selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0;
   background-color: rgba(6, 124, 87, 0.8);
 }
 
-.aboutWeb *::-moz-selection {
+.aboutWeb *::-moz-selection,
+.aboutBio *::-moz-selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0;
   background-color: rgba(6, 124, 87, 0.8);
 }
 
-.aboutWeb *::selection {
+.aboutWeb *::selection,
+.aboutBio *::selection {
   color: #383838;
   text-shadow: 0 0 5px #f0f0f0;
   background-color: rgba(6, 124, 87, 0.8);
@@ -298,7 +321,31 @@ b *::selection {
   right: -37px;
 }
 
-.aboutWeb a {
+.aboutFrameBio {
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  z-index: 5;
+  width: 180px;
+
+  top: calc(-1px - (1 * 64px));
+  left: calc(0px - (4 * 37px));
+}
+
+.aboutFrameBio1 {
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(180deg);
+  position: absolute;
+  z-index: 5;
+  width: 180px;
+
+  bottom: calc(-0px - (1 * 64px));
+  right: calc(0px - (4 * 37px));
+}
+
+.aboutWeb a,
+.aboutBio a {
   text-decoration: none;
   color: inherit;
   cursor: none;
@@ -652,7 +699,7 @@ b *::selection {
     rotate: 0deg;
   }
   to {
-    rotate: 360deg;
+    rotate: -360deg;
   }
 }
 
@@ -866,12 +913,47 @@ b *::selection {
 
 /* Follow me / Mail */
 
-.mailBtn {
+/* .mailBtn {
+  top: calc(var(--btnFollow-top) + 83px + (2 * 64px));
+  left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
+} */
+
+/* .mailBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 17px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+} */
+
+/* #mailCircle {
+  position: absolute;
+  top: -2000px;
+} */
+
+/* .smallBtn:hover + #mailCircle {
+  position: absolute;
+  top: calc(var(--btnFollow-top) + 58px + (2 * 64px));
+  left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
+} */
+
+/* .imgMail {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+.wppBtn {
   top: calc(var(--btnFollow-top) + 83px + (2 * 64px));
   left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
 }
 
-.mailBtn:hover + .rotation {
+.wppBtn:hover + .rotation {
   animation: rotationAnimation 5s linear infinite;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
@@ -881,18 +963,7 @@ b *::selection {
   text-shadow: 0 0 3px #383838, 0 0 3px #383838;
 }
 
-#mailCircle {
-  position: absolute;
-  top: -2000px;
-}
-
-.smallBtn:hover + #mailCircle {
-  position: absolute;
-  top: calc(var(--btnFollow-top) + 58px + (2 * 64px));
-  left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
-}
-
-.imgMail {
+.imgWpp {
   user-select: none;
   pointer-events: none;
   position: absolute;
@@ -1230,6 +1301,214 @@ b *::selection {
   user-select: none;
   pointer-events: none;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+}
+
+/* Publications */
+
+.hexLink1Pubs {
+  position: absolute;
+  transform: rotate(120deg);
+  width: 170px;
+  opacity: 0.6;
+  top: calc(var(--btnPubs-top) - 34px);
+  left: calc(var(--btnPubs-left) - 34px + (4 * 37px));
+}
+
+.hexLink2Pubs {
+  position: absolute;
+  transform: rotate(-120deg) scaleX(-1);
+  width: 170px;
+  opacity: 0.6;
+  top: calc(var(--btnPubs-top) - 34px);
+  left: calc(var(--btnPubs-left) - 42px - (3 * 37px));
+}
+
+.pubsBtn {
+  top: var(--btnPubs-top);
+  left: var(--btnPubs-left);
+}
+
+.imgPubs {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-45%, -53%);
+}
+
+#pubsCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + #pubsCircle {
+  position: absolute;
+  top: calc(var(--btnPubs-top) - 35px);
+  left: calc(var(--btnPubs-left) + 66px);
+}
+
+.pubsBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 21px;
+  user-select: none;
+  text-shadow: 0 0 3px #433333, 0 0 3px #383838;
+}
+
+/* Publications / P1 */
+
+.P1Btn {
+  top: calc(var(--btnPubs-top) + 83px - (2 * 64px));
+  left: calc(var(--btnPubs-left) + 21px - (3 * 37px));
+}
+
+.P1Btn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 20px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#P1Circle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #P1Circle {
+  position: absolute;
+  top: calc(var(--btnPubs-top) + 55px - (2 * 64px));
+  left: calc(var(--btnPubs-left) + 28px - (2 * 37px));
+}
+
+.imgP1 {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+}
+
+/* Publications / P2 */
+
+.P2Btn {
+  top: calc(var(--btnPubs-top) + 83px - (2 * 64px));
+  left: calc(var(--btnPubs-left) + 22px + (3 * 37px));
+}
+
+.P2Btn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 18px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#P2Circle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #P2Circle {
+  position: absolute;
+  top: calc(var(--btnPubs-top) + 55px - (2 * 64px));
+  left: calc(var(--btnPubs-left) + 29px + (4 * 37px));
+}
+
+.imgP2 {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+}
+
+/* Publications / P3 */
+
+.P3Btn {
+  top: calc(var(--btnPubs-top) + 20px + (1 * 64px));
+  left: calc(var(--btnPubs-left) + 22px - (3 * 37px));
+}
+
+.P3Btn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 18px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#P3Circle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #P3Circle {
+  position: absolute;
+  top: calc(var(--btnPubs-top) + 55px - (0 * 64px));
+  left: calc(var(--btnPubs-left) + 28px - (2 * 37px));
+}
+
+.imgP3 {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+}
+
+/* Publications / P4 */
+
+.P4Btn {
+  top: calc(var(--btnPubs-top) + 84px + (0 * 64px));
+  left: calc(var(--btnPubs-left) + 22px + (3 * 37px));
+}
+
+.P4Btn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 20px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#P4Circle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #P4Circle {
+  position: absolute;
+  top: calc(var(--btnPubs-top) + 56px + (0 * 64px));
+  left: calc(var(--btnPubs-left) + 28px + (4 * 37px));
+}
+
+.imgP4 {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  width: 40px;
   top: 50%;
   left: 50%;
   transform: translate(-48%, -50%);
