@@ -15,6 +15,7 @@ import {
   GiConsoleController,
   GiDna1,
   GiLaptop,
+  GiGearHammer,
 } from "react-icons/gi";
 import { FaFileDownload, FaGithub, FaWhatsapp, FaPlane } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
@@ -102,6 +103,7 @@ export default function LandingPage() {
   const [btnPj1Active, setPj1Btn] = useState(false);
   const [btnPj2Active, setPj2Btn] = useState(false);
   const [btnPubsActive, setPubsBtn] = useState(false);
+  const [btnObmActive, setObmBtn] = useState(false);
 
   useEffect(() => {
     new CircleType(document.querySelectorAll('[roundedtext="CVCircle"]')[0]);
@@ -135,6 +137,7 @@ export default function LandingPage() {
     new CircleType(document.querySelectorAll('[roundedtext="P2Circle"]')[0]);
     new CircleType(document.querySelectorAll('[roundedtext="P3Circle"]')[0]);
     new CircleType(document.querySelectorAll('[roundedtext="P4Circle"]')[0]);
+    new CircleType(document.querySelectorAll('[roundedtext="obmCircle"]')[0]);
   }, []);
 
   // useEffect(() => {
@@ -1132,7 +1135,7 @@ export default function LandingPage() {
 
           <div
             className={
-              btnBioActive ? "aboutContainerWeb" : "aboutContainerWeb invisible"
+              btnBioActive ? "aboutContainerBio" : "aboutContainerBio invisible"
             }
           >
             <div className="aboutRel">
@@ -1269,9 +1272,72 @@ export default function LandingPage() {
           <h3 id="P4Circle" roundedtext="P4Circle" className="rotation">
             • AU foams under indentation •
           </h3>
-
           {/* Publications Button */}
+
+          <div
+            className={
+              btnGameActive
+                ? "aboutContainerGame"
+                : "aboutContainerGame invisible"
+            }
+          >
+            <div className="aboutRel">
+              <p className="aboutGame">
+                Self-taught game and videogame <b>mechanics designer</b>. My
+                strengths:
+                <br />
+                <br />• <b>Developing perspective</b>: my knowledge as a
+                programmer helps me create base concepts compatible with the
+                required computational logic.
+                <br />
+                <br />• <b>Economics</b>: my designs are focused on resource
+                management, which makes them a perfect match for models such as
+                play-to-earn (P2E) or microtransaction based systems.
+                <br />
+                <br /> • <b>Biomimetics</b>: I apply mathematical and
+                computational models inspired in natural environments and
+                ecosystems, which leads to evolutional self-balancing mechanics.
+              </p>
+              <img className="aboutFrameGame" src={`${textFrame}`} alt="" />
+              <img className="aboutFrameGame1" src={`${textFrame}`} alt="" />
+            </div>
+          </div>
+          {/* Oblivion Button */}
+          <span
+            className={
+              btnGameActive && !btnObmActive
+                ? "btn obmBtn"
+                : btnObmActive
+                ? "btnActive obmBtn"
+                : "invisible"
+            }
+            // onClick={() => {
+            //   setObmBtn((prev) => !prev);
+            // }}
+          >
+            <div className="imgContainer">
+              <IconContext.Provider
+                value={{
+                  color: "#383838",
+                  size: "60px",
+                  title: "game",
+                  className: "img",
+                }}
+              >
+                <GiGearHammer className="imgObm" />
+              </IconContext.Provider>
+            </div>
+          </span>
+          <h3
+            id={btnObmActive ? "btnCircleHidden" : "obmCircle"}
+            className="rotation"
+            roundedtext="obmCircle"
+          >
+            • Oblivion Mechanics •• Coming Soon •
+          </h3>
+          {/* Oblivion Button */}
         </div>
+
         <h1 className="title">EMILIANO APARICIO</h1>
         <h2 className={subtitleClass}>{subtitle}</h2>
       </div>

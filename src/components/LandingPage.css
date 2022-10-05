@@ -19,6 +19,8 @@
   --btnProjects-left: calc(var(--title-left) + 456px);
   --btnPubs-top: calc(var(--title-top) + 678px);
   --btnPubs-left: calc(var(--title-left) + 456px);
+  --btnGame-top: calc(var(--title-top) + 678px);
+  --btnGame-left: calc(var(--title-left) + 456px);
 }
 
 .bg {
@@ -42,7 +44,8 @@
 }
 
 .title {
-  display: inline-block;
+  display: block;
+  width: max-content;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
   color: #f0f0f0;
@@ -64,7 +67,8 @@
 }
 
 .webSubtitle {
-  display: inline-block;
+  display: block;
+  width: max-content;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
   color: #f0f0f0;
@@ -79,7 +83,8 @@
 }
 
 .gameSubtitle {
-  display: inline-block;
+  display: block;
+  width: max-content;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
   color: #f0f0f0;
@@ -94,7 +99,8 @@
 }
 
 .bioSubtitle {
-  display: inline-block;
+  display: block;
+  width: max-content;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
   color: #f0f0f0;
@@ -114,7 +120,9 @@
   left: calc(var(--title-left) + 82px);
 }
 
-.aboutContainerWeb {
+.aboutContainerWeb,
+.aboutContainerBio,
+.aboutContainerGame {
   position: absolute;
   top: calc(var(--title-top) + 286px - 64px);
   left: calc(var(--title-left) + 82px);
@@ -177,6 +185,23 @@
   /* transform: translate(-50%, 0); */
 }
 
+.aboutGame {
+  user-select: text;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  text-align: center;
+  width: 1000px;
+
+  z-index: 5;
+  position: absolute;
+  color: #f0f0f0;
+  text-shadow: 0 0 3px #383838;
+  top: -20px;
+  left: -62px;
+  /* transform: translate(-50%, 0); */
+}
+
 .email {
   font-size: 20px;
 }
@@ -198,6 +223,7 @@
   background-color: rgba(6, 124, 87, 0.8);
 }
 
+.aboutGame::-moz-selection,
 .aboutWeb::-moz-selection,
 .aboutBio::-moz-selection {
   color: #383838;
@@ -205,6 +231,7 @@
   background-color: rgba(6, 124, 87, 0.8);
 }
 
+.aboutGame::selection,
 .aboutWeb::selection,
 .aboutBio::selection {
   color: #383838;
@@ -212,6 +239,7 @@
   background-color: rgba(6, 124, 87, 0.8);
 }
 
+.aboutGame *::-moz-selection,
 .aboutWeb *::-moz-selection,
 .aboutBio *::-moz-selection {
   color: #383838;
@@ -219,6 +247,7 @@
   background-color: rgba(6, 124, 87, 0.8);
 }
 
+.aboutGame *::selection,
 .aboutWeb *::selection,
 .aboutBio *::selection {
   color: #383838;
@@ -333,6 +362,29 @@ b *::selection {
 }
 
 .aboutFrameBio1 {
+  pointer-events: none;
+  user-select: none;
+  transform: rotate(180deg);
+  position: absolute;
+  z-index: 5;
+  width: 180px;
+
+  bottom: calc(-0px - (1 * 64px));
+  right: calc(0px - (4 * 37px));
+}
+
+.aboutFrameGame {
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  z-index: 5;
+  width: 180px;
+
+  top: calc(-1px - (1 * 64px));
+  left: calc(0px - (4 * 37px));
+}
+
+.aboutFrameGame1 {
   pointer-events: none;
   user-select: none;
   transform: rotate(180deg);
@@ -1512,4 +1564,42 @@ b *::selection {
   top: 50%;
   left: 50%;
   transform: translate(-48%, -50%);
+}
+
+/* Oblivion */
+
+.obmBtn {
+  top: var(--btnPubs-top);
+  left: var(--btnPubs-left);
+}
+
+.imgObm {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-48%, -50%);
+}
+
+#obmCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + #obmCircle {
+  position: absolute;
+  top: calc(var(--btnPubs-top) - 35px);
+  left: calc(var(--btnPubs-left) + 66px);
+}
+
+.obmBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 24px;
+  user-select: none;
+  text-shadow: 0 0 3px #433333, 0 0 3px #383838;
 }
