@@ -741,11 +741,6 @@ b *::selection {
   text-shadow: 0 0 3px #383838, 0 0 3px #383838;
 }
 
-.rotation {
-  user-select: none;
-  z-index: 15;
-}
-
 @keyframes rotationAnimation {
   from {
     rotate: 0deg;
@@ -1602,4 +1597,11 @@ b *::selection {
   font-size: 24px;
   user-select: none;
   text-shadow: 0 0 3px #433333, 0 0 3px #383838;
+}
+
+.rotation {
+  user-select: none;
+  z-index: 15;
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,
+    0 0 2px black !important;
 }
