@@ -20,17 +20,19 @@ import {
 import { FaFileDownload, FaGithub, FaWhatsapp, FaPlane } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 
-import textFrame from "./textFrame.png";
-import menuBtn from "./menuBtn.png";
-import starcraft from "./starcraft.png";
-import hexLink1 from "./hexLink1.png";
-import hexLink2 from "./hexLink2.png";
-import hexLink3 from "./hexLink3.png";
+import textFrame from "./textFrame.svg";
+import menuBtn from "./menuBtn.svg";
+import starcraft from "./starcraft.svg";
+import hexLink1 from "./hexLink1.svg";
+import hexLink2 from "./hexLink2.svg";
+import hexLink3 from "./hexLink3.svg";
 import lab from "./lab.svg";
 import paper from "./paper.svg";
 
 const copiedText = { bool: false };
 const timeOut = { id: null };
+const invasionTours = "";
+const starCards = "";
 
 export default function LandingPage() {
   dotenv.config();
@@ -1023,7 +1025,17 @@ export default function LandingPage() {
             }
           />
 
-          <span
+          <a
+            href={invasionTours}
+            target="_blank"
+            className={
+              btnProjectsActive
+                ? "smallBtn pj1Btn"
+                : "smallBtn pj1Btn invisible"
+            }
+            rel="noreferrer"
+          >
+            {/* <span
             className={
               btnProjectsActive && btnPj1Active
                 ? "smallBtnActive pj1Btn"
@@ -1035,7 +1047,7 @@ export default function LandingPage() {
               setPj1Btn((prev) => !prev);
               setPj2Btn(false);
             }}
-          >
+          > */}
             <div className="imgContainer">
               <IconContext.Provider
                 value={{
@@ -1048,7 +1060,7 @@ export default function LandingPage() {
                 <FaPlane className="imgPj1" />
               </IconContext.Provider>
             </div>
-          </span>
+          </a>
           <h3
             id={btnPj1Active ? "btnCircleHidden" : "pj1Circle"}
             className="rotation"
@@ -1057,7 +1069,17 @@ export default function LandingPage() {
             • Invasion Tours •• Invasion Tours •
           </h3>
 
-          <span
+          <a
+            href={starCards}
+            target="_blank"
+            className={
+              btnProjectsActive
+                ? "smallBtn pj2Btn"
+                : "smallBtn pj2Btn invisible"
+            }
+            rel="noreferrer"
+          >
+            {/* <span
             className={
               btnProjectsActive && btnPj2Active
                 ? "smallBtnActive pj2Btn"
@@ -1069,11 +1091,11 @@ export default function LandingPage() {
               setPj2Btn((prev) => !prev);
               setPj1Btn(false);
             }}
-          >
+          > */}
             <div className="imgContainer">
               <img src={`${starcraft}`} alt="StarCards" className="imgPj2" />
             </div>
-          </span>
+          </a>
           <h3
             id={btnPj2Active ? "btnCircleHidden" : "pj2Circle"}
             className="rotation"

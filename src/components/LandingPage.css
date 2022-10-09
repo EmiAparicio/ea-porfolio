@@ -1,26 +1,34 @@
 :root {
   --bg-color: #09a27a;
-  /* --bg-color: rgb(255, 107, 107); */
+  --bg-color: rgb(255, 107, 107);
 
-  /* Vertical 64px*/
-  /* Horizontal 37px*/
-  --title-left: calc(750px - (3 * 37px));
-  --title-top: calc(40px - (0 * 64px));
+  --shiftH: 37px;
+  --shiftV: 64.09px;
 
-  --btnCVDefault-top: calc(var(--title-top) + 697px);
-  --btnCVDefault-left: calc(var(--title-left) + 478px);
-  --btnMenu-left: calc(313px - (6 * 37px));
-  --btnMenu-top: calc(717px - (5 * 64px));
-  --btnSkills-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
-  --btnSkills-top: calc(var(--btnMenu-top) - (2 * 64px) - 1px);
-  --btnFollow-left: calc(var(--btnMenu-left) + (2 * 37px) + 1px);
-  --btnFollow-top: calc(var(--btnMenu-top) + (2 * 64px) + 1px);
-  --btnProjects-top: calc(var(--title-top) + 678px);
+  --bgImg-left: -302.5px;
+  --bgImg-top: -172.5px;
+
+  --title-left: calc(770px - (3 * var(--shiftH)));
+  --title-top: calc(25px - (0 * var(--shiftV)));
+
+  --btnMenu-left: calc(152.5px - (0 * var(--shiftH)));
+  --btnMenu-top: calc(410px - (0 * var(--shiftV)));
+
+  --btnCVDefault-top: calc(var(--title-top) + 662px - (0 * var(--shiftV)));
+  --btnCVDefault-left: calc(var(--title-left) + 478.5px - (0 * var(--shiftH)));
+
+  --btnSkills-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) - 0px);
+  --btnSkills-top: calc(var(--btnMenu-top) - (2 * var(--shiftV)) + 0px);
+
+  --btnFollow-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) + 0px);
+  --btnFollow-top: calc(var(--btnMenu-top) + (2 * var(--shiftV)) + 0px);
+
+  --btnProjects-top: calc(var(--title-top) + 706px);
   --btnProjects-left: calc(var(--title-left) + 456px);
-  --btnPubs-top: calc(var(--title-top) + 678px);
+  --btnPubs-top: calc(var(--title-top) + 706px);
   --btnPubs-left: calc(var(--title-left) + 456px);
-  --btnGame-top: calc(var(--title-top) + 678px);
-  --btnGame-left: calc(var(--title-left) + 456px);
+  --btnObm-top: calc(var(--title-top) + 706px);
+  --btnObm-left: calc(var(--title-left) + 456px);
 }
 
 .bg {
@@ -36,7 +44,9 @@
 
 .bgImg {
   user-select: none;
-  background-image: url("hexBG.png");
+  background-image: url("hexBG2.svg");
+  background-position: var(--bgImg-left) var(--bgImg-top);
+  background-size: 3402px 2000px;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -48,7 +58,6 @@
   width: max-content;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
-  color: #f0f0f0;
   color: #383838;
   font-size: 100px;
   user-select: none;
@@ -57,8 +66,9 @@
   position: absolute;
   top: var(--title-top);
   left: var(--title-left);
-  transition: text-shadow 0.3s linear, color 0.1s linear;
-  text-shadow: 0 0 5px #f0f0f0;
+  transition: text-shadow 0.2s linear, color 0.2s linear;
+  text-shadow: 0 0 5px rgb(35, 255, 171), 0 0 5px rgb(35, 255, 171),
+    0 0 5px rgb(35, 255, 171), 0 0 10px rgba(35, 174, 255, 0.484);
 }
 
 .title:hover {
@@ -116,7 +126,7 @@
 
 .aboutContainer {
   position: absolute;
-  top: calc(var(--title-top) + 286px);
+  top: calc(var(--title-top) + 150px);
   left: calc(var(--title-left) + 82px);
 }
 
@@ -146,9 +156,9 @@
   position: absolute;
   color: #f0f0f0;
   text-shadow: 0 0 3px #383838;
-  top: 45px;
-  left: 100px;
-  /* transform: translate(-50%, 0); */
+  top: 170px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .aboutWeb {
@@ -163,9 +173,9 @@
   position: absolute;
   color: #f0f0f0;
   text-shadow: 0 0 3px #383838;
-  top: 50px;
-  left: 35px;
-  /* transform: translate(-50%, 0); */
+  top: 66px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .aboutBio {
@@ -180,9 +190,9 @@
   position: absolute;
   color: #f0f0f0;
   text-shadow: 0 0 3px #383838;
-  top: -20px;
-  left: -36px;
-  /* transform: translate(-50%, 0); */
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .aboutGame {
@@ -197,9 +207,9 @@
   position: absolute;
   color: #f0f0f0;
   text-shadow: 0 0 3px #383838;
-  top: -20px;
-  left: -62px;
-  /* transform: translate(-50%, 0); */
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .email {
@@ -309,10 +319,10 @@ b *::selection {
   user-select: none;
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  top: 0px;
-  left: 0px;
+  top: 81.5px;
+  left: 0.5px;
 }
 
 .aboutFrame1 {
@@ -321,10 +331,10 @@ b *::selection {
   transform: rotate(180deg);
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  bottom: 0px;
-  right: 0px;
+  bottom: -122px;
+  right: -0.5px;
 }
 
 .aboutFrameWeb {
@@ -332,10 +342,10 @@ b *::selection {
   user-select: none;
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  top: 0px;
-  left: -37px;
+  top: 10px;
+  left: -73.5px;
 }
 
 .aboutFrameWeb1 {
@@ -344,10 +354,10 @@ b *::selection {
   transform: rotate(180deg);
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  bottom: 0px;
-  right: -37px;
+  bottom: -50px;
+  right: -74px;
 }
 
 .aboutFrameBio {
@@ -355,10 +365,10 @@ b *::selection {
   user-select: none;
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  top: calc(-1px - (1 * 64px));
-  left: calc(0px - (4 * 37px));
+  top: calc(9.5px - (1 * var(--shiftV)));
+  left: calc(-36px - (4 * var(--shiftH)));
 }
 
 .aboutFrameBio1 {
@@ -367,10 +377,10 @@ b *::selection {
   transform: rotate(180deg);
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  bottom: calc(-0px - (1 * 64px));
-  right: calc(0px - (4 * 37px));
+  bottom: calc(14px - (0 * var(--shiftV)));
+  right: calc(-0.5px - (5 * var(--shiftH)));
 }
 
 .aboutFrameGame {
@@ -378,10 +388,10 @@ b *::selection {
   user-select: none;
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  top: calc(-1px - (1 * 64px));
-  left: calc(0px - (4 * 37px));
+  top: calc(-55px - (0 * var(--shiftV)));
+  left: calc(-184px - (0 * var(--shiftH)));
 }
 
 .aboutFrameGame1 {
@@ -390,10 +400,10 @@ b *::selection {
   transform: rotate(180deg);
   position: absolute;
   z-index: 5;
-  width: 180px;
+  width: 201.38px;
 
-  bottom: calc(-0px - (1 * 64px));
-  right: calc(0px - (4 * 37px));
+  bottom: calc(-114px - (0 * var(--shiftV)));
+  right: calc(-185px - (0 * var(--shiftH)));
 }
 
 .aboutWeb a,
@@ -409,8 +419,8 @@ b *::selection {
 }
 
 .CVBtnReplace {
-  top: calc(var(--btnMenu-top) + 19px);
-  left: calc(var(--btnMenu-left) + 171px);
+  top: calc(var(--btnMenu-top) + 20px);
+  left: calc(var(--btnMenu-left) + 171.5px);
 }
 
 #CVCircle {
@@ -422,12 +432,26 @@ b *::selection {
   position: absolute;
   top: calc(var(--btnCVDefault-top) - 32px);
   left: calc(var(--btnCVDefault-left) + 44px);
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 15px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
 }
 
 .CVBtnReplace:hover + #CVCircle {
   position: absolute;
-  top: calc(var(--btnMenu-top) + 19px - 32px);
-  left: calc(var(--btnMenu-left) + 171px + 44px);
+  top: calc(var(--btnMenu-top) - 12px);
+  left: calc(var(--btnMenu-left) + 216px);
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 15px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
 }
 
 .imgCV {
@@ -590,8 +614,15 @@ b *::selection {
   }
 }
 
+.rotation {
+  user-select: none;
+  z-index: 15;
+  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,
+    0 0 2px black !important;
+}
+
 .btn {
-  background-image: url("./buttonSmall.png");
+  background-image: url("./button.svg");
   background-repeat: no-repeat;
   background-size: contain;
   cursor: none;
@@ -603,16 +634,20 @@ b *::selection {
   vertical-align: middle;
   user-select: none;
 
-  padding: 57px 66px;
+  /* padding: 57px 66px; */
+  --btn-width: 134.5px;
+  --btn-height: 116.9px;
+  width: var(--btn-width);
+  height: var(--btn-height);
 
-  --btn-raise: 33px;
+  --btn-raise: 34.2px;
   clip-path: polygon(
-    var(--btn-raise) 0%,
-    calc(100% - var(--btn-raise)) 0%,
-    100% 50%,
-    calc(100% - var(--btn-raise)) 100%,
-    var(--btn-raise) 100%,
-    0 50%
+    var(--btn-raise) 0,
+    calc(var(--btn-width) - var(--btn-raise)) 0,
+    var(--btn-width) calc(var(--btn-height) / 2 - 0.4px),
+    calc(var(--btn-width) - var(--btn-raise)) var(--btn-height),
+    var(--btn-raise) var(--btn-height),
+    0 calc(var(--btn-height) / 2 - 0.4px)
   );
 }
 
@@ -622,29 +657,35 @@ b *::selection {
 }
 
 .btnActive {
-  background-image: url("./buttonActiveSmall.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-image: url("./buttonActive.svg");
+  /* background-repeat: no-repeat;
+  background-size: contain; */
   cursor: none;
   position: absolute;
   z-index: 10;
-  filter: drop-shadow(0 0 10px #84ffd4);
+  filter: drop-shadow(0 0 3px rgb(35, 255, 171))
+    drop-shadow(0 0 3px rgb(35, 255, 171))
+    drop-shadow(0 0 4px rgba(35, 174, 255, 0.484));
 
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   user-select: none;
 
-  padding: 57px 66px;
+  /* padding: 57px 66px; */
+  --btn-width: 134.5px;
+  --btn-height: 116.9px;
+  width: var(--btn-width);
+  height: var(--btn-height);
 
-  --btn-raise: 33px;
+  --btn-raise: 34.2px;
   clip-path: polygon(
-    var(--btn-raise) 0%,
-    calc(100% - var(--btn-raise)) 0%,
-    100% 50%,
-    calc(100% - var(--btn-raise)) 100%,
-    var(--btn-raise) 100%,
-    0 50%
+    var(--btn-raise) 0.2px,
+    calc(var(--btn-width) - var(--btn-raise)) 0.2px,
+    var(--btn-width) calc(var(--btn-height) / 2 - 0.4px),
+    calc(var(--btn-width) - var(--btn-raise)) var(--btn-height),
+    var(--btn-raise) var(--btn-height),
+    0.2px calc(var(--btn-height) / 2 - 0.3px)
   );
 }
 
@@ -669,7 +710,7 @@ b *::selection {
 }
 
 .smallBtn {
-  background-image: url("./buttonSmall.png");
+  background-image: url("./button.svg");
   background-repeat: no-repeat;
   background-size: contain;
   cursor: none;
@@ -700,29 +741,36 @@ b *::selection {
 }
 
 .smallBtnActive {
-  background-image: url("./buttonActiveSmall.png");
+  background-image: url("./buttonActive.svg");
   background-repeat: no-repeat;
   background-size: contain;
   cursor: none;
   position: absolute;
   z-index: 10;
-  filter: drop-shadow(0 0 10px #84ffd4);
+  filter: drop-shadow(0 0 3px rgb(35, 255, 171))
+    drop-shadow(0 0 3px rgb(35, 255, 171))
+    drop-shadow(0 0 3px rgb(35, 255, 171))
+    drop-shadow(0 0 5px rgba(35, 174, 255, 0.484));
 
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   user-select: none;
 
-  padding: 38px 44px;
+  /* padding: 38px 44px; */
+  --btn-width: 88px;
+  --btn-height: 75.7px;
+  width: var(--btn-width);
+  height: var(--btn-height);
 
-  --btn-raise: 22px;
+  --btn-raise: 23px;
   clip-path: polygon(
-    var(--btn-raise) 0%,
-    calc(100% - var(--btn-raise)) 0%,
-    100% 50%,
-    calc(100% - var(--btn-raise)) 100%,
-    var(--btn-raise) 100%,
-    0 50%
+    var(--btn-raise) 0.2px,
+    calc(var(--btn-width) - var(--btn-raise)) 0.2px,
+    var(--btn-width) calc(var(--btn-height) / 2 - 0px),
+    calc(var(--btn-width) - var(--btn-raise)) var(--btn-height),
+    var(--btn-raise) var(--btn-height),
+    0.8px calc(var(--btn-height) / 2 + 0.5px)
   );
 }
 
@@ -731,7 +779,7 @@ b *::selection {
   filter: drop-shadow(0 0 10px #f0f0f0);
 }
 
-.smallBtn:hover + .rotation {
+.smallBtnActive .smallBtn:hover + .rotation {
   animation: rotationAnimation 5s linear infinite;
   font-family: "Russo One", sans-serif;
   font-weight: 400;
@@ -758,6 +806,8 @@ b *::selection {
 .imgContainer {
   user-select: none;
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .imgMenu {
@@ -787,7 +837,7 @@ b *::selection {
 .btn:hover + #menuCircle {
   position: absolute;
   top: calc(var(--btnMenu-top) - 31px);
-  left: calc(var(--btnMenu-left) + 66px);
+  left: calc(var(--btnMenu-left) + 67.5px);
 }
 
 .invisible {
@@ -798,11 +848,20 @@ b *::selection {
 
 .hexLink1Skills {
   position: absolute;
-  transform: rotate(60deg);
+  transform: scale(0.8);
   width: 60px;
   opacity: 0.6;
-  top: calc(var(--btnMenu-top) - 35px);
-  left: calc(var(--btnMenu-left) - 0px + (2 * 37px));
+  top: calc(var(--btnMenu-top) - 33.5px);
+  left: calc(var(--btnMenu-left) + 74px);
+}
+
+.hexLink2Skills {
+  position: absolute;
+  transform: rotate(60deg);
+  width: 170px;
+  opacity: 0.6;
+  top: calc(var(--btnSkills-top) - 165px);
+  left: calc(var(--btnSkills-left) + 51.5px);
 }
 
 .skillsBtn {
@@ -827,18 +886,138 @@ b *::selection {
 .btn:hover + #skillsCircle {
   position: absolute;
   top: calc(var(--btnSkills-top) - 31px);
-  left: calc(var(--btnSkills-left) + 66px);
+  left: calc(var(--btnSkills-left) + 67.5px);
+}
+
+/* Skills / WebDev */
+
+.webBtn {
+  top: calc(var(--btnSkills-top) - 172px);
+  left: calc(var(--btnSkills-left) + 134.5px);
+}
+
+.webBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 15px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#webCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #webCircle {
+  position: absolute;
+  top: calc(var(--btnSkills-top) + 60px - (4 * 64px));
+  left: calc(var(--btnSkills-left) + 67.5px + (3 * 37px));
+}
+
+.imgWeb {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Skills / Bioengineering */
+
+.bioBtn {
+  top: calc(var(--btnSkills-top) - 44px);
+  left: calc(var(--btnSkills-left) + 134.5px);
+}
+
+.bioBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 17px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#bioCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #bioCircle {
+  position: absolute;
+  top: calc(var(--btnSkills-top) + 59px - (2 * 64px));
+  left: calc(var(--btnSkills-left) + 68px + (3 * 37px));
+}
+
+.imgBio {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Skills / Game Design */
+
+.gameBtn {
+  top: calc(var(--btnSkills-top) - 108px);
+  left: calc(var(--btnSkills-left) + 23.5px);
+}
+
+.gameBtn:hover + .rotation {
+  animation: rotationAnimation 5s linear infinite;
+  font-family: "Russo One", sans-serif;
+  font-weight: 400;
+  color: #f0f0f0;
+  font-size: 14px;
+  user-select: none;
+  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
+}
+
+#gameCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.smallBtn:hover + #gameCircle {
+  position: absolute;
+  top: calc(var(--btnSkills-top) + 60px - (3 * 64px));
+  left: calc(var(--btnSkills-left) + 67.5px + (0 * 37px));
+}
+
+.imgGame {
+  user-select: none;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Follow me */
 
 .hexLink1Follow {
   position: absolute;
-  transform: rotate(180deg);
+  transform: rotate(-60deg) scale(0.8);
   width: 60px;
   opacity: 0.6;
-  top: calc(var(--btnMenu-top) + 30px + (1 * 64px));
-  left: calc(var(--btnMenu-left) + 111px - (1 * 37px));
+  top: calc(var(--btnMenu-top) + 95px);
+  left: calc(var(--btnMenu-left) + 74px);
+}
+
+.hexLink2Follow {
+  position: absolute;
+  transform: rotate(180deg);
+  width: 170px;
+  opacity: 0.6;
+  top: calc(var(--btnFollow-top) + 87px);
+  left: calc(var(--btnFollow-left) + 58.5px);
 }
 
 .followBtn {
@@ -872,23 +1051,15 @@ b *::selection {
 
 .btn:hover + #followCircle {
   position: absolute;
-  top: calc(var(--btnFollow-top) - 31px);
-  left: calc(var(--btnFollow-left) + 66px);
+  top: calc(var(--btnFollow-top) - 29px);
+  left: calc(var(--btnFollow-left) + 67.5px);
 }
 
 /* Follow me / Linkedin */
-.hexLink2Follow {
-  position: absolute;
-  transform: rotate(180deg);
-  width: 170px;
-  opacity: 0.6;
-  top: calc(var(--btnFollow-top) + 89px);
-  left: calc(var(--btnFollow-left) + 58px);
-}
 
 .linkedinBtn {
-  top: calc(var(--btnFollow-top) + 147px);
-  left: calc(var(--btnFollow-left) + 22px);
+  top: calc(var(--btnFollow-top) + 149px);
+  left: calc(var(--btnFollow-left) + 23.5px);
 }
 
 .linkedinBtn:hover + .rotation {
@@ -909,7 +1080,7 @@ b *::selection {
 .smallBtn:hover + #linkedinCircle {
   position: absolute;
   top: calc(var(--btnFollow-top) + 123px);
-  left: calc(var(--btnFollow-left) + 67px);
+  left: calc(var(--btnFollow-left) + 67.5px);
 }
 
 .imgLinkedin {
@@ -924,8 +1095,8 @@ b *::selection {
 /* Follow me / GitHub */
 
 .githubBtn {
-  top: calc(var(--btnFollow-top) + 83px);
-  left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
+  top: calc(var(--btnFollow-top) + 85px);
+  left: calc(var(--btnFollow-left) + 134.5px);
 }
 
 .githubBtn:hover + .rotation {
@@ -945,8 +1116,8 @@ b *::selection {
 
 .smallBtn:hover + #githubCircle {
   position: absolute;
-  top: calc(var(--btnFollow-top) + 58px);
-  left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
+  top: calc(var(--btnFollow-top) + 60px);
+  left: calc(var(--btnFollow-left) + 68px + (3 * 37px));
 }
 
 .imgGithub {
@@ -996,8 +1167,8 @@ b *::selection {
 } */
 
 .wppBtn {
-  top: calc(var(--btnFollow-top) + 83px + (2 * 64px));
-  left: calc(var(--btnFollow-left) + 23px + (3 * 37px));
+  top: calc(var(--btnFollow-top) + 213px);
+  left: calc(var(--btnFollow-left) + 134.5px);
 }
 
 .wppBtn:hover + .rotation {
@@ -1026,127 +1197,8 @@ b *::selection {
 
 .smallBtn:hover + #wppCircle {
   position: absolute;
-  top: calc(var(--btnFollow-top) + 55px + (2 * 64px));
-  left: calc(var(--btnFollow-left) + 67px + (3 * 37px));
-}
-
-/* Skills / WebDev */
-.hexLink2Skills {
-  position: absolute;
-  transform: rotate(60deg);
-  width: 170px;
-  opacity: 0.6;
-  top: calc(var(--btnSkills-top) - 166px);
-  left: calc(var(--btnSkills-left) + 52px);
-}
-
-.webBtn {
-  top: calc(var(--btnSkills-top) + 81px - (4 * 64px));
-  left: calc(var(--btnSkills-left) + 23px + (3 * 37px));
-}
-
-.webBtn:hover + .rotation {
-  animation: rotationAnimation 5s linear infinite;
-  font-family: "Russo One", sans-serif;
-  font-weight: 400;
-  color: #f0f0f0;
-  font-size: 15px;
-  user-select: none;
-  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
-}
-
-#webCircle {
-  position: absolute;
-  top: -2000px;
-}
-
-.smallBtn:hover + #webCircle {
-  position: absolute;
-  top: calc(var(--btnSkills-top) + 56px - (4 * 64px));
-  left: calc(var(--btnSkills-left) + 67px + (3 * 37px));
-}
-
-.imgWeb {
-  user-select: none;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Skills / Bioengineering */
-
-.bioBtn {
-  top: calc(var(--btnSkills-top) + 82px - (2 * 64px));
-  left: calc(var(--btnSkills-left) + 23px + (3 * 37px));
-}
-
-.bioBtn:hover + .rotation {
-  animation: rotationAnimation 5s linear infinite;
-  font-family: "Russo One", sans-serif;
-  font-weight: 400;
-  color: #f0f0f0;
-  font-size: 17px;
-  user-select: none;
-  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
-}
-
-#bioCircle {
-  position: absolute;
-  top: -2000px;
-}
-
-.smallBtn:hover + #bioCircle {
-  position: absolute;
-  top: calc(var(--btnSkills-top) + 58px - (2 * 64px));
-  left: calc(var(--btnSkills-left) + 67px + (3 * 37px));
-}
-
-.imgBio {
-  user-select: none;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* Skills / Game Design */
-
-.gameBtn {
-  top: calc(var(--btnSkills-top) + 82px - (3 * 64px));
-  left: calc(var(--btnSkills-left) + 22px + (0 * 37px));
-}
-
-.gameBtn:hover + .rotation {
-  animation: rotationAnimation 5s linear infinite;
-  font-family: "Russo One", sans-serif;
-  font-weight: 400;
-  color: #f0f0f0;
-  font-size: 14px;
-  user-select: none;
-  text-shadow: 0 0 3px #383838, 0 0 3px #383838;
-}
-
-#gameCircle {
-  position: absolute;
-  top: -2000px;
-}
-
-.smallBtn:hover + #gameCircle {
-  position: absolute;
-  top: calc(var(--btnSkills-top) + 57px - (3 * 64px));
-  left: calc(var(--btnSkills-left) + 66px + (0 * 37px));
-}
-
-.imgGame {
-  user-select: none;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: calc(var(--btnFollow-top) + 56px + (2 * 64px));
+  left: calc(var(--btnFollow-left) + 67.5px + (3 * 37px));
 }
 
 /* Projects */
@@ -1157,7 +1209,7 @@ b *::selection {
   width: 170px;
   opacity: 0.6;
   top: calc(var(--btnProjects-top) - 34px);
-  left: calc(var(--btnProjects-left) - 34px + (4 * 37px));
+  left: calc(var(--btnProjects-left) - 34px + (4 * var(--shiftH)));
 }
 
 .hexLink2Projects {
@@ -1166,7 +1218,7 @@ b *::selection {
   width: 170px;
   opacity: 0.6;
   top: calc(var(--btnProjects-top) - 34px);
-  left: calc(var(--btnProjects-left) - 42px - (3 * 37px));
+  left: calc(var(--btnProjects-left) - 39px - (3 * var(--shiftH)));
 }
 
 .projectsBtn {
@@ -1207,8 +1259,8 @@ b *::selection {
 /* Projects / Pj1 */
 
 .pj1Btn {
-  top: calc(var(--btnProjects-top) + 83px - (2 * 64px));
-  left: calc(var(--btnProjects-left) + 21px - (3 * 37px));
+  top: calc(var(--btnProjects-top) + 83px - (2 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 23px - (3 * var(--shiftH)));
 }
 
 .pj1Btn:hover + .rotation {
@@ -1228,8 +1280,8 @@ b *::selection {
 
 .smallBtn:hover + #pj1Circle {
   position: absolute;
-  top: calc(var(--btnProjects-top) + 56px - (2 * 64px));
-  left: calc(var(--btnProjects-left) + 28px - (2 * 37px));
+  top: calc(var(--btnProjects-top) + 56px - (2 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 30px - (2 * var(--shiftH)));
 }
 
 .imgPj1 {
@@ -1244,8 +1296,8 @@ b *::selection {
 /* Projects / Pj2 */
 
 .pj2Btn {
-  top: calc(var(--btnProjects-top) + 83px - (2 * 64px));
-  left: calc(var(--btnProjects-left) + 22px + (3 * 37px));
+  top: calc(var(--btnProjects-top) + 83px - (2 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 23px + (3 * var(--shiftH)));
 }
 
 .pj2Btn:hover + .rotation {
@@ -1265,8 +1317,8 @@ b *::selection {
 
 .smallBtn:hover + #pj2Circle {
   position: absolute;
-  top: calc(var(--btnProjects-top) + 55px - (2 * 64px));
-  left: calc(var(--btnProjects-left) + 29px + (4 * 37px));
+  top: calc(var(--btnProjects-top) + 55px - (2 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 30px + (4 * var(--shiftH)));
 }
 
 .imgPj2 {
@@ -1282,8 +1334,8 @@ b *::selection {
 /* Projects / PI */
 
 .PIBtn {
-  top: calc(var(--btnProjects-top) + 20px + (1 * 64px));
-  left: calc(var(--btnProjects-left) + 22px - (3 * 37px));
+  top: calc(var(--btnProjects-top) + 20px + (1 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 23px - (3 * var(--shiftH)));
 }
 
 .PIBtn:hover + .rotation {
@@ -1303,8 +1355,8 @@ b *::selection {
 
 .smallBtn:hover + #PICircle {
   position: absolute;
-  top: calc(var(--btnProjects-top) + 56px - (0 * 64px));
-  left: calc(var(--btnProjects-left) + 28px - (2 * 37px));
+  top: calc(var(--btnProjects-top) + 56px - (0 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 30px - (2 * var(--shiftH)));
 }
 
 .imgPI {
@@ -1319,8 +1371,8 @@ b *::selection {
 /* Projects / PG */
 
 .PGBtn {
-  top: calc(var(--btnProjects-top) + 84px + (0 * 64px));
-  left: calc(var(--btnProjects-left) + 22px + (3 * 37px));
+  top: calc(var(--btnProjects-top) + 84px + (0 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 23px + (3 * var(--shiftH)));
 }
 
 .PGBtn:hover + .rotation {
@@ -1340,8 +1392,8 @@ b *::selection {
 
 .smallBtn:hover + #PGCircle {
   position: absolute;
-  top: calc(var(--btnProjects-top) + 56px + (0 * 64px));
-  left: calc(var(--btnProjects-left) + 28px + (4 * 37px));
+  top: calc(var(--btnProjects-top) + 56px + (0 * var(--shiftV)));
+  left: calc(var(--btnProjects-left) + 30px + (4 * var(--shiftH)));
 }
 
 .imgPG {
@@ -1361,7 +1413,7 @@ b *::selection {
   width: 170px;
   opacity: 0.6;
   top: calc(var(--btnPubs-top) - 34px);
-  left: calc(var(--btnPubs-left) - 34px + (4 * 37px));
+  left: calc(var(--btnPubs-left) - 34px + (4 * var(--shiftH)));
 }
 
 .hexLink2Pubs {
@@ -1370,7 +1422,7 @@ b *::selection {
   width: 170px;
   opacity: 0.6;
   top: calc(var(--btnPubs-top) - 34px);
-  left: calc(var(--btnPubs-left) - 42px - (3 * 37px));
+  left: calc(var(--btnPubs-left) - 39px - (3 * var(--shiftH)));
 }
 
 .pubsBtn {
@@ -1395,8 +1447,8 @@ b *::selection {
 
 .btn:hover + #pubsCircle {
   position: absolute;
-  top: calc(var(--btnPubs-top) - 35px);
-  left: calc(var(--btnPubs-left) + 66px);
+  top: calc(var(--btnPubs-top) - 33px);
+  left: calc(var(--btnPubs-left) + 68px);
 }
 
 .pubsBtn:hover + .rotation {
@@ -1412,8 +1464,8 @@ b *::selection {
 /* Publications / P1 */
 
 .P1Btn {
-  top: calc(var(--btnPubs-top) + 83px - (2 * 64px));
-  left: calc(var(--btnPubs-left) + 21px - (3 * 37px));
+  top: calc(var(--btnPubs-top) + 83px - (2 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 23px - (3 * var(--shiftH)));
 }
 
 .P1Btn:hover + .rotation {
@@ -1433,8 +1485,8 @@ b *::selection {
 
 .smallBtn:hover + #P1Circle {
   position: absolute;
-  top: calc(var(--btnPubs-top) + 55px - (2 * 64px));
-  left: calc(var(--btnPubs-left) + 28px - (2 * 37px));
+  top: calc(var(--btnPubs-top) + 53px - (2 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 30px - (2 * var(--shiftH)));
 }
 
 .imgP1 {
@@ -1450,8 +1502,8 @@ b *::selection {
 /* Publications / P2 */
 
 .P2Btn {
-  top: calc(var(--btnPubs-top) + 83px - (2 * 64px));
-  left: calc(var(--btnPubs-left) + 22px + (3 * 37px));
+  top: calc(var(--btnPubs-top) + 83px - (2 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 23px + (3 * var(--shiftH)));
 }
 
 .P2Btn:hover + .rotation {
@@ -1471,8 +1523,8 @@ b *::selection {
 
 .smallBtn:hover + #P2Circle {
   position: absolute;
-  top: calc(var(--btnPubs-top) + 55px - (2 * 64px));
-  left: calc(var(--btnPubs-left) + 29px + (4 * 37px));
+  top: calc(var(--btnPubs-top) + 56px - (2 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 30px + (4 * var(--shiftH)));
 }
 
 .imgP2 {
@@ -1488,8 +1540,8 @@ b *::selection {
 /* Publications / P3 */
 
 .P3Btn {
-  top: calc(var(--btnPubs-top) + 20px + (1 * 64px));
-  left: calc(var(--btnPubs-left) + 22px - (3 * 37px));
+  top: calc(var(--btnPubs-top) + 20px + (1 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 23px - (3 * var(--shiftH)));
 }
 
 .P3Btn:hover + .rotation {
@@ -1509,8 +1561,8 @@ b *::selection {
 
 .smallBtn:hover + #P3Circle {
   position: absolute;
-  top: calc(var(--btnPubs-top) + 55px - (0 * 64px));
-  left: calc(var(--btnPubs-left) + 28px - (2 * 37px));
+  top: calc(var(--btnPubs-top) + 55px - (0 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 30px - (2 * var(--shiftH)));
 }
 
 .imgP3 {
@@ -1526,8 +1578,8 @@ b *::selection {
 /* Publications / P4 */
 
 .P4Btn {
-  top: calc(var(--btnPubs-top) + 84px + (0 * 64px));
-  left: calc(var(--btnPubs-left) + 22px + (3 * 37px));
+  top: calc(var(--btnPubs-top) + 84px + (0 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 23px + (3 * var(--shiftH)));
 }
 
 .P4Btn:hover + .rotation {
@@ -1547,8 +1599,8 @@ b *::selection {
 
 .smallBtn:hover + #P4Circle {
   position: absolute;
-  top: calc(var(--btnPubs-top) + 56px + (0 * 64px));
-  left: calc(var(--btnPubs-left) + 28px + (4 * 37px));
+  top: calc(var(--btnPubs-top) + 56px + (0 * var(--shiftV)));
+  left: calc(var(--btnPubs-left) + 30px + (4 * var(--shiftH)));
 }
 
 .imgP4 {
@@ -1564,8 +1616,8 @@ b *::selection {
 /* Oblivion */
 
 .obmBtn {
-  top: var(--btnPubs-top);
-  left: var(--btnPubs-left);
+  top: var(--btnObm-top);
+  left: var(--btnObm-left);
 }
 
 .imgObm {
@@ -1585,8 +1637,8 @@ b *::selection {
 
 .btn:hover + #obmCircle {
   position: absolute;
-  top: calc(var(--btnPubs-top) - 35px);
-  left: calc(var(--btnPubs-left) + 66px);
+  top: calc(var(--btnObm-top) - 34px);
+  left: calc(var(--btnObm-left) + 68px);
 }
 
 .obmBtn:hover + .rotation {
@@ -1599,9 +1651,258 @@ b *::selection {
   text-shadow: 0 0 3px #433333, 0 0 3px #383838;
 }
 
-.rotation {
-  user-select: none;
-  z-index: 15;
-  text-shadow: 0 0 2px black, 0 0 2px black, 0 0 2px black, 0 0 2px black,
-    0 0 2px black !important;
+@media (max-width: 1840px) {
+  :root {
+    --title-left: calc(770px - (4 * var(--shiftH)));
+    --title-top: calc(25px - (0 * var(--shiftV)));
+
+    --btnMenu-left: calc(152px - (1 * var(--shiftH)));
+    --btnMenu-top: calc(410px - (0 * var(--shiftV)));
+
+    --btnProjects-left: calc(var(--title-left) + 456px);
+    --btnPubs-left: calc(var(--title-left) + 456px);
+    --btnObm-left: calc(var(--title-left) + 456px);
+  }
+
+  .bgImg {
+    background-position: calc(var(--bgImg-left) - (1 * var(--shiftH)))
+      var(--bgImg-top);
+  }
+}
+
+@media (max-width: 1810px) {
+  :root {
+    --title-left: calc(770px - (5 * var(--shiftH)));
+    --title-top: calc(25px - (0 * var(--shiftV)));
+
+    --btnMenu-left: calc(152px - (2 * var(--shiftH)));
+    --btnMenu-top: calc(410px - (0 * var(--shiftV)));
+
+    --btnProjects-left: calc(var(--title-left) + 455.5px);
+    --btnPubs-left: calc(var(--title-left) + 455.5px);
+    --btnObm-left: calc(var(--title-left) + 455.5px);
+  }
+
+  .bgImg {
+    background-position: calc(var(--bgImg-left) - (2 * var(--shiftH)))
+      var(--bgImg-top);
+  }
+}
+
+@media (max-width: 1770px) {
+  :root {
+    --title-left: calc(770px - (6 * var(--shiftH)));
+    --title-top: calc(25px - (0 * var(--shiftV)));
+
+    --btnMenu-left: calc(152px - (3 * var(--shiftH)));
+    --btnMenu-top: calc(410px - (0 * var(--shiftV)));
+
+    --btnProjects-left: calc(var(--title-left) + 456px);
+    --btnPubs-left: calc(var(--title-left) + 456px);
+    --btnObm-left: calc(var(--title-left) + 456px);
+  }
+
+  .bgImg {
+    background-position: calc(var(--bgImg-left) - (3 * var(--shiftH)))
+      var(--bgImg-top);
+  }
+}
+
+@media (max-width: 1700px) {
+  :root {
+    --title-left: calc(770px - (7 * var(--shiftH)));
+    --title-top: calc(25px - (0 * var(--shiftV)));
+
+    --btnMenu-left: calc(152px - (3 * var(--shiftH)));
+    --btnMenu-top: calc(410px - (0 * var(--shiftV)));
+
+    --btnProjects-left: calc(var(--title-left) + 455.5px);
+    --btnPubs-left: calc(var(--title-left) + 455.5px);
+    --btnObm-left: calc(var(--title-left) + 455.5px);
+  }
+
+  .bgImg {
+    background-position: calc(var(--bgImg-left) - (3 * var(--shiftH)))
+      var(--bgImg-top);
+  }
+
+  .aboutFrameBio {
+    top: calc(9.5px - (1 * var(--shiftV)));
+    left: calc(-36px - (3 * var(--shiftH)));
+  }
+
+  .aboutFrameBio1 {
+    bottom: calc(14px - (0 * var(--shiftV)));
+    right: calc(-0.5px - (4 * var(--shiftH)));
+  }
+
+  .aboutFrameGame {
+    top: calc(-55px - (0 * var(--shiftV)));
+    left: calc(-184px + (1 * var(--shiftH)));
+  }
+
+  .aboutFrameGame1 {
+    bottom: calc(-114px - (0 * var(--shiftV)));
+    right: calc(-185px + (1 * var(--shiftH)));
+  }
+
+  .aboutFrameWeb {
+    top: calc(10px - (0 * var(--shiftV)));
+    left: calc(-73.5px + (1 * var(--shiftH)));
+  }
+
+  .aboutFrameWeb1 {
+    bottom: calc(-50px - (0 * var(--shiftV)));
+    right: calc(-74px + (1 * var(--shiftH)));
+  }
+
+  .aboutFrame {
+    top: calc(81.5px - (0 * var(--shiftV)));
+    left: calc(0.5px - (1 * var(--shiftH)));
+  }
+
+  .aboutFrame1 {
+    bottom: calc(-122px - (0 * var(--shiftV)));
+    right: calc(-0.5px - (1 * var(--shiftH)));
+  }
+}
+
+@media (max-width: 1660px) {
+  :root {
+    --title-left: calc(770px - (9 * var(--shiftH)));
+    --title-top: calc(25px - (0 * var(--shiftV)));
+
+    --btnMenu-left: calc(152px - (3 * var(--shiftH)));
+    --btnMenu-top: calc(410px - (0 * var(--shiftV)));
+
+    --btnProjects-left: calc(var(--title-left) + 455.5px);
+    --btnPubs-left: calc(var(--title-left) + 455.5px);
+    --btnObm-left: calc(var(--title-left) + 455.5px);
+  }
+
+  .bgImg {
+    background-position: calc(var(--bgImg-left) - (3 * var(--shiftH)))
+      var(--bgImg-top);
+  }
+
+  .aboutBio {
+    top: 30px;
+    font-size: 26px;
+    width: 800px;
+  }
+  .aboutFrameBio {
+    top: calc(9.5px - (1 * var(--shiftV)));
+    left: calc(-36px - (1 * var(--shiftH)));
+  }
+  .aboutFrameBio1 {
+    bottom: calc(14px - (2 * var(--shiftV)));
+    right: calc(-0.5px - (2 * var(--shiftH)));
+  }
+
+  .aboutGame {
+    font-size: 25px;
+    width: 800px;
+  }
+  .aboutFrameGame {
+    top: calc(-55px - (0 * var(--shiftV)));
+    left: calc(-184px + (3 * var(--shiftH)));
+  }
+  .aboutFrameGame1 {
+    bottom: calc(-114px - (0 * var(--shiftV)));
+    right: calc(-185px + (3 * var(--shiftH)));
+  }
+
+  .aboutFrameWeb {
+    top: calc(10px - (0 * var(--shiftV)));
+    left: calc(-73.5px + (1 * var(--shiftH)));
+  }
+  .aboutFrameWeb1 {
+    bottom: calc(-50px - (0 * var(--shiftV)));
+    right: calc(-74px + (1 * var(--shiftH)));
+  }
+
+  .aboutFrame {
+    top: calc(81.5px - (0 * var(--shiftV)));
+    left: calc(0.5px - (1 * var(--shiftH)));
+  }
+  .aboutFrame1 {
+    bottom: calc(-122px - (0 * var(--shiftV)));
+    right: calc(-0.5px - (1 * var(--shiftH)));
+  }
+}
+
+@media (max-width: 1660px) and (max-height: 760px) {
+  :root {
+    --title-left: calc(770px - (9 * var(--shiftH)));
+    --title-top: calc(0px - (0 * var(--shiftV)));
+
+    --btnMenu-left: calc(152px - (3 * var(--shiftH)));
+    --btnMenu-top: calc(385px - (1 * var(--shiftV)));
+
+    --btnProjects-left: calc(var(--title-left) + 455.5px);
+    --btnPubs-left: calc(var(--title-left) + 455.5px);
+    --btnObm-left: calc(var(--title-left) + 455.5px);
+  }
+
+  .bgImg {
+    background-position: calc(var(--bgImg-left) - (3 * var(--shiftH)))
+      calc(var(--bgImg-top) - 25px - (1 * var(--shiftV)));
+  }
+
+  .aboutBio {
+    top: 30px;
+    font-size: 26px;
+    width: 800px;
+  }
+  .aboutFrameBio {
+    top: calc(9.5px - (1 * var(--shiftV)));
+    left: calc(-36px - (1 * var(--shiftH)));
+  }
+  .aboutFrameBio1 {
+    bottom: calc(14px - (2 * var(--shiftV)));
+    right: calc(-0.5px - (2 * var(--shiftH)));
+  }
+
+  .aboutGame {
+    font-size: 25px;
+    width: 800px;
+  }
+  .aboutFrameGame {
+    top: calc(-55px - (0 * var(--shiftV)));
+    left: calc(-184px + (3 * var(--shiftH)));
+  }
+  .aboutFrameGame1 {
+    bottom: calc(-114px - (0 * var(--shiftV)));
+    right: calc(-185px + (3 * var(--shiftH)));
+  }
+
+  .aboutFrameWeb {
+    top: calc(10px - (0 * var(--shiftV)));
+    left: calc(-73.5px + (1 * var(--shiftH)));
+  }
+  .aboutFrameWeb1 {
+    bottom: calc(-50px - (0 * var(--shiftV)));
+    right: calc(-74px + (1 * var(--shiftH)));
+  }
+
+  .aboutFrame {
+    top: calc(81.5px - (0 * var(--shiftV)));
+    left: calc(0.5px - (1 * var(--shiftH)));
+  }
+  .aboutFrame1 {
+    bottom: calc(-122px - (0 * var(--shiftV)));
+    right: calc(-0.5px - (1 * var(--shiftH)));
+  }
+
+  .title {
+    font-size: 90px;
+    left: calc(var(--title-left) + 52px);
+    top: calc(var(--title-top) + 39px);
+  }
+
+  .gameSubtitle,
+  .webSubtitle,
+  .bioSubtitle {
+    top: calc(var(--title-top) + 127px);
+  }
 }
