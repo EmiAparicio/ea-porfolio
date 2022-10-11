@@ -31,7 +31,7 @@ import paper from "./paper.svg";
 
 const copiedText = { bool: false };
 const timeOut = { id: null };
-const invasionTours = "https://youtu.be/LpUk5ruzUlI";
+const invasionTours = "https://youtu.be/fdYPMU1pSoU";
 const starCards = "https://youtu.be/KbUT9VvM3X8";
 
 export default function LandingPage() {
