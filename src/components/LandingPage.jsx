@@ -31,8 +31,8 @@ import paper from "./paper.svg";
 
 const copiedText = { bool: false };
 const timeOut = { id: null };
-const invasionTours = "";
-const starCards = "";
+const invasionTours = "https://youtu.be/LpUk5ruzUlI";
+const starCards = "https://youtu.be/KbUT9VvM3X8";
 
 export default function LandingPage() {
   dotenv.config();
