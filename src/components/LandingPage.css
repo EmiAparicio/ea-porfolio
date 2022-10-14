@@ -3,68 +3,12 @@
 /* 1889x1028 */
 /* --bg-size-factor: calc(1); */
 
-/* 
-3840 - 2160 1857 / 1,78 2.07
-3440 - 1440 1238 / 2,39 2.78
-2560 - 1440 1238 / 1,78 2.07
-1920 - 1080 937 / 1,78 2.07
-1660 - 1080 937 / 1,54 1.77
-1625 - 900 774 / 1,81 2.1
-1400 - 900 774 / 1,56 1.81
-1400 - 800 688 / 1,75 2.04
-1382 - 900 774 / 1,54 1.79
-1366 - 768 660 / 1,78 2.07
-1280 - 1024 880 / 1,25 1.46
-1280 - 800 688 / 1,6 1.86
-1280 - 720 619 / 1,78 2.07
-1024 - 600 516 / 1,71 1.99
-1024 - 768 660 / 1,33 1.55
-*/
-
-@media (width > calc(100vh * 2.08)) {
-    :root {
-      --bg-size-factor: calc(200vh * (508 / 876875) - (82737px / 876875));
-    }
-}
-
-@media (width <= calc(100vh * 2.08)) and (width >= calc(100vh * 1.76)) {
-  @media (width >= 1700px) {
-    :root {
-      --bg-size-factor: calc((100vw - (100vw - 1700px) / 200 * 1.5) * (508 / 876875) - (82737px / 876875));
-    }
-  }
-
-  @media (width < 1700px) {
-    :root {
-      --bg-size-factor: calc(108.5vw * (508 / 876875) - (82737px / 876875));
-    }
-  }
-
-  @media (width < 1500px) {
-    :root {
-      --bg-size-factor: calc(110vw * (508 / 876875) - (82737px / 876875));
-    }
-  }
-
-  @media (width < 1300px) {
-    :root {
-      --bg-size-factor: calc(112vw * (508 / 876875) - (82737px / 876875));
-    }
-  }
-
-  @media (width < 1200px) {
-    :root {
-      --bg-size-factor: calc(117vw * (508 / 876875) - (82737px / 876875));
-    }
-  }
-}
-
 :root {
   --shiftH: calc(37 * var(--bg-size-factor));
   --shiftV: calc(64.09 * var(--bg-size-factor));
 
   --leftMargin: calc((100vw - 3402 * var(--bg-size-factor) * 0.5115) / 2);
-  --topMargin: calc((100vh - 2000 * var(--bg-size-factor) * 0.4685) / 2);
+  --topMargin: calc((100vh - 2000 * var(--bg-size-factor) * 0.4685) / 2 + 2vh);
 
   --bgImg-left: calc(
     var(--shiftH) * -5 - 4 * var(--bg-size-factor) + var(--leftMargin)
@@ -123,6 +67,104 @@
   --btnS-width: calc(87.7 * var(--bg-size-factor));
   --btnS-height: calc(75.7 * var(--bg-size-factor));
   --btnS-raise: calc(23 * var(--bg-size-factor));
+}
+
+/* 
+3840 - 2160 1857 / 1,78 2.07
+3440 - 1440 1238 / 2,39 2.78
+2560 - 1440 1238 / 1,78 2.07
+1920 - 1080 937 / 1,78 2.07
+1660 - 1080 937 / 1,54 1.77
+1625 - 900 774 / 1,81 2.1
+1400 - 900 774 / 1,56 1.81
+1400 - 800 688 / 1,75 2.04
+1382 - 900 774 / 1,54 1.79
+1366 - 768 660 / 1,78 2.07
+1280 - 1024 880 / 1,25 1.46
+1280 - 800 688 / 1,6 1.86
+1280 - 720 619 / 1,78 2.07
+1024 - 600 516 / 1,71 1.99
+1024 - 768 660 / 1,33 1.55
+
+1024 - 768 660 / 1,33 1.55
+768 - 1366
+800 - 1280
+720 - 1280
+600 - 1024
+603 - 966
+
+414 - 896
+390 - 844
+414 - 736
+375 - 667
+320 - 660
+360 - 640
+384 - 598
+360 - 598
+320 - 568
+320 - 480
+*/
+
+@media (width > calc(100vh * 2.08)) {
+  :root {
+    --bg-size-factor: calc(200vh * (508 / 876875) - (82737px / 876875));
+  }
+}
+
+@media (width < calc(100vh * 1.76)) {
+  :root {
+    --bg-size-factor: calc(100vw * (508 / 876875) - (82737px / 876875));
+  }
+}
+
+@media (width <= calc(100vh * 2.08)) and (width >= calc(100vh * 1.76)) {
+  @media (width >= 1700px) {
+    :root {
+      --bg-size-factor: calc(
+        (100vw - (100vw - 1700px) / 200 * 1.5) * (508 / 876875) -
+          (82737px / 876875)
+      );
+    }
+  }
+
+  @media (width < 1700px) {
+    :root {
+      --bg-size-factor: calc(108.5vw * (508 / 876875) - (82737px / 876875));
+    }
+  }
+
+  @media (width < 1500px) {
+    :root {
+      --bg-size-factor: calc(110vw * (508 / 876875) - (82737px / 876875));
+    }
+  }
+
+  @media (width < 1300px) {
+    :root {
+      --bg-size-factor: calc(112vw * (508 / 876875) - (82737px / 876875));
+    }
+  }
+
+  @media (width < 1200px) {
+    :root {
+      --bg-size-factor: calc(117vw * (508 / 876875) - (82737px / 876875));
+    }
+  }
+
+  @media (width < 1100px) {
+    :root {
+      --bg-size-factor: calc(121vw * (508 / 876875) - (82737px / 876875));
+
+      --leftMargin: calc(
+        (100vw + var(--shiftH) - 3402 * var(--bg-size-factor) * 0.5115) / 2
+      );
+
+      --title-left: calc(
+        (661.5 * var(--bg-size-factor)) - (5 * var(--shiftH)) +
+          var(--leftMargin)
+      );
+    }
+  }
 }
 
 .bg {
