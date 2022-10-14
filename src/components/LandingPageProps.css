@@ -1,0 +1,398 @@
+:root {
+  --bg-color: #09a27a;
+  /* --bg-color: rgb(255, 107, 107); */
+}
+
+.bg {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  user-select: none;
+  cursor: none;
+
+  background-color: var(--bg-color);
+}
+
+.bgImg {
+  position: absolute;
+  user-select: none;
+  background-image: url("hexBG2.svg");
+
+  z-index: 5;
+}
+
+.title {
+  position: absolute;
+  display: block;
+  user-select: none;
+  font-family: "Russo One", sans-serif;
+
+  color: #383838;
+  z-index: 10;
+  transition: text-shadow 0.2s linear, color 0.2s linear;
+}
+
+.title:hover {
+  color: #f0f0f0;
+}
+
+.webSubtitle,
+.gameSubtitle,
+.bioSubtitle {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  font-family: "Russo One", sans-serif;
+
+  color: #f0f0f0;
+  z-index: 10;
+}
+
+.aboutContainer,
+.aboutContainerWeb,
+.aboutContainerBio,
+.aboutContainerGame,
+.copied {
+  position: absolute;
+}
+
+.aboutRel,
+b {
+  position: relative;
+}
+
+.about,
+.aboutWeb,
+.aboutBio,
+.aboutGame {
+  position: absolute;
+  text-align: center;
+  user-select: text;
+  font-family: "Russo One", sans-serif;
+
+  color: #f0f0f0;
+  z-index: 5;
+}
+
+.mail:hover {
+  color: #383838;
+}
+
+.about::-moz-selection,
+.about::selection,
+.aboutGame::-moz-selection,
+.aboutWeb::-moz-selection,
+.aboutBio::-moz-selection,
+.aboutGame::selection,
+.aboutWeb::selection,
+.aboutBio::selection,
+.aboutGame *::-moz-selection,
+.aboutWeb *::-moz-selection,
+.aboutBio *::-moz-selection,
+.aboutGame *::selection,
+.aboutWeb *::selection,
+.aboutBio *::selection,
+.mailText::-moz-selection,
+.mailText::selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+
+br {
+  user-select: none;
+}
+
+b::-moz-selection,
+b::selection,
+b *::-moz-selection,
+b *::selection {
+  color: #383838 !important;
+  background-color: rgba(6, 124, 87, 0.8) !important;
+}
+
+.aboutFrame,
+.aboutFrameWeb,
+.aboutFrameBio,
+.aboutFrameGame {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+
+  z-index: 5;
+}
+
+.aboutFrame1,
+.aboutFrameWeb1,
+.aboutFrameBio1,
+.aboutFrameGame1 {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+
+  transform: rotate(180deg);
+  z-index: 5;
+}
+
+.aboutWeb a,
+.aboutBio a {
+  text-decoration: none;
+  cursor: none;
+  color: inherit;
+}
+
+.pointer {
+  position: absolute;
+  pointer-events: none;
+
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  z-index: 20;
+}
+
+.copiedPointer {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+
+  background-color: #383838;
+  z-index: 20;
+}
+
+.invisibleText,
+#btnCircleHidden {
+  position: absolute;
+  visibility: hidden;
+}
+
+.copiedText {
+  color: #f0f0f0;
+  background-color: #383838;
+}
+
+.cursor {
+  position: fixed;
+  mix-blend-mode: color-burn;
+
+  background: radial-gradient(
+    circle,
+    rgba(9, 162, 122, 0.1) 7%,
+    rgba(9, 162, 122, 0.05) 50%,
+    rgba(9, 162, 122, 0.02) 100%
+  );
+  border-radius: 50%;
+}
+
+.lighter {
+  position: absolute;
+  user-select: none;
+  mix-blend-mode: hard-light;
+
+  background: linear-gradient(
+    45deg,
+    rgba(9, 162, 122, 0.02) 0%,
+    rgba(9, 162, 122, 0.2) 45%,
+    rgba(9, 162, 122, 1) 50%,
+    rgba(9, 162, 122, 0.2) 55%,
+    rgba(9, 162, 122, 0.02) 100%
+  );
+}
+
+.lighter2 {
+  position: absolute;
+  user-select: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 188, 0.1) 7%,
+    rgba(0, 255, 188, 0.05) 50%,
+    rgba(0, 255, 188, 0.02) 100%
+  );
+  border-radius: 50%;
+}
+
+.lighter3 {
+  position: absolute;
+  user-select: none;
+
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 188, 0.15) 7%,
+    rgba(0, 255, 188, 0.07) 50%,
+    rgba(0, 255, 188, 0.03) 100%
+  );
+  border-radius: 50%;
+}
+
+.rotation {
+  user-select: none;
+  z-index: 15;
+}
+
+.btn,
+.btnActive,
+.smallBtn,
+.smallBtnActive {
+  position: absolute;
+  user-select: none;
+  cursor: none;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  z-index: 10;
+}
+
+.btn,
+.smallBtn {
+  background-image: url("./button.svg");
+}
+
+.btnActive,
+.smallBtnActive {
+  background-image: url("./buttonActive.svg");
+}
+
+.btn:hover,
+.btnActive:hover,
+.smallBtn:hover,
+.smallBtnActive:hover {
+  cursor: none;
+}
+
+@keyframes rotationAnimation {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: -360deg;
+  }
+}
+
+#CVCircle,
+#menuCircle,
+#skillsCircle,
+#followCircle,
+#webCircle,
+#bioCircle,
+#gameCircle,
+#linkedinCircle,
+#githubCircle,
+#wppCircle,
+#projectsCircle,
+#pj1Circle,
+#pj2Circle,
+#PICircle,
+#PGCircle,
+#pubsCircle,
+#P1Circle,
+#P2Circle,
+#P3Circle,
+#P4Circle,
+#obmCircle {
+  position: absolute;
+  top: -2000px;
+}
+
+.btn:hover + .rotation,
+.skillsBtn:hover + #skillsCircle,
+.followBtn:hover + #followCircle,
+.CVBtnDefault:hover + #CVCircle,
+.CVBtnReplace:hover + #CVCircle,
+.webBtn:hover + #webCircle,
+.bioBtn:hover + #bioCircle,
+.gameBtn:hover + #gameCircle,
+.linkedinBtn:hover + #linkedinCircle,
+.githubBtn:hover + #githubCircle,
+.wppBtn:hover + #wppCircle,
+.projectsBtn:hover + #projectsCircle,
+.pj1Btn:hover + #pj1Circle,
+.pj2Btn:hover + #pj2Circle,
+.PIBtn:hover + #PICircle,
+.PGBtn:hover + #PGCircle,
+.pubsBtn:hover + #pubsCircle,
+.P1Btn:hover + #P1Circle,
+.P2Btn:hover + #P2Circle,
+.P3Btn:hover + #P3Circle,
+.P4Btn:hover + #P4Circle,
+.obmBtn:hover + #obmCircle {
+  user-select: none;
+  font-family: "Russo One", sans-serif;
+
+  color: #f0f0f0;
+  animation: rotationAnimation 5s linear infinite;
+}
+
+.imgContainer {
+  position: relative;
+  user-select: none;
+}
+
+.imgCV,
+.imgMenu,
+.imgSkills,
+.imgWeb,
+.imgBio,
+.imgGame,
+.imgFollow,
+.imgLinkedin,
+.imgGithub,
+.imgWpp,
+.imgProjects,
+.imgPj1,
+.imgPj2,
+.imgPI,
+.imgPG,
+.imgPubs,
+.imgP1,
+.imgP2,
+.imgP3,
+.imgP4,
+.imgObm {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.hexLink1Skills,
+.hexLink1Follow,
+.hexLink2Skills,
+.hexLink2Follow,
+.hexLink1Projects,
+.hexLink2Projects,
+.hexLink1Pubs,
+.hexLink2Pubs {
+  position: absolute;
+
+  opacity: 0.6;
+}
+
+.hexLink1Follow {
+  transform: rotate(-60deg);
+}
+
+.hexLink2Follow {
+  transform: rotate(180deg);
+}
+
+.hexLink2Skills {
+  transform: rotate(60deg);
+}
+
+.hexLink1Projects,
+.hexLink1Pubs {
+  /* transform: rotate(120deg); */
+}
+
+.hexLink2Projects,
+.hexLink2Pubs {
+  transform: rotate(-120deg) scaleX(-1);
+}
