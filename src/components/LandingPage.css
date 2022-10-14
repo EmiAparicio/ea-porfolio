@@ -1,165 +1,129 @@
+/* 3292x1846 */
+/* --bg-size-factor: calc(1.8128); */
+/* 1889x1028 */
+/* --bg-size-factor: calc(1); */
+
 /* 
-3840 - 2160 1,7777777777777777777777777777778
-3440 - 1440 2,3888888888888888888888888888889
-2560 - 1440 1,7777777777777777777777777777778
-1920 - 1080 1,7777777777777777777777777777778
-1660 - 1080 1,537037037037037037037037037037
-1625 - 900 1,8055555555555555555555555555556
-1400 - 900 1,5555555555555555555555555555556
-1400 - 800 1,75
-1382 - 900 1,5355555555555555555555555555556
-1366 - 768 1,7786458333333333333333333333333
-1280 - 1024 1,25
-1280 - 800 1,6
-1280 - 720 1,7777777777777777777777777777778
-1024 - 600 1,7066666666666666666666666666667
-1024 - 768 1,3333333333333333333333333333333
+3840 - 2160 1857 / 1,78 2.07
+3440 - 1440 1238 / 2,39 2.78
+2560 - 1440 1238 / 1,78 2.07
+1920 - 1080 937 / 1,78 2.07
+1660 - 1080 937 / 1,54 1.77
+1625 - 900 774 / 1,81 2.1
+1400 - 900 774 / 1,56 1.81
+1400 - 800 688 / 1,75 2.04
+1382 - 900 774 / 1,54 1.79
+1366 - 768 660 / 1,78 2.07
+1280 - 1024 880 / 1,25 1.46
+1280 - 800 688 / 1,6 1.86
+1280 - 720 619 / 1,78 2.07
+1024 - 600 516 / 1,71 1.99
+1024 - 768 660 / 1,33 1.55
 */
 
-/* @media (1740px <= width <= 1963px) and (937px <= height <= 1115px) {
-  :root {
-    --bg-size-factor: calc(1);
+@media (width > calc(100vh * 2.08)) {
+    :root {
+      --bg-size-factor: calc(200vh * (508 / 876875) - (82737px / 876875));
+    }
+}
 
-    --shiftH: calc(37 * var(--bg-size-factor));
-    --shiftV: calc(64.09 * var(--bg-size-factor));
-
-    --leftMargin: calc(
-      (
-          100vw - 3402 * var(--bg-size-factor) *
-            0.51146384479717813051146384479718
-        ) / 2
-    );
-    --topMargin: calc((100vh - 2000 * var(--bg-size-factor) * 0.4685) / 2);
-
-    --bgImg-left: calc(
-      var(--shiftH) * -5 - 4 * var(--bg-size-factor) + var(--leftMargin)
-    );
-    --bgImg-top: calc(
-      var(--shiftV) * -4 - 44.5 * var(--bg-size-factor) + var(--topMargin)
-    );
-
-    --title-left: calc(
-      (661.5 * var(--bg-size-factor)) - (3 * var(--shiftH)) + var(--leftMargin)
-    );
-    --title-top: calc(
-      (26 * var(--bg-size-factor)) - (0 * var(--shiftV)) + var(--topMargin)
-    );
-
-    --btnMenu-left: calc(
-      (6.5 * var(--bg-size-factor)) + (1 * var(--shiftH)) + var(--leftMargin)
-    );
-    --btnMenu-top: calc(
-      (410 * var(--bg-size-factor)) - (0 * var(--shiftV)) + var(--topMargin)
-    );
-
-    --btnCVDefault-top: calc(
-      var(--title-top) + (661 * var(--bg-size-factor)) - (0 * var(--shiftV))
-    );
-    --btnCVDefault-left: calc(
-      var(--title-left) + (478.5 * var(--bg-size-factor)) - (0 * var(--shiftH))
-    );
-
-    --btnSkills-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) - 0px);
-    --btnSkills-top: calc(var(--btnMenu-top) - (2 * var(--shiftV)) + 0px);
-
-    --btnFollow-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) + 0px);
-    --btnFollow-top: calc(var(--btnMenu-top) + (2 * var(--shiftV)) + 0px);
-
-    --btnProjects-top: calc(var(--title-top) + (705 * var(--bg-size-factor)));
-    --btnProjects-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
-    --btnPubs-top: calc(var(--title-top) + (705 * var(--bg-size-factor)));
-    --btnPubs-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
-    --btnObm-top: calc(var(--title-top) + (705 * var(--bg-size-factor)));
-    --btnObm-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
-
-    --titleShadow: calc(5 * var(--bg-size-factor));
-    --textShadow: calc(3 * var(--bg-size-factor));
-    --rotationShadow: calc(2 * var(--bg-size-factor));
-    --btnShadow: calc(1 * var(--bg-size-factor));
-
-    --btn-width: calc(134.5 * var(--bg-size-factor));
-    --btn-height: calc(116.9 * var(--bg-size-factor));
-    --btn-raise: calc(34.2 * var(--bg-size-factor));
-
-    --btnS-width: calc(87.7 * var(--bg-size-factor));
-    --btnS-height: calc(75.7 * var(--bg-size-factor));
-    --btnS-raise: calc(23 * var(--bg-size-factor));
+@media (width <= calc(100vh * 2.08)) and (width >= calc(100vh * 1.76)) {
+  @media (width >= 1700px) {
+    :root {
+      --bg-size-factor: calc((100vw - (100vw - 1700px) / 200 * 1.5) * (508 / 876875) - (82737px / 876875));
+    }
   }
-} */
 
-/* @media (width >= calc(100vh * 0.86 * 1.78)) { */
-  :root {
-    /* 3292x1846 */
-    --bg-size-factor: calc(1.8128);
-    /* 1889x1028 */
-    --bg-size-factor: calc(100vw * (508 / 876875) - (82737px / 876875));
-
-    --shiftH: calc(37 * var(--bg-size-factor));
-    --shiftV: calc(64.09 * var(--bg-size-factor));
-
-    --leftMargin: calc(
-      (
-          100vw - 3402 * var(--bg-size-factor) *
-            0.51146384479717813051146384479718
-        ) / 2
-    );
-    --topMargin: calc((100vh - 2000 * var(--bg-size-factor) * 0.4685) / 2);
-
-    --bgImg-left: calc(
-      var(--shiftH) * -5 - 4 * var(--bg-size-factor) + var(--leftMargin)
-    );
-    --bgImg-top: calc(
-      var(--shiftV) * -4 - 44.5 * var(--bg-size-factor) + var(--topMargin)
-    );
-
-    --title-left: calc(
-      (661.5 * var(--bg-size-factor)) - (3 * var(--shiftH)) + var(--leftMargin)
-    );
-    --title-top: calc(
-      (26 * var(--bg-size-factor)) - (0 * var(--shiftV)) + var(--topMargin)
-    );
-
-    --btnMenu-left: calc(
-      (6.5 * var(--bg-size-factor)) + (1 * var(--shiftH)) + var(--leftMargin)
-    );
-    --btnMenu-top: calc(
-      (410 * var(--bg-size-factor)) - (0 * var(--shiftV)) + var(--topMargin)
-    );
-
-    --btnCVDefault-top: calc(
-      var(--title-top) + (661 * var(--bg-size-factor)) - (0 * var(--shiftV))
-    );
-    --btnCVDefault-left: calc(
-      var(--title-left) + (479 * var(--bg-size-factor)) - (0 * var(--shiftH))
-    );
-
-    --btnSkills-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) - 0px);
-    --btnSkills-top: calc(var(--btnMenu-top) - (2 * var(--shiftV)) + 0px);
-
-    --btnFollow-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) + 0px);
-    --btnFollow-top: calc(var(--btnMenu-top) + (2 * var(--shiftV)) + 0px);
-
-    --btnProjects-top: calc(var(--title-top) + (705 * var(--bg-size-factor)));
-    --btnProjects-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
-    --btnPubs-top: calc(var(--title-top) + (705 * var(--bg-size-factor)));
-    --btnPubs-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
-    --btnObm-top: calc(var(--title-top) + (705 * var(--bg-size-factor)));
-    --btnObm-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
-
-    --titleShadow: calc(5 * var(--bg-size-factor));
-    --textShadow: calc(3 * var(--bg-size-factor));
-    --rotationShadow: calc(2 * var(--bg-size-factor));
-    --btnShadow: calc(1 * var(--bg-size-factor));
-
-    --btn-width: calc(134.5 * var(--bg-size-factor));
-    --btn-height: calc(116.9 * var(--bg-size-factor));
-    --btn-raise: calc(34.2 * var(--bg-size-factor));
-
-    --btnS-width: calc(87.7 * var(--bg-size-factor));
-    --btnS-height: calc(75.7 * var(--bg-size-factor));
-    --btnS-raise: calc(23 * var(--bg-size-factor));
+  @media (width < 1700px) {
+    :root {
+      --bg-size-factor: calc(108.5vw * (508 / 876875) - (82737px / 876875));
+    }
   }
-/* } */
+
+  @media (width < 1500px) {
+    :root {
+      --bg-size-factor: calc(110vw * (508 / 876875) - (82737px / 876875));
+    }
+  }
+
+  @media (width < 1300px) {
+    :root {
+      --bg-size-factor: calc(112vw * (508 / 876875) - (82737px / 876875));
+    }
+  }
+
+  @media (width < 1200px) {
+    :root {
+      --bg-size-factor: calc(117vw * (508 / 876875) - (82737px / 876875));
+    }
+  }
+}
+
+:root {
+  --shiftH: calc(37 * var(--bg-size-factor));
+  --shiftV: calc(64.09 * var(--bg-size-factor));
+
+  --leftMargin: calc((100vw - 3402 * var(--bg-size-factor) * 0.5115) / 2);
+  --topMargin: calc((100vh - 2000 * var(--bg-size-factor) * 0.4685) / 2);
+
+  --bgImg-left: calc(
+    var(--shiftH) * -5 - 4 * var(--bg-size-factor) + var(--leftMargin)
+  );
+  --bgImg-top: calc(
+    var(--shiftV) * -4 - 44.5 * var(--bg-size-factor) + var(--topMargin)
+  );
+
+  --title-left: calc(
+    (661.5 * var(--bg-size-factor)) - (3 * var(--shiftH)) + var(--leftMargin)
+  );
+  --title-top: calc(
+    (26 * var(--bg-size-factor)) - (0 * var(--shiftV)) + var(--topMargin)
+  );
+
+  --btnMenu-left: calc(
+    (6.5 * var(--bg-size-factor)) + (1 * var(--shiftH)) + var(--leftMargin)
+  );
+  --btnMenu-top: calc(
+    (410 * var(--bg-size-factor)) - (0 * var(--shiftV)) + var(--topMargin)
+  );
+
+  --btnCVDefault-top: calc(
+    var(--title-top) + (661 * var(--bg-size-factor)) - (0 * var(--shiftV))
+  );
+  --btnCVDefault-left: calc(
+    var(--title-left) + (479 * var(--bg-size-factor)) - (0 * var(--shiftH))
+  );
+
+  --btnSkills-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) - 0px);
+  --btnSkills-top: calc(var(--btnMenu-top) - (2 * var(--shiftV)) + 0px);
+
+  --btnFollow-left: calc(var(--btnMenu-left) + (2 * var(--shiftH)) + 0px);
+  --btnFollow-top: calc(var(--btnMenu-top) + (2 * var(--shiftV)) + 0px);
+
+  --btnProjects-top: calc(
+    var(--title-top) + (705 * var(--bg-size-factor)) - (1 * var(--shiftV))
+  );
+  --btnProjects-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
+  --btnPubs-top: calc(
+    var(--title-top) + (705 * var(--bg-size-factor)) - (1 * var(--shiftV))
+  );
+  --btnPubs-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
+  --btnObm-top: calc(var(--title-top) + (705 * var(--bg-size-factor)));
+  --btnObm-left: calc(var(--title-left) + (456 * var(--bg-size-factor)));
+
+  --titleShadow: calc(5 * var(--bg-size-factor));
+  --textShadow: calc(3 * var(--bg-size-factor));
+  --rotationShadow: calc(2 * var(--bg-size-factor));
+  --btnShadow: calc(1 * var(--bg-size-factor));
+
+  --btn-width: calc(134.5 * var(--bg-size-factor));
+  --btn-height: calc(116.9 * var(--bg-size-factor));
+  --btn-raise: calc(34.2 * var(--bg-size-factor));
+
+  --btnS-width: calc(87.7 * var(--bg-size-factor));
+  --btnS-height: calc(75.7 * var(--bg-size-factor));
+  --btnS-raise: calc(23 * var(--bg-size-factor));
+}
 
 .bg {
   width: 100%;
@@ -263,7 +227,7 @@
   text-shadow: 0 0 var(--textShadow) #383838;
 
   width: calc(800 * var(--bg-size-factor));
-  top: calc(66 * var(--bg-size-factor));
+  top: calc(4 * var(--bg-size-factor));
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -275,7 +239,7 @@
 
   width: calc(950 * var(--bg-size-factor));
 
-  top: 0px;
+  top: calc(var(--bg-size-factor) * -16);
   left: 50%;
   transform: translate(-50%, 0);
 }
@@ -354,13 +318,13 @@ b *::selection {
 }
 
 .aboutFrameWeb {
-  top: calc(10 * var(--bg-size-factor));
-  left: calc(-73.5 * var(--bg-size-factor));
+  top: calc(10 * var(--bg-size-factor) - (1 * var(--shiftV)));
+  left: calc(-73.5 * var(--bg-size-factor) - (1 * var(--shiftH)));
 }
 
 .aboutFrameWeb1 {
-  bottom: calc(-50 * var(--bg-size-factor));
-  right: calc(-74 * var(--bg-size-factor));
+  bottom: calc(-50 * var(--bg-size-factor) + (1 * var(--shiftV)));
+  right: calc(-74 * var(--bg-size-factor) - (1 * var(--shiftH)));
 }
 
 .aboutFrameBio {
