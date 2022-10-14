@@ -389,7 +389,7 @@ b *::selection {
 
 .hexLink1Projects,
 .hexLink1Pubs {
-  /* transform: rotate(120deg); */
+  transform: rotate(120deg);
 }
 
 .hexLink2Projects,
