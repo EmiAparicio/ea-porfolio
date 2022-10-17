@@ -1,5 +1,5 @@
-import "./LandingPage.css";
 import "./LandingPageProps.css";
+import "./LandingPage.css";
 // import nodemailer from "nodemailer";
 import { useEffect, useState } from "react";
 import CircleType from "circletype";

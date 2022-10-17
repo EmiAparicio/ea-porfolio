@@ -16,7 +16,6 @@
 .bgImg {
   position: absolute;
   user-select: none;
-  background-image: url("hexBG2.svg");
 
   z-index: 5;
 }
@@ -373,18 +372,6 @@ b *::selection {
   position: absolute;
 
   opacity: 0.6;
-}
-
-.hexLink1Follow {
-  transform: rotate(-60deg);
-}
-
-.hexLink2Follow {
-  transform: rotate(180deg);
-}
-
-.hexLink2Skills {
-  transform: rotate(60deg);
 }
 
 .hexLink1Projects,
