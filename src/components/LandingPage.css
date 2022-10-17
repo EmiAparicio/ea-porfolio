@@ -1911,38 +1911,35 @@ b *::selection {
 
   @media (height < 880px) {
     :root {
-      --bg-size-factor: calc(165vh * (508 / 876875) - (82737px / 876875));
+      --bg-size-factor: calc(185vh * (508 / 876875) - (82737px / 876875));
 
       --shiftH: calc(37 * var(--bg-size-factor));
       --shiftV: calc(64.09 * var(--bg-size-factor));
 
-      --leftMargin: calc((100vw - 3402 * var(--bg-size-factor) * 0.347) / 2);
+      --leftMargin: calc((100vw - 3402 * var(--bg-size-factor) * 0.369) / 2);
       --topMargin: calc(
-        (100vh - 2000 * var(--bg-size-factor) * 0.4685) / 2 + 2vh
+        (100vh - 2000 * var(--bg-size-factor) * 0.47) / 2 + 2vh
       );
 
       --bgImg-left: calc(0 * var(--bg-size-factor) + var(--leftMargin));
       --bgImg-top: calc(19.5 * var(--bg-size-factor) + var(--topMargin));
 
       --title-left: calc(
-        (68 * var(--bg-size-factor)) + (0 * var(--shiftH)) + var(--leftMargin)
+        (68 * var(--bg-size-factor)) + (1 * var(--shiftH)) + var(--leftMargin)
       );
       --title-top: calc(
-        (26 * var(--bg-size-factor)) - (3 * var(--shiftV)) + var(--topMargin)
+        (26 * var(--bg-size-factor)) - (2 * var(--shiftV)) + var(--topMargin)
       );
 
       --btnMenu-left: calc(
-        (6.5 * var(--bg-size-factor)) + (6 * var(--shiftH)) + var(--leftMargin)
+        (6.5 * var(--bg-size-factor)) + (5 * var(--shiftH)) + var(--leftMargin)
       );
       --btnMenu-top: calc(
-        (410 * var(--bg-size-factor)) + (7 * var(--shiftV)) + var(--topMargin)
+        (410 * var(--bg-size-factor)) + (6 * var(--shiftV)) + var(--topMargin)
       );
 
       --btnCVDefault-top: calc(
-        var(--title-top) + (661 * var(--bg-size-factor)) + (2 * var(--shiftV))
-      );
-      --btnCVDefault-left: calc(
-        var(--title-left) + (479 * var(--bg-size-factor)) - (0 * var(--shiftH))
+        var(--title-top) + (661 * var(--bg-size-factor)) + (0 * var(--shiftV))
       );
 
       --btnProjects-top: calc(
@@ -1950,7 +1947,7 @@ b *::selection {
       );
 
       --btnProjects-left: calc(
-        var(--btnMenu-left) + (0 * var(--bg-size-factor)) + (18 * var(--shiftH))
+        var(--btnMenu-left) + (0 * var(--bg-size-factor)) + (22 * var(--shiftH))
       );
 
       --btnPubs-top: calc(
@@ -1958,7 +1955,7 @@ b *::selection {
       );
 
       --btnPubs-left: calc(
-        var(--btnMenu-left) + (0 * var(--bg-size-factor)) + (18 * var(--shiftH))
+        var(--btnMenu-left) + (0 * var(--bg-size-factor)) + (22 * var(--shiftH))
       );
 
       --btnObm-top: calc(
@@ -1966,36 +1963,13 @@ b *::selection {
       );
 
       --btnObm-left: calc(
-        var(--btnMenu-left) + (0 * var(--bg-size-factor)) + (18 * var(--shiftH))
+        var(--btnMenu-left) + (0 * var(--bg-size-factor)) + (22 * var(--shiftH))
       );
-
-      --btnSkills-left: calc(
-        var(--btnMenu-left) - (2 * var(--shiftH)) - 0 * var(--bg-size-factor)
-      );
-      --btnSkills-top: calc(var(--btnMenu-top) - (2 * var(--shiftV)) + 0px);
-
-      --btnFollow-left: calc(
-        var(--btnMenu-left) + (4 * var(--shiftH)) + 0 * var(--bg-size-factor)
-      );
-      --btnFollow-top: calc(var(--btnMenu-top) + (0 * var(--shiftV)) + 0px);
-
-      --titleShadow: calc(5 * var(--bg-size-factor));
-      --textShadow: calc(3 * var(--bg-size-factor));
-      --rotationShadow: calc(3 * var(--bg-size-factor));
-      --btnShadow: calc(1 * var(--bg-size-factor));
-
-      --btn-width: calc(134.5 * var(--bg-size-factor));
-      --btn-height: calc(116.9 * var(--bg-size-factor));
-      --btn-raise: calc(34.2 * var(--bg-size-factor));
-
-      --btnS-width: calc(87.7 * var(--bg-size-factor));
-      --btnS-height: calc(75.7 * var(--bg-size-factor));
-      --btnS-raise: calc(23 * var(--bg-size-factor));
     }
 
     .btn.menuBtn {
       top: calc(var(--btnMenu-top) - (0 * var(--shiftV)));
-      left: calc(var(--btnMenu-left) + (8 * var(--shiftH)));
+      left: calc(var(--btnMenu-left) + (10 * var(--shiftH)));
     }
 
     .btn.menuBtn:hover + #menuCircle {
@@ -2004,421 +1978,7 @@ b *::selection {
       );
       left: calc(
         var(--btnMenu-left) + (67.5 * var(--bg-size-factor)) +
-          (8 * var(--shiftH))
-      );
-    }
-
-    .CVBtnReplace {
-      top: calc(
-        var(--btnMenu-top) + (20 * var(--bg-size-factor)) - (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnMenu-left) + (171.5 * var(--bg-size-factor)) -
-          (2 * var(--shiftH))
-      );
-    }
-
-    .CVBtnReplace:hover + #CVCircle {
-      top: calc(
-        var(--btnMenu-top) - (12 * var(--bg-size-factor)) - (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnMenu-left) + (216 * var(--bg-size-factor)) -
-          (2 * var(--shiftH))
-      );
-    }
-
-    .hexLink1Follow {
-      top: calc(var(--btnMenu-top) + (30 * var(--bg-size-factor)));
-      left: calc(var(--btnMenu-left) + (111.5 * var(--bg-size-factor)));
-
-      transform: rotate(60deg);
-    }
-
-    .hexLink2Follow {
-      top: calc(var(--btnFollow-top) - (41 * var(--bg-size-factor)));
-      left: calc(var(--btnFollow-left) + (128.5 * var(--bg-size-factor)));
-
-      transform: rotate(120deg);
-    }
-
-    .linkedinBtn {
-      top: calc(
-        var(--btnFollow-top) + (149 * var(--bg-size-factor)) -
-          (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnFollow-left) + (23.5 * var(--bg-size-factor)) +
-          (6 * var(--shiftH))
-      );
-    }
-
-    .smallBtn:hover + #linkedinCircle {
-      top: calc(
-        var(--btnFollow-top) + (123 * var(--bg-size-factor)) -
-          (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnFollow-left) + (67.5 * var(--bg-size-factor)) +
-          (6 * var(--shiftH))
-      );
-    }
-
-    .githubBtn {
-      top: calc(var(--btnFollow-top) + (85 * var(--bg-size-factor)));
-      left: calc(var(--btnFollow-left) + (134.5 * var(--bg-size-factor)));
-    }
-
-    .smallBtn:hover + #githubCircle {
-      top: calc(var(--btnFollow-top) + (60 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnFollow-left) + (68 * var(--bg-size-factor)) +
-          (3 * var(--shiftH))
-      );
-    }
-
-    .wppBtn {
-      top: calc(
-        var(--btnFollow-top) + (213 * var(--bg-size-factor)) -
-          (4 * var(--shiftV))
-      );
-      left: calc(var(--btnFollow-left) + (134.5 * var(--bg-size-factor)));
-    }
-
-    .smallBtn:hover + #wppCircle {
-      top: calc(
-        var(--btnFollow-top) + (56 * var(--bg-size-factor)) +
-          (2 * var(--shiftV)) - (4 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnFollow-left) + (67.5 * var(--bg-size-factor)) +
-          (3 * var(--shiftH))
-      );
-    }
-
-    .hexLink1Skills {
-      top: calc(var(--btnMenu-top) - (33.5 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnMenu-left) + (74 * var(--bg-size-factor)) - (2 * var(--shiftH))
-      );
-
-      transform: rotate(-60deg);
-    }
-
-    .hexLink2Skills {
-      top: calc(var(--btnSkills-top) - (160 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnSkills-left) + (54.5 * var(--bg-size-factor)) -
-          (4 * var(--shiftH))
-      );
-
-      transform: rotate(0deg);
-    }
-
-    .webBtn {
-      top: calc(var(--btnSkills-top) - (172 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnSkills-left) + (134.5 * var(--bg-size-factor)) -
-          (6 * var(--shiftH))
-      );
-    }
-
-    .smallBtn:hover + #webCircle {
-      top: calc(
-        var(--btnSkills-top) + (60 * var(--bg-size-factor)) -
-          (4 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnSkills-left) + (67.5 * var(--bg-size-factor)) -
-          (3 * var(--shiftH))
-      );
-    }
-
-    .bioBtn {
-      top: calc(var(--btnSkills-top) - (44 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnSkills-left) + (134.5 * var(--bg-size-factor)) -
-          (6 * var(--shiftH))
-      );
-    }
-
-    .smallBtn:hover + #bioCircle {
-      top: calc(
-        var(--btnSkills-top) + (59 * var(--bg-size-factor)) -
-          (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnSkills-left) + (68 * var(--bg-size-factor)) -
-          (3 * var(--shiftH))
-      );
-    }
-
-    .gameBtn {
-      top: calc(var(--btnSkills-top) - (108 * var(--bg-size-factor)));
-      left: calc(var(--btnSkills-left) + (23.5 * var(--bg-size-factor)));
-    }
-
-    .smallBtn:hover + #gameCircle {
-      top: calc(
-        var(--btnSkills-top) + (60 * var(--bg-size-factor)) -
-          (3 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnSkills-left) + (67.5 * var(--bg-size-factor)) +
-          (0 * var(--shiftH))
-      );
-    }
-
-    .hexLink1Projects {
-      top: calc(var(--btnProjects-top) - (143 * var(--bg-size-factor)));
-      left: calc(var(--btnProjects-left) + (39 * var(--bg-size-factor)));
-
-      transform: rotate(60deg);
-    }
-
-    .hexLink2Projects {
-      top: calc(var(--btnProjects-top) + (87 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnProjects-left) + (17 * var(--bg-size-factor)) -
-          (3 * var(--shiftH))
-      );
-
-      transform: rotate(-180deg) scaleX(-1);
-
-      top: calc(var(--btnProjects-top) - (34 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnProjects-left) + (35 * var(--bg-size-factor)) -
-          (5 * var(--shiftH))
-      );
-
-      transform: rotate(-120deg) scaleX(-1);
-    }
-
-    .pj1Btn {
-      top: calc(
-        var(--btnProjects-top) + (20 * var(--bg-size-factor)) +
-          (1 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (23 * var(--bg-size-factor)) -
-          (3 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnProjects-top) + (20 * var(--bg-size-factor)) -
-          (1 * var(--shiftV))
-      );
-    }
-
-    .smallBtn:hover + #pj1Circle {
-      top: calc(
-        var(--btnProjects-top) + (56 * var(--bg-size-factor)) -
-          (0 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (30 * var(--bg-size-factor)) -
-          (2 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnProjects-top) + (56 * var(--bg-size-factor)) -
-          (2 * var(--shiftV))
-      );
-    }
-
-    .pj2Btn {
-      top: calc(
-        var(--btnProjects-top) + (83 * var(--bg-size-factor)) -
-          (3 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (23 * var(--bg-size-factor)) +
-          (0 * var(--shiftH))
-      );
-    }
-
-    .smallBtn:hover + #pj2Circle {
-      top: calc(
-        var(--btnProjects-top) + (53 * var(--bg-size-factor)) -
-          (3 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (30 * var(--bg-size-factor)) +
-          (1 * var(--shiftH))
-      );
-    }
-
-    .PIBtn {
-      top: calc(
-        var(--btnProjects-top) + (84 * var(--bg-size-factor)) +
-          (1 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (23 * var(--bg-size-factor)) -
-          (0 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnProjects-top) + (84 * var(--bg-size-factor)) +
-          (0 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (23 * var(--bg-size-factor)) -
-          (3 * var(--shiftH))
-      );
-    }
-
-    .smallBtn:hover + #PICircle {
-      top: calc(
-        var(--btnProjects-top) + (56 * var(--bg-size-factor)) +
-          (1 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (30 * var(--bg-size-factor)) +
-          (1 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnProjects-top) + (56 * var(--bg-size-factor)) +
-          (0 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (30 * var(--bg-size-factor)) -
-          (2 * var(--shiftH))
-      );
-    }
-
-    .PGBtn {
-      top: calc(
-        var(--btnProjects-top) + (83 * var(--bg-size-factor)) -
-          (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (23 * var(--bg-size-factor)) +
-          (3 * var(--shiftH))
-      );
-    }
-
-    .smallBtn:hover + #PGCircle {
-      top: calc(
-        var(--btnProjects-top) + (55 * var(--bg-size-factor)) -
-          (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnProjects-left) + (30 * var(--bg-size-factor)) +
-          (4 * var(--shiftH))
-      );
-    }
-
-    .hexLink1Pubs {
-      top: calc(var(--btnPubs-top) - (143 * var(--bg-size-factor)));
-      left: calc(var(--btnPubs-left) + (38.5 * var(--bg-size-factor)));
-
-      transform: rotate(60deg);
-    }
-
-    .hexLink2Pubs {
-      top: calc(var(--btnPubs-top) + (87 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnPubs-left) + (17 * var(--bg-size-factor)) - (3 * var(--shiftH))
-      );
-
-      transform: rotate(-180deg) scaleX(-1);
-
-      top: calc(var(--btnPubs-top) - (34 * var(--bg-size-factor)));
-      left: calc(
-        var(--btnPubs-left) + (35 * var(--bg-size-factor)) - (5 * var(--shiftH))
-      );
-
-      transform: rotate(-120deg) scaleX(-1);
-    }
-    .P1Btn {
-      top: calc(
-        var(--btnPubs-top) + (83 * var(--bg-size-factor)) - (3 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (23 * var(--bg-size-factor)) + (0 * var(--shiftH))
-      );
-    }
-    .smallBtn:hover + #P1Circle {
-      top: calc(
-        var(--btnPubs-top) + (53 * var(--bg-size-factor)) - (3 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (30 * var(--bg-size-factor)) + (1 * var(--shiftH))
-      );
-    }
-
-    .P2Btn {
-      top: calc(
-        var(--btnPubs-top) + (83 * var(--bg-size-factor)) - (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (23 * var(--bg-size-factor)) + (3 * var(--shiftH))
-      );
-    }
-    .smallBtn:hover + #P2Circle {
-      top: calc(
-        var(--btnPubs-top) + (55 * var(--bg-size-factor)) - (2 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (30 * var(--bg-size-factor)) + (4 * var(--shiftH))
-      );
-    }
-
-    .P3Btn {
-      top: calc(
-        var(--btnPubs-top) + (20 * var(--bg-size-factor)) + (1 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (23 * var(--bg-size-factor)) - (3 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnPubs-top) + (20 * var(--bg-size-factor)) - (1 * var(--shiftV))
-      );
-    }
-    .smallBtn:hover + #P3Circle {
-      top: calc(
-        var(--btnPubs-top) + (56 * var(--bg-size-factor)) - (0 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (30 * var(--bg-size-factor)) - (2 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnPubs-top) + (56 * var(--bg-size-factor)) - (2 * var(--shiftV))
-      );
-    }
-
-    .P4Btn {
-      top: calc(
-        var(--btnPubs-top) + (84 * var(--bg-size-factor)) + (1 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (23 * var(--bg-size-factor)) - (0 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnPubs-top) + (84 * var(--bg-size-factor)) + (0 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (23 * var(--bg-size-factor)) - (3 * var(--shiftH))
-      );
-    }
-    .smallBtn:hover + #P4Circle {
-      top: calc(
-        var(--btnPubs-top) + (56 * var(--bg-size-factor)) + (1 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (30 * var(--bg-size-factor)) + (1 * var(--shiftH))
-      );
-
-      top: calc(
-        var(--btnPubs-top) + (56 * var(--bg-size-factor)) + (0 * var(--shiftV))
-      );
-      left: calc(
-        var(--btnPubs-left) + (30 * var(--bg-size-factor)) - (2 * var(--shiftH))
+          (10 * var(--shiftH))
       );
     }
 
@@ -2427,9 +1987,9 @@ b *::selection {
       font-size: calc(28 * var(--bg-size-factor));
       text-shadow: 0 0 var(--textShadow) #383838;
 
-      width: calc(680 * var(--bg-size-factor));
+      width: calc(900 * var(--bg-size-factor));
 
-      top: calc(240 * var(--bg-size-factor));
+      top: calc(240 * var(--bg-size-factor) - (2 * var(--shiftV)));
       left: 50%;
       transform: translate(-50%, 0);
     }
@@ -2440,7 +2000,7 @@ b *::selection {
       text-shadow: 0 0 var(--textShadow) #383838;
 
       width: calc(800 * var(--bg-size-factor));
-      top: calc(80 * var(--bg-size-factor));
+      top: calc(80 * var(--bg-size-factor) - (1 * var(--shiftV)));
       left: 50%;
       transform: translate(-50%, 0);
     }
@@ -2450,9 +2010,9 @@ b *::selection {
       font-size: calc(28 * var(--bg-size-factor));
       text-shadow: 0 0 var(--textShadow) #383838;
 
-      width: calc(900 * var(--bg-size-factor));
+      width: calc(1000 * var(--bg-size-factor));
 
-      top: calc(var(--bg-size-factor) * 30);
+      top: calc(var(--bg-size-factor) * 60 - (1 * var(--shiftV)));
       left: 50%;
       transform: translate(-50%, 0);
     }
@@ -2474,33 +2034,33 @@ b *::selection {
     }
 
     .aboutFrame {
-      top: calc(81.5 * var(--bg-size-factor) + (1 * var(--shiftV)));
-      left: calc(0.5 * var(--bg-size-factor) - (1 * var(--shiftH)));
+      top: calc(81.5 * var(--bg-size-factor) - (1 * var(--shiftV)));
+      left: calc(0.5 * var(--bg-size-factor) - (3 * var(--shiftH)));
     }
 
     .aboutFrame1 {
-      bottom: calc(-122 * var(--bg-size-factor) - (1 * var(--shiftV)));
-      right: calc(-0.5 * var(--bg-size-factor) - (1 * var(--shiftH)));
+      bottom: calc(-122 * var(--bg-size-factor) + (1 * var(--shiftV)));
+      right: calc(-0.5 * var(--bg-size-factor) - (3 * var(--shiftH)));
     }
 
     .aboutFrameWeb {
-      top: calc(10 * var(--bg-size-factor) - (0 * var(--shiftV)));
-      left: calc(-73.5 * var(--bg-size-factor) - (0 * var(--shiftH)));
+      top: calc(10 * var(--bg-size-factor) - (1 * var(--shiftV)));
+      left: calc(-73.5 * var(--bg-size-factor) - (1 * var(--shiftH)));
     }
 
     .aboutFrameWeb1 {
-      bottom: calc(-50 * var(--bg-size-factor) + (0 * var(--shiftV)));
-      right: calc(-74 * var(--bg-size-factor) - (0 * var(--shiftH)));
+      bottom: calc(-50 * var(--bg-size-factor) + (1 * var(--shiftV)));
+      right: calc(-74 * var(--bg-size-factor) - (1 * var(--shiftH)));
     }
 
     .aboutFrameBio {
       top: calc((9.5 * var(--bg-size-factor)) - (1 * var(--shiftV)));
-      left: calc((-36 * var(--bg-size-factor)) - (2 * var(--shiftH)));
+      left: calc((-36 * var(--bg-size-factor)) - (4 * var(--shiftH)));
     }
 
     .aboutFrameBio1 {
-      bottom: calc((14 * var(--bg-size-factor)) - (2 * var(--shiftV)));
-      right: calc((-1 * var(--bg-size-factor)) - (3 * var(--shiftH)));
+      bottom: calc((14 * var(--bg-size-factor)) - (0 * var(--shiftV)));
+      right: calc((-1 * var(--bg-size-factor)) - (5 * var(--shiftH)));
     }
 
     .aboutFrameGame {
