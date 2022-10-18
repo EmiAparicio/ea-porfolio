@@ -1287,13 +1287,13 @@ b *::selection {
 
   @media (width < 1200px) {
     :root {
-      --bg-size-factor: calc(117vw * (508 / 876875) - (82737px / 876875));
+      --bg-size-factor: calc(115vw * (508 / 876875) - (82737px / 876875));
     }
   }
 
-  @media (width < 1100px) {
+  @media (width < 1050px) {
     :root {
-      --bg-size-factor: calc(121vw * (508 / 876875) - (82737px / 876875));
+      --bg-size-factor: calc(120vw * (508 / 876875) - (82737px / 876875));
 
       --leftMargin: calc(
         (100vw + var(--shiftH) - 3402 * var(--bg-size-factor) * 0.5115) / 2
@@ -2071,6 +2071,231 @@ b *::selection {
     .aboutFrameGame1 {
       bottom: calc((-114 * var(--bg-size-factor)) - (0 * var(--shiftV)));
       right: calc((-185 * var(--bg-size-factor)) + (2 * var(--shiftH)));
+    }
+  }
+}
+
+@media (hover: none) {
+  .menuBtn,
+  .hexLink1Skills,
+  .hexLink1Follow,
+  .menuBtn + #btnCircleHidden,
+  .projectsBtn + #btnCircleHidden,
+  .webBtn + #btnCircleHidden,
+  .bioBtn + #btnCircleHidden,
+  .gameBtn + #btnCircleHidden,
+  .webBtn:hover + #webCircle,
+  .bioBtn:hover + #bioCircle,
+  .gameBtn:hover + #gameCircle,
+  .linkedinBtn:hover + #linkedinCircle,
+  .githubBtn:hover + #githubCircle,
+  .wppBtn:hover + #wppCircle,
+  .pubsBtn:hover + #pubsCircle,
+  .projectsBtn:hover + #projectsCircle,
+  .PIBtn:hover + #PICircle,
+  .PGBtn:hover + #PGCircle,
+  .P1Btn:hover + #P1Circle,
+  .P2Btn:hover + #P2Circle,
+  .P3Btn:hover + #P3Circle,
+  .P4Btn:hover + #P4Circle {
+    visibility: hidden;
+  }
+
+  .rotation {
+    top: -2000px;
+  }
+
+  .skillsBtn + #btnCircleHidden,
+  .followBtn + #btnCircleHidden,
+  .CVBtnReplace + #CVCircle,
+  .CVBtnReplace:hover + #CVCircle,
+  .pj1Btn + #pj1Circle,
+  .pj2Btn + #pj2Circle,
+  .pj1Btn:hover + #pj1Circle,
+  .pj2Btn:hover + #pj2Circle,
+  .pubsBtn + #btnCircleHidden,
+  .obmBtn + #obmCircle,
+  .obmBtn:hover + #obmCircle {
+    user-select: none;
+    font-family: "Russo One", sans-serif;
+
+    color: #f0f0f0;
+    animation: rotationAnimation 10s linear infinite;
+  }
+
+  .CVBtnReplace {
+    top: calc(
+      var(--btnMenu-top) + (20 * var(--bg-size-factor)) - (3 * var(--shiftV))
+    );
+    left: calc(
+      var(--btnMenu-left) + (171.5 * var(--bg-size-factor)) -
+        (1 * var(--shiftH))
+    );
+  }
+
+  .CVBtnReplace + #CVCircle,
+  .CVBtnReplace:hover + #CVCircle {
+    font-weight: 400;
+    font-size: calc(15 * var(--bg-size-factor));
+    text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+    top: calc(
+      var(--btnMenu-top) - (12 * var(--bg-size-factor)) - (3 * var(--shiftV))
+    );
+    left: calc(
+      var(--btnMenu-left) + (216 * var(--bg-size-factor)) - (1 * var(--shiftH))
+    );
+  }
+
+  .skillsBtn + #btnCircleHidden {
+    font-weight: 400;
+    font-size: calc(19 * var(--bg-size-factor));
+    text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+    top: calc(var(--btnSkills-top) - (29 * var(--bg-size-factor)));
+    left: calc(var(--btnSkills-left) + (67.5 * var(--bg-size-factor)));
+  }
+
+  .followBtn + #btnCircleHidden {
+    font-weight: 400;
+    font-size: calc(18 * var(--bg-size-factor));
+    text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+    top: calc(var(--btnFollow-top) - (29 * var(--bg-size-factor)));
+    left: calc(var(--btnFollow-left) + (67.5 * var(--bg-size-factor)));
+  }
+
+  .pj1Btn + #pj1Circle {
+    font-weight: 400;
+    font-size: calc(18 * var(--bg-size-factor));
+    text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+    top: calc(
+      var(--btnProjects-top) + (56 * var(--bg-size-factor)) -
+        (2 * var(--shiftV))
+    );
+    left: calc(
+      var(--btnProjects-left) + (30 * var(--bg-size-factor)) -
+        (2 * var(--shiftH))
+    );
+  }
+
+  .pj2Btn + #pj2Circle {
+    top: calc(
+      var(--btnProjects-top) + (56 * var(--bg-size-factor)) -
+        (3 * var(--shiftV))
+    );
+    left: calc(
+      var(--btnProjects-left) + (30 * var(--bg-size-factor)) +
+        (1 * var(--shiftH))
+    );
+    font-weight: 400;
+    font-size: calc(17 * var(--bg-size-factor));
+    text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+  }
+
+  .pubsBtn + #btnCircleHidden {
+    top: calc(var(--btnPubs-top) - (33 * var(--bg-size-factor)));
+    left: calc(var(--btnPubs-left) + (68 * var(--bg-size-factor)));
+    font-weight: 400;
+    font-size: calc(21 * var(--bg-size-factor));
+    text-shadow: 0 0 var(--textShadow) #433333, 0 0 var(--textShadow) #383838;
+  }
+
+  .obmBtn + #obmCircle {
+    top: calc(var(--btnObm-top) - (34 * var(--bg-size-factor)));
+    left: calc(var(--btnObm-left) + (68 * var(--bg-size-factor)));
+    font-weight: 400;
+    font-size: calc(24 * var(--bg-size-factor));
+    text-shadow: 0 0 var(--textShadow) #433333, 0 0 var(--textShadow) #383838;
+  }
+
+  @media (width >= calc(100vh * 1.54)) {
+    .CVBtnReplace {
+      top: calc(
+        var(--btnMenu-top) + (20 * var(--bg-size-factor)) - (0 * var(--shiftV))
+      );
+      left: calc(
+        var(--btnMenu-left) + (171.5 * var(--bg-size-factor)) +
+          (2 * var(--shiftH))
+      );
+    }
+
+    .CVBtnReplace + #CVCircle,
+    .CVBtnReplace:hover + #CVCircle {
+      font-weight: 400;
+      font-size: calc(15 * var(--bg-size-factor));
+      text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+      top: calc(var(--btnMenu-top) - (12 * var(--bg-size-factor)));
+      left: calc(
+        var(--btnMenu-left) + (216 * var(--bg-size-factor)) +
+          (2 * var(--shiftH))
+      );
+    }
+
+    .skillsBtn + #btnCircleHidden {
+      font-weight: 400;
+      font-size: calc(19 * var(--bg-size-factor));
+      text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+      top: calc(var(--btnSkills-top) - (29 * var(--bg-size-factor)));
+      left: calc(var(--btnSkills-left) + (67.5 * var(--bg-size-factor)));
+    }
+
+    .followBtn + #btnCircleHidden {
+      font-weight: 400;
+      font-size: calc(18 * var(--bg-size-factor));
+      text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+      top: calc(var(--btnFollow-top) - (29 * var(--bg-size-factor)));
+      left: calc(var(--btnFollow-left) + (67.5 * var(--bg-size-factor)));
+    }
+
+    .pj1Btn + #pj1Circle {
+      font-weight: 400;
+      font-size: calc(18 * var(--bg-size-factor));
+      text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+      top: calc(
+        var(--btnProjects-top) + (56 * var(--bg-size-factor)) -
+          (2 * var(--shiftV))
+      );
+      left: calc(
+        var(--btnProjects-left) + (30 * var(--bg-size-factor)) -
+          (2 * var(--shiftH))
+      );
+    }
+
+    .pj2Btn + #pj2Circle {
+      top: calc(
+        var(--btnProjects-top) + (56 * var(--bg-size-factor)) -
+          (2 * var(--shiftV))
+      );
+      left: calc(
+        var(--btnProjects-left) + (30 * var(--bg-size-factor)) +
+          (4 * var(--shiftH))
+      );
+      font-weight: 400;
+      font-size: calc(17 * var(--bg-size-factor));
+      text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
+    }
+
+    .pubsBtn + #btnCircleHidden {
+      top: calc(var(--btnPubs-top) - (33 * var(--bg-size-factor)));
+      left: calc(var(--btnPubs-left) + (68 * var(--bg-size-factor)));
+      font-weight: 400;
+      font-size: calc(21 * var(--bg-size-factor));
+      text-shadow: 0 0 var(--textShadow) #433333, 0 0 var(--textShadow) #383838;
+    }
+
+    .obmBtn + #obmCircle {
+      top: calc(var(--btnObm-top) - (34 * var(--bg-size-factor)));
+      left: calc(var(--btnObm-left) + (68 * var(--bg-size-factor)));
+      font-weight: 400;
+      font-size: calc(24 * var(--bg-size-factor));
+      text-shadow: 0 0 var(--textShadow) #433333, 0 0 var(--textShadow) #383838;
+    }
+  }
+
+  @keyframes rotationAnimation {
+    from {
+      rotate: 0deg;
+    }
+    to {
+      rotate: -360deg;
     }
   }
 }

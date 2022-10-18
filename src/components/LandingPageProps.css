@@ -383,3 +383,9 @@ b *::selection {
 .hexLink2Pubs {
   transform: rotate(-120deg) scaleX(-1);
 }
+
+@media (hover: none) {
+  #btnCircleHidden {
+    visibility: visible;
+  }
+}

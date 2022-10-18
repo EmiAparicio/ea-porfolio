@@ -1,9 +1,7 @@
 import "./LandingPageProps.css";
 import "./LandingPage.css";
-// import nodemailer from "nodemailer";
 import { useEffect, useState } from "react";
 import CircleType from "circletype";
-import dotenv from "dotenv";
 
 import CV from "../EmilianoAparicio-CV.pdf";
 
@@ -36,75 +34,20 @@ const invasionTours = "https://youtu.be/fdYPMU1pSoU";
 const starCards = "https://youtu.be/KbUT9VvM3X8";
 
 export default function LandingPage() {
-  dotenv.config();
-  // const mailPW = process.env.GMAIL_PW;
+  let x = window.matchMedia("(hover: none)");
+  // if (x.matches) console.log(x.matches);
+  // else console.log("not mobile");
 
-  // function sendMails(){
-  //   nodemailer.createTestAccount((err, account) => {
-  //     try {
-  //       const htmlEmail = `
-  //           <img src="https://i.ibb.co/SfKhMg2/Sin-t-tulo-1-Mesa-de-trabajo-1.png" width="1100" height="200" title="Logo">
-  //           <h3 style="text-align:center">--> STARCARDS <--</h3>
-
-  //           <h3 style="text-align:center">TOKEN:</h3>
-  //           <h2 style="text-align:center; border: 1px solid red; height: 200; background-color: rgba(0, 0, 0, 0.167)
-  //           ;
-  //           " >${tokenValid}</h2>
-  //           <h4 style="text-align:center">No comparta esta informacion con NADIE. TOKEN de acceso UNICO</h4>
-  //         `;
-
-  //       let transporter = nodemailer.createTransport({
-  //         host: "smtp.gmail.com",
-  //         port: 587,
-  //         auth: {
-  //           user: "emilianojaparicio@gmail.com", //El email del servicio SMTP que va a utilizar (en este caso Gmail)
-  //           pass: mailPW, // La contraseña de dicho SMTP
-  //         },
-  //       });
-
-  //       let mailOptions = {
-  //         from: "emilianojaparicio@gmail.com", // Quien manda el email
-  //         to: contactMail, // El email de destino
-  //         replyTo: "emilianojaparicio@gmail.com",
-  //         subject: "Contact Emiliano Aparicio", // El asunto del email
-  //         // text: contactMsg, // El mensaje
-  //         html: htmlEmail, // La parte HTML del email
-  //       };
-
-  //       transporter.sendMail(mailOptions, (err, info) => {
-  //         if (err) {
-  //           return console.log("err");
-  //         }
-  //         res.send(tokenValid);
-  //         console.log("Mensaje enviado");
-  //       });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   });
-  // }
-
-  // const [copiedText, setCopiedText] = useState({bool: false});
-
-  // useEffect(() => {
-  //   console.log(copiedText);
-  //   if (copiedText)
-  //     setTimeout(() => {
-  //       setCopiedText(false);
-  //     }, 1000);
-  // }, [copiedText]);
-
-  const [btnCVmoved, setBtnCV] = useState(false);
-  const [btnMenuActive, setMenuBtn] = useState(false);
-  const [btnSkillsActive, setSkillsBtn] = useState(false);
-  const [btnFollowActive, setFollowBtn] = useState(false);
-  // const [btnMailActive, setMailBtn] = useState(false);
+  const [btnCVmoved, setBtnCV] = useState(x.matches);
+  const [btnMenuActive, setMenuBtn] = useState(x.matches);
+  const [btnSkillsActive, setSkillsBtn] = useState(x.matches);
+  const [btnFollowActive, setFollowBtn] = useState(x.matches);
   const [btnWebActive, setWebBtn] = useState(false);
   const [btnBioActive, setBioBtn] = useState(false);
   const [btnGameActive, setGameBtn] = useState(false);
   const [btnProjectsActive, setProjectsBtn] = useState(false);
-  const [btnPj1Active, setPj1Btn] = useState(false);
-  const [btnPj2Active, setPj2Btn] = useState(false);
+  const [btnPj1Active, setPj1Btn] = useState(x.matches);
+  const [btnPj2Active, setPj2Btn] = useState(x.matches);
   const [btnPubsActive, setPubsBtn] = useState(false);
   const [btnObmActive, setObmBtn] = useState(false);
 
@@ -124,7 +67,6 @@ export default function LandingPage() {
       document.querySelectorAll('[roundedtext="githubCircle"]')[0]
     );
     new CircleType(document.querySelectorAll('[roundedtext="wppCircle"]')[0]);
-    // new CircleType(document.querySelectorAll('[roundedtext="mailCircle"]')[0]);
     new CircleType(document.querySelectorAll('[roundedtext="webCircle"]')[0]);
     new CircleType(document.querySelectorAll('[roundedtext="bioCircle"]')[0]);
     new CircleType(document.querySelectorAll('[roundedtext="gameCircle"]')[0]);
@@ -142,223 +84,6 @@ export default function LandingPage() {
     new CircleType(document.querySelectorAll('[roundedtext="P4Circle"]')[0]);
     new CircleType(document.querySelectorAll('[roundedtext="obmCircle"]')[0]);
   }, []);
-
-  // useEffect(() => {
-  //   if (btnWebActive) {
-  //     const buttons = document.querySelectorAll(".btn");
-  //     const smallButtons = document.querySelectorAll(".smallBtn");
-  //     const cursor = document.querySelectorAll("cursor");
-  //     const pointer = document.querySelectorAll("pointer");
-  //     const henryLink = document.querySelectorAll("henry");
-
-  //     const animateit = function (e) {
-  //       pointer.style.backgroundColor = `#383838`;
-  //       pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-
-  //       if (pointer.className !== "pointer" && e.target.className !== "mail") {
-  //         clearTimeout(timeOut.id);
-  //         const pointerText = document.getElementById("copiedBtn");
-  //         pointer.className = "pointer";
-  //         pointerText.className = "invisibleText";
-  //         pointer.style.backgroundColor = `#383838`;
-  //         pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-  //         copiedText.bool = false;
-  //       }
-
-  //       if (e.type === "mouseout") {
-  //         const pointerText = document.getElementById("copiedBtn");
-  //         if (copiedText.bool) {
-  //           timeOut.id = setTimeout(() => {
-  //             pointer.className = "pointer";
-  //             pointerText.className = "invisibleText";
-  //             pointer.style.backgroundColor = `#f0f0f0`;
-  //             pointer.style.filter = ``;
-  //             copiedText.bool = false;
-  //             console.log("asd");
-  //           }, 500);
-  //         } else {
-  //           pointer.style.backgroundColor = `#f0f0f0`;
-  //           pointer.style.filter = ``;
-  //         }
-  //       }
-  //     };
-
-  //     buttons.forEach((b) => b.addEventListener("mousemove", animateit));
-  //     buttons.forEach((b) => b.addEventListener("mouseout", animateit));
-  //     smallButtons.forEach((b) => b.addEventListener("mousemove", animateit));
-  //     smallButtons.forEach((b) => b.addEventListener("mouseout", animateit));
-  //     henryLink.addEventListener("mousemove", animateit);
-  //     henryLink.addEventListener("mouseout", animateit);
-
-  //     const editCursor = (e) => {
-  //       const { clientX: x, clientY: y } = e;
-
-  //       cursor.style.left = x + "px";
-  //       cursor.style.top = y + "px";
-  //       cursor.style.transform = "translate(-50%, -50%) scale(1)";
-  //       pointer.style.left = x + "px";
-  //       pointer.style.top = y + "px";
-  //       pointer.style.transform = "translate(-50%, -50%) scale(1)";
-  //     };
-
-  //     const editCursorOut = (e) => {
-  //       const { clientX: x, clientY: y } = e;
-  //       if (
-  //         x <= 0 ||
-  //         y <= 0 ||
-  //         x >= window.innerWidth ||
-  //         y >= window.innerHeight
-  //       ) {
-  //         cursor.style.transform = "translate(-50%, -50%) scale(0)";
-  //         pointer.style.transform = "translate(-50%, -50%) scale(0)";
-  //       }
-  //     };
-
-  //     window.addEventListener("mousemove", editCursor);
-  //     window.addEventListener("mouseout", editCursorOut);
-  //   } else if (btnBioActive) {
-  //     const buttons = document.querySelectorAll(".btn");
-  //     const smallButtons = document.querySelectorAll(".smallBtn");
-  //     const cursor = document.querySelectorAll("cursor");
-  //     const pointer = document.querySelectorAll("pointer");
-  //     const umLink = document.querySelectorAll("um");
-
-  //     const animateit = function (e) {
-  //       pointer.style.backgroundColor = `#383838`;
-  //       pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-
-  //       if (pointer.className !== "pointer" && e.target.className !== "mail") {
-  //         clearTimeout(timeOut.id);
-  //         const pointerText = document.getElementById("copiedBtn");
-  //         pointer.className = "pointer";
-  //         pointerText.className = "invisibleText";
-  //         pointer.style.backgroundColor = `#383838`;
-  //         pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-  //         copiedText.bool = false;
-  //       }
-
-  //       if (e.type === "mouseout") {
-  //         const pointerText = document.getElementById("copiedBtn");
-  //         if (copiedText.bool) {
-  //           timeOut.id = setTimeout(() => {
-  //             pointer.className = "pointer";
-  //             pointerText.className = "invisibleText";
-  //             pointer.style.backgroundColor = `#f0f0f0`;
-  //             pointer.style.filter = ``;
-  //             copiedText.bool = false;
-  //             console.log("asd");
-  //           }, 500);
-  //         } else {
-  //           pointer.style.backgroundColor = `#f0f0f0`;
-  //           pointer.style.filter = ``;
-  //         }
-  //       }
-  //     };
-
-  //     buttons.forEach((b) => b.addEventListener("mousemove", animateit));
-  //     buttons.forEach((b) => b.addEventListener("mouseout", animateit));
-  //     smallButtons.forEach((b) => b.addEventListener("mousemove", animateit));
-  //     smallButtons.forEach((b) => b.addEventListener("mouseout", animateit));
-  //     umLink.addEventListener("mousemove", animateit);
-  //     umLink.addEventListener("mouseout", animateit);
-
-  //     const editCursor = (e) => {
-  //       const { clientX: x, clientY: y } = e;
-
-  //       cursor.style.left = x + "px";
-  //       cursor.style.top = y + "px";
-  //       cursor.style.transform = "translate(-50%, -50%) scale(1)";
-  //       pointer.style.left = x + "px";
-  //       pointer.style.top = y + "px";
-  //       pointer.style.transform = "translate(-50%, -50%) scale(1)";
-  //     };
-
-  //     const editCursorOut = (e) => {
-  //       const { clientX: x, clientY: y } = e;
-  //       if (
-  //         x <= 0 ||
-  //         y <= 0 ||
-  //         x >= window.innerWidth ||
-  //         y >= window.innerHeight
-  //       ) {
-  //         cursor.style.transform = "translate(-50%, -50%) scale(0)";
-  //         pointer.style.transform = "translate(-50%, -50%) scale(0)";
-  //       }
-  //     };
-
-  //     window.addEventListener("mousemove", editCursor);
-  //     window.addEventListener("mouseout", editCursorOut);
-  //   }
-  // }, [btnWebActive, btnBioActive]);
-
-  // useEffect(() => {
-  //   if (!btnBioActive && !btnWebActive && !btnGameActive) {
-  //     const cursor = document.getElementById("cursor");
-  //     const pointer = document.getElementById("pointer");
-  //     const email = document.querySelector(".mail");
-
-  //     const animateit = function (e) {
-  //       pointer.style.backgroundColor = `#383838`;
-  //       pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-
-  //       if (pointer.className !== "pointer" && e.target.className !== "mail") {
-  //         clearTimeout(timeOut.id);
-  //         const pointerText = document.getElementById("copiedBtn");
-  //         pointer.className = "pointer";
-  //         pointerText.className = "invisibleText";
-  //         pointer.style.backgroundColor = `#383838`;
-  //         pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-  //         copiedText.bool = false;
-  //       }
-
-  //       if (e.type === "mouseout") {
-  //         const pointerText = document.getElementById("copiedBtn");
-  //         if (copiedText.bool) {
-  //           timeOut.id = setTimeout(() => {
-  //             pointer.className = "pointer";
-  //             pointerText.className = "invisibleText";
-  //             pointer.style.backgroundColor = `#f0f0f0`;
-  //             pointer.style.filter = ``;
-  //             copiedText.bool = false;
-  //           }, 500);
-  //         } else {
-  //           pointer.style.backgroundColor = `#f0f0f0`;
-  //           pointer.style.filter = ``;
-  //         }
-  //       }
-  //     };
-
-  //     email.addEventListener("mousemove", animateit);
-  //     email.addEventListener("mouseout", animateit);
-
-  //     const editCursor = (e) => {
-  //       const { clientX: x, clientY: y } = e;
-
-  //       cursor.style.left = x + "px";
-  //       cursor.style.top = y + "px";
-  //       cursor.style.transform = "translate(-50%, -50%) scale(1)";
-  //       pointer.style.left = x + "px";
-  //       pointer.style.top = y + "px";
-  //       pointer.style.transform = "translate(-50%, -50%) scale(1)";
-  //     };
-
-  //     const editCursorOut = (e) => {
-  //       const { clientX: x, clientY: y } = e;
-  //       if (
-  //         x <= 0 ||
-  //         y <= 0 ||
-  //         x >= window.innerWidth ||
-  //         y >= window.innerHeight
-  //       ) {
-  //         cursor.style.transform = "translate(-50%, -50%) scale(0)";
-  //         pointer.style.transform = "translate(-50%, -50%) scale(0)";
-  //       }
-  //     };
-
-  //     window.addEventListener("mousemove", editCursor);
-  //     window.addEventListener("mouseout", editCursorOut);
-  //   }
-  // }, [btnBioActive, btnWebActive, btnGameActive]);
 
   useEffect(() => {
     const buttons = document.querySelectorAll(".btn");
@@ -440,8 +165,10 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    setProjectsBtn(false);
-    setPubsBtn(false);
+    setProjectsBtn(btnWebActive && x.matches);
+    setPubsBtn(btnBioActive && x.matches);
+    setPj1Btn(x.matches && !btnWebActive);
+    setPj2Btn(x.matches && !btnWebActive);
   }, [btnBioActive, btnWebActive, btnGameActive]);
 
   const subtitle = btnBioActive
@@ -510,8 +237,7 @@ export default function LandingPage() {
                 setWebBtn(false);
                 setBioBtn(false);
                 setGameBtn(false);
-                // setMailBtn(false);
-                setBtnCV(false);
+                setBtnCV(x.matches);
               }}
             >
               <div className="imgContainer">
@@ -537,11 +263,11 @@ export default function LandingPage() {
                   : "btn skillsBtn"
               }
               onClick={() => {
-                setSkillsBtn((prev) => !prev);
+                setSkillsBtn((prev) => !prev || x.matches);
                 setWebBtn(false);
                 setBioBtn(false);
                 setGameBtn(false);
-                setBtnCV(false);
+                setBtnCV(x.matches);
               }}
             >
               <div className="imgContainer">
@@ -582,7 +308,7 @@ export default function LandingPage() {
                   : "btn followBtn"
               }
               onClick={() => {
-                setFollowBtn((prev) => !prev);
+                setFollowBtn((prev) => !prev || x.matches);
               }}
             >
               <div className="imgContainer">
@@ -704,47 +430,6 @@ export default function LandingPage() {
               • WhatsApp •• WhatsApp •• WhatsApp •
             </h3>
 
-            {/* <span
-              className={
-                btnFollowActive && btnMailActive
-                  ? "smallBtnActive mailBtn"
-                  : !btnFollowActive
-                  ? "smallBtn mailBtn invisible"
-                  : "smallBtn mailBtn"
-              }
-              onClick={() => {
-                setMailBtn((prev) => {
-                  if (!prev) {
-                    setBtnCV(true);
-                    setBioBtn(false);
-                    setGameBtn(false);
-                    setWebBtn(false);
-                  } else setBtnCV(false);
-                  return !prev;
-                });
-              }}
-            >
-              <div className="imgContainer">
-                <IconContext.Provider
-                  value={{
-                    color: "#383838",
-                    size: "40px",
-                    title: "mail",
-                    className: "img",
-                  }}
-                >
-                  <SiGmail className="imgMail" />
-                </IconContext.Provider>
-              </div>
-            </span>
-            <h3
-              id={btnMailActive ? "btnCircleHidden" : "mailCircle"}
-              roundedtext="mailCircle"
-              className="rotation"
-            >
-              • E-mail •• E-mail •• E-mail •• E-mail •
-            </h3> */}
-
             <img
               src={`${hexLink2}`}
               alt=""
@@ -769,7 +454,8 @@ export default function LandingPage() {
                 setWebBtn((prev) => {
                   if (!prev) {
                     setBtnCV(true);
-                  } else setBtnCV(false);
+                  } else setBtnCV(x.matches);
+
                   return !prev;
                 });
                 setBioBtn(false);
@@ -810,7 +496,7 @@ export default function LandingPage() {
                 setBioBtn((prev) => {
                   if (!prev) {
                     setBtnCV(true);
-                  } else setBtnCV(false);
+                  } else setBtnCV(x.matches);
                   return !prev;
                 });
                 // setMailBtn(false);
@@ -851,7 +537,7 @@ export default function LandingPage() {
                 setGameBtn((prev) => {
                   if (!prev) {
                     setBtnCV(true);
-                  } else setBtnCV(false);
+                  } else setBtnCV(x.matches);
                   return !prev;
                 });
                 setBioBtn(false);
@@ -919,13 +605,23 @@ export default function LandingPage() {
                       onClick={(e) => {
                         navigator.clipboard.writeText(e.target.innerText);
 
+                        
                         const pointer = document.getElementById("pointer");
                         const pointerText =
-                          document.getElementById("copiedBtn");
-
+                        document.getElementById("copiedBtn");
+                        
                         pointer.className = "copiedPointer";
                         pointerText.className = "copiedText";
                         copiedText.bool = true;
+                        
+                        if (x.matches)
+                          setTimeout(() => {
+                            pointer.className = "pointer";
+                            pointerText.className = "invisibleText";
+                            pointer.style.backgroundColor = `#f0f0f0`;
+                            pointer.style.filter = ``;
+                            copiedText.bool = false;
+                          }, 500);
                       }}
                     >
                       emilianojaparicio@gmail.com
@@ -980,9 +676,11 @@ export default function LandingPage() {
                 : "invisible"
             }
             onClick={() => {
-              setProjectsBtn((prev) => !prev);
-              setPj1Btn(false);
-              setPj2Btn(false);
+              setProjectsBtn((prev) => {
+                setPj1Btn(!x.matches && prev);
+                setPj2Btn(!x.matches && prev);
+                return !prev || x.matches;
+              });
             }}
           >
             <div className="imgContainer">
@@ -1036,19 +734,6 @@ export default function LandingPage() {
             }
             rel="noreferrer"
           >
-            {/* <span
-            className={
-              btnProjectsActive && btnPj1Active
-                ? "smallBtnActive pj1Btn"
-                : !btnProjectsActive
-                ? "smallBtn pj1Btn invisible"
-                : "smallBtn pj1Btn"
-            }
-            onClick={() => {
-              setPj1Btn((prev) => !prev);
-              setPj2Btn(false);
-            }}
-          > */}
             <div className="imgContainer">
               <IconContext.Provider
                 value={{
@@ -1080,19 +765,6 @@ export default function LandingPage() {
             }
             rel="noreferrer"
           >
-            {/* <span
-            className={
-              btnProjectsActive && btnPj2Active
-                ? "smallBtnActive pj2Btn"
-                : !btnProjectsActive
-                ? "smallBtn pj2Btn invisible"
-                : "smallBtn pj2Btn"
-            }
-            onClick={() => {
-              setPj2Btn((prev) => !prev);
-              setPj1Btn(false);
-            }}
-          > */}
             <div className="imgContainer">
               <img src={`${starcraft}`} alt="StarCards" className="imgPj2" />
             </div>
@@ -1201,7 +873,7 @@ export default function LandingPage() {
                 : "invisible"
             }
             onClick={() => {
-              setPubsBtn((prev) => !prev);
+              setPubsBtn((prev) => !prev || x.matches);
             }}
           >
             <div className="imgContainer">
