@@ -33,7 +33,6 @@ const timeOut = { id: null };
 const invasionTours = "https://youtu.be/fdYPMU1pSoU";
 const starCards = "https://youtu.be/KbUT9VvM3X8";
 
-
 export default function LandingPage() {
   let x = window.matchMedia("(pointer: coarse)");
   console.log(x.matches);
@@ -181,7 +180,7 @@ export default function LandingPage() {
 
   const subtitleClass =
     x.matches &&
-    window.matchMedia("(width < 600px) and (width < 100vh)").matches
+    window.matchMedia("(device-width < 600px) and (width < 100vh)").matches
       ? btnBioActive
         ? "smallSubtitle bioSubtitle"
         : btnGameActive
@@ -1050,7 +1049,8 @@ export default function LandingPage() {
           className={
             (btnBioActive || btnWebActive || btnGameActive) &&
             x.matches &&
-            window.matchMedia("(width < 600px) and (width < 100vh)").matches
+            window.matchMedia("(device-width < 600px) and (width < 100vh)")
+              .matches
               ? "smallTitle title"
               : "title"
           }

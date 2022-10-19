@@ -521,19 +521,19 @@ b *::selection {
 .lighter {
   animation: lighterAnimation linear 10s infinite;
 
-  height: 150%;
-  width: 150%;
+  height: 150vh;
+  width: 150vw;
 }
 
 @keyframes lighterAnimation {
   from {
-    left: -150%;
+    left: -150vw;
   }
   35% {
-    left: 150%;
+    left: 150vw;
   }
   to {
-    left: 150%;
+    left: 150vw;
   }
 }
 
@@ -2437,7 +2437,7 @@ b *::selection {
     }
   }
 
-  @media (width < calc(100vh * 1)) {
+  @media (width < calc(100vh * 1.54)) {
     :root {
       --bg-size-factor: calc(165vh * (508 / 876875) - (82737px / 876875));
 
@@ -2725,7 +2725,7 @@ b *::selection {
     .pj2Btn + #pj2Circle,
     .pj2Btn:hover + #pj2Circle {
       top: calc(
-        var(--btnProjects-top) + (55 * var(--bg-size-factor)) -
+        var(--btnProjects-top) + (57 * var(--bg-size-factor)) -
           (2 * var(--shiftV))
       );
       left: calc(
@@ -2795,9 +2795,9 @@ b *::selection {
       );
     }
 
-    @media (width < 600px) {
+    @media (device-width < 600px) {
       :root {
-        --bg-size-factor: calc(300vw * (508 / 876875) - (82737px / 876875));
+        --bg-size-factor: calc(280vw * (508 / 876875) - (82737px / 876875));
 
         --topMargin: calc(
           (100vh - 2000 * var(--bg-size-factor) * 0.455) / 2 + 2vh
@@ -3000,6 +3000,7 @@ b *::selection {
             (3 * var(--shiftH))
         );
       }
+
       .PGBtn {
         top: calc(
           var(--btnProjects-top) + (84 * var(--bg-size-factor)) -
