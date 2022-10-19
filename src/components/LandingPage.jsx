@@ -86,7 +86,7 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    if (x.matches) {
+    if (!x.matches) {
       const buttons = document.querySelectorAll(".btn");
       const smallButtons = document.querySelectorAll(".smallBtn");
       const cursor = document.getElementById("cursor");
