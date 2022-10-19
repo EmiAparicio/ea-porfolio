@@ -179,11 +179,20 @@ export default function LandingPage() {
     ? "Game Designer"
     : "Jr. Full Stack Web Developer";
 
-  const subtitleClass = btnBioActive
-    ? "bioSubtitle"
-    : btnGameActive
-    ? "gameSubtitle"
-    : "webSubtitle";
+  const subtitleClass =
+    x.matches && window.matchMedia("(width < 600px) and (width < 100vh)")
+      ? btnBioActive
+        ? "smallSubtitle bioSubtitle"
+        : btnGameActive
+        ? "smallSubtitle gameSubtitle"
+        : btnWebActive
+        ? "smallSubtitle webSubtitle"
+        : "webSubtitle"
+      : btnBioActive
+      ? "bioSubtitle"
+      : btnGameActive
+      ? "gameSubtitle"
+      : "webSubtitle";
 
   return (
     <>
@@ -1034,7 +1043,17 @@ export default function LandingPage() {
           {/* Oblivion Button */}
         </div>
 
-        <h1 className="title">EMILIANO APARICIO</h1>
+        <h1
+          className={
+            (btnBioActive || btnWebActive || btnGameActive) &&
+            x.matches &&
+            window.matchMedia("(width < 600px) and (width < 100vh)")
+              ? "smallTitle title"
+              : "title"
+          }
+        >
+          EMILIANO APARICIO
+        </h1>
         <h2 className={subtitleClass}>{subtitle}</h2>
       </div>
     </>
