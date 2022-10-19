@@ -35,8 +35,6 @@ const starCards = "https://youtu.be/KbUT9VvM3X8";
 
 export default function LandingPage() {
   let x = window.matchMedia("(hover: none)");
-  // if (x.matches) console.log(x.matches);
-  // else console.log("not mobile");
 
   const [btnCVmoved, setBtnCV] = useState(x.matches);
   const [btnMenuActive, setMenuBtn] = useState(x.matches);
@@ -1052,15 +1050,7 @@ export default function LandingPage() {
               : "title"
           }
         >
-          {`  asfdss ${
-            window.innerWidth ||
-            document.documentElement.clientWidth ||
-            document.body.clientWidth
-          } ${
-            window.innerHeight ||
-            document.documentElement.clientHeight ||
-            document.body.clientHeight
-          }`}
+          Emiliano Aparicio
         </h1>
         <h2 className={subtitleClass}>{subtitle}</h2>
       </div>
