@@ -1052,7 +1052,15 @@ export default function LandingPage() {
               : "title"
           }
         >
-          EMILIANO APARICIO
+          {`${
+            window.innerWidth ||
+            document.documentElement.clientWidth ||
+            document.body.clientWidth
+          } ${
+            window.innerHeight ||
+            document.documentElement.clientHeight ||
+            document.body.clientHeight
+          }`}
         </h1>
         <h2 className={subtitleClass}>{subtitle}</h2>
       </div>
