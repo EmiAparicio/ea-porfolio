@@ -86,82 +86,84 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    const buttons = document.querySelectorAll(".btn");
-    const smallButtons = document.querySelectorAll(".smallBtn");
-    const cursor = document.getElementById("cursor");
-    const pointer = document.getElementById("pointer");
-    const henryLink = document.getElementById("henry");
-    const umLink = document.getElementById("um");
-    const email = document.querySelector(".mail");
+    if (x.matches) {
+      const buttons = document.querySelectorAll(".btn");
+      const smallButtons = document.querySelectorAll(".smallBtn");
+      const cursor = document.getElementById("cursor");
+      const pointer = document.getElementById("pointer");
+      const henryLink = document.getElementById("henry");
+      const umLink = document.getElementById("um");
+      const email = document.querySelector(".mail");
 
-    const animateit = function (e) {
-      pointer.style.backgroundColor = `#383838`;
-      pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-
-      if (pointer.className !== "pointer" && e.target.className !== "mail") {
-        clearTimeout(timeOut.id);
-        const pointerText = document.getElementById("copiedBtn");
-        pointer.className = "pointer";
-        pointerText.className = "invisibleText";
+      const animateit = function (e) {
         pointer.style.backgroundColor = `#383838`;
         pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
-        copiedText.bool = false;
-      }
 
-      if (e.type === "mouseout") {
-        const pointerText = document.getElementById("copiedBtn");
-        if (copiedText.bool) {
-          timeOut.id = setTimeout(() => {
-            pointer.className = "pointer";
-            pointerText.className = "invisibleText";
+        if (pointer.className !== "pointer" && e.target.className !== "mail") {
+          clearTimeout(timeOut.id);
+          const pointerText = document.getElementById("copiedBtn");
+          pointer.className = "pointer";
+          pointerText.className = "invisibleText";
+          pointer.style.backgroundColor = `#383838`;
+          pointer.style.filter = `drop-shadow(0 0 3px #f0f0f0)`;
+          copiedText.bool = false;
+        }
+
+        if (e.type === "mouseout") {
+          const pointerText = document.getElementById("copiedBtn");
+          if (copiedText.bool) {
+            timeOut.id = setTimeout(() => {
+              pointer.className = "pointer";
+              pointerText.className = "invisibleText";
+              pointer.style.backgroundColor = `#f0f0f0`;
+              pointer.style.filter = ``;
+              copiedText.bool = false;
+            }, 500);
+          } else {
             pointer.style.backgroundColor = `#f0f0f0`;
             pointer.style.filter = ``;
-            copiedText.bool = false;
-          }, 500);
-        } else {
-          pointer.style.backgroundColor = `#f0f0f0`;
-          pointer.style.filter = ``;
+          }
         }
-      }
-    };
+      };
 
-    buttons.forEach((b) => b.addEventListener("mousemove", animateit));
-    buttons.forEach((b) => b.addEventListener("mouseout", animateit));
-    smallButtons.forEach((b) => b.addEventListener("mousemove", animateit));
-    smallButtons.forEach((b) => b.addEventListener("mouseout", animateit));
-    email.addEventListener("mousemove", animateit);
-    email.addEventListener("mouseout", animateit);
-    henryLink.addEventListener("mousemove", animateit);
-    henryLink.addEventListener("mouseout", animateit);
-    umLink.addEventListener("mousemove", animateit);
-    umLink.addEventListener("mouseout", animateit);
+      buttons.forEach((b) => b.addEventListener("mousemove", animateit));
+      buttons.forEach((b) => b.addEventListener("mouseout", animateit));
+      smallButtons.forEach((b) => b.addEventListener("mousemove", animateit));
+      smallButtons.forEach((b) => b.addEventListener("mouseout", animateit));
+      email.addEventListener("mousemove", animateit);
+      email.addEventListener("mouseout", animateit);
+      henryLink.addEventListener("mousemove", animateit);
+      henryLink.addEventListener("mouseout", animateit);
+      umLink.addEventListener("mousemove", animateit);
+      umLink.addEventListener("mouseout", animateit);
 
-    const editCursor = (e) => {
-      const { clientX: x, clientY: y } = e;
+      const editCursor = (e) => {
+        const { clientX: x, clientY: y } = e;
 
-      cursor.style.left = x + "px";
-      cursor.style.top = y + "px";
-      cursor.style.transform = "translate(-50%, -50%) scale(1)";
-      pointer.style.left = x + "px";
-      pointer.style.top = y + "px";
-      pointer.style.transform = "translate(-50%, -50%) scale(1)";
-    };
+        cursor.style.left = x + "px";
+        cursor.style.top = y + "px";
+        cursor.style.transform = "translate(-50%, -50%) scale(1)";
+        pointer.style.left = x + "px";
+        pointer.style.top = y + "px";
+        pointer.style.transform = "translate(-50%, -50%) scale(1)";
+      };
 
-    const editCursorOut = (e) => {
-      const { clientX: x, clientY: y } = e;
-      if (
-        x <= 0 ||
-        y <= 0 ||
-        x >= window.innerWidth ||
-        y >= window.innerHeight
-      ) {
-        cursor.style.transform = "translate(-50%, -50%) scale(0)";
-        pointer.style.transform = "translate(-50%, -50%) scale(0)";
-      }
-    };
+      const editCursorOut = (e) => {
+        const { clientX: x, clientY: y } = e;
+        if (
+          x <= 0 ||
+          y <= 0 ||
+          x >= window.innerWidth ||
+          y >= window.innerHeight
+        ) {
+          cursor.style.transform = "translate(-50%, -50%) scale(0)";
+          pointer.style.transform = "translate(-50%, -50%) scale(0)";
+        }
+      };
 
-    window.addEventListener("mousemove", editCursor);
-    window.addEventListener("mouseout", editCursorOut);
+      window.addEventListener("mousemove", editCursor);
+      window.addEventListener("mouseout", editCursorOut);
+    }
   }, []);
 
   useEffect(() => {
@@ -605,15 +607,14 @@ export default function LandingPage() {
                       onClick={(e) => {
                         navigator.clipboard.writeText(e.target.innerText);
 
-                        
                         const pointer = document.getElementById("pointer");
                         const pointerText =
-                        document.getElementById("copiedBtn");
-                        
+                          document.getElementById("copiedBtn");
+
                         pointer.className = "copiedPointer";
                         pointerText.className = "copiedText";
                         copiedText.bool = true;
-                        
+
                         if (x.matches)
                           setTimeout(() => {
                             pointer.className = "pointer";

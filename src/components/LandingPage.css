@@ -95,22 +95,22 @@
 1024 - 768 660 / 1,33 1.55
 
 1024 - 768 660 / 1,33 1.55
-768 - 1366
-800 - 1280
-720 - 1280
-600 - 1024
-603 - 966
+768 - 1366 1175 / 0.56 0.65
+720 - 1280 1101 / 0.56 0.65
+600 - 1024 881 / 0.59 0.68
+800 - 1280 1101 / 0.63 0.73
+603 - 966 831 / 0.62 0.73
 
-414 - 896
-390 - 844
-414 - 736
-375 - 667
-320 - 660
-360 - 640
-384 - 598
-360 - 598
-320 - 568
-320 - 480
+414 - 896 771 / 0.46 0.54
+390 - 844 726 / 0.46 0.54
+414 - 736 633 / 0.56 0.65
+375 - 667 574 / 0.56 0.65
+320 - 660 568 / 0.48 0.56
+360 - 640 550 / 0.56 0.65
+384 - 598 514 / 0.64 0.75
+360 - 598 514 / 0.6 0.7
+320 - 568 488 / 0.56 0.66
+320 - 480 413 / 0.67 0.78
 */
 
 .bg {
@@ -363,12 +363,20 @@ b *::selection {
   transform: translate(-50%, -50%);
 }
 
-.pointer {
-  filter: drop-shadow(0 0 var(--textShadow) #383838);
+@media (hover: hover) {
+  .pointer {
+    filter: drop-shadow(0 0 var(--textShadow) #383838);
 
-  padding: calc(10 * var(--bg-size-factor));
+    padding: calc(10 * var(--bg-size-factor));
 
-  transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  .cursor {
+    padding: calc(200 * var(--bg-size-factor));
+
+    transform: translate(-50%, -50%) scale(0);
+  }
 }
 
 .copiedPointer {
@@ -383,12 +391,6 @@ b *::selection {
     var(--btn-raise) 100%,
     0 50%
   );
-}
-
-.cursor {
-  padding: calc(200 * var(--bg-size-factor));
-
-  transform: translate(-50%, -50%) scale(0);
 }
 
 .lighter {
@@ -2139,7 +2141,7 @@ b *::selection {
     font-size: calc(15 * var(--bg-size-factor));
     text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
     top: calc(
-      var(--btnMenu-top) - (12 * var(--bg-size-factor)) - (3 * var(--shiftV))
+      var(--btnMenu-top) - (11 * var(--bg-size-factor)) - (3 * var(--shiftV))
     );
     left: calc(
       var(--btnMenu-left) + (216 * var(--bg-size-factor)) - (1 * var(--shiftH))
@@ -2222,7 +2224,7 @@ b *::selection {
       font-weight: 400;
       font-size: calc(15 * var(--bg-size-factor));
       text-shadow: 0 0 var(--textShadow) #383838, 0 0 var(--textShadow) #383838;
-      top: calc(var(--btnMenu-top) - (12 * var(--bg-size-factor)));
+      top: calc(var(--btnMenu-top) - (11 * var(--bg-size-factor)));
       left: calc(
         var(--btnMenu-left) + (216 * var(--bg-size-factor)) +
           (2 * var(--shiftH))
@@ -2296,6 +2298,390 @@ b *::selection {
     }
     to {
       rotate: -360deg;
+    }
+  }
+
+  @media (width < calc(100vh * 1)) {
+    @media (width >= 600px) {
+      :root {
+        --bg-size-factor: calc(165vh * (508 / 876875) - (82737px / 876875));
+
+        --leftMargin: calc((100vw - 3402 * var(--bg-size-factor) * 0.369) / 2);
+        --topMargin: calc(
+          (100vh - 2000 * var(--bg-size-factor) * 0.5) / 2 + 2vh
+        );
+
+        --title-left: calc(
+          (78 * var(--bg-size-factor)) + (5 * var(--shiftH)) + var(--leftMargin)
+        );
+        --title-top: calc(
+          (41 * var(--bg-size-factor)) - (1 * var(--shiftV)) + var(--topMargin)
+        );
+
+        --bgImg-left: calc(0 * var(--bg-size-factor) + var(--leftMargin));
+        --bgImg-top: calc(19.5 * var(--bg-size-factor) + var(--topMargin));
+
+        --btnMenu-left: calc(
+          (6.5 * var(--bg-size-factor)) + (5 * var(--shiftH)) +
+            var(--leftMargin)
+        );
+        --btnMenu-top: calc(
+          (410 * var(--bg-size-factor)) + (6 * var(--shiftV)) + var(--topMargin)
+        );
+
+        --btnProjects-top: calc(
+          var(--btnMenu-top) + (0 * var(--bg-size-factor)) - (4 * var(--shiftV))
+        );
+
+        --btnProjects-left: calc(
+          var(--btnMenu-left) + (0 * var(--bg-size-factor)) +
+            (10 * var(--shiftH))
+        );
+
+        --btnPubs-top: calc(
+          var(--btnMenu-top) + (0 * var(--bg-size-factor)) - (4 * var(--shiftV))
+        );
+
+        --btnPubs-left: calc(
+          var(--btnMenu-left) + (0 * var(--bg-size-factor)) +
+            (10 * var(--shiftH))
+        );
+
+        --btnObm-top: calc(
+          var(--btnMenu-top) + (0 * var(--bg-size-factor)) - (2 * var(--shiftV))
+        );
+
+        --btnObm-left: calc(
+          var(--btnMenu-left) + (0 * var(--bg-size-factor)) +
+            (10 * var(--shiftH))
+        );
+
+        --btnSkills-left: calc(
+          var(--btnMenu-left) + (6 * var(--shiftH)) - 0 * var(--bg-size-factor)
+        );
+        --btnSkills-top: calc(var(--btnMenu-top) + (2 * var(--shiftV)) + 0px);
+
+        --btnFollow-left: calc(
+          var(--btnMenu-left) + (12 * var(--shiftH)) + 0 * var(--bg-size-factor)
+        );
+        --btnFollow-top: calc(var(--btnMenu-top) + (0 * var(--shiftV)) + 0px);
+      }
+
+      .title {
+        font-size: calc(70 * var(--bg-size-factor));
+      }
+
+      .webSubtitle {
+        font-size: calc(30 * var(--bg-size-factor));
+
+        top: calc(var(--title-top) + (80 * var(--bg-size-factor)));
+        left: calc(var(--title-left) + (280 * var(--bg-size-factor)));
+      }
+
+      .gameSubtitle {
+        font-size: calc(30 * var(--bg-size-factor));
+
+        top: calc(var(--title-top) + (80 * var(--bg-size-factor)));
+        left: calc(var(--title-left) + (483 * var(--bg-size-factor)));
+      }
+
+      .bioSubtitle {
+        font-size: calc(30 * var(--bg-size-factor));
+
+        top: calc(var(--title-top) + (80 * var(--bg-size-factor)));
+        left: calc(var(--title-left) + (437 * var(--bg-size-factor)));
+      }
+
+      .about {
+        font-weight: 400;
+        font-size: calc(28 * var(--bg-size-factor));
+        text-shadow: 0 0 var(--textShadow) #383838;
+
+        width: calc(680 * var(--bg-size-factor));
+
+        top: calc(120 * var(--bg-size-factor));
+        left: 32.2%;
+        transform: translate(-50%, 0);
+      }
+
+      .aboutWeb {
+        font-weight: 400;
+        font-size: calc(26 * var(--bg-size-factor));
+        text-shadow: 0 0 var(--textShadow) #383838;
+
+        width: calc(780 * var(--bg-size-factor));
+        top: calc(var(--bg-size-factor) * -60);
+        left: 32.2%;
+        transform: translate(-50%, 0);
+      }
+
+      .aboutBio {
+        font-weight: 400;
+        font-size: calc(23 * var(--bg-size-factor));
+        text-shadow: 0 0 var(--textShadow) #383838;
+
+        width: calc(760 * var(--bg-size-factor));
+
+        top: calc(var(--bg-size-factor) * -70);
+        left: 32.2%;
+        transform: translate(-50%, 0);
+      }
+
+      .aboutGame {
+        font-weight: 400;
+        font-size: calc(24 * var(--bg-size-factor));
+        text-shadow: 0 0 var(--textShadow) #383838;
+
+        width: calc(650 * var(--bg-size-factor));
+
+        top: calc(var(--bg-size-factor) * -65);
+        left: 32.2%;
+        transform: translate(-50%, 0);
+      }
+
+      .aboutFrame,
+      .aboutFrame1,
+      .aboutFrameWeb,
+      .aboutFrameBio,
+      .aboutFrameGame,
+      .aboutFrameWeb1,
+      .aboutFrameBio1,
+      .aboutFrameGame1 {
+        visibility: hidden;
+      }
+
+      .lighter {
+        height: 100vh;
+        width: 200vw;
+      }
+
+      .CVBtnReplace {
+        top: calc(
+          var(--btnMenu-top) + (20 * var(--bg-size-factor)) +
+            (1 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnMenu-left) + (171.5 * var(--bg-size-factor)) +
+            (6 * var(--shiftH))
+        );
+      }
+
+      .CVBtnReplace + #CVCircle,
+      .CVBtnReplace:hover + #CVCircle {
+        font-weight: 400;
+        font-size: calc(15 * var(--bg-size-factor));
+        text-shadow: 0 0 var(--textShadow) #383838,
+          0 0 var(--textShadow) #383838;
+        top: calc(
+          var(--btnMenu-top) - (11 * var(--bg-size-factor)) +
+            (1 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnMenu-left) + (216 * var(--bg-size-factor)) +
+            (6 * var(--shiftH))
+        );
+      }
+
+      .followBtn,
+      .skillsBtn {
+        visibility: hidden;
+      }
+
+      .skillsBtn + #btnCircleHidden {
+        font-weight: 400;
+        font-size: calc(33 * var(--bg-size-factor));
+        text-shadow: 0 0 var(--textShadow) #383838,
+          0 0 var(--textShadow) #383838;
+        top: calc(
+          var(--btnSkills-top) - (29 * var(--bg-size-factor)) -
+            (3 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnSkills-left) + (67.5 * var(--bg-size-factor)) -
+            (2 * var(--shiftH))
+        );
+      }
+
+      .hexLink2Skills {
+        top: calc(var(--btnSkills-top) - (161 * var(--bg-size-factor)));
+        left: calc(
+          var(--btnSkills-left) + (59 * var(--bg-size-factor)) -
+            (4 * var(--shiftH))
+        );
+
+        transform: rotate(-60deg);
+      }
+
+      .webBtn {
+        top: calc(var(--btnSkills-top) - (172 * var(--bg-size-factor)));
+        left: calc(
+          var(--btnSkills-left) + (134.5 * var(--bg-size-factor)) -
+            (4 * var(--shiftH))
+        );
+      }
+
+      .bioBtn {
+        top: calc(
+          var(--btnSkills-top) - (44 * var(--bg-size-factor)) -
+            (1 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnSkills-left) + (134.5 * var(--bg-size-factor)) -
+            (7 * var(--shiftH))
+        );
+      }
+
+      .gameBtn {
+        top: calc(
+          var(--btnSkills-top) - (108 * var(--bg-size-factor)) +
+            (1 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnSkills-left) + (23.5 * var(--bg-size-factor)) -
+            (1 * var(--shiftH))
+        );
+      }
+
+      .followBtn + #btnCircleHidden {
+        font-weight: 400;
+        font-size: calc(31 * var(--bg-size-factor));
+        text-shadow: 0 0 var(--textShadow) #383838,
+          0 0 var(--textShadow) #383838;
+        top: calc(
+          var(--btnFollow-top) - (29 * var(--bg-size-factor)) -
+            (1 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnFollow-left) + (68 * var(--bg-size-factor)) +
+            (4 * var(--shiftH))
+        );
+      }
+
+      .hexLink1Projects,
+      .hexLink1Pubs {
+        transform: rotate(120deg);
+      }
+
+      .hexLink2Projects,
+      .hexLink2Pubs {
+        transform: rotate(-120deg) scaleX(-1);
+      }
+
+      .hexLink1Projects {
+        width: calc(170 * var(--bg-size-factor));
+
+        top: calc(var(--btnProjects-top) - (34 * var(--bg-size-factor)));
+        left: calc(
+          var(--btnProjects-left) - (34 * var(--bg-size-factor)) +
+            (4 * var(--shiftH))
+        );
+      }
+
+      .hexLink2Projects {
+        width: calc(170 * var(--bg-size-factor));
+
+        top: calc(var(--btnProjects-top) - (34 * var(--bg-size-factor)));
+        left: calc(
+          var(--btnProjects-left) - (39 * var(--bg-size-factor)) -
+            (3 * var(--shiftH))
+        );
+      }
+
+      .pj2Btn {
+        top: calc(
+          var(--btnProjects-top) + (83 * var(--bg-size-factor)) -
+            (2 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnProjects-left) + (23 * var(--bg-size-factor)) +
+            (3 * var(--shiftH))
+        );
+      }
+
+      .pj2Btn + #pj2Circle,
+      .pj2Btn:hover + #pj2Circle {
+        top: calc(
+          var(--btnProjects-top) + (55 * var(--bg-size-factor)) -
+            (2 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnProjects-left) + (30 * var(--bg-size-factor)) +
+            (4 * var(--shiftH))
+        );
+      }
+      .PGBtn {
+        top: calc(
+          var(--btnProjects-top) + (84 * var(--bg-size-factor)) +
+            (0 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnProjects-left) + (23 * var(--bg-size-factor)) +
+            (3 * var(--shiftH))
+        );
+      }
+
+      .hexLink1Pubs {
+        width: calc(170 * var(--bg-size-factor));
+
+        top: calc(var(--btnPubs-top) - (34 * var(--bg-size-factor)));
+        left: calc(
+          var(--btnPubs-left) - (34 * var(--bg-size-factor)) +
+            (4 * var(--shiftH))
+        );
+      }
+
+      .hexLink2Pubs {
+        width: calc(170 * var(--bg-size-factor));
+
+        top: calc(var(--btnPubs-top) - (34 * var(--bg-size-factor)));
+        left: calc(
+          var(--btnPubs-left) - (39 * var(--bg-size-factor)) -
+            (3 * var(--shiftH))
+        );
+      }
+
+      .P1Btn {
+        top: calc(
+          var(--btnPubs-top) + (83 * var(--bg-size-factor)) -
+            (2 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnPubs-left) + (23 * var(--bg-size-factor)) -
+            (3 * var(--shiftH))
+        );
+      }
+      .P2Btn {
+        top: calc(
+          var(--btnPubs-top) + (83 * var(--bg-size-factor)) -
+            (2 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnPubs-left) + (23 * var(--bg-size-factor)) +
+            (3 * var(--shiftH))
+        );
+      }
+      .P3Btn {
+        top: calc(
+          var(--btnPubs-top) + (20 * var(--bg-size-factor)) +
+            (1 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnPubs-left) + (23 * var(--bg-size-factor)) -
+            (3 * var(--shiftH))
+        );
+      }
+      .P4Btn {
+        top: calc(
+          var(--btnPubs-top) + (84 * var(--bg-size-factor)) +
+            (0 * var(--shiftV))
+        );
+        left: calc(
+          var(--btnPubs-left) + (23 * var(--bg-size-factor)) +
+            (3 * var(--shiftH))
+        );
+      }
+    }
+    @media (width < 600px) {
     }
   }
 }
