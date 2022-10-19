@@ -484,10 +484,6 @@ b *::selection {
 }
 
 .btnActive {
-  filter: drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
-    drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
-    drop-shadow(0 0 calc(var(--textShadow) + 1px) rgba(35, 174, 255, 0.484));
-
   width: var(--btn-width);
   height: var(--btn-height);
 
@@ -499,6 +495,12 @@ b *::selection {
     var(--btn-raise) var(--btn-height),
     0.2px calc(var(--btn-height) / 2 - 0.3px)
   );
+}
+
+.btnActive .imgContainer {
+  filter: drop-shadow(0 0 calc(var(--textShadow) * 2) rgb(35, 255, 171))
+    drop-shadow(0 0 calc(var(--textShadow) * 2) rgb(35, 255, 171))
+    drop-shadow(0 0 calc(var(--textShadow) * 2 + 1px) rgba(35, 174, 255, 0.484));
 }
 
 .smallBtn {
@@ -516,11 +518,6 @@ b *::selection {
 }
 
 .smallBtnActive {
-  filter: drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
-    drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
-    drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
-    drop-shadow(0 0 var(--titleShadow) rgba(35, 174, 255, 0.484));
-
   width: var(--btnS-width);
   height: var(--btnS-height);
 
@@ -532,6 +529,13 @@ b *::selection {
     var(--btnS-raise) var(--btnS-height),
     0.8px calc(var(--btnS-height) / 2 + 0.5px)
   );
+}
+
+.smallBtnActive .imgContainer {
+  filter: drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
+    drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
+    drop-shadow(0 0 var(--textShadow) rgb(35, 255, 171))
+    drop-shadow(0 0 var(--titleShadow) rgba(35, 174, 255, 0.484));
 }
 
 .btn:hover + .rotation {
