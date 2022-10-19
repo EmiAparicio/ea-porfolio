@@ -66,6 +66,9 @@ b {
 .aboutGame {
   position: absolute;
   text-align: center;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
   user-select: text;
   font-family: "Russo One", sans-serif;
 
@@ -77,36 +80,8 @@ b {
   color: #383838;
 }
 
-.about::-moz-selection,
-.about::selection,
-.aboutGame::-moz-selection,
-.aboutWeb::-moz-selection,
-.aboutBio::-moz-selection,
-.aboutGame::selection,
-.aboutWeb::selection,
-.aboutBio::selection,
-.aboutGame *::-moz-selection,
-.aboutWeb *::-moz-selection,
-.aboutBio *::-moz-selection,
-.aboutGame *::selection,
-.aboutWeb *::selection,
-.aboutBio *::selection,
-.mailText::-moz-selection,
-.mailText::selection {
-  color: #383838;
-  background-color: rgba(6, 124, 87, 0.8);
-}
-
 br {
   user-select: none;
-}
-
-b::-moz-selection,
-b::selection,
-b *::-moz-selection,
-b *::selection {
-  color: #383838 !important;
-  background-color: rgba(6, 124, 87, 0.8) !important;
 }
 
 .aboutFrame,

@@ -188,6 +188,131 @@
   height: calc(383 * var(--bg-size-factor));
 }
 
+.about::-moz-selection,
+.aboutGame::-moz-selection,
+.aboutWeb::-moz-selection,
+.aboutBio::-moz-selection,
+.about *::-moz-selection,
+.aboutGame *::-moz-selection,
+.aboutWeb *::-moz-selection,
+.aboutBio *::-moz-selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+  background-color: rgba(0, 0, 0, 0);
+
+  text-shadow: 0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564);
+}
+.about::-ms-selection,
+.aboutGame::-ms-selection,
+.aboutWeb::-ms-selection,
+.aboutBio::-ms-selection,
+.about *::-ms-selection .aboutGame *::-ms-selection,
+.aboutWeb *::-ms-selection,
+.aboutBio *::-ms-selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+  background-color: rgba(0, 0, 0, 0);
+
+  text-shadow: 0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564);
+}
+.about::-webkit-selection,
+.aboutGame::-webkit-selection,
+.aboutWeb::-webkit-selection,
+.aboutBio::-webkit-selection,
+.about *::-webkit-selection,
+.aboutGame *::-webkit-selection,
+.aboutWeb *::-webkit-selection,
+.aboutBio *::-webkit-selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+  background-color: rgba(0, 0, 0, 0);
+
+  text-shadow: 0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564);
+}
+.about::selection,
+.aboutGame::selection,
+.aboutWeb::selection,
+.aboutBio::selection,
+.about *::selection,
+.aboutGame *::selection,
+.aboutWeb *::selection,
+.aboutBio *::selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+  background-color: rgba(0, 0, 0, 0);
+
+  text-shadow: 0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564),
+    0 0 calc(var(--bg-size-factor) * 5) rgba(55, 251, 134, 0.564);
+}
+/* .mailText::-moz-selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+.mailText::-ms-selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+.mailText::-webkit-selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+}
+.mailText::selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+} */
+
+b::-moz-selection,
+b *::-moz-selection {
+  color: rgba(6, 124, 87, 1) !important;
+  /* background-color: rgba(6, 124, 87, 0.8) !important; */
+}
+b::-ms-selection,
+b *::-ms-selection {
+  color: rgba(6, 124, 87, 1) !important;
+  /* background-color: rgba(6, 124, 87, 0.8) !important; */
+}
+b::-webkit-selection,
+b *::-webkit-selection {
+  color: rgba(6, 124, 87, 1) !important;
+  /* background-color: rgba(6, 124, 87, 0.8) !important; */
+}
+b::selection,
+b *::selection {
+  color: rgba(6, 124, 87, 1) !important;
+  /* background-color: rgba(6, 124, 87, 0.8) !important; */
+}
+
 .about {
   font-weight: 400;
   font-size: calc(28 * var(--bg-size-factor));
@@ -1261,9 +1386,16 @@ b *::selection {
   :root {
     --bg-size-factor: calc(200vh * (508 / 876875) - (82737px / 876875));
   }
+  .title {
+    left: calc(var(--title-left) + var(--bg-size-factor) * 70);
+  }
 }
 
 @media (width <= calc(100vh * 2.08)) and (width >= calc(100vh * 1.54)) {
+  .title {
+    left: calc(var(--title-left) + var(--bg-size-factor) * 70);
+  }
+
   @media (width >= 1700px) {
     :root {
       --bg-size-factor: calc(
@@ -2081,7 +2213,7 @@ b *::selection {
   }
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
   .menuBtn,
   .hexLink1Skills,
   .hexLink1Follow,

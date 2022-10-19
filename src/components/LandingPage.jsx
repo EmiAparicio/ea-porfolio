@@ -33,8 +33,10 @@ const timeOut = { id: null };
 const invasionTours = "https://youtu.be/fdYPMU1pSoU";
 const starCards = "https://youtu.be/KbUT9VvM3X8";
 
+
 export default function LandingPage() {
-  let x = window.matchMedia("(hover: none)");
+  let x = window.matchMedia("(pointer: coarse)");
+  console.log(x.matches);
 
   const [btnCVmoved, setBtnCV] = useState(x.matches);
   const [btnMenuActive, setMenuBtn] = useState(x.matches);
@@ -178,7 +180,8 @@ export default function LandingPage() {
     : "Jr. Full Stack Web Developer";
 
   const subtitleClass =
-    x.matches && window.matchMedia("(width < 600px) and (width < 100vh)")
+    x.matches &&
+    window.matchMedia("(width < 600px) and (width < 100vh)").matches
       ? btnBioActive
         ? "smallSubtitle bioSubtitle"
         : btnGameActive
@@ -612,24 +615,26 @@ export default function LandingPage() {
                     <b
                       className="mail"
                       onClick={(e) => {
-                        navigator.clipboard.writeText(e.target.innerText);
+                        if (!x.matches) {
+                          navigator.clipboard.writeText(e.target.innerText);
 
-                        const pointer = document.getElementById("pointer");
-                        const pointerText =
-                          document.getElementById("copiedBtn");
+                          const pointer = document.getElementById("pointer");
+                          const pointerText =
+                            document.getElementById("copiedBtn");
 
-                        pointer.className = "copiedPointer";
-                        pointerText.className = "copiedText";
-                        copiedText.bool = true;
+                          pointer.className = "copiedPointer";
+                          pointerText.className = "copiedText";
+                          copiedText.bool = true;
 
-                        if (x.matches)
-                          setTimeout(() => {
-                            pointer.className = "pointer";
-                            pointerText.className = "invisibleText";
-                            pointer.style.backgroundColor = `#f0f0f0`;
-                            pointer.style.filter = ``;
-                            copiedText.bool = false;
-                          }, 500);
+                          if (x.matches)
+                            setTimeout(() => {
+                              pointer.className = "pointer";
+                              pointerText.className = "invisibleText";
+                              pointer.style.backgroundColor = `#f0f0f0`;
+                              pointer.style.filter = ``;
+                              copiedText.bool = false;
+                            }, 500);
+                        }
                       }}
                     >
                       emilianojaparicio@gmail.com
@@ -1045,7 +1050,7 @@ export default function LandingPage() {
           className={
             (btnBioActive || btnWebActive || btnGameActive) &&
             x.matches &&
-            window.matchMedia("(width < 600px) and (width < 100vh)")
+            window.matchMedia("(width < 600px) and (width < 100vh)").matches
               ? "smallTitle title"
               : "title"
           }

@@ -15,3 +15,11 @@ html {
   width: 100vw;
   height: 100vh;
 }
+
+*::-moz-selection,
+*::-ms-selection,
+*::-webkit-selection,
+*::selection {
+  color: #383838;
+  background-color: rgba(6, 124, 87, 0.8);
+}
