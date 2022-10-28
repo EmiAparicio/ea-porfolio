@@ -118,6 +118,41 @@
   height: 100%;
 }
 
+.btn.menuBtn .imgMenu,
+.btn.projectsBtn .imgProjects,
+.btn.pubsBtn .imgPubs,
+.btn.obmBtn .imgObm {
+  animation: logoAnimation 2s cubic-bezier(0.74, 0.31, 0.95, 0.56) infinite;
+}
+
+@keyframes logoAnimation {
+  from {
+    filter: drop-shadow(0 0 calc(var(--textShadow) * 0) #f0f0f0)
+      drop-shadow(0 0 calc(var(--textShadow) * 0) #f0f0f0);
+  }
+  90% {
+    filter: drop-shadow(0 0 calc(var(--titleShadow)) #f0f0f0)
+      drop-shadow(0 0 calc(var(--titleShadow)) #f0f0f0);
+  }
+
+  95% {
+    filter: drop-shadow(0 0 calc(var(--titleShadow) * 3) #f0f0f0)
+      drop-shadow(0 0 calc(var(--btnShadow) * 8) #f0f0f0);
+  }
+
+  97% {
+    filter: drop-shadow(0 0 calc(var(--titleShadow) * 10) #f0f0f0);
+  }
+  99% {
+    filter: drop-shadow(0 0 calc(var(--titleShadow) * 10) #f0f0f0);
+  }
+
+  to {
+    filter: drop-shadow(0 0 calc(var(--textShadow) * 0) #f0f0f0)
+      drop-shadow(0 0 calc(var(--btnShadow) * 0) #f0f0f0);
+  }
+}
+
 .title {
   font-weight: 400;
   font-size: calc(100 * var(--bg-size-factor));
@@ -145,7 +180,7 @@
 
   width: max-content;
 
-  top: calc(var(--title-top) + (100 * var(--bg-size-factor)));
+  top: calc(var(--title-top) + (110 * var(--bg-size-factor)));
   left: calc(var(--title-left) + (306 * var(--bg-size-factor)));
 }
 
@@ -156,7 +191,7 @@
 
   width: max-content;
 
-  top: calc(var(--title-top) + (100 * var(--bg-size-factor)));
+  top: calc(var(--title-top) + (110 * var(--bg-size-factor)));
   left: calc(var(--title-left) + (611 * var(--bg-size-factor)));
 }
 
@@ -167,7 +202,7 @@
 
   width: max-content;
 
-  top: calc(var(--title-top) + (100 * var(--bg-size-factor)));
+  top: calc(var(--title-top) + (110 * var(--bg-size-factor)));
   left: calc(var(--title-left) + (543 * var(--bg-size-factor)));
 }
 
@@ -388,8 +423,12 @@ b *::selection {
 }
 
 b {
-  text-shadow: 0 0 calc(var(--titleShadow) + (2 * var(--bg-size-factor)))
-    #383838;
+  /* text-shadow: 0 0 calc(var(--titleShadow) + (2 * var(--bg-size-factor))) #383838; */
+  color: #383838;
+}
+
+b.mail {
+  color: #f0f0f0;
 }
 
 b::-moz-selection,
