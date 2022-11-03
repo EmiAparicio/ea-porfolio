@@ -181,7 +181,7 @@
   width: max-content;
 
   top: calc(var(--title-top) + (110 * var(--bg-size-factor)));
-  left: calc(var(--title-left) + (306 * var(--bg-size-factor)));
+  left: calc(var(--title-left) + (370 * var(--bg-size-factor)));
 }
 
 .gameSubtitle {
@@ -2543,7 +2543,7 @@ b *::selection {
       font-size: calc(30 * var(--bg-size-factor));
 
       top: calc(var(--title-top) + (80 * var(--bg-size-factor)));
-      left: calc(var(--title-left) + (280 * var(--bg-size-factor)));
+      left: calc(var(--title-left) + (344 * var(--bg-size-factor)));
     }
 
     .gameSubtitle {
@@ -2899,7 +2899,7 @@ b *::selection {
         font-size: calc(30 * var(--bg-size-factor));
 
         top: calc(var(--title-top) + (260 * var(--bg-size-factor)));
-        left: calc(var(--title-left) + (150 * var(--bg-size-factor)));
+        left: calc(var(--title-left) + (170 * var(--bg-size-factor)));
       }
 
       .gameSubtitle {

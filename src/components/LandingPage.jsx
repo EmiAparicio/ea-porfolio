@@ -176,7 +176,7 @@ export default function LandingPage() {
     ? "Bioengineer (PhD)"
     : btnGameActive
     ? "Game Designer"
-    : "    Full Stack Web Developer";
+    : "Full Stack Web Developer";
 
   const subtitleClass =
     x.matches &&
