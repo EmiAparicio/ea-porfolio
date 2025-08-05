@@ -180,7 +180,7 @@
 
   width: max-content;
 
-  top: calc(var(--title-top) + (110 * var(--bg-size-factor)));
+  top: calc(var(--title-top) + (180 * var(--bg-size-factor)));
   left: calc(var(--title-left) + (370 * var(--bg-size-factor)));
 }
 
@@ -191,7 +191,7 @@
 
   width: max-content;
 
-  top: calc(var(--title-top) + (110 * var(--bg-size-factor)));
+  top: calc(var(--title-top) + (180 * var(--bg-size-factor)));
   left: calc(var(--title-left) + (611 * var(--bg-size-factor)));
 }
 
@@ -202,7 +202,7 @@
 
   width: max-content;
 
-  top: calc(var(--title-top) + (110 * var(--bg-size-factor)));
+  top: calc(var(--title-top) + (180 * var(--bg-size-factor)));
   left: calc(var(--title-left) + (543 * var(--bg-size-factor)));
 }
 

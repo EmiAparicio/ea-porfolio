@@ -176,7 +176,7 @@ export default function LandingPage() {
     ? "Bioengineer (PhD)"
     : btnGameActive
     ? "Game Designer"
-    : "Full Stack Web Developer";
+    : "Frontend Web Developer";
 
   const subtitleClass =
     x.matches &&
@@ -600,7 +600,7 @@ export default function LandingPage() {
           >
             <div className="aboutRel">
               <p className="about">
-                I am a <b>bioengineer</b>, <b>full stack developer</b>, almost
+                I am a <b>bioengineer</b>, <b>frontend developer</b>, almost
                 doctor of engineering, symphonic metal absolutist,{" "}
                 <b>videogame designer</b> wannabe, and forever a cat lover. I'm
                 interested in technology and programming since I can remember.
