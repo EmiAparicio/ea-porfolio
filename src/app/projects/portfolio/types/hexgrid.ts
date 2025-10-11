@@ -3,6 +3,30 @@ export interface Axial {
   r: number;
 }
 
+export type Ripple = {
+  cx: number;
+  cy: number;
+  reach: number;
+  born: number;
+};
+
+export type RipplePhysics = {
+  rings: number;
+  ringWidth: number;
+  durationSec: number;
+  stagger: number;
+  minRingSeparationPx?: number;
+  reachFactor: number;
+  maxRadiusPx?: number;
+  falloffExp: number;
+  startFadePct: number;
+  endFadePct: number;
+};
+
+export type CreateImageBitmapFn = (
+  image: ImageBitmapSource
+) => Promise<ImageBitmap>;
+
 export type HexGridParamsSnapshot = {
   W: number;
   H: number;
@@ -23,29 +47,6 @@ export type HexGridParamsSnapshot = {
 };
 
 export type OmitSafe<T, K extends PropertyKey> = Omit<T, Extract<K, keyof T>>;
-
-export type CreateImageBitmapFn = (
-  image: ImageBitmapSource
-) => Promise<ImageBitmap>;
-export type Ripple = {
-  cx: number;
-  cy: number;
-  reach: number;
-  born: number;
-};
-
-export type RipplePhysics = {
-  rings: number;
-  ringWidth: number;
-  durationSec: number;
-  stagger: number;
-  minRingSeparationPx?: number;
-  reachFactor: number;
-  maxRadiusPx?: number;
-  falloffExp: number;
-  startFadePct: number;
-  endFadePct: number;
-};
 
 export type HexSpec = {
   x: number;

@@ -1,6 +1,7 @@
 'use client';
 
 import { globalLoadingAtom } from '@portfolio/atoms/loadingAtoms';
+import { globalModalOpenAtom } from '@portfolio/atoms/modalAtoms';
 import Spinner, { SpinnerProps } from '@portfolio/components/Spinner';
 import { useAtomValue } from '@portfolio/lib/jotai';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -45,11 +46,12 @@ export default function GlobalLoader(props: GlobalLoaderProps) {
     modalBonusMs = 2000,
   } = props;
 
+  const isModalOpen = useAtomValue(globalModalOpenAtom);
   const isLoading = useAtomValue(globalLoadingAtom);
 
   const extraMs = useMemo(
-    () => lingerMs,
-    [lingerMs, modalBonusMs]
+    () => lingerMs + (isModalOpen ? modalBonusMs : 0),
+    [lingerMs, modalBonusMs, isModalOpen]
   );
 
   const [visible, setVisible] = useState<boolean>(false);
@@ -100,7 +102,7 @@ export default function GlobalLoader(props: GlobalLoaderProps) {
           <div className="relative grid h-full w-full place-items-center">
             <Spinner
               pulses={pulses}
-              durationSec={durationSec}
+              durationSec={durationSec + (isModalOpen ? 1.0 : 0)}
             />
           </div>
         </motion.div>

@@ -2,110 +2,6 @@ import { Orientation } from '@portfolio/components/HexGridBackground/HexGridBack
 import { clamp } from '@portfolio/utils/math';
 
 /**
- * Integer floor division by two.
- * @param n Input number.
- * @returns Floor(n/2).
- */
-export function floorDiv2(n: number) {
-  return Math.floor(n / 2);
-}
-
-/**
- * Converts odd-q offset coordinates to axial coordinates.
- * @param i Column index in odd-q.
- * @param j Row index in odd-q.
- * @returns Axial { q, r }.
- */
-export function oddQ_to_axial(i: number, j: number) {
-  const q = i;
-  const r = j - floorDiv2(i);
-  return { q, r };
-}
-
-/**
- * Converts odd-r offset coordinates to axial coordinates.
- * @param i Row index in odd-r.
- * @param j Column index in odd-r.
- * @returns Axial { q, r }.
- */
-export function oddR_to_axial(i: number, j: number) {
-  const r = i;
-  const q = j - floorDiv2(i);
-  return { q, r };
-}
-
-/**
- * Converts axial coordinates to odd-q offset coordinates.
- * @param q Axial q.
- * @param r Axial r.
- * @returns Odd-q { i, j }.
- */
-export function axial_to_oddQ(q: number, r: number) {
-  const i = q;
-  const j = r + floorDiv2(q);
-  return { i, j };
-}
-
-/**
- * Converts axial coordinates to odd-r offset coordinates.
- * @param q Axial q.
- * @param r Axial r.
- * @returns Odd-r { i, j }.
- */
-export function axial_to_oddR(q: number, r: number) {
-  const i = r;
-  const j = q + floorDiv2(r);
-  return { i, j };
-}
-
-/**
- * Computes the six vertex positions of a hexagon.
- * @param cx Center x in logical pixels.
- * @param cy Center y in logical pixels.
- * @param R Hex radius in logical pixels.
- * @param orientation Hex orientation.
- * @returns Array of six [x, y] tuples.
- */
-export function hexPoints(
-  cx: number,
-  cy: number,
-  R: number,
-  orientation: Orientation
-): [number, number][] {
-  const startDeg = orientation === 'flat' ? 0 : 30;
-  const pts: [number, number][] = [];
-  for (let i = 0; i < 6; i++) {
-    const ang = ((startDeg + i * 60) * Math.PI) / 180;
-    pts.push([cx + R * Math.cos(ang), cy + R * Math.sin(ang)]);
-  }
-  return pts;
-}
-
-/**
- * Builds an SVG path string from a sequence of points.
- * @param pts List of [x, y] points.
- * @returns SVG path data string.
- */
-export function pathFromPoints(pts: [number, number][]) {
-  return `M ${pts.map(([x, y]) => `${x.toFixed(2)} ${y.toFixed(2)}`).join(' L ')} Z`;
-}
-
-/**
- * Smoothstep in [0,1] with zero slope at the ends.
- */
-export function smoothstep01(u: number) {
-  const t = clamp(u, 0, 1);
-  return t * t * (3 - 2 * t);
-}
-
-/**
- * Normalizes an angle in degrees to [0,360).
- */
-export function normDeg(a: number) {
-  return ((a % 360) + 360) % 360;
-}
-
-/**
  * Cubic ease-out function.
  * @param t Normalized time in [0, 1].
  * @returns Eased value.
@@ -167,14 +63,120 @@ export function effectiveStagger(
 }
 
 /**
- * A true modulo operator that correctly handles negative numbers.
- * Unlike the '%' (remainder) operator, the result always has the same sign as the divisor.
- * @param a The dividend.
- * @param b The divisor.
- * @returns The value of `a` modulo `b`.
+ * Computes the six vertex positions of a hexagon.
+ * @param cx Center x in logical pixels.
+ * @param cy Center y in logical pixels.
+ * @param R Hex radius in logical pixels.
+ * @param orientation Hex orientation.
+ * @returns Array of six [x, y] tuples.
  */
-export function mod(a: number, b: number) {
-  return ((a % b) + b) % b;
+export function hexPoints(
+  cx: number,
+  cy: number,
+  R: number,
+  orientation: Orientation
+): [number, number][] {
+  const startDeg = orientation === 'flat' ? 0 : 30;
+  const pts: [number, number][] = [];
+  for (let i = 0; i < 6; i++) {
+    const ang = ((startDeg + i * 60) * Math.PI) / 180;
+    pts.push([cx + R * Math.cos(ang), cy + R * Math.sin(ang)]);
+  }
+  return pts;
+}
+
+/**
+ * Builds an SVG path string from a sequence of points.
+ * @param pts List of [x, y] points.
+ * @returns SVG path data string.
+ */
+export function pathFromPoints(pts: [number, number][]) {
+  return `M ${pts.map(([x, y]) => `${x.toFixed(2)} ${y.toFixed(2)}`).join(' L ')} Z`;
+}
+
+/**
+ * Integer floor division by two.
+ * @param n Input number.
+ * @returns Floor(n/2).
+ */
+export function floorDiv2(n: number) {
+  return Math.floor(n / 2);
+}
+
+/**
+ * Converts odd-q offset coordinates to axial coordinates.
+ * @param i Column index in odd-q.
+ * @param j Row index in odd-q.
+ * @returns Axial { q, r }.
+ */
+export function oddQ_to_axial(i: number, j: number) {
+  const q = i;
+  const r = j - floorDiv2(i);
+  return { q, r };
+}
+
+/**
+ * Converts odd-r offset coordinates to axial coordinates.
+ * @param i Row index in odd-r.
+ * @param j Column index in odd-r.
+ * @returns Axial { q, r }.
+ */
+export function oddR_to_axial(i: number, j: number) {
+  const r = i;
+  const q = j - floorDiv2(i);
+  return { q, r };
+}
+
+/**
+ * Converts axial coordinates to odd-q offset coordinates.
+ * @param q Axial q.
+ * @param r Axial r.
+ * @returns Odd-q { i, j }.
+ */
+export function axial_to_oddQ(q: number, r: number) {
+  const i = q;
+  const j = r + floorDiv2(q);
+  return { i, j };
+}
+
+/**
+ * Converts axial coordinates to odd-r offset coordinates.
+ * @param q Axial q.
+ * @param r Axial r.
+ * @returns Odd-r { i, j }.
+ */
+export function axial_to_oddR(q: number, r: number) {
+  const i = r;
+  const j = q + floorDiv2(r);
+  return { i, j };
+}
+
+/**
+ * Smoothstep in [0,1] with zero slope at the ends.
+ */
+export function smoothstep01(u: number) {
+  const t = clamp(u, 0, 1);
+  return t * t * (3 - 2 * t);
+}
+
+/**
+ * Normalizes an angle in degrees to [0,360).
+ */
+export function normDeg(a: number) {
+  return ((a % 360) + 360) % 360;
+}
+
+/**
+ * Builds a CSV string of coordinate pairs suitable for SVG polygon/polyline `points`.
+ * Each pair is formatted as "x,y" and separated by a single space.
+ *
+ * @param points - Readonly array of 2D points as readonly tuples `[x, y]`.
+ * @returns Space-separated "x,y" pairs (e.g. `"0,0 10,0 10,10 0,10"`).
+ */
+export function toPointsStr(
+  points: readonly (readonly [number, number])[]
+): string {
+  return points.map(([x, y]) => `${x},${y}`).join(' ');
 }
 
 /**
@@ -202,14 +204,12 @@ export function toCssPx(v?: number | string): string | undefined {
 }
 
 /**
- * Builds a CSV string of coordinate pairs suitable for SVG polygon/polyline `points`.
- * Each pair is formatted as "x,y" and separated by a single space.
- *
- * @param points - Readonly array of 2D points as readonly tuples `[x, y]`.
- * @returns Space-separated "x,y" pairs (e.g. `"0,0 10,0 10,10 0,10"`).
+ * A true modulo operator that correctly handles negative numbers.
+ * Unlike the '%' (remainder) operator, the result always has the same sign as the divisor.
+ * @param a The dividend.
+ * @param b The divisor.
+ * @returns The value of `a` modulo `b`.
  */
-export function toPointsStr(
-  points: readonly (readonly [number, number])[]
-): string {
-  return points.map(([x, y]) => `${x},${y}`).join(' ');
+export function mod(a: number, b: number) {
+  return ((a % b) + b) % b;
 }

@@ -6,7 +6,11 @@ import GlobalModal from '@portfolio/components/GlobalModal';
 import HexGridReadyBoundary from '@portfolio/components/HexGridBackground/components/HexGridReadyBoundary';
 import HexGridBackground from '@portfolio/components/HexGridBackground/HexGridBackground';
 import LandingTitle from '@portfolio/components/LandingTitle';
+import { GloballyPositionedLangToggle } from '@portfolio/components/LangToggle';
+import { MenuPanel } from '@portfolio/components/MenuPanel';
+import { SessionStorageGuards } from '@portfolio/components/SessionStorageGuards';
 import TechCursor from '@portfolio/components/TechCursor';
+import { GloballyPositionedThemeToggle } from '@portfolio/components/ThemeToggle';
 import CopyToastHost from '@portfolio/components/Toast/CopyToastHost';
 import ToastProvider from '@portfolio/components/Toast/ToastProvider';
 import { AppProviders } from '@portfolio/providers';
@@ -14,8 +18,7 @@ import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { MenuPanel } from '../projects/portfolio/components/MenuPanel';
-import { SessionStorageGuards } from '../projects/portfolio/components/SessionStorageGuards';
+import ClientScenes from './ClientScenes';
 
 const titles: Record<LocaleBase, string> = {
   en: 'Emiliano Aparicio | Engineer & Frontend Developer',
@@ -116,13 +119,16 @@ export default async function LangLayout(props: LayoutProps) {
             <HexGridBackground debug={false} />
             <HexGridReadyBoundary fallback={null}>
               <LangProvider initialLang={lang}>
+                <ClientScenes />
                 {props.children}
                 <LandingTitle />
                 <MenuPanel />
+                <TechCursor />
+                <GloballyPositionedThemeToggle />
+                <GloballyPositionedLangToggle />
                 <GlobalModal />
               </LangProvider>
-              <TechCursor />
-            </HexGridReadyBoundary>{' '}
+            </HexGridReadyBoundary>
           </ToastProvider>
         </main>
       </AppProviders>

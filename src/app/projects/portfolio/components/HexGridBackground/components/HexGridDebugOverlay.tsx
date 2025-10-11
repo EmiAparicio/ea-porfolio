@@ -3,9 +3,9 @@
 import { createPortal } from 'react-dom';
 import { JSX, useMemo } from 'react';
 import { oddQ_to_axial, oddR_to_axial } from '@portfolio/utils/hexgrid/math';
+import type { Orientation } from '@portfolio/components/HexGridBackground/HexGridBackground';
 import type { HexGridParamsSnapshot } from '@portfolio/types/hexgrid';
 import { useOverlayContainer } from '@portfolio/hooks/hexgrid/useHexGridDebugOverlay';
-import { Orientation } from '@portfolio/components/HexGridBackground/HexGridBackground';
 
 type Props = {
   /** If true, the debug overlay is rendered. */

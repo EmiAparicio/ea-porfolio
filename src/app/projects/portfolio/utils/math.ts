@@ -1,12 +1,45 @@
 /**
- * Clamps a number between a minimum and maximum value.
- * @param v The number to clamp.
- * @param a The minimum value.
- * @param b The maximum value.
- * @returns The clamped value.
+ * Shuffles an array using the Fisher-Yates (aka Knuth) algorithm.
+ * Creates a shallow copy of the array and shuffles it.
+ * @param arr The array to shuffle.
+ * @returns A new array with the elements shuffled.
+ * @template T
  */
-export function clamp(v: number, a: number, b: number) {
-  return Math.max(a, Math.min(b, v));
+export function shuffle<T>(arr: T[]) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = (Math.random() * (i + 1)) | 0;
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+/**
+ * Hashes a string to an unsigned 32-bit integer using the FNV-1a algorithm.
+ * @param s The string to hash.
+ * @returns The 32-bit hash code.
+ */
+export function hashStr(s: string) {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
+/**
+ * Creates a seeded pseudorandom number generator using the mulberry32 algorithm.
+ * @param a The 32-bit integer seed.
+ * @returns A function that returns a random float between 0 and 1.
+ */
+export function mulberry32(a: number) {
+  return function () {
+    let t = (a += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }
 
 /**
@@ -52,50 +85,29 @@ export function hexPoints(
 }
 
 /**
- * Hashes a string to an unsigned 32-bit integer using the FNV-1a algorithm.
- * @param s The string to hash.
- * @returns The 32-bit hash code.
+ * Clamps a number between a minimum and maximum value.
+ * @param v The number to clamp.
+ * @param a The minimum value.
+ * @param b The maximum value.
+ * @returns The clamped value.
  */
-export function hashStr(s: string) {
-  let h = 2166136261 >>> 0;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return h >>> 0;
+export function clamp(v: number, a: number, b: number) {
+  return Math.max(a, Math.min(b, v));
 }
 
 /**
- * Creates a seeded pseudorandom number generator using the mulberry32 algorithm.
- * @param a The 32-bit integer seed.
- * @returns A function that returns a random float between 0 and 1.
+ * Generates an array of integers within a specified range.
+ * @param a The starting number of the range (inclusive).
+ * @param b The ending number of the range (inclusive).
+ * @returns An array containing the sequence of integers.
  */
-export function mulberry32(a: number) {
-  return function () {
-    let t = (a += 0x6d2b79f5);
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
+export function range(a: number, b: number) {
+  const out: number[] = [];
+  for (let i = a; i <= b; i++) out.push(i);
+  return out;
 }
 
 export type RNG = () => number;
-
-/**
- * Shuffles an array using the Fisher-Yates (aka Knuth) algorithm.
- * Creates a shallow copy of the array and shuffles it.
- * @param arr The array to shuffle.
- * @returns A new array with the elements shuffled.
- * @template T
- */
-export function shuffle<T>(arr: T[]) {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = (Math.random() * (i + 1)) | 0;
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
 
 /**
  * Creates a seeded pseudorandom number generator (PRNG).
@@ -151,15 +163,3 @@ export const toPx = (v: number | string | undefined, fallback: number) => {
   if (Number.isNaN(n)) return fallback;
   return Math.max(0, Math.floor(n));
 };
-
-/**
- * Generates an array of integers within a specified range.
- * @param a The starting number of the range (inclusive).
- * @param b The ending number of the range (inclusive).
- * @returns An array containing the sequence of integers.
- */
-export function range(a: number, b: number) {
-  const out: number[] = [];
-  for (let i = a; i <= b; i++) out.push(i);
-  return out;
-}
