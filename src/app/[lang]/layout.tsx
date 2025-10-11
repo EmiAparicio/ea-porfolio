@@ -4,6 +4,7 @@ import { LocaleBase } from '@i18n/utils/constants';
 import { normalizeBase } from '@i18n/utils/normalize';
 import HexGridBackground from '@portfolio/components/HexGridBackground/HexGridBackground';
 import HexGridReadyBoundary from '@portfolio/components/HexGridBackground/components/HexGridReadyBoundary';
+import TechCursor from '@portfolio/components/TechCursor';
 import { AppProviders } from '@portfolio/providers';
 import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
@@ -106,6 +107,7 @@ export default async function LangLayout(props: LayoutProps) {
           <HexGridBackground debug={false} />
           <HexGridReadyBoundary fallback={null}>
             <LangProvider initialLang={lang}>{props.children}</LangProvider>
+            <TechCursor />
           </HexGridReadyBoundary>
         </main>
       </AppProviders>
