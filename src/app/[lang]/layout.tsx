@@ -2,6 +2,8 @@ import '@app/globals.css';
 import { LangProvider } from '@i18n/client';
 import { LocaleBase } from '@i18n/utils/constants';
 import { normalizeBase } from '@i18n/utils/normalize';
+import HexGridBackground from '@portfolio/components/HexGridBackground/HexGridBackground';
+import HexGridReadyBoundary from '@portfolio/components/HexGridBackground/components/HexGridReadyBoundary';
 import { AppProviders } from '@portfolio/providers';
 import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
@@ -101,7 +103,10 @@ export default async function LangLayout(props: LayoutProps) {
     <div>
       <AppProviders defaultTheme={initialTheme}>
         <main className="relative min-h-dvh overflow-hidden">
-          <LangProvider initialLang={lang}>{props.children}</LangProvider>
+          <HexGridBackground debug={false} />
+          <HexGridReadyBoundary fallback={null}>
+            <LangProvider initialLang={lang}>{props.children}</LangProvider>
+          </HexGridReadyBoundary>
         </main>
       </AppProviders>
     </div>
