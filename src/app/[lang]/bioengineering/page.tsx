@@ -1,12 +1,9 @@
 import { LocaleBase } from '@i18n/utils/constants';
 import { normalizeBase } from '@i18n/utils/normalize';
-import { isThenable } from '@portfolio/utils/promise';
-import { ParamsType } from '../page';
+import { PageParams } from '../page';
 
-export default async function EngPage(props: ParamsType) {
-  const p = isThenable<{ lang: string }>(props.params)
-    ? await props.params
-    : props.params;
+export default async function EngPage(props: PageParams) {
+  const p = await props.params;
   const lang = normalizeBase(p.lang) as LocaleBase;
 
   return (

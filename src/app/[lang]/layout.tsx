@@ -14,13 +14,11 @@ import { GloballyPositionedThemeToggle } from '@portfolio/components/ThemeToggle
 import CopyToastHost from '@portfolio/components/Toast/CopyToastHost';
 import ToastProvider from '@portfolio/components/Toast/ToastProvider';
 import { AppProviders } from '@portfolio/providers';
-import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ClientScenes from './ClientScenes';
-import { ParamsType } from './page';
-
+import { PageParams } from './page';
 
 const titles: Record<LocaleBase, string> = {
   en: 'Emiliano Aparicio | Engineer & Frontend Developer',
@@ -41,10 +39,8 @@ const siteUrl = process.env.VERCEL_URL
  * @param p The props object containing the `params`.
  * @returns A promise that resolves to the normalized language code (`'en'` or `'es'`).
  */
-async function resolveLangFromProps(p: ParamsType): Promise<LocaleBase> {
-  const raw = isThenable<{ lang: string }>(p.params)
-    ? (await p.params).lang
-    : p.params.lang;
+async function resolveLangFromProps(p: PageParams): Promise<LocaleBase> {
+  const raw = (await p.params).lang;
   return normalizeBase(raw);
 }
 
@@ -55,7 +51,7 @@ async function resolveLangFromProps(p: ParamsType): Promise<LocaleBase> {
  * @param props The props containing the route parameters.
  * @returns A promise that resolves to the `Metadata` object for the page.
  */
-export async function generateMetadata(props: ParamsType): Promise<Metadata> {
+export async function generateMetadata(props: PageParams): Promise<Metadata> {
   const lang = await resolveLangFromProps(props);
 
   return {
@@ -85,7 +81,7 @@ export async function generateMetadata(props: ParamsType): Promise<Metadata> {
   };
 }
 
-type LayoutProps = { children: React.ReactNode; params: { lang: string } };
+type LayoutProps = { children: React.ReactNode } & PageParams;
 
 /**
  * The root layout for language-specific routes (e.g., `/en/...`, `/es/...`).
@@ -94,9 +90,8 @@ type LayoutProps = { children: React.ReactNode; params: { lang: string } };
  * @param props The layout props, containing the page content (`children`) and route `params`.
  */
 export default async function LangLayout(props: LayoutProps) {
-  const p = isThenable<{ lang: string }>(props.params)
-    ? await props.params
-    : props.params;
+  const p = await props.params;
+
   const lang = normalizeBase(p.lang) as LocaleBase;
 
   if (lang !== 'en' && lang !== 'es') notFound();
