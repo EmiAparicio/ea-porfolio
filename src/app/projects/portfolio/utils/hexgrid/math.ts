@@ -1,4 +1,5 @@
 import { Orientation } from '@portfolio/components/HexGridBackground/HexGridBackground';
+import { clamp } from '@portfolio/utils/math';
 
 /**
  * Integer floor division by two.
@@ -87,4 +88,19 @@ export function hexPoints(
  */
 export function pathFromPoints(pts: [number, number][]) {
   return `M ${pts.map(([x, y]) => `${x.toFixed(2)} ${y.toFixed(2)}`).join(' L ')} Z`;
+}
+
+/**
+ * Smoothstep in [0,1] with zero slope at the ends.
+ */
+export function smoothstep01(u: number) {
+  const t = clamp(u, 0, 1);
+  return t * t * (3 - 2 * t);
+}
+
+/**
+ * Normalizes an angle in degrees to [0,360).
+ */
+export function normDeg(a: number) {
+  return ((a % 360) + 360) % 360;
 }

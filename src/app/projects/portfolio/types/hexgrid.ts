@@ -23,3 +23,7 @@ export type HexGridParamsSnapshot = {
 };
 
 export type OmitSafe<T, K extends PropertyKey> = Omit<T, Extract<K, keyof T>>;
+
+export type CreateImageBitmapFn = (
+  image: ImageBitmapSource
+) => Promise<ImageBitmap>;
