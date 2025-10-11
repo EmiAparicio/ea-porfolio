@@ -1,0 +1,60 @@
+@import 'tailwindcss';
+
+:root {
+  --green-main: #09a27a;
+  --white-main: #f2f5f4;
+  --black-main: #000a0a;
+  --gray-light: #a0b0ad;
+  --gray-dark: #383c3c;
+  --red-main: #a20830;
+  --green-strong-shine: #37fb8690;
+  --green-shine: #23ffab;
+  --green-dark: #067c57;
+
+  --background: var(--green-main);
+  --foreground-color-contrast: var(--gray-dark);
+  --foreground-color-dark: var(--green-dark);
+  --foreground-contrast: var(--white-main);
+  --foreground-main: var(--black-main);
+  --foreground-mid: var(--gray-dark);
+  --foreground-extreme: var(--gray-light);
+  --foreground-danger: var(--red-main);
+  --foreground-shine: var(--green-shine);
+  --glass-background: color-mix(in oklab, var(--background), transparent 0%);
+  --glass-shine: color-mix(in oklab, var(--green-dark), transparent 0%);
+  --glass-text-shadow: var(--green-dark);
+  --modal-glass: var(--green-shine);
+}
+
+[data-theme='dark'] {
+  --background: var(--black-main);
+  --foreground-color-contrast: var(--green-main);
+  --foreground-color-dark: var(--green-dark);
+  --foreground-contrast: var(--black-main);
+  --foreground-main: var(--white-main);
+  --foreground-mid: var(--gray-light);
+  --foreground-extreme: var(--gray-dark);
+  --foreground-danger: var(--red-main);
+  --foreground-shine: var(--green-shine);
+  --glass-background: color-mix(in oklab, var(--background), transparent 0%);
+  --glass-shine: color-mix(in oklab, var(--green-main), transparent 0%);
+  --glass-text-shadow: var(--black-main);
+  --modal-glass: var(--green-main);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground-contrast: var(--foreground-contrast);
+  --color-foreground-main: var(--foreground-main);
+  --color-foreground-mid: var(--foreground-mid);
+}
+
+body {
+  --font-russo: var(--font-russo-one);
+  --font-mono: var(--font-ubuntu);
+
+  background: var(--background);
+  color: var(--foreground-main);
+  font-family: var(--font-mono), Helvetica, sans-serif;
+  user-select: none;
+}
