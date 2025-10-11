@@ -2,6 +2,7 @@ import { atom } from '@portfolio/lib/jotai';
 import { PixelPos } from '@portfolio/types/buttons-panel';
 import { Axial } from '@portfolio/types/hexgrid';
 import { near } from '@portfolio/utils/math';
+import { RefObject } from 'react';
 
 export const hexRadiusAtom = atom(0);
 
@@ -28,6 +29,7 @@ export type Reveal = {
   active: boolean;
   groupId?: string;
 };
+
 export type OverlayMetrics = {
   left: number;
   top: number;
@@ -36,15 +38,23 @@ export type OverlayMetrics = {
   viewWidth: number;
   viewHeight: number;
 };
+
 export const revealsAtom = atom<Record<string, Reveal>>({});
+
+export const clearRevealsAtom = atom(null, (_get, set) => {
+  set(revealsAtom, {});
+});
+
 export const activeRevealsAtom = atom((get) =>
   Object.values(get(revealsAtom)).filter((r) => r.active)
 );
+
 export const upsertRevealAtom = atom(null, (get, set, next: Reveal) => {
   const curr = get(revealsAtom);
   if (!next?.id) return;
   set(revealsAtom, { ...curr, [next.id]: next });
 });
+
 export const removeRevealAtom = atom(null, (get, set, id: string) => {
   const curr = get(revealsAtom);
   if (!curr[id]) return;
@@ -52,6 +62,34 @@ export const removeRevealAtom = atom(null, (get, set, id: string) => {
   delete clone[id];
   set(revealsAtom, clone);
 });
+
+export const replaceGroupRevealsAtom = atom(
+  null,
+  (get, set, params: { groupId: string; items: Reveal[] }) => {
+    const curr = get(revealsAtom);
+    const next: Record<string, Reveal> = {};
+    for (const [id, r] of Object.entries(curr)) {
+      if (r.groupId !== params.groupId) next[id] = r;
+    }
+    for (const r of params.items) {
+      next[r.id] = { ...r, groupId: params.groupId };
+    }
+    set(revealsAtom, next);
+  }
+);
+
+export const removeGroupRevealsAtom = atom(
+  null,
+  (get, set, groupId: string) => {
+    const curr = get(revealsAtom);
+    const next: Record<string, Reveal> = {};
+    for (const [id, r] of Object.entries(curr)) {
+      if (r.groupId !== groupId) next[id] = r;
+    }
+    set(revealsAtom, next);
+  }
+);
+
 export const overlayMetricsAtom = atom<OverlayMetrics | null>(null);
 
 export const setOverlayMetricsAtom = atom(
@@ -81,3 +119,78 @@ export const setOverlayMetricsAtom = atom(
     set(overlayMetricsAtom, m);
   }
 );
+
+export const setHexRadiusAndClearAtom = atom(null, (get, set, R: number) => {
+  if (get(hexRadiusAtom) !== R) {
+    set(hexRadiusAtom, R);
+    set(revealsAtom, {});
+  }
+});
+
+export const setQrToCenterAndClearAtom = atom(
+  null,
+  (get, set, f: QrToCenter | null) => {
+    if (get(qrToCenterAtom) !== f) {
+      set(qrToCenterAtom, f);
+      set(revealsAtom, {});
+    }
+  }
+);
+
+export type HexTarget = HTMLElement | RefObject<HTMLElement | null> | null;
+export type HexTargetType = 'perimeter' | 'spotlight';
+
+export type HexTargetEntry = {
+  id: string;
+  type: HexTargetType;
+  target: HexTarget;
+};
+
+export const hexTargetsRegistryAtom = atom<Record<string, HexTargetEntry>>({});
+
+export const upsertHexTargetAtom = atom(
+  null,
+  (get, set, entry: HexTargetEntry) => {
+    const curr = get(hexTargetsRegistryAtom);
+    const next = { ...curr, [entry.id]: entry };
+    for (const [id, e] of Object.entries(next)) {
+      const raw = e.target;
+      const el: HTMLElement | null =
+        raw && typeof raw === 'object' && 'current' in raw ? raw.current : raw;
+      if (!el || !el.isConnected) {
+        delete next[id];
+      }
+    }
+    set(hexTargetsRegistryAtom, next);
+  }
+);
+
+export const removeHexTargetAtom = atom(null, (get, set, id: string) => {
+  const curr = get(hexTargetsRegistryAtom);
+  if (!curr[id]) return;
+  const next = { ...curr };
+  delete next[id];
+  set(hexTargetsRegistryAtom, next);
+});
+
+export const hexTargetsByTypeAtom = (type: HexTargetType) =>
+  atom((get) => {
+    const entries = Object.values(get(hexTargetsRegistryAtom)).filter(
+      (e) => e.type === type
+    );
+    const seen = new Set<HTMLElement>();
+    const out: HexTarget[] = [];
+    for (const e of entries) {
+      const raw = e.target;
+      const el: HTMLElement | null =
+        raw && typeof raw === 'object' && 'current' in raw ? raw.current : raw;
+      if (el && el.isConnected && !seen.has(el)) {
+        seen.add(el);
+        out.push(e.target);
+      }
+    }
+    return out;
+  });
+
+export const hexTargetByIdAtom = (id: string) =>
+  atom((get) => get(hexTargetsRegistryAtom)[id]?.target ?? null);
