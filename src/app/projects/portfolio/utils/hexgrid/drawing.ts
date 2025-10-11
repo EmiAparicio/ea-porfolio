@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { RefObject } from "react";
 
 /**
  * Parameters for drawing a ring mask (alpha-only).
@@ -144,3 +144,4 @@ export function ensureGlowSprite(
   cacheRef.current = sprite;
   return sprite;
 }
+

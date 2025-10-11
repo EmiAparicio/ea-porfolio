@@ -1,9 +1,9 @@
 import { LocaleBase } from '@i18n/utils/constants';
 import { normalizeBase } from '@i18n/utils/normalize';
 import { isThenable } from '@portfolio/utils/promise';
-import { MaybePromiseParams } from '../page';
+import { ParamsType } from '../page';
 
-export default async function GamingPage(props: MaybePromiseParams) {
+export default async function GamingPage(props: ParamsType) {
   const p = isThenable<{ lang: string }>(props.params)
     ? await props.params
     : props.params;

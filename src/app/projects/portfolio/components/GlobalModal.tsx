@@ -6,6 +6,7 @@ import {
   globalModalContentAtom,
   globalModalOpenAtom,
 } from '@portfolio/atoms/modalAtoms';
+import { MAIN_TEXT_COLORS } from '@portfolio/components/_pages/LandingPage';
 import GlassScreen from '@portfolio/components/GlassScreen';
 import HexButton from '@portfolio/components/HexButton/HexButton';
 import LangToggle from '@portfolio/components/LangToggle';
@@ -260,6 +261,7 @@ export default function GlobalModal(props: GlobalModalProps) {
                         variant="text"
                         size={deviceType === 'mobile' ? 'small' : 'body'}
                         scale={deviceType === 'mobile' ? 0.85 : 1}
+                        colors={MAIN_TEXT_COLORS[resolvedTheme ?? 'light']}
                         weightDelta={resolvedTheme === 'light' ? 100 : -100}
                       >
                         {getObjectValueByPath(dict, content.info)}

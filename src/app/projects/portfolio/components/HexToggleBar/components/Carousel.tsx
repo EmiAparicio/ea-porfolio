@@ -2,6 +2,7 @@
 
 import { hexRadiusAtom } from '@portfolio/atoms/hexGridAtoms';
 import { carouselActiveIdxAtom } from '@portfolio/atoms/sectionsAtoms';
+import { MAIN_TEXT_COLORS } from '@portfolio/components/_pages/LandingPage';
 import HexButton, {
   type HexButtonProps,
   type HexOrientation,
@@ -424,6 +425,7 @@ export default function Carousel({
           scale={deviceType === 'mobile' ? 0.5 : 1}
           aria-live="polite"
           className="absolute bottom-0 left-1/2 -translate-x-1/2 ![font-family:var(--font-russo)]"
+          colors={MAIN_TEXT_COLORS[resolvedTheme ?? 'light']}
         >
           {displayIndex} / {n}
         </Text>

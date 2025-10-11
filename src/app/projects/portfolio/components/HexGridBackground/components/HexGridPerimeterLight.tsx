@@ -8,7 +8,6 @@ import { useCanvas2DBackingStore } from '@portfolio/hooks/hexgrid/useCanvas2DBac
 import { useHexPerimeterLoops } from '@portfolio/hooks/hexgrid/useHexPerimeterLoops';
 import { useRasterizedSvgImage } from '@portfolio/hooks/hexgrid/useRasterizedSvgImage';
 import { useLatestRef } from '@portfolio/hooks/useLatestRef';
-import { useAtomValue } from '@portfolio/lib/jotai';
 import { Axial } from '@portfolio/types/hexgrid';
 import { resolveColor } from '@portfolio/utils/hexgrid/color';
 import { ensureGlowSprite } from '@portfolio/utils/hexgrid/drawing';
@@ -20,6 +19,7 @@ import {
 } from '@portfolio/utils/hexgrid/perimeter-loops';
 import { clamp } from '@portfolio/utils/math';
 import cn from 'classnames';
+import { useAtomValue } from '@portfolio/lib/jotai';
 import { JSX, useCallback, useEffect, useMemo, useRef } from 'react';
 
 const ROTATE_ANTICLOCKWISE = false;

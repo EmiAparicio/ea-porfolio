@@ -6,7 +6,11 @@ import GlobalModal from '@portfolio/components/GlobalModal';
 import HexGridReadyBoundary from '@portfolio/components/HexGridBackground/components/HexGridReadyBoundary';
 import HexGridBackground from '@portfolio/components/HexGridBackground/HexGridBackground';
 import LandingTitle from '@portfolio/components/LandingTitle';
+import { GloballyPositionedLangToggle } from '@portfolio/components/LangToggle';
+import { MenuPanel } from '@portfolio/components/MenuPanel';
+import { SessionStorageGuards } from '@portfolio/components/SessionStorageGuards';
 import TechCursor from '@portfolio/components/TechCursor';
+import { GloballyPositionedThemeToggle } from '@portfolio/components/ThemeToggle';
 import CopyToastHost from '@portfolio/components/Toast/CopyToastHost';
 import ToastProvider from '@portfolio/components/Toast/ToastProvider';
 import { AppProviders } from '@portfolio/providers';
@@ -14,8 +18,8 @@ import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { MenuPanel } from '../projects/portfolio/components/MenuPanel';
-import { SessionStorageGuards } from '../projects/portfolio/components/SessionStorageGuards';
+import ClientScenes from './ClientScenes';
+import { ParamsType } from './page';
 
 const titles: Record<LocaleBase, string> = {
   en: 'Emiliano Aparicio | Engineer & Frontend Developer',
@@ -26,11 +30,9 @@ const descriptions: Record<LocaleBase, string> = {
   es: 'Portfolio de Emiliano Aparicio: desarrollo web con React, diseño de juegos, bioingeniería y prompt engineering.',
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
-
-type MaybePromiseParams =
-  | { params: { lang: string } }
-  | { params: Promise<{ lang: string }> };
+const siteUrl = process.env.VERCEL_URL
+  ? `https://` + process.env.VERCEL_URL
+  : 'http://localhost:3000';
 
 /**
  * Resolves the language from route parameters, which might be a promise.
@@ -38,9 +40,7 @@ type MaybePromiseParams =
  * @param p The props object containing the `params`.
  * @returns A promise that resolves to the normalized language code (`'en'` or `'es'`).
  */
-async function resolveLangFromProps(
-  p: MaybePromiseParams
-): Promise<LocaleBase> {
+async function resolveLangFromProps(p: ParamsType): Promise<LocaleBase> {
   const raw = isThenable<{ lang: string }>(p.params)
     ? (await p.params).lang
     : p.params.lang;
@@ -54,9 +54,7 @@ async function resolveLangFromProps(
  * @param props The props containing the route parameters.
  * @returns A promise that resolves to the `Metadata` object for the page.
  */
-export async function generateMetadata(
-  props: MaybePromiseParams
-): Promise<Metadata> {
+export async function generateMetadata(props: ParamsType): Promise<Metadata> {
   const lang = await resolveLangFromProps(props);
 
   return {
@@ -86,9 +84,7 @@ export async function generateMetadata(
   };
 }
 
-type LayoutProps =
-  | { children: React.ReactNode; params: { lang: string } }
-  | { children: React.ReactNode; params: Promise<{ lang: string }> };
+type LayoutProps = { children: React.ReactNode; params: { lang: string } };
 
 /**
  * The root layout for language-specific routes (e.g., `/en/...`, `/es/...`).
@@ -116,13 +112,16 @@ export default async function LangLayout(props: LayoutProps) {
             <HexGridBackground debug={false} />
             <HexGridReadyBoundary fallback={null}>
               <LangProvider initialLang={lang}>
+                <ClientScenes />
                 {props.children}
                 <LandingTitle />
                 <MenuPanel />
+                <TechCursor />
+                <GloballyPositionedThemeToggle />
+                <GloballyPositionedLangToggle />
                 <GlobalModal />
               </LangProvider>
-              <TechCursor />
-            </HexGridReadyBoundary>{' '}
+            </HexGridReadyBoundary>
           </ToastProvider>
         </main>
       </AppProviders>

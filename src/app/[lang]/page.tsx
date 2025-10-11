@@ -2,11 +2,9 @@ import { LocaleBase } from '@i18n/utils/constants';
 import { normalizeBase } from '@i18n/utils/normalize';
 import { isThenable } from '@portfolio/utils/promise';
 
-export type MaybePromiseParams =
-  | { params: { lang: string } }
-  | { params: Promise<{ lang: string }> };
+export type ParamsType = { params: { lang: string } };
 
-export default async function LangHome(props: MaybePromiseParams) {
+export default async function LangHome(props: ParamsType) {
   const p = isThenable<{ lang: string }>(props.params)
     ? await props.params
     : props.params;

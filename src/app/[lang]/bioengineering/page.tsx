@@ -1,9 +1,9 @@
 import { LocaleBase } from '@i18n/utils/constants';
 import { normalizeBase } from '@i18n/utils/normalize';
 import { isThenable } from '@portfolio/utils/promise';
-import { MaybePromiseParams } from '../page';
+import { ParamsType } from '../page';
 
-export default async function EngPage(props: MaybePromiseParams) {
+export default async function EngPage(props: ParamsType) {
   const p = isThenable<{ lang: string }>(props.params)
     ? await props.params
     : props.params;
@@ -13,9 +13,7 @@ export default async function EngPage(props: MaybePromiseParams) {
     <section id="server-content-eng" className="relative">
       {lang === 'es' ? (
         <div className="sr-only">
-          <h1>
-            Bioingeniero, profesor, investigador, programador científico.
-          </h1>
+          <h1>Bioingeniero, profesor, investigador, programador científico.</h1>
           <article>
             <p>
               Bioingeniero de la Universidad de Mendoza, con experiencia docente
@@ -37,27 +35,16 @@ export default async function EngPage(props: MaybePromiseParams) {
               atomísticas: 8 publicaciones científicas. Herramientas y lenguajes
               utilizados:
               <br />
-              <ul>
-                <li>Simulación y visualización: LAMMPS, OVITO, Gnuplot</li>
-                <li>Lenguajes y scripting: C++, MATLAB, Python, Bash</li>
-                <li>Documentación científica: LaTeX</li>
-                <li>Modelado multiagente: NetLogo</li>
-              </ul>
+              -Simulación y visualización: LAMMPS, OVITO, Gnuplot -Lenguajes y
+              scripting: C++, MATLAB, Python, Bash -Documentación científica:
+              LaTeX -Modelado multiagente: NetLogo
               <br />
               Docencia
               <br />
-              <ul>
-                <li>
-                  3 años: Biomateriales (4.º año de la carrera de
-                  Bioingeniería).
-                </li>
-                <li>3 años: Física (nivel preuniversitario).</li>
-                <li>Actual: Cálculo II (2.º año de Ingeniería).</li>
-                <li>
-                  Clases particulares de matemática y física (todos los
-                  niveles).
-                </li>
-              </ul>
+              -3 años: Biomateriales (4.º año de la carrera de Bioingeniería).
+              -3 años: Física (nivel preuniversitario). -Actual: Cálculo II (2.º
+              año de Ingeniería). -Clases particulares de matemática y física
+              (todos los niveles).
             </p>
           </article>
         </div>
@@ -84,23 +71,16 @@ export default async function EngPage(props: MaybePromiseParams) {
               Conducted doctoral research in atomistic simulations: 8 scientific
               publications. Tools and languages used:
               <br />
-              <ul>
-                <li>Simulation & visualization: LAMMPS, OVITO, Gnuplot</li>
-                <li>Languages & scripting: C++, MATLAB, Python, Bash</li>
-                <li>Scientific documentation: LaTeX</li>
-                <li>Multi-agent modeling: NetLogo</li>
-              </ul>
+              -Simulation & visualization: LAMMPS, OVITO, Gnuplot -Languages &
+              scripting: C++, MATLAB, Python, Bash -Scientific documentation:
+              LaTeX -Multi-agent modeling: NetLogo
               <br />
               Teaching
               <br />
-              <ul>
-                <li>3 years: Biomaterials (4th year, Bioengineering).</li>
-                <li>3 years: Physics (pre-university level).</li>
-                <li>Current: Calculus II (2nd year, Engineering).</li>
-                <li>
-                  Private tutoring in mathematics and physics (all levels).
-                </li>
-              </ul>
+              -3 years: Biomaterials (4th year, Bioengineering). -3 years:
+              Physics (pre-university level). -Current: Calculus II (2nd year,
+              Engineering). -Private tutoring in mathematics and physics (all
+              levels).
             </p>
           </article>
         </div>
