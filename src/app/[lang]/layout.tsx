@@ -14,13 +14,11 @@ import { GloballyPositionedThemeToggle } from '@portfolio/components/ThemeToggle
 import CopyToastHost from '@portfolio/components/Toast/CopyToastHost';
 import ToastProvider from '@portfolio/components/Toast/ToastProvider';
 import { AppProviders } from '@portfolio/providers';
-import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import ClientScenes from './ClientScenes';
 import { ParamsType } from './page';
-
 
 const titles: Record<LocaleBase, string> = {
   en: 'Emiliano Aparicio | Engineer & Frontend Developer',
@@ -31,9 +29,7 @@ const descriptions: Record<LocaleBase, string> = {
   es: 'Portfolio de Emiliano Aparicio: desarrollo web con React, diseño de juegos, bioingeniería y prompt engineering.',
 };
 
-const siteUrl = process.env.VERCEL_URL
-  ? `https://` + process.env.VERCEL_URL
-  : 'http://localhost:3000';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 /**
  * Resolves the language from route parameters, which might be a promise.
@@ -42,9 +38,7 @@ const siteUrl = process.env.VERCEL_URL
  * @returns A promise that resolves to the normalized language code (`'en'` or `'es'`).
  */
 async function resolveLangFromProps(p: ParamsType): Promise<LocaleBase> {
-  const raw = isThenable<{ lang: string }>(p.params)
-    ? (await p.params).lang
-    : p.params.lang;
+  const raw = p.params.lang;
   return normalizeBase(raw);
 }
 
@@ -94,9 +88,7 @@ type LayoutProps = { children: React.ReactNode; params: { lang: string } };
  * @param props The layout props, containing the page content (`children`) and route `params`.
  */
 export default async function LangLayout(props: LayoutProps) {
-  const p = isThenable<{ lang: string }>(props.params)
-    ? await props.params
-    : props.params;
+  const p = props.params;
   const lang = normalizeBase(p.lang) as LocaleBase;
 
   if (lang !== 'en' && lang !== 'es') notFound();
