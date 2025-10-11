@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import AppThemeProvider, { ThemeMode } from './AppThemeProvider';
+import { PerformanceProvider } from './PerformanceProvider';
 
 export function AppProviders({
   children,
@@ -9,6 +10,10 @@ export function AppProviders({
   defaultTheme: ThemeMode;
 }) {
   return (
-    <AppThemeProvider defaultTheme={defaultTheme}>{children}</AppThemeProvider>
+    <PerformanceProvider>
+      <AppThemeProvider defaultTheme={defaultTheme}>
+        {children}
+      </AppThemeProvider>
+    </PerformanceProvider>
   );
 }

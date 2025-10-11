@@ -10,6 +10,7 @@ import HexGridSpotlightBg from '@portfolio/components/HexGridBackground/componen
 import { useHexBgProps } from '@portfolio/hooks/hexgrid/useHexBgProps';
 import { useHexGridBackground } from '@portfolio/hooks/hexgrid/useHexGridBackground';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
+import { usePerformance } from '@portfolio/providers/PerformanceProvider';
 import { OmitSafe } from '@portfolio/types/hexgrid';
 import cn from 'classnames';
 
@@ -92,6 +93,8 @@ export default function HexGridBackground({
       deviceType
     ] as CenterMode);
 
+  const { enableAnimations } = usePerformance(1);
+
   const {
     ref,
     size: box,
@@ -133,33 +136,41 @@ export default function HexGridBackground({
             boundsD={debugBoundsD}
           />
 
-          <HexGridLight zIndex={12} {...hexGridBasicValues} {...lightProps} />
+          {enableAnimations && (
+            <>
+              <HexGridLight
+                zIndex={12}
+                {...hexGridBasicValues}
+                {...lightProps}
+              />
 
-          <HexGridCursorReveal
-            zIndex={10}
-            {...hexGridBasicValues}
-            {...cursorRevealProps}
-          />
+              <HexGridCursorReveal
+                zIndex={10}
+                {...hexGridBasicValues}
+                {...cursorRevealProps}
+              />
 
-          <HexGridDragSparks
-            zIndex={17}
-            {...hexGridBasicValues}
-            {...dragSparksProps}
-          />
+              <HexGridDragSparks
+                zIndex={17}
+                {...hexGridBasicValues}
+                {...dragSparksProps}
+              />
 
-          <HexGridClickRipple
-            zIndex={20}
-            {...hexGridBasicValues}
-            {...clickRippleProps}
-          />
+              <HexGridClickRipple
+                zIndex={20}
+                {...hexGridBasicValues}
+                {...clickRippleProps}
+              />
 
-          <HexGridPerimeterLight
-            zIndex={23}
-            {...hexGridBasicValues}
-            {...perimeterProps}
-          />
+              <HexGridPerimeterLight
+                zIndex={23}
+                {...hexGridBasicValues}
+                {...perimeterProps}
+              />
 
-          <HexGridSpotlightBg zIndex={23} {...hexGridBasicValues} />
+              <HexGridSpotlightBg zIndex={23} {...hexGridBasicValues} />
+            </>
+          )}
         </>
       )}
     </div>
