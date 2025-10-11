@@ -1,4 +1,4 @@
-import { RefObject } from "react";
+import { RefObject } from 'react';
 
 /**
  * Parameters for drawing a ring mask (alpha-only).
@@ -95,4 +95,52 @@ export function drawRingMask(
   }
 
   ctx.restore();
+}
+
+/**
+ * Generates or reuses a cached circular gradient sprite for the glow mask.
+ */
+export function ensureGlowSprite(
+  cacheRef: RefObject<{
+    key: string;
+    canvas: HTMLCanvasElement;
+    cssR: number;
+  } | null>,
+  cssR: number,
+  coreT: number,
+  fadeStartT: number,
+  dpr: number
+) {
+  const key = `${Math.round(cssR * 100)}/${Math.round(coreT * 1000)}/${Math.round(
+    fadeStartT * 1000
+  )}/${dpr}`;
+  if (cacheRef.current && cacheRef.current.key === key) return cacheRef.current;
+
+  const devR = Math.max(1, Math.round(cssR * dpr));
+  const size = devR * 2;
+  const c = document.createElement('canvas');
+  c.width = size;
+  c.height = size;
+  const gctx = c.getContext('2d')!;
+  const cx = devR;
+  const cy = devR;
+
+  const grad = gctx.createRadialGradient(cx, cy, 0, cx, cy, devR);
+  grad.addColorStop(0, 'rgba(255,255,255,1)');
+  grad.addColorStop(Math.max(0, Math.min(1, coreT)), 'rgba(255,255,255,1)');
+  grad.addColorStop(
+    Math.max(0, Math.min(1, fadeStartT)),
+    'rgba(255,255,255,0.35)'
+  );
+  grad.addColorStop(0.999, 'rgba(255,255,255,0)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+
+  gctx.fillStyle = grad;
+  gctx.beginPath();
+  gctx.arc(cx, cy, devR, 0, Math.PI * 2);
+  gctx.fill();
+
+  const sprite = { key, canvas: c, cssR };
+  cacheRef.current = sprite;
+  return sprite;
 }

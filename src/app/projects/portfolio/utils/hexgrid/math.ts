@@ -165,3 +165,14 @@ export function effectiveStagger(
     minRingSeparationPx > 0 ? minRingSeparationPx / Math.max(0.001, speed) : 0;
   return Math.max(baseStagger, minStaggerSec);
 }
+
+/**
+ * A true modulo operator that correctly handles negative numbers.
+ * Unlike the '%' (remainder) operator, the result always has the same sign as the divisor.
+ * @param a The dividend.
+ * @param b The divisor.
+ * @returns The value of `a` modulo `b`.
+ */
+export function mod(a: number, b: number) {
+  return ((a % b) + b) % b;
+}
