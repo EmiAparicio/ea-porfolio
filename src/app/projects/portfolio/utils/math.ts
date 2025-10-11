@@ -151,3 +151,15 @@ export const toPx = (v: number | string | undefined, fallback: number) => {
   if (Number.isNaN(n)) return fallback;
   return Math.max(0, Math.floor(n));
 };
+
+/**
+ * Generates an array of integers within a specified range.
+ * @param a The starting number of the range (inclusive).
+ * @param b The ending number of the range (inclusive).
+ * @returns An array containing the sequence of integers.
+ */
+export function range(a: number, b: number) {
+  const out: number[] = [];
+  for (let i = a; i <= b; i++) out.push(i);
+  return out;
+}
