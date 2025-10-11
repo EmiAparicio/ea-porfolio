@@ -1,3 +1,4 @@
+import GlobalLoader from '@portfolio/components/GlobalLoader';
 import { ThemeMode } from '@portfolio/providers/AppThemeProvider';
 import { Russo_One, Ubuntu } from 'next/font/google';
 import { cookies } from 'next/headers';
@@ -41,6 +42,7 @@ export default async function RootLayout({
     >
       <body className={`${russoOne.variable} ${ubuntu.variable} antialiased`}>
         {children}
+        <GlobalLoader />
       </body>
     </html>
   );
