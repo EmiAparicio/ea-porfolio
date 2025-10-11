@@ -29,9 +29,7 @@ const descriptions: Record<LocaleBase, string> = {
   es: 'Portfolio de Emiliano Aparicio: desarrollo web con React, diseño de juegos, bioingeniería y prompt engineering.',
 };
 
-const siteUrl = process.env.VERCEL_URL
-  ? `https://` + process.env.VERCEL_URL
-  : 'http://localhost:3000';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
 /**
  * Resolves the language from route parameters, which might be a promise.
