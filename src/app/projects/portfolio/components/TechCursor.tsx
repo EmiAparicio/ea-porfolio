@@ -1,6 +1,7 @@
 'use client';
 
 import { hexRadiusAtom } from '@portfolio/atoms/hexGridAtoms';
+import { globalModalOpenAtom } from '@portfolio/atoms/modalAtoms';
 import { useMediaQuery } from '@portfolio/hooks/useMediaQuery';
 import { usePerformance } from '@portfolio/providers/PerformanceProvider';
 import { inNoCustomZone, isDisabledish } from '@portfolio/utils/dom';
@@ -82,6 +83,7 @@ export function TechCursor({
   const { enableAnimations } = usePerformance(3);
   const prefersFine = useMediaQuery('(any-pointer: fine)');
   const prefersReduce = useMediaQuery('(prefers-reduced-motion: reduce)');
+  const isModal = useAtomValue(globalModalOpenAtom);
 
   const R = useAtomValue(hexRadiusAtom);
   const size = sizeFactor * R;
@@ -103,7 +105,14 @@ export function TechCursor({
     [size]
   );
 
-  const colors = colorsFromProps;
+  const colors = isModal
+    ? {
+        main: '--white-main',
+        accent: '--green-main',
+        danger: '--foreground-danger',
+        contrast: '--black-main',
+      }
+    : colorsFromProps;
 
   useEffect(() => {
     if (!globallyActive || typeof document === 'undefined') return;
