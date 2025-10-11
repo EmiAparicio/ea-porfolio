@@ -15,6 +15,7 @@ import { readThemeCookieServer } from '@portfolio/utils/server';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { MenuPanel } from '../projects/portfolio/components/MenuPanel';
+import { SessionStorageGuards } from '../projects/portfolio/components/SessionStorageGuards';
 
 const titles: Record<LocaleBase, string> = {
   en: 'Emiliano Aparicio | Engineer & Frontend Developer',
@@ -107,6 +108,7 @@ export default async function LangLayout(props: LayoutProps) {
 
   return (
     <div>
+      <SessionStorageGuards />
       <AppProviders defaultTheme={initialTheme}>
         <main className="relative min-h-dvh overflow-hidden">
           <ToastProvider>
