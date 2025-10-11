@@ -96,3 +96,44 @@ export function shuffle<T>(arr: T[]) {
   }
   return copy;
 }
+
+/**
+ * Creates a seeded pseudorandom number generator (PRNG).
+ * This implementation uses the mulberry32 algorithm.
+ * @param seed The initial 32-bit integer seed.
+ * @returns A random number generator function that produces values between 0 and 1.
+ */
+export function seededRng(seed: number): RNG {
+  let t = seed >>> 0;
+  return () => {
+    t += 0x6d2b79f5;
+    let r = Math.imul(t ^ (t >>> 15), 1 | t);
+    r ^= r + Math.imul(r ^ (r >>> 7), 61 | r);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+/**
+ * Generates a normally distributed random number (mean 0, standard deviation 1)
+ * using the Box-Muller transform.
+ * @param rng A random number generator function that returns values between 0 and 1.
+ * @returns A random number from a standard normal distribution.
+ */
+export function gaussian(rng: RNG): number {
+  let u = 0;
+  let v = 0;
+  while (u === 0) u = rng();
+  while (v === 0) v = rng();
+  return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+}
+
+/**
+ * Performs linear interpolation between two numbers.
+ * @param a The start value (when t=0).
+ * @param b The end value (when t=1).
+ * @param t The interpolation factor, typically in the range [0, 1].
+ * @returns The interpolated value.
+ */
+export function mix(a: number, b: number, t: number): number {
+  return a + (b - a) * t;
+}

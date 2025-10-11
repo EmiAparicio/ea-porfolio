@@ -46,3 +46,10 @@ export type RipplePhysics = {
   startFadePct: number;
   endFadePct: number;
 };
+
+export type HexSpec = {
+  x: number;
+  y: number;
+  r: number;
+  rotation: number;
+};
