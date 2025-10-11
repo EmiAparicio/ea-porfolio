@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useAtomValue } from '@portfolio/lib/jotai';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import useWindowSize from '../hooks/useWindowSize';
 
 /**
  * Class name used to disable the custom cursor on specific elements.
@@ -81,6 +82,7 @@ export function TechCursor({
   onlyFinePointer = true,
 }: TechCursorProps) {
   const { enableAnimations } = usePerformance(3);
+  const { deviceType } = useWindowSize();
   const prefersFine = useMediaQuery('(any-pointer: fine)');
   const prefersReduce = useMediaQuery('(prefers-reduced-motion: reduce)');
   const isModal = useAtomValue(globalModalOpenAtom);
@@ -89,7 +91,10 @@ export function TechCursor({
   const size = sizeFactor * R;
 
   const globallyActive =
-    enabled && (!onlyFinePointer || prefersFine) && !prefersReduce;
+    enabled &&
+    (!onlyFinePointer || prefersFine) &&
+    !prefersReduce &&
+    deviceType === 'web';
 
   const [visible, setVisible] = useState(false);
   const [hasPos, setHasPos] = useState(false);
@@ -215,121 +220,123 @@ export function TechCursor({
         [data-custom-cursor="on"] .${NO_CUSTOM_CLASS} * { cursor: auto !important; }
       `}</style>
 
-      <AnimatePresence>
-        {globallyActive && visible && hasPos && !dragging && !suspended && (
-          <motion.div
-            key="cursor-root"
-            aria-hidden
-            data-tech-cursor-root
-            style={{
-              position: 'fixed',
-              inset: 0,
-              pointerEvents: 'none',
-              zIndex,
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
+      {globallyActive && (
+        <AnimatePresence>
+          {visible && hasPos && !dragging && !suspended && (
             <motion.div
-              initial={{ x: pos.x - vb.cx, y: pos.y - vb.cy }}
-              animate={{ x: pos.x - vb.cx, y: pos.y - vb.cy }}
-              transition={{
-                type: 'spring',
-                stiffness: 8000,
-                damping: 150,
-                mass: 0.1,
+              key="cursor-root"
+              aria-hidden
+              data-tech-cursor-root
+              style={{
+                position: 'fixed',
+                inset: 0,
+                pointerEvents: 'none',
+                zIndex,
               }}
-              style={{ position: 'absolute', willChange: 'transform' }}
-              data-kind={kind}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             >
-              <svg
-                width={vb.w}
-                height={vb.h}
-                viewBox={`0 0 ${vb.w} ${vb.h}`}
-                role="presentation"
+              <motion.div
+                initial={{ x: pos.x - vb.cx, y: pos.y - vb.cy }}
+                animate={{ x: pos.x - vb.cx, y: pos.y - vb.cy }}
+                transition={{
+                  type: 'spring',
+                  stiffness: 8000,
+                  damping: 150,
+                  mass: 0.1,
+                }}
+                style={{ position: 'absolute', willChange: 'transform' }}
+                data-kind={kind}
               >
-                <g
-                  opacity={
-                    kind === 'pointer' ? 0 : kind === 'forbidden' ? 0.15 : 0.9
-                  }
+                <svg
+                  width={vb.w}
+                  height={vb.h}
+                  viewBox={`0 0 ${vb.w} ${vb.h}`}
+                  role="presentation"
                 >
+                  <g
+                    opacity={
+                      kind === 'pointer' ? 0 : kind === 'forbidden' ? 0.15 : 0.9
+                    }
+                  >
+                    <circle
+                      cx={vb.cx}
+                      cy={vb.cy}
+                      r={r}
+                      fill="none"
+                      stroke={ACCENT}
+                      strokeWidth={strokeW}
+                    />
+                    <circle
+                      cx={vb.cx}
+                      cy={vb.cy}
+                      r={r - strokeW * 2}
+                      fill="none"
+                      stroke={MAIN}
+                      strokeWidth={1}
+                      opacity={0.5}
+                    />
+                  </g>
+
                   <circle
                     cx={vb.cx}
                     cy={vb.cy}
-                    r={r}
-                    fill="none"
-                    stroke={ACCENT}
-                    strokeWidth={strokeW}
+                    r={dotR}
+                    fill={kind === 'forbidden' ? DANGER : MAIN}
                   />
-                  <circle
-                    cx={vb.cx}
-                    cy={vb.cy}
-                    r={r - strokeW * 2}
-                    fill="none"
-                    stroke={MAIN}
-                    strokeWidth={1}
-                    opacity={0.5}
-                  />
-                </g>
 
-                <circle
-                  cx={vb.cx}
-                  cy={vb.cy}
-                  r={dotR}
-                  fill={kind === 'forbidden' ? DANGER : MAIN}
-                />
+                  <g
+                    style={{
+                      opacity: kind === 'pointer' ? 1 : 0,
+                      transition: 'opacity 120ms ease',
+                    }}
+                  >
+                    <polygon
+                      points={hexPoints(vb.cx, vb.cy, r * 0.9, 30)}
+                      fill="none"
+                      stroke={CONTRAST}
+                      strokeWidth={strokeW + 2}
+                      strokeLinejoin="round"
+                    />
+                    <polygon
+                      points={hexPoints(vb.cx, vb.cy, r * 0.9, 30)}
+                      fill="none"
+                      stroke={MAIN}
+                      strokeWidth={strokeW}
+                      strokeLinejoin="round"
+                    />
+                  </g>
 
-                <g
-                  style={{
-                    opacity: kind === 'pointer' ? 1 : 0,
-                    transition: 'opacity 120ms ease',
-                  }}
-                >
-                  <polygon
-                    points={hexPoints(vb.cx, vb.cy, r * 0.9, 30)}
-                    fill="none"
-                    stroke={CONTRAST}
-                    strokeWidth={strokeW + 2}
-                    strokeLinejoin="round"
-                  />
-                  <polygon
-                    points={hexPoints(vb.cx, vb.cy, r * 0.9, 30)}
-                    fill="none"
-                    stroke={MAIN}
-                    strokeWidth={strokeW}
-                    strokeLinejoin="round"
-                  />
-                </g>
-
-                <g
-                  style={{
-                    opacity: kind === 'forbidden' ? 1 : 0,
-                    transition: 'opacity 120ms ease',
-                  }}
-                >
-                  <polygon
-                    points={hexPoints(vb.cx, vb.cy, r, 30)}
-                    fill="none"
-                    stroke={DANGER}
-                    strokeWidth={strokeW}
-                    strokeLinejoin="round"
-                  />
-                  <line
-                    x1={vb.cx - r * 0.8}
-                    y1={vb.cy + r * 0.8}
-                    x2={vb.cx + r * 0.8}
-                    y2={vb.cy - r * 0.8}
-                    stroke={DANGER}
-                    strokeWidth={strokeW}
-                    strokeLinecap="round"
-                  />
-                </g>
-              </svg>
+                  <g
+                    style={{
+                      opacity: kind === 'forbidden' ? 1 : 0,
+                      transition: 'opacity 120ms ease',
+                    }}
+                  >
+                    <polygon
+                      points={hexPoints(vb.cx, vb.cy, r, 30)}
+                      fill="none"
+                      stroke={DANGER}
+                      strokeWidth={strokeW}
+                      strokeLinejoin="round"
+                    />
+                    <line
+                      x1={vb.cx - r * 0.8}
+                      y1={vb.cy + r * 0.8}
+                      x2={vb.cx + r * 0.8}
+                      y2={vb.cy - r * 0.8}
+                      stroke={DANGER}
+                      strokeWidth={strokeW}
+                      strokeLinecap="round"
+                    />
+                  </g>
+                </svg>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
+      )}
     </>,
     portalHost
   );

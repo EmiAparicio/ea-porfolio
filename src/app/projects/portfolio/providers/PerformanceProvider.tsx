@@ -44,7 +44,7 @@ const policy = {
 };
 
 const profileOptions: UsePerformanceProfileOptions = {
-  minFps: 30,
+  minFps: 24,
   graceMs: 2500,
   minFpsSamples: 5,
   reprobeMs: 2000,
