@@ -176,3 +176,40 @@ export function effectiveStagger(
 export function mod(a: number, b: number) {
   return ((a % b) + b) % b;
 }
+
+/**
+ * Rounds a number to the nearest integer and ensures the result is odd.
+ * If the rounded value is even, it returns that value plus one.
+ *
+ * @param n - Input number.
+ * @returns The nearest odd integer to `n` after standard rounding.
+ */
+export function odd(n: number): number {
+  const r = Math.round(n);
+  return r % 2 === 0 ? r + 1 : r;
+}
+
+/**
+ * Converts a numeric value to a CSS pixel string, or passes through a string unchanged.
+ * Useful for inline styles that accept either numbers (interpreted as px) or raw CSS values.
+ *
+ * @param v - A number (interpreted as px) or a string (returned as-is). `undefined` stays `undefined`.
+ * @returns A CSS-compatible value ("{n}px" for numbers), the original string, or `undefined`.
+ */
+export function toCssPx(v?: number | string): string | undefined {
+  if (v === undefined) return undefined;
+  return typeof v === 'number' ? `${v}px` : v;
+}
+
+/**
+ * Builds a CSV string of coordinate pairs suitable for SVG polygon/polyline `points`.
+ * Each pair is formatted as "x,y" and separated by a single space.
+ *
+ * @param points - Readonly array of 2D points as readonly tuples `[x, y]`.
+ * @returns Space-separated "x,y" pairs (e.g. `"0,0 10,0 10,10 0,10"`).
+ */
+export function toPointsStr(
+  points: readonly (readonly [number, number])[]
+): string {
+  return points.map(([x, y]) => `${x},${y}`).join(' ');
+}

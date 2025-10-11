@@ -1,0 +1,338 @@
+:root {
+  --hx-border-color-off: var(--foreground-contrast);
+  --hx-border-color-off-hover: var(--hx-border-color-off);
+  --hx-border-color-off-focus: var(--hx-border-color-off);
+  --hx-border-color-off-active: var(--hx-border-color-off);
+  --hx-border-color-on: var(--foreground-mid);
+  --hx-border-color-on-hover: var(--hx-border-color-on);
+  --hx-border-color-on-focus: var(--hx-border-color-on);
+  --hx-border-color-on-active: var(--hx-border-color-on);
+  --hx-icon-color-off: var(--foreground-mid);
+  --hx-icon-color-off-hover: var(--hx-icon-color-off);
+  --hx-icon-color-off-focus: var(--hx-icon-color-off);
+  --hx-icon-color-off-active: var(--hx-icon-color-off);
+  --hx-icon-color-on: var(--foreground-mid);
+  --hx-icon-color-on-hover: var(--hx-icon-color-on);
+  --hx-icon-color-on-focus: var(--hx-icon-color-on);
+  --hx-icon-color-on-active: var(--hx-icon-color-on);
+  --hx-icon-shadow-color-off: var(--foreground-contrast);
+  --hx-icon-shadow-color-off-hover: var(--hx-icon-shadow-color-off);
+  --hx-icon-shadow-color-off-focus: var(--hx-icon-shadow-color-off);
+  --hx-icon-shadow-color-off-active: var(--hx-icon-shadow-color-off);
+  --hx-icon-shadow-color-on: var(--foreground-extreme);
+  --hx-icon-shadow-color-on-hover: var(--hx-icon-shadow-color-on);
+  --hx-icon-shadow-color-on-focus: var(--hx-icon-shadow-color-on);
+  --hx-icon-shadow-color-on-active: var(--hx-icon-shadow-color-on);
+  --hx-ambient-color-off: rgba(0, 0, 0, 0.5);
+  --hx-ambient-color-on: rgba(0, 0, 0, 0.65);
+  --hx-ambient-mul: 0.12;
+  --hx-icon-shadow-mul-off: 0.024;
+  --hx-icon-shadow-mul-on: 0.05;
+  --hx-transition-ms: 180ms;
+  --hx-transition-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --hx-press-scale: 0.985;
+  --hx-anim-duration: 2s;
+  --hx-anim-ease: cubic-bezier(0.74, 0.31, 0.95, 0.56);
+  --hx-anim-pulse-color: var(--hx-icon-shadow-color-off);
+}
+
+[data-theme='dark'] {
+  --hx-border-color-off: var(--foreground-color-contrast);
+  --hx-border-color-on: var(--foreground-mid);
+  --hx-icon-color-off: var(--foreground-color-contrast);
+  --hx-icon-color-on: var(--foreground-mid);
+  --hx-icon-shadow-color-off: var(--foreground-mid);
+  --hx-icon-shadow-color-on: var(--foreground-color-contrast);
+  --hx-ambient-color-off: rgba(255, 255, 255, 0.5);
+  --hx-ambient-color-on: rgba(255, 255, 255, 0.5);
+}
+
+.hex-btn {
+  -webkit-tap-highlight-color: transparent;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  --hx-ambient-radius: calc(var(--hx-R) * var(--hx-ambient-mul));
+  --hx-icon-shadow-radius-off: calc(
+    var(--hx-R) * var(--hx-icon-shadow-mul-off)
+  );
+  --hx-icon-shadow-radius-on: calc(var(--hx-R) * var(--hx-icon-shadow-mul-on));
+  --hx-stroke-outer: max(3px, calc(var(--hx-R) * var(--hx-stroke-outer-mul)));
+  --hx-stroke-inner: max(1px, calc(var(--hx-R) * var(--hx-stroke-inner-mul)));
+  --hx-stroke-outer-color: var(--hx-border-color-off);
+  --hx-stroke-inner-color: var(--hx-border-color-off);
+  --hx-icon-color: var(--hx-icon-color-off);
+  --hx-icon-shadow-color: var(--hx-icon-shadow-color-off);
+  transition:
+    transform var(--hx-transition-ms) var(--hx-transition-ease),
+    filter var(--hx-transition-ms) var(--hx-transition-ease);
+}
+
+.hex-btn:disabled {
+  cursor: not-allowed;
+}
+
+.hex-btn[data-orientation='pointy'] {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hex-btn[data-size='small'] {
+  --hx-stroke-outer-mul: 0.06;
+  --hx-stroke-inner-mul: 0.05;
+  --hx-inner-scale: 0.85;
+}
+.hex-btn[data-size='big'] {
+  --hx-stroke-outer-mul: 0.05;
+  --hx-stroke-inner-mul: 0.1;
+  --hx-inner-scale: 0.88;
+}
+
+.hex-btn[data-state='on'] {
+  --hx-stroke-outer-color: var(--hx-border-color-on);
+  --hx-stroke-inner-color: var(--hx-border-color-on);
+  --hx-icon-color: var(--hx-icon-color-on);
+  --hx-icon-shadow-color: var(--hx-icon-shadow-color-on);
+}
+
+.hex-btn:not(:disabled)[data-state='off'][data-has-mouse='true']:is(
+    :hover,
+    :focus-visible,
+    :active
+  ) {
+  filter: drop-shadow(
+    0 0 calc(var(--hx-ambient-radius) * 2) var(--hx-ambient-color-off)
+  );
+}
+.hex-btn:not(:disabled)[data-state='on'][data-has-mouse='true']:is(
+    :hover,
+    :focus-visible,
+    :active
+  ) {
+  filter: drop-shadow(
+    0 0 calc(var(--hx-ambient-radius) * 2) var(--hx-ambient-color-on)
+  );
+}
+
+.hex-btn:not(:disabled)[data-state='off']:hover {
+  cursor: pointer;
+  --hx-stroke-outer-color: var(--hx-border-color-off-hover);
+  --hx-stroke-inner-color: var(--hx-border-color-off-hover);
+}
+.hex-btn:not(:disabled)[data-state='off']:focus-visible {
+  --hx-stroke-outer-color: var(--hx-border-color-off-focus);
+  --hx-stroke-inner-color: var(--hx-border-color-off-focus);
+}
+.hex-btn:not(:disabled)[data-state='off']:active {
+  --hx-stroke-outer-color: var(--hx-border-color-off-active);
+  --hx-stroke-inner-color: var(--hx-border-color-off-active);
+}
+
+.hex-btn:not(:disabled)[data-state='on']:hover {
+  cursor: pointer;
+  --hx-stroke-outer-color: var(--hx-border-color-on-hover);
+  --hx-stroke-inner-color: var(--hx-border-color-on-hover);
+}
+.hex-btn:not(:disabled)[data-state='on']:focus-visible {
+  --hx-stroke-outer-color: var(--hx-border-color-on-focus);
+  --hx-stroke-inner-color: var(--hx-border-color-on-focus);
+}
+.hex-btn:not(:disabled)[data-state='on']:active {
+  --hx-stroke-outer-color: var(--hx-border-color-on-active);
+  --hx-stroke-inner-color: var(--hx-border-color-on-active);
+}
+
+.hex-btn:not(:disabled):active {
+  transform: scale(var(--hx-press-scale));
+}
+
+.hx-icon,
+.hx-icon svg {
+  color: var(--hx-icon-color);
+}
+.hx-icon svg [fill]:not([fill='none']) {
+  fill: currentColor;
+}
+.hx-icon svg [stroke]:not([stroke='none']) {
+  stroke: currentColor;
+}
+
+.hx-icon {
+  width: 100%;
+  height: 100%;
+  will-change: transform, filter;
+  transition:
+    transform var(--hx-transition-ms) var(--hx-transition-ease),
+    color var(--hx-transition-ms) var(--hx-transition-ease),
+    filter var(--hx-transition-ms) var(--hx-transition-ease);
+  transform: translateY(var(--hx-icon-shift, 0px));
+}
+
+.hx-label {
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  transition:
+    opacity var(--hx-transition-ms) var(--hx-transition-ease),
+    transform var(--hx-transition-ms) var(--hx-transition-ease);
+}
+
+.hx-label-top {
+  transform: translateY(-6px) scale(0.98);
+}
+
+.hx-label[data-visible='true'] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.hex-btn[data-state='off'] .hx-icon {
+  color: var(--hx-icon-color-off);
+}
+.hex-btn:not(:disabled)[data-state='off']:hover .hx-icon {
+  color: var(--hx-icon-color-off-hover);
+}
+.hex-btn:not(:disabled)[data-state='off']:focus-visible .hx-icon {
+  color: var(--hx-icon-color-off-focus);
+}
+.hex-btn:not(:disabled)[data-state='off']:active .hx-icon {
+  color: var(--hx-icon-color-off-active);
+}
+
+.hex-btn:not(:disabled)[data-state='off'][data-has-mouse='true']:is(
+    :hover,
+    :focus-visible,
+    :active
+  )
+  .hx-icon {
+  filter: drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-off) var(--hx-icon-shadow-color-off-hover)
+    )
+    drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-off) var(--hx-icon-shadow-color-off-hover)
+    );
+}
+
+.hex-btn[data-state='on'] .hx-icon {
+  color: var(--hx-icon-color-on);
+}
+.hex-btn:not(:disabled)[data-state='on']:hover .hx-icon {
+  color: var(--hx-icon-color-on-hover);
+}
+.hex-btn:not(:disabled)[data-state='on']:focus-visible .hx-icon {
+  color: var(--hx-icon-color-on-focus);
+}
+.hex-btn:not(:disabled)[data-state='on']:active .hx-icon {
+  color: var(--hx-icon-color-on-active);
+}
+
+.hex-btn[data-state='on'] .hx-icon {
+  filter: drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-on) var(--hx-icon-shadow-color-on)
+    )
+    drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-on) var(--hx-icon-shadow-color-on)
+    )
+    drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-on) var(--hx-icon-shadow-color-on)
+    );
+}
+
+.hex-btn:not(
+    :disabled
+  )[data-size='big'][data-state='off'][data-has-mouse='true']:is(
+    :hover,
+    :focus-visible,
+    :active
+  )
+  .hx-icon {
+  filter: drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-off) var(--hx-icon-shadow-color-off-hover)
+    )
+    drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-off) var(--hx-icon-shadow-color-off-hover)
+    )
+    drop-shadow(
+      0 0 var(--hx-icon-shadow-radius-off) var(--hx-icon-shadow-color-off-hover)
+    );
+}
+
+.hx-anim {
+  animation: hx-logo-anim var(--hx-anim-duration) var(--hx-anim-ease) infinite;
+}
+@keyframes hx-logo-anim {
+  0% {
+    filter: drop-shadow(0 0 0 var(--hx-anim-pulse-color))
+      drop-shadow(0 0 0 var(--hx-anim-pulse-color));
+  }
+  85% {
+    filter: drop-shadow(0 0 var(--hx-ambient-radius) var(--hx-anim-pulse-color))
+      drop-shadow(0 0 var(--hx-ambient-radius) var(--hx-anim-pulse-color));
+  }
+  92% {
+    filter: drop-shadow(
+        0 0 calc(var(--hx-ambient-radius) * 3) var(--hx-anim-pulse-color)
+      )
+      drop-shadow(
+        0 0 calc(var(--hx-ambient-radius) * 6) var(--hx-anim-pulse-color)
+      );
+  }
+  97% {
+    filter: drop-shadow(
+      0 0 calc(var(--hx-ambient-radius) * 10) var(--hx-anim-pulse-color)
+    );
+  }
+  100% {
+    filter: drop-shadow(0 0 0 var(--hx-anim-pulse-color))
+      drop-shadow(0 0 0 var(--hx-anim-pulse-color));
+  }
+}
+
+.hex-btn svg .hx-inner {
+  transform: scale(var(--hx-inner-scale));
+  transform-origin: 50% 50%;
+  transform-box: view-box;
+  transition: transform var(--hx-transition-ms) var(--hx-transition-ease);
+}
+
+.hex-btn:not(:disabled)[data-has-mouse='true']:is(:hover, :focus-visible)
+  svg
+  .hx-inner {
+  transform: scale(calc(var(--hx-inner-scale) * 0.985));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hex-btn {
+    transition: none;
+  }
+  .hx-icon {
+    transition: none;
+  }
+  .hx-anim {
+    animation: none !important;
+  }
+  .hx-label {
+    transition: none !important;
+  }
+}
+
+@supports not (clip-path: polygon(0% 0%, 100% 0%, 100% 100%)) {
+  .hex-btn {
+    border-radius: 50%;
+  }
+}
+
+[data-disabled='true'] .hex-btn {
+  filter: none !important;
+  transition: none !important;
+}
+[data-disabled='true'] .hex-btn:is(:hover, :focus-visible, :active) {
+  filter: none !important;
+}
+[data-disabled='true'] .hx-icon {
+  filter: none !important;
+  transition: none !important;
+}
+[data-disabled='true'] .hx-anim {
+  animation: none !important;
+}
+[data-disabled='true'] .hex-btn svg .hx-inner {
+  transform: scale(var(--hx-inner-scale)) !important;
+  transition: none !important;
+}
