@@ -137,3 +137,17 @@ export function gaussian(rng: RNG): number {
 export function mix(a: number, b: number, t: number): number {
   return a + (b - a) * t;
 }
+
+/**
+ * Safely converts a string or number to a non-negative integer pixel value.
+ * @param v The value to convert.
+ * @param fallback The value to return if the input is undefined or cannot be parsed.
+ * @returns The parsed pixel value.
+ * @internal
+ */
+export const toPx = (v: number | string | undefined, fallback: number) => {
+  if (v === undefined || v === null) return fallback;
+  const n = typeof v === 'string' ? Number(v) : v;
+  if (Number.isNaN(n)) return fallback;
+  return Math.max(0, Math.floor(n));
+};

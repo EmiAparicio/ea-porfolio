@@ -7,6 +7,8 @@ import HexGridReadyBoundary from '@portfolio/components/HexGridBackground/compon
 import HexGridBackground from '@portfolio/components/HexGridBackground/HexGridBackground';
 import LandingTitle from '@portfolio/components/LandingTitle';
 import TechCursor from '@portfolio/components/TechCursor';
+import CopyToastHost from '@portfolio/components/Toast/CopyToastHost';
+import ToastProvider from '@portfolio/components/Toast/ToastProvider';
 import { AppProviders } from '@portfolio/providers';
 import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
@@ -106,15 +108,18 @@ export default async function LangLayout(props: LayoutProps) {
     <div>
       <AppProviders defaultTheme={initialTheme}>
         <main className="relative min-h-dvh overflow-hidden">
-          <HexGridBackground debug={false} />
-          <HexGridReadyBoundary fallback={null}>
-            <LangProvider initialLang={lang}>
-              {props.children}
-              <LandingTitle />
-              <GlobalModal />
-            </LangProvider>
-            <TechCursor />
-          </HexGridReadyBoundary>
+          <ToastProvider>
+            <CopyToastHost />
+            <HexGridBackground debug={false} />
+            <HexGridReadyBoundary fallback={null}>
+              <LangProvider initialLang={lang}>
+                {props.children}
+                <LandingTitle />
+                <GlobalModal />
+              </LangProvider>
+              <TechCursor />
+            </HexGridReadyBoundary>{' '}
+          </ToastProvider>
         </main>
       </AppProviders>
     </div>
