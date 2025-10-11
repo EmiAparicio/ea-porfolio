@@ -14,6 +14,7 @@ import { isThenable } from '@portfolio/utils/promise';
 import { readThemeCookieServer } from '@portfolio/utils/server';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { MenuPanel } from '../projects/portfolio/components/MenuPanel';
 
 const titles: Record<LocaleBase, string> = {
   en: 'Emiliano Aparicio | Engineer & Frontend Developer',
@@ -115,6 +116,7 @@ export default async function LangLayout(props: LayoutProps) {
               <LangProvider initialLang={lang}>
                 {props.children}
                 <LandingTitle />
+                <MenuPanel />
                 <GlobalModal />
               </LangProvider>
               <TechCursor />
