@@ -1,7 +1,6 @@
 import { ThemeMode } from '@portfolio/providers/AppThemeProvider';
 import { Russo_One, Ubuntu } from 'next/font/google';
 import { cookies } from 'next/headers';
-import { AppProviders } from './projects/portfolio/providers';
 
 const russoOne = Russo_One({
   variable: '--font-russo-one',
@@ -41,7 +40,7 @@ export default async function RootLayout({
       }
     >
       <body className={`${russoOne.variable} ${ubuntu.variable} antialiased`}>
-        <AppProviders defaultTheme="dark">{children}</AppProviders>
+        {children}
       </body>
     </html>
   );

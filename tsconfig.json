@@ -23,6 +23,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
+      "@i18n/*": ["src/app/i18n/*"],
       "@portfolio/*": ["src/app/projects/portfolio/*"]
     }
   },
