@@ -1,0 +1,308 @@
+.glitch-title {
+  position: relative;
+  white-space: nowrap;
+  line-height: 1em;
+  text-align: center;
+}
+
+.gt-base {
+  color: var(--gl-color-main);
+}
+
+.gt-base-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  display: inline-block;
+  z-index: 0;
+  white-space: inherit;
+  text-align: center;
+  --gl-clip-one: polygon(
+    0 2%,
+    100% 2%,
+    100% 95%,
+    95% 95%,
+    95% 90%,
+    85% 90%,
+    85% 95%,
+    8% 95%,
+    0 70%
+  );
+  --gl-clip-two: polygon(
+    0 78%,
+    100% 78%,
+    100% 100%,
+    95% 100%,
+    95% 90%,
+    85% 90%,
+    85% 100%,
+    8% 100%,
+    0 78%
+  );
+  --gl-clip-three: polygon(
+    0 44%,
+    100% 44%,
+    100% 54%,
+    95% 54%,
+    95% 54%,
+    85% 54%,
+    85% 54%,
+    8% 54%,
+    0 54%
+  );
+  --gl-clip-four: polygon(
+    0 0,
+    100% 0,
+    100% 0,
+    95% 0,
+    95% 0,
+    85% 0,
+    85% 0,
+    8% 0,
+    0 0
+  );
+  --gl-clip-five: polygon(
+    0 0,
+    100% 0,
+    100% 0,
+    95% 0,
+    95% 0,
+    85% 0,
+    85% 0,
+    8% 0,
+    0 0
+  );
+  --gl-clip-six: polygon(
+    0 40%,
+    100% 40%,
+    100% 85%,
+    95% 85%,
+    95% 85%,
+    85% 85%,
+    85% 85%,
+    8% 85%,
+    0 70%
+  );
+  --gl-clip-seven: polygon(
+    0 63%,
+    100% 63%,
+    100% 80%,
+    95% 80%,
+    95% 80%,
+    85% 80%,
+    85% 80%,
+    8% 80%,
+    0 70%
+  );
+}
+
+.gt-base-text {
+  position: relative;
+  display: inline-block;
+  color: var(--gl-color-main);
+  white-space: inherit;
+  text-shadow: 0 0 0.08em var(--text-shadow-color);
+}
+
+.gt-base-layer.gt-out .gt-base-text,
+.gt-base-layer.gt-in .gt-base-text {
+  animation-name: cyber-glitch;
+  animation-duration: 220ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: var(--gl-state, running);
+}
+
+.gt-glitch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  display: inline-block;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 10;
+  white-space: inherit;
+  text-align: center;
+  --gl-clip-one: polygon(
+    0 2%,
+    100% 2%,
+    100% 95%,
+    95% 95%,
+    95% 90%,
+    85% 90%,
+    85% 95%,
+    8% 95%,
+    0 70%
+  );
+  --gl-clip-two: polygon(
+    0 78%,
+    100% 78%,
+    100% 100%,
+    95% 100%,
+    95% 90%,
+    85% 90%,
+    85% 100%,
+    8% 100%,
+    0 78%
+  );
+  --gl-clip-three: polygon(
+    0 44%,
+    100% 44%,
+    100% 54%,
+    95% 54%,
+    95% 54%,
+    85% 54%,
+    85% 54%,
+    8% 54%,
+    0 54%
+  );
+  --gl-clip-four: polygon(
+    0 0,
+    100% 0,
+    100% 0,
+    95% 0,
+    95% 0,
+    85% 0,
+    85% 0,
+    8% 0,
+    0 0
+  );
+  --gl-clip-five: polygon(
+    0 0,
+    100% 0,
+    100% 0,
+    95% 0,
+    95% 0,
+    85% 0,
+    85% 0,
+    8% 0,
+    0 0
+  );
+  --gl-clip-six: polygon(
+    0 40%,
+    100% 40%,
+    100% 85%,
+    95% 85%,
+    95% 85%,
+    85% 85%,
+    85% 85%,
+    8% 85%,
+    0 70%
+  );
+  --gl-clip-seven: polygon(
+    0 63%,
+    100% 63%,
+    100% 80%,
+    95% 80%,
+    95% 80%,
+    85% 80%,
+    85% 80%,
+    8% 80%,
+    0 70%
+  );
+}
+
+.gt-size {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  display: inline-block;
+  white-space: inherit;
+}
+
+.gt-glitch::before,
+.gt-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  white-space: inherit;
+  pointer-events: none;
+  transform: translateZ(0);
+  opacity: 1;
+  z-index: 10;
+  text-align: center;
+}
+
+.gt-glitch::before {
+  color: var(--gl-color-a);
+  animation-name: cyber-glitch;
+  animation-duration: calc(var(--gl-dur, 1200ms) * var(--gl-rate, 1));
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--gl-dur, 1200ms) * (0 - var(--gl-phase, 0)));
+  animation-play-state: var(--gl-state, running);
+}
+
+.gt-glitch::after {
+  color: var(--gl-color-b);
+  animation-name: cyber-glitch;
+  animation-duration: calc(var(--gl-dur, 1200ms) * var(--gl-rate, 1));
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--gl-dur, 1200ms) * (-0.37 - var(--gl-phase, 0)));
+  animation-play-state: var(--gl-state, running);
+}
+
+.gt-full {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform: translateZ(0);
+  opacity: 0;
+  z-index: 11;
+  white-space: inherit;
+  text-align: center;
+}
+
+.gt-full.a {
+  color: var(--gl-color-a);
+}
+.gt-full.b {
+  color: var(--gl-color-b);
+}
+
+.gt-full.a,
+.gt-full.b {
+  content: attr(data-text);
+  animation-name: cyber-glitch-full;
+  animation-duration: calc(var(--gl-dur, 1200ms) * var(--gl-rate, 1));
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--gl-dur, 1200ms) * (0 - var(--gl-phase, 0)));
+  animation-play-state: var(--gl-state, running);
+}
+
+.gt-g2 .gt-full.a,
+.gt-g2 .gt-full.b {
+  animation-delay: calc(var(--gl-dur, 1200ms) * (-0.21 - var(--gl-phase, 0)));
+}
+
+.gt-soft {
+  --gl-dur: 1000ms;
+  --gl-amp: 2px;
+  --gl-state: running;
+  opacity: 1;
+}
+.gt-dense {
+  --gl-dur: 200ms;
+  --gl-amp: 10px;
+  --gl-state: running;
+  opacity: 1;
+}
+.gt-dense .gt-full {
+  opacity: 1;
+  filter: drop-shadow(0 0 2px var(--gl-color-a))
+    drop-shadow(0 0 2px var(--gl-color-b));
+}
+
+.gt-off::before,
+.gt-off::after,
+.gt-off .gt-full {
+  animation-name: none !important;
+  animation-duration: 0s !important;
+  opacity: 0 !important;
+  filter: none !important;
+  transform: none !important;
+}
