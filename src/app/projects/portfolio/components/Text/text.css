@@ -1,0 +1,289 @@
+.text-root,
+.text-root b,
+.text-root strong {
+  transition:
+    color 400ms ease,
+    text-shadow 400ms ease;
+}
+
+.text-root {
+  color: var(--text-color, var(--foreground-main));
+  user-select: text !important;
+  moz-user-select: text !important;
+  -ms-user-select: text !important;
+  -webkit-user-select: text !important;
+  -webkit-user-drag: none;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.1em;
+  display: inline-block;
+}
+
+.text-root b,
+.text-root strong {
+  color: var(--text-bold-color, currentColor);
+  font-weight: var(--text-bold-weight, 700);
+}
+
+.shadow-on {
+  text-shadow:
+    0 0 var(--text-shadow-blur, 0.08em)
+      var(--text-shadow-color, var(--foreground-mid)),
+    0 0 var(--text-shadow-blur, 0.08em)
+      var(--text-shadow-color, var(--foreground-mid)),
+    0 0 var(--text-shadow-blur, 0.08em)
+      var(--text-shadow-color, var(--foreground-mid));
+}
+
+.shadow-on b,
+.shadow-on strong {
+  text-shadow:
+    0 0 var(--text-shadow-blur, 0.08em)
+      var(
+        --text-bold-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      ),
+    0 0 var(--text-shadow-blur, 0.08em)
+      var(
+        --text-bold-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      ),
+    0 0 var(--text-shadow-blur, 0.08em)
+      var(
+        --text-bold-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      );
+}
+
+.shadow-off,
+.shadow-off * {
+  text-shadow: none;
+}
+
+/* @supports (-webkit-text-stroke: 1px white) {
+  .stroke-fallback.shadow-on,
+  .stroke-fallback.shadow-on *,
+  .hoverable:hover.stroke-fallback.shadow-on,
+  .hoverable:hover.stroke-fallback.shadow-on *,
+  .hoverable:focus-visible.stroke-fallback.shadow-on,
+  .hoverable:focus-visible.stroke-fallback.shadow-on * {
+    text-shadow: none;
+  }
+
+  .stroke-fallback.shadow-on {
+    -webkit-text-stroke: calc(var(--text-shadow-blur) * 0.005)
+      var(--text-shadow-color, var(--foreground-mid));
+  }
+  .stroke-fallback.shadow-on * {
+    -webkit-text-stroke: inherit;
+  }
+
+  .stroke-fallback.shadow-on b,
+  .stroke-fallback.shadow-on strong {
+    -webkit-text-stroke: calc(var(--text-shadow-blur) * 0.005)
+      var(
+        --text-bold-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      );
+  }
+
+  .hoverable:hover.stroke-fallback.shadow-on,
+  .hoverable:focus-visible.stroke-fallback.shadow-on {
+    -webkit-text-stroke: calc(
+        var(--text-shadow-blur-interactive, var(--text-shadow-blur)) * 0.005
+      )
+      var(
+        --text-hover-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      );
+  }
+  .hoverable:hover.stroke-fallback.shadow-on b,
+  .hoverable:hover.stroke-fallback.shadow-on strong,
+  .hoverable:focus-visible.stroke-fallback.shadow-on b,
+  .hoverable:focus-visible.stroke-fallback.shadow-on strong {
+    -webkit-text-stroke: calc(
+        var(--text-shadow-blur-interactive, var(--text-shadow-blur)) * 0.005
+      )
+      var(
+        --text-hover-shadow-color,
+        var(
+          --text-bold-shadow-color,
+          var(--text-shadow-color, var(--foreground-mid))
+        )
+      );
+  }
+} */
+
+.text-root::selection,
+.text-root *::selection {
+  background: transparent;
+  color: var(--text-selection-normal-color, var(--foreground-mid));
+  text-shadow:
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(--text-selection-shadow-color, var(--foreground-shine)),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(--text-selection-shadow-color, var(--foreground-shine)),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(--text-selection-shadow-color, var(--foreground-shine));
+}
+
+.text-root::-moz-selection,
+.text-root *::-moz-selection {
+  background: transparent;
+  color: var(--text-selection-normal-color, var(--foreground-mid));
+  text-shadow:
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(--text-selection-shadow-color, var(--foreground-shine)),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(--text-selection-shadow-color, var(--foreground-shine)),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(--text-selection-shadow-color, var(--foreground-shine));
+}
+
+.text-root b::selection,
+.text-root strong::selection,
+.text-root :where(b, strong) *::selection {
+  background: transparent;
+  color: var(--text-selection-bold-color, var(--foreground-color-dark));
+  text-shadow:
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-selection-bold-shadow-color,
+        var(--text-selection-shadow-color, var(--foreground-shine))
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-selection-bold-shadow-color,
+        var(--text-selection-shadow-color, var(--foreground-shine))
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-selection-bold-shadow-color,
+        var(--text-selection-shadow-color, var(--foreground-shine))
+      );
+}
+
+.text-root b::-moz-selection,
+.text-root strong::-moz-selection,
+.text-root :where(b, strong) *::-moz-selection {
+  background: transparent;
+  color: var(--text-selection-bold-color, var(--foreground-color-dark));
+  text-shadow:
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-selection-bold-shadow-color,
+        var(--text-selection-shadow-color, var(--foreground-shine))
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-selection-bold-shadow-color,
+        var(--text-selection-shadow-color, var(--foreground-shine))
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-selection-bold-shadow-color,
+        var(--text-selection-shadow-color, var(--foreground-shine))
+      );
+}
+
+.hoverable:hover,
+.hoverable:focus-visible {
+  color: var(--text-hover-color, var(--text-color, var(--foreground-main)));
+  outline: none;
+  text-shadow:
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-hover-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-hover-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-hover-shadow-color,
+        var(--text-shadow-color, var(--foreground-mid))
+      );
+}
+
+.hoverable:hover *,
+.hoverable:focus-visible * {
+  text-shadow: none;
+}
+
+.hoverable:hover b,
+.hoverable:hover strong,
+.hoverable:focus-visible b,
+.hoverable:focus-visible strong {
+  color: var(--text-hover-bold-color, var(--text-hover-color));
+  text-shadow:
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-hover-shadow-color,
+        var(
+          --text-bold-shadow-color,
+          var(--text-shadow-color, var(--foreground-mid))
+        )
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-hover-shadow-color,
+        var(
+          --text-bold-shadow-color,
+          var(--text-shadow-color, var(--foreground-mid))
+        )
+      ),
+    0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
+      var(
+        --text-hover-shadow-color,
+        var(
+          --text-bold-shadow-color,
+          var(--text-shadow-color, var(--foreground-mid))
+        )
+      );
+}
+
+.is-anchor {
+  text-decoration: none;
+}
+
+.is-anchor:hover,
+.is-anchor:focus-visible {
+  text-decoration: none;
+  outline: none;
+}
+
+.is-anchor:visited {
+  color: var(--text-color, var(--foreground-main));
+}
+
+.text-root.no-select,
+.text-root.no-select * {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.text-root.no-select::selection,
+.text-root.no-select *::selection,
+.text-root.no-select::-moz-selection,
+.text-root.no-select *::-moz-selection {
+  background: transparent;
+  color: inherit;
+  text-shadow: none;
+}
+
+.text-root a {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.1em;
+}
+
+.text-root a:hover,
+.text-root a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 0.1em;
+}
