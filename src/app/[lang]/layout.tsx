@@ -21,6 +21,7 @@ import { notFound } from 'next/navigation';
 import ClientScenes from './ClientScenes';
 import { ParamsType } from './page';
 
+
 const titles: Record<LocaleBase, string> = {
   en: 'Emiliano Aparicio | Engineer & Frontend Developer',
   es: 'Emiliano Aparicio | Ingeniero y Desarrollador Frontend',
