@@ -1,6 +1,12 @@
 'use client';
 
+import HexGridClickRipple from '@portfolio/components/HexGridBackground/components/HexGridClickRipple';
+import HexGridCursorReveal from '@portfolio/components/HexGridBackground/components/HexGridCursorReveal';
 import { HexGridDebugOverlay } from '@portfolio/components/HexGridBackground/components/HexGridDebugOverlay';
+import HexGridDragSparks from '@portfolio/components/HexGridBackground/components/HexGridDragSparks';
+import HexGridLight from '@portfolio/components/HexGridBackground/components/HexGridLight';
+import HexGridPerimeterLight from '@portfolio/components/HexGridBackground/components/HexGridPerimeterLight';
+import HexGridSpotlightBg from '@portfolio/components/HexGridBackground/components/HexGridSpotlightBg';
 import { useHexBgProps } from '@portfolio/hooks/hexgrid/useHexBgProps';
 import { useHexGridBackground } from '@portfolio/hooks/hexgrid/useHexGridBackground';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
@@ -72,6 +78,11 @@ export default function HexGridBackground({
 }: HexGridBackgroundProps) {
   const {
     gridBackgroundValues,
+    clickRippleProps,
+    cursorRevealProps,
+    dragSparksProps,
+    lightProps,
+    perimeterProps,
   } = useHexBgProps();
 
   const { deviceType } = useWindowSize();
@@ -94,6 +105,14 @@ export default function HexGridBackground({
     ...gridBackgroundValues,
   });
 
+  const hexGridBasicValues = {
+    d,
+    width: box.width,
+    height: box.height,
+  };
+
+  const ready = d && box.width > 0 && box.height > 0;
+
   return (
     <div
       ref={ref}
@@ -103,14 +122,46 @@ export default function HexGridBackground({
       )}
       aria-hidden
     >
-      <HexGridDebugOverlay
-        enabled={debug}
-        orientation={orientation}
-        params={params}
-        d={d}
-        stroke={1}
-        boundsD={debugBoundsD}
-      />
+      {ready && (
+        <>
+          <HexGridDebugOverlay
+            enabled={debug}
+            orientation={orientation}
+            params={params}
+            d={d}
+            stroke={1}
+            boundsD={debugBoundsD}
+          />
+
+          <HexGridLight zIndex={12} {...hexGridBasicValues} {...lightProps} />
+
+          <HexGridCursorReveal
+            zIndex={10}
+            {...hexGridBasicValues}
+            {...cursorRevealProps}
+          />
+
+          <HexGridDragSparks
+            zIndex={17}
+            {...hexGridBasicValues}
+            {...dragSparksProps}
+          />
+
+          <HexGridClickRipple
+            zIndex={20}
+            {...hexGridBasicValues}
+            {...clickRippleProps}
+          />
+
+          <HexGridPerimeterLight
+            zIndex={23}
+            {...hexGridBasicValues}
+            {...perimeterProps}
+          />
+
+          <HexGridSpotlightBg zIndex={23} {...hexGridBasicValues} />
+        </>
+      )}
     </div>
   );
 }
