@@ -51,7 +51,6 @@ export function hexPoints(
     .join(' ');
 }
 
-
 /**
  * Hashes a string to an unsigned 32-bit integer using the FNV-1a algorithm.
  * @param s The string to hash.
@@ -81,3 +80,19 @@ export function mulberry32(a: number) {
 }
 
 export type RNG = () => number;
+
+/**
+ * Shuffles an array using the Fisher-Yates (aka Knuth) algorithm.
+ * Creates a shallow copy of the array and shuffles it.
+ * @param arr The array to shuffle.
+ * @returns A new array with the elements shuffled.
+ * @template T
+ */
+export function shuffle<T>(arr: T[]) {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = (Math.random() * (i + 1)) | 0;
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}

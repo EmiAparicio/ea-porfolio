@@ -2,8 +2,9 @@ import '@app/globals.css';
 import { LangProvider } from '@i18n/client';
 import { LocaleBase } from '@i18n/utils/constants';
 import { normalizeBase } from '@i18n/utils/normalize';
-import HexGridBackground from '@portfolio/components/HexGridBackground/HexGridBackground';
 import HexGridReadyBoundary from '@portfolio/components/HexGridBackground/components/HexGridReadyBoundary';
+import HexGridBackground from '@portfolio/components/HexGridBackground/HexGridBackground';
+import LandingTitle from '@portfolio/components/LandingTitle';
 import TechCursor from '@portfolio/components/TechCursor';
 import { AppProviders } from '@portfolio/providers';
 import { isThenable } from '@portfolio/utils/promise';
@@ -106,7 +107,10 @@ export default async function LangLayout(props: LayoutProps) {
         <main className="relative min-h-dvh overflow-hidden">
           <HexGridBackground debug={false} />
           <HexGridReadyBoundary fallback={null}>
-            <LangProvider initialLang={lang}>{props.children}</LangProvider>
+            <LangProvider initialLang={lang}>
+              {props.children}
+              <LandingTitle />
+            </LangProvider>
             <TechCursor />
           </HexGridReadyBoundary>
         </main>
