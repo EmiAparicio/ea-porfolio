@@ -58,3 +58,33 @@ body {
   font-family: var(--font-mono), Helvetica, sans-serif;
   user-select: none;
 }
+
+#server-content-landing,
+#server-content-webdev,
+#server-content-gaming,
+#server-content-eng {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+}
+
+body[data-client-scene='landing'] #server-content-landing {
+  visibility: visible;
+  pointer-events: auto;
+  position: static;
+}
+body[data-client-scene='webdev'] #server-content-webdev {
+  visibility: visible;
+  pointer-events: auto;
+  position: static;
+}
+body[data-client-scene='gaming'] #server-content-gaming {
+  visibility: visible;
+  pointer-events: auto;
+  position: static;
+}
+body[data-client-scene='eng'] #server-content-eng {
+  visibility: visible;
+  pointer-events: auto;
+  position: static;
+}
