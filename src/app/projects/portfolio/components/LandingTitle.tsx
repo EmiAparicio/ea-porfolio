@@ -140,7 +140,7 @@ const Section = memo(({ position }: SectionProps) => {
         size="title"
         variant="title"
         scale={TEXT_SCALE_BY_DEVICETYPE[deviceType] * R}
-        className="![font-family:var(--font-russo)] leading-[100%] whitespace-nowrap"
+        className="![font-family:var(--font-russo)] leading-[100%] whitespace-nowrap !select-none"
         weightDelta={0}
       >
         Emiliano Aparicio

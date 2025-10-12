@@ -93,7 +93,8 @@ export default function HexGridBackground({
       deviceType
     ] as CenterMode);
 
-  const { enableAnimations } = usePerformance(1);
+  const { enableAnimations: enableAnimationsTier2 } = usePerformance(2);
+  const { enableAnimations: enableAnimationsTier1 } = usePerformance(1);
 
   const {
     ref,
@@ -136,24 +137,12 @@ export default function HexGridBackground({
             boundsD={debugBoundsD}
           />
 
-          {enableAnimations && (
+          {enableAnimationsTier2 && (
             <>
-              <HexGridLight
-                zIndex={12}
-                {...hexGridBasicValues}
-                {...lightProps}
-              />
-
               <HexGridCursorReveal
                 zIndex={10}
                 {...hexGridBasicValues}
                 {...cursorRevealProps}
-              />
-
-              <HexGridDragSparks
-                zIndex={17}
-                {...hexGridBasicValues}
-                {...dragSparksProps}
               />
 
               <HexGridClickRipple
@@ -169,6 +158,21 @@ export default function HexGridBackground({
               />
 
               <HexGridSpotlightBg zIndex={23} {...hexGridBasicValues} />
+            </>
+          )}
+          {enableAnimationsTier1 && (
+            <>
+              <HexGridLight
+                zIndex={12}
+                {...hexGridBasicValues}
+                {...lightProps}
+              />
+
+              <HexGridDragSparks
+                zIndex={17}
+                {...hexGridBasicValues}
+                {...dragSparksProps}
+              />
             </>
           )}
         </>

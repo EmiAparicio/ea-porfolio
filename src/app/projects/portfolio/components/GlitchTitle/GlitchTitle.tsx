@@ -60,7 +60,7 @@ export default function GlitchTitle({
 }: GlitchTitleProps): ReactElement | null {
   const { resolvedTheme } = useTheme();
   const R = useAtomValue(hexRadiusAtom);
-  const { enableAnimations } = usePerformance(2);
+  const { enableAnimations } = usePerformance(3);
 
   const sanitizedTitles = useMemo<string[]>(() => {
     const arr = Array.isArray(titles) ? titles.filter(Boolean).map(String) : [];

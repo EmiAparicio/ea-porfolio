@@ -219,6 +219,12 @@ function now(): number {
   return performance.now();
 }
 
+const PROBE_INTERVAL_MS = 400;
+const PROBE_DURATION_MS = 300;
+const SAMPLE_WINDOW_SIZE = 25;
+const EMERGENCY_DOWGRADE_SAMPLES = 4;
+const STABILITY_THRESHOLD_STDDEV = 5;
+
 /**
  * A custom hook for performance profiling of the user's device and browser.
  * It detects various factors like FPS, CPU cores, memory, network, and user preferences
@@ -237,14 +243,12 @@ export function usePerformanceProfile(
   enableAnimations: boolean;
 }> {
   const {
-    fpsProbeMs = 900,
     minFps = 45,
     minCores = 4,
     minMemoryGB = 4,
     force,
     graceMs = 2500,
-    minFpsSamples = 2,
-    reprobeMs = 2000,
+    minFpsSamples = 15,
     hysteresisFps = 5,
   } = options;
 
@@ -261,13 +265,55 @@ export function usePerformanceProfile(
   const unmountedRef = useRef<boolean>(false);
   const fpsSamplesRef = useRef<number[]>([]);
 
-  const finalizeFpsSample = useCallback((value: number) => {
-    fpsSamplesRef.current = [...fpsSamplesRef.current.slice(-4), value];
-    const avg =
-      fpsSamplesRef.current.reduce((a, b) => a + b, 0) /
-      fpsSamplesRef.current.length;
-    setFps(Math.round(avg));
-  }, []);
+  const finalizeFpsSample = useCallback(
+    (newSample: number) => {
+      const samples = [
+        ...fpsSamplesRef.current.slice(-SAMPLE_WINDOW_SIZE + 1),
+        newSample,
+      ];
+      fpsSamplesRef.current = samples;
+
+      if (samples.length < minFpsSamples) {
+        return;
+      }
+
+      const lastSamples = samples.slice(-EMERGENCY_DOWGRADE_SAMPLES);
+      const isEmergency =
+        lastSamples.length === EMERGENCY_DOWGRADE_SAMPLES &&
+        lastSamples.every((s) => s < minFps);
+
+      if (isEmergency) {
+        setFps(0);
+        return;
+      }
+
+      const sum = samples.reduce((a, b) => a + b, 0);
+      const avg = sum / samples.length;
+
+      let trend = 0;
+      if (samples.length >= 10) {
+        const half = Math.floor(samples.length / 2);
+        const firstHalfAvg =
+          samples.slice(0, half).reduce((a, b) => a + b, 0) / half;
+        const secondHalfAvg =
+          samples.slice(-half).reduce((a, b) => a + b, 0) / half;
+        trend = Math.max(-10, Math.min(10, secondHalfAvg - firstHalfAvg));
+      }
+
+      const stdDev = Math.sqrt(
+        samples.map((x) => Math.pow(x - avg, 2)).reduce((a, b) => a + b, 0) /
+          samples.length
+      );
+
+      let reportedFps = avg + trend;
+      if (stdDev > STABILITY_THRESHOLD_STDDEV) {
+        reportedFps = Math.max(0, reportedFps - stdDev);
+      }
+
+      setFps(Math.round(reportedFps));
+    },
+    [minFps, minFpsSamples]
+  );
 
   const probeFps = useCallback(() => {
     if (!isBrowser || document.visibilityState !== 'visible') {
@@ -280,7 +326,7 @@ export function usePerformanceProfile(
 
     let frames = 0;
     const start = now();
-    const stopAt = start + Math.max(300, fpsProbeMs);
+    const stopAt = start + PROBE_DURATION_MS;
 
     const tick = (t: number) => {
       frames += 1;
@@ -296,7 +342,7 @@ export function usePerformanceProfile(
       }
     };
     rafRef.current = requestAnimationFrame(tick);
-  }, [finalizeFpsSample, fpsProbeMs]);
+  }, [finalizeFpsSample]);
 
   useEffect(() => {
     unmountedRef.current = false;
@@ -311,10 +357,11 @@ export function usePerformanceProfile(
       Math.max(0, graceMs)
     );
 
-    const reprobeTimer = setInterval(probeFps, Math.max(1000, reprobeMs));
+    const reprobeTimer = setInterval(probeFps, PROBE_INTERVAL_MS);
 
     const onVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
+        fpsSamplesRef.current = [];
         probeFps();
       }
     };
@@ -329,7 +376,7 @@ export function usePerformanceProfile(
       clearInterval(reprobeTimer);
       document.removeEventListener('visibilitychange', onVisibilityChange);
     };
-  }, [probeFps, graceMs, reprobeMs]);
+  }, [probeFps, graceMs]);
 
   const reasonsBase = useMemo(() => {
     return {
