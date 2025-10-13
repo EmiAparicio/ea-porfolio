@@ -30,6 +30,8 @@ import { useTheme } from 'next-themes';
 import { useEffect, useMemo, useState } from 'react';
 import { BiSolidBriefcase } from 'react-icons/bi';
 import { FaFileDownload, FaPlane } from 'react-icons/fa';
+import { GoProjectSymlink } from 'react-icons/go';
+import Portfolio from '@portfolio/components/PageModals/WebdevModal/Portfolio';
 
 const ACTIVE_CONTENT = ['landing', 'experience'];
 type ActiveContent = (typeof ACTIVE_CONTENT)[number];
@@ -150,6 +152,27 @@ export default function WebdevPageClient() {
         );
       },
       children: [
+        {
+          id: 'portfolio',
+          title: 'Portfolio Project',
+          label: dict.pages.webdev.portfolioButton,
+          sizeFactor: 1,
+          icon: GoProjectSymlink,
+          iconScale: '50%',
+          labelSizeFactor: lang === 'es' ? 1 : 0.9,
+          soundMuted: 'hover',
+          hiddenBorders: false,
+          showLabelOnToggled: true,
+          onClick: () => {
+            modalFunction({
+              child: (
+                <PageModal>
+                  <Portfolio />
+                </PageModal>
+              ),
+            });
+          },
+        },
         {
           id: 'invasion-tours',
           title: 'Invasion Tours Project',

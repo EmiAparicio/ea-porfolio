@@ -46,12 +46,12 @@ const policy = {
 };
 
 const profileOptions: UsePerformanceProfileOptions = {
-  minFps: 24,
+  minFps: 30,
   graceMs: 2500,
   minFpsSamples: 15,
   hysteresisFps: 5,
 };
-const fpsThresholds = { full: 45, reduced: 30, minimal: 24 };
+const fpsThresholds = { full: 45, reduced: 38, minimal: 30 };
 
 const DOWNGRADE_DELAY_MS = 500;
 const UPGRADE_DELAY_MS = 8000;

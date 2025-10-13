@@ -11,9 +11,10 @@ import type { HexToggleItem } from '@portfolio/components/HexToggleBar/HexToggle
 import Text from '@portfolio/components/Text/Text';
 import { useQrToCenter } from '@portfolio/hooks/hexgrid/useQrToCenter';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
+import { useAtomValue } from '@portfolio/lib/jotai';
 import { mod } from '@portfolio/utils/hexgrid/math';
 import { range } from '@portfolio/utils/math';
-import { useAtomValue, useSetAtom } from '@portfolio/lib/jotai';
+import { useAtom } from 'jotai';
 import { useTheme } from 'next-themes';
 import {
   CSSProperties,
@@ -103,7 +104,9 @@ export default function Carousel({
   const colW = Math.max(1, Math.abs(stepLeft) || 2 * R);
   const half = Math.max(0, Math.floor((Math.max(1, maxShownChildren) - 1) / 2));
   const slots = half * 2 + 1;
-  const setCarouselActiveIdx = useSetAtom(carouselActiveIdxAtom);
+  const [carouselActiveIdx, setCarouselActiveIdx] = useAtom(
+    carouselActiveIdxAtom
+  );
   const [centerIndex, setCenterIndex] = useState<number>(
     mod(initialIndex, Math.max(1, n))
   );
@@ -114,6 +117,10 @@ export default function Carousel({
   useEffect(() => {
     setCarouselActiveIdx(centerIndex);
   }, [centerIndex, setCarouselActiveIdx]);
+
+  useEffect(() => {
+    setCenterIndex(carouselActiveIdx);
+  }, [carouselActiveIdx]);
 
   const rScaled = R * (sizeFactor ?? 1);
   const hexHeight =
