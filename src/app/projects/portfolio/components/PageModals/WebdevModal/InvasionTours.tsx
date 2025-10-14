@@ -93,7 +93,8 @@ const InvasionTours: FC<InvasionToursProps> = ({
             'no-custom-cursor pointer-events-auto absolute top-[40%] left-1/2 aspect-video -translate-1/2 border-none',
             !iframeVisible && 'pointer-events-none',
             deviceType === 'web' && 'h-[60%]',
-            deviceType !== 'web' && 'w-[90%]'
+            deviceType !== 'web' && 'w-[90%]',
+            deviceType === 'mobile' && '!top-1/2'
           )}
         />
 
@@ -119,7 +120,7 @@ const InvasionTours: FC<InvasionToursProps> = ({
         className={cn(
           'pointer-events-auto !absolute',
           deviceType === 'web' && 'top-1/2 left-[5%]',
-          deviceType !== 'web' && 'bottom-[15%] left-1/2'
+          deviceType !== 'web' && '-bottom-[2.5%] left-1/2'
         )}
       />
     </div>

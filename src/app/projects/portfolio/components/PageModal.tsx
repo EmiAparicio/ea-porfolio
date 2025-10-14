@@ -26,12 +26,12 @@ export const PageModal: FC<PageModalProps> = ({ children }) => {
   return (
     <div className="pointer-events-none absolute top-0 h-full w-full">
       {children}
-      {items.length > 1 && (
+      {items.length > 1 && deviceType !== 'mobile' && (
         <HexChildrenCarouselCore
           items={items}
           className={cn(
             deviceType === 'web' && '-bottom-[5%] left-1/2',
-            deviceType !== 'web' && '-bottom-[2%] left-1/2'
+            deviceType === 'medium' && '-bottom-[2%] left-1/2'
           )}
           initialIndex={carouselActiveIdx}
         />

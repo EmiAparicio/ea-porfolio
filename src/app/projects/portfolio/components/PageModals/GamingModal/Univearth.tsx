@@ -106,7 +106,8 @@ const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
           className={cn(
             'no-custom-cursor pointer-events-none absolute left-1/2 -translate-1/2 border-none',
             deviceType === 'web' && 'top-1/2 w-[75%]',
-            deviceType !== 'web' && 'top-[45%] w-[90%]'
+            deviceType !== 'web' && 'top-[45%] w-[90%]',
+            deviceType === 'mobile' && '!top-1/2'
           )}
         />
 
@@ -132,7 +133,7 @@ const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
         className={cn(
           'pointer-events-auto !absolute',
           deviceType === 'web' && 'top-1/2 left-[5%]',
-          deviceType !== 'web' && 'bottom-[5%] left-1/2'
+          deviceType !== 'web' && '-bottom-[2.5%] left-1/2'
         )}
       />
     </div>

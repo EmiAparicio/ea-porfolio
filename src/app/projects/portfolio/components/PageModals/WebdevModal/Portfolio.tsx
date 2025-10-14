@@ -34,7 +34,7 @@ const Portfolio: FC<PortfolioProps> = ({ className }) => {
             {
               web: 'top-[40%] w-[60%]',
               medium: 'top-[35%] w-[85%] !text-[calc(min(2.2vw,1.5dvh))]',
-              mobile: 'top-[40%] w-[85%] !text-[3.4vw]',
+              mobile: 'top-[45%] w-[85%] !text-[3.4vw]',
             }[deviceType],
             resolvedTheme === 'light' && 'tracking-[-0.015rem]'
           )}
@@ -59,7 +59,7 @@ const Portfolio: FC<PortfolioProps> = ({ className }) => {
           'pointer-events-auto !absolute',
           deviceType === 'web' && 'top-1/2 left-[5%]',
           deviceType === 'medium' && 'bottom-[15%] left-1/2',
-          deviceType === 'mobile' && 'bottom-[12%] left-1/2'
+          deviceType === 'mobile' && '-bottom-[2.5%] left-1/2'
         )}
       />
     </div>
