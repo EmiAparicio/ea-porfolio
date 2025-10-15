@@ -1,20 +1,19 @@
 'use client';
 
-import cn from 'classnames';
 import { useLang } from '@i18n/client';
 import { SUPPORTED_LANGS_SET } from '@i18n/types';
 import { hexRadiusAtom } from '@portfolio/atoms/hexGridAtoms';
 import GlitchTitle from '@portfolio/components/GlitchTitle/GlitchTitle';
 import Text from '@portfolio/components/Text/Text';
 import { ROOT_PATHS, useUrlChange } from '@portfolio/hooks/useUrlChange';
-import { PixelPos } from '@portfolio/types/buttons-panel';
-import { useAtomValue } from '@portfolio/lib/jotai';
-import { useTheme } from 'next-themes';
-import { memo, useMemo } from 'react';
-import { shuffle } from '@portfolio/utils/math';
-import GlobalPosition from './HexGridBackground/components/GlobalPosition';
-import { motion } from 'framer-motion';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
+import { useAtomValue } from '@portfolio/lib/jotai';
+import { PixelPos } from '@portfolio/types/buttons-panel';
+import { shuffle } from '@portfolio/utils/math';
+import cn from 'classnames';
+import { motion } from 'framer-motion';
+import { memo, useMemo } from 'react';
+import GlobalPosition from './HexGridBackground/components/GlobalPosition';
 
 const TEXT_SCALE_BY_DEVICETYPE = {
   mobile: 0.06,
@@ -40,7 +39,6 @@ type SectionProps = {
 const Section = memo(({ position }: SectionProps) => {
   const R = useAtomValue(hexRadiusAtom);
   const { deviceType } = useWindowSize();
-  const { resolvedTheme } = useTheme();
   const { dict } = useLang();
   const { current, previous } = useUrlChange({ computeSignature: false });
 
@@ -122,25 +120,16 @@ const Section = memo(({ position }: SectionProps) => {
     >
       <Text
         colors={{
-          text:
-            resolvedTheme === 'dark'
-              ? 'color-mix(in oklab, var(--foreground-main), transparent 0%)'
-              : 'var(--foreground-mid)',
-          textShadow:
-            resolvedTheme === 'dark'
-              ? 'var(--foreground-extreme)'
-              : 'var(--foreground-shine)',
-          hoverText: 'var(--foreground-contrast)',
-          hoverShadow:
-            resolvedTheme === 'dark'
-              ? 'var(--foreground-shine)'
-              : 'var(--foreground-mid)',
+          text: '--landing-title-text',
+          textShadow: 'landing-title-text-shadow',
+          hoverText: 'var(--landing-title-hover-text)',
+          hoverShadow: '--landing-title-hover-shadow',
         }}
         hoverable
         size="title"
         variant="title"
         scale={TEXT_SCALE_BY_DEVICETYPE[deviceType] * R}
-        className="![font-family:var(--font-russo)] leading-[100%] whitespace-nowrap !select-none"
+        className="!font-russo leading-[100%] whitespace-nowrap !select-none"
         weightDelta={0}
       >
         Emiliano Aparicio
@@ -151,7 +140,7 @@ const Section = memo(({ position }: SectionProps) => {
         intervalMs={atRoot ? 5000 : undefined}
         fontSizeFactor={deviceType === 'mobile' ? 0.8 : 1}
         className={cn(
-          'self-center ![font-family:var(--font-russo)]',
+          '!font-russo self-center',
           deviceType === 'web' && 'ml-[48%]'
         )}
       />

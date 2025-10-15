@@ -73,7 +73,7 @@ export default function HexGridSpotlightBg({
   qrCenter = { q: 0, r: 0 },
   orientation = 'pointy',
   size = 'small',
-  color = 'var(--foreground-main)',
+  color = 'var(--hx-grid-spotlight-bg)',
   stroke = 2,
   className,
 }: HexGridSpotlightBgProps) {

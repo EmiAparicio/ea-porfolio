@@ -7,7 +7,7 @@
 }
 
 .text-root {
-  color: var(--text-color, var(--foreground-main));
+  color: var(--text-color, currentColor);
   user-select: text !important;
   moz-user-select: text !important;
   -ms-user-select: text !important;
@@ -26,32 +26,20 @@
 
 .shadow-on {
   text-shadow:
-    0 0 var(--text-shadow-blur, 0.08em)
-      var(--text-shadow-color, var(--foreground-mid)),
-    0 0 var(--text-shadow-blur, 0.08em)
-      var(--text-shadow-color, var(--foreground-mid)),
-    0 0 var(--text-shadow-blur, 0.08em)
-      var(--text-shadow-color, var(--foreground-mid));
+    0 0 var(--text-shadow-blur, 0.08em) var(--text-shadow-color),
+    0 0 var(--text-shadow-blur, 0.08em) var(--text-shadow-color),
+    0 0 var(--text-shadow-blur, 0.08em) var(--text-shadow-color);
 }
 
 .shadow-on b,
 .shadow-on strong {
   text-shadow:
     0 0 var(--text-shadow-blur, 0.08em)
-      var(
-        --text-bold-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      ),
+      var(--text-bold-shadow-color, var(--text-shadow-color)),
     0 0 var(--text-shadow-blur, 0.08em)
-      var(
-        --text-bold-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      ),
+      var(--text-bold-shadow-color, var(--text-shadow-color)),
     0 0 var(--text-shadow-blur, 0.08em)
-      var(
-        --text-bold-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      );
+      var(--text-bold-shadow-color, var(--text-shadow-color));
 }
 
 .shadow-off,
@@ -59,106 +47,52 @@
   text-shadow: none;
 }
 
-/* @supports (-webkit-text-stroke: 1px white) {
-  .stroke-fallback.shadow-on,
-  .stroke-fallback.shadow-on *,
-  .hoverable:hover.stroke-fallback.shadow-on,
-  .hoverable:hover.stroke-fallback.shadow-on *,
-  .hoverable:focus-visible.stroke-fallback.shadow-on,
-  .hoverable:focus-visible.stroke-fallback.shadow-on * {
-    text-shadow: none;
-  }
-
-  .stroke-fallback.shadow-on {
-    -webkit-text-stroke: calc(var(--text-shadow-blur) * 0.005)
-      var(--text-shadow-color, var(--foreground-mid));
-  }
-  .stroke-fallback.shadow-on * {
-    -webkit-text-stroke: inherit;
-  }
-
-  .stroke-fallback.shadow-on b,
-  .stroke-fallback.shadow-on strong {
-    -webkit-text-stroke: calc(var(--text-shadow-blur) * 0.005)
-      var(
-        --text-bold-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      );
-  }
-
-  .hoverable:hover.stroke-fallback.shadow-on,
-  .hoverable:focus-visible.stroke-fallback.shadow-on {
-    -webkit-text-stroke: calc(
-        var(--text-shadow-blur-interactive, var(--text-shadow-blur)) * 0.005
-      )
-      var(
-        --text-hover-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      );
-  }
-  .hoverable:hover.stroke-fallback.shadow-on b,
-  .hoverable:hover.stroke-fallback.shadow-on strong,
-  .hoverable:focus-visible.stroke-fallback.shadow-on b,
-  .hoverable:focus-visible.stroke-fallback.shadow-on strong {
-    -webkit-text-stroke: calc(
-        var(--text-shadow-blur-interactive, var(--text-shadow-blur)) * 0.005
-      )
-      var(
-        --text-hover-shadow-color,
-        var(
-          --text-bold-shadow-color,
-          var(--text-shadow-color, var(--foreground-mid))
-        )
-      );
-  }
-} */
-
 .text-root::selection,
 .text-root *::selection {
   background: transparent;
-  color: var(--text-selection-normal-color, var(--foreground-mid));
+  color: var(--text-selection-normal-color);
   text-shadow:
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(--text-selection-shadow-color, var(--foreground-shine)),
+      var(--text-selection-shadow-color),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(--text-selection-shadow-color, var(--foreground-shine)),
+      var(--text-selection-shadow-color),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(--text-selection-shadow-color, var(--foreground-shine));
+      var(--text-selection-shadow-color);
 }
 
 .text-root::-moz-selection,
 .text-root *::-moz-selection {
   background: transparent;
-  color: var(--text-selection-normal-color, var(--foreground-mid));
+  color: var(--text-selection-normal-color);
   text-shadow:
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(--text-selection-shadow-color, var(--foreground-shine)),
+      var(--text-selection-shadow-color),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(--text-selection-shadow-color, var(--foreground-shine)),
+      var(--text-selection-shadow-color),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(--text-selection-shadow-color, var(--foreground-shine));
+      var(--text-selection-shadow-color);
 }
 
 .text-root b::selection,
 .text-root strong::selection,
 .text-root :where(b, strong) *::selection {
   background: transparent;
-  color: var(--text-selection-bold-color, var(--foreground-color-dark));
+  color: var(--text-selection-bold-color);
   text-shadow:
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-selection-bold-shadow-color,
-        var(--text-selection-shadow-color, var(--foreground-shine))
+        var(--text-selection-shadow-color)
       ),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-selection-bold-shadow-color,
-        var(--text-selection-shadow-color, var(--foreground-shine))
+        var(--text-selection-shadow-color)
       ),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-selection-bold-shadow-color,
-        var(--text-selection-shadow-color, var(--foreground-shine))
+        var(--text-selection-shadow-color)
       );
 }
 
@@ -166,45 +100,36 @@
 .text-root strong::-moz-selection,
 .text-root :where(b, strong) *::-moz-selection {
   background: transparent;
-  color: var(--text-selection-bold-color, var(--foreground-color-dark));
+  color: var(--text-selection-bold-color);
   text-shadow:
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-selection-bold-shadow-color,
-        var(--text-selection-shadow-color, var(--foreground-shine))
+        var(--text-selection-shadow-color)
       ),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-selection-bold-shadow-color,
-        var(--text-selection-shadow-color, var(--foreground-shine))
+        var(--text-selection-shadow-color)
       ),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-selection-bold-shadow-color,
-        var(--text-selection-shadow-color, var(--foreground-shine))
+        var(--text-selection-shadow-color)
       );
 }
 
 .hoverable:hover,
 .hoverable:focus-visible {
-  color: var(--text-hover-color, var(--text-color, var(--foreground-main)));
+  color: var(--text-hover-color, var(--text-color));
   outline: none;
   text-shadow:
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(
-        --text-hover-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      ),
+      var(--text-hover-shadow-color, var(--text-shadow-color)),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(
-        --text-hover-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      ),
+      var(--text-hover-shadow-color, var(--text-shadow-color)),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
-      var(
-        --text-hover-shadow-color,
-        var(--text-shadow-color, var(--foreground-mid))
-      );
+      var(--text-hover-shadow-color, var(--text-shadow-color));
 }
 
 .hoverable:hover *,
@@ -221,26 +146,17 @@
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-hover-shadow-color,
-        var(
-          --text-bold-shadow-color,
-          var(--text-shadow-color, var(--foreground-mid))
-        )
+        var(--text-bold-shadow-color, var(--text-shadow-color))
       ),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-hover-shadow-color,
-        var(
-          --text-bold-shadow-color,
-          var(--text-shadow-color, var(--foreground-mid))
-        )
+        var(--text-bold-shadow-color, var(--text-shadow-color))
       ),
     0 0 var(--text-shadow-blur-interactive, var(--text-shadow-blur, 0.08em))
       var(
         --text-hover-shadow-color,
-        var(
-          --text-bold-shadow-color,
-          var(--text-shadow-color, var(--foreground-mid))
-        )
+        var(--text-bold-shadow-color, var(--text-shadow-color))
       );
 }
 
@@ -255,7 +171,7 @@
 }
 
 .is-anchor:visited {
-  color: var(--text-color, var(--foreground-main));
+  color: var(--text-color);
 }
 
 .text-root.no-select,

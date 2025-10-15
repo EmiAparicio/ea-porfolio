@@ -33,8 +33,7 @@ import {
 const LINK_SCALE = 1.3;
 const BRANCH_TWO_SCALE = 4;
 const BRANCH_THREE_SCALE = 4;
-const LINK_CLASS =
-  'absolute pointer-events-none text-[var(--foreground-mid)] opacity-20';
+const LINK_CLASS = 'absolute pointer-events-none text-link-svg opacity-20';
 
 /**
  * Type extending ButtonNode with an optional URL.

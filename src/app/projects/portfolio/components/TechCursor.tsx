@@ -1,14 +1,13 @@
 'use client';
 
 import { hexRadiusAtom } from '@portfolio/atoms/hexGridAtoms';
-import { globalModalOpenAtom } from '@portfolio/atoms/modalAtoms';
 import { useMediaQuery } from '@portfolio/hooks/useMediaQuery';
+import { useAtomValue } from '@portfolio/lib/jotai';
 import { usePerformance } from '@portfolio/providers/PerformanceProvider';
 import { inNoCustomZone, isDisabledish } from '@portfolio/utils/dom';
 import { hexPoints } from '@portfolio/utils/math';
 import { normalizeColor } from '@portfolio/utils/theme';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useAtomValue } from '@portfolio/lib/jotai';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import useWindowSize from '../hooks/useWindowSize';
@@ -73,11 +72,11 @@ export function TechCursor({
   enabled = true,
   sizeFactor = 1,
   zIndex = 2147483646,
-  colors: colorsFromProps = {
-    main: '--foreground-main',
-    accent: '--foreground-color-contrast',
-    danger: '--foreground-danger',
-    contrast: '--foreground-contrast',
+  colors = {
+    main: '--cursor-main',
+    accent: '--cursor-accent',
+    danger: '--cursor-danger',
+    contrast: '--cursor-contrast',
   },
   onlyFinePointer = true,
 }: TechCursorProps) {
@@ -85,7 +84,6 @@ export function TechCursor({
   const { deviceType } = useWindowSize();
   const prefersFine = useMediaQuery('(any-pointer: fine)');
   const prefersReduce = useMediaQuery('(prefers-reduced-motion: reduce)');
-  const isModal = useAtomValue(globalModalOpenAtom);
 
   const R = useAtomValue(hexRadiusAtom);
   const size = sizeFactor * R;
@@ -109,15 +107,6 @@ export function TechCursor({
     () => ({ w: size, h: size, cx: size / 2, cy: size / 2 }),
     [size]
   );
-
-  const colors = isModal
-    ? {
-        main: '--white-main',
-        accent: '--green-main',
-        danger: '--foreground-danger',
-        contrast: '--black-main',
-      }
-    : colorsFromProps;
 
   useEffect(() => {
     if (!globallyActive || typeof document === 'undefined') return;

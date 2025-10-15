@@ -6,7 +6,6 @@ import {
   globalModalContentAtom,
   globalModalOpenAtom,
 } from '@portfolio/atoms/modalAtoms';
-import { MAIN_TEXT_COLORS } from '@portfolio/components/_pages/LandingPage';
 import GlassScreen from '@portfolio/components/GlassScreen';
 import HexButton from '@portfolio/components/HexButton/HexButton';
 import LangToggle from '@portfolio/components/LangToggle';
@@ -135,7 +134,7 @@ export default function GlobalModal(props: GlobalModalProps) {
           <motion.div
             className="pointer-events-auto absolute inset-0 h-full w-full"
             style={{
-              backgroundColor: 'var(--black-main)',
+              backgroundColor: 'var(--global-modal-overlay)',
               opacity: backdropOpacity,
             }}
             onClick={closeOnBackdrop ? handleClose : undefined}
@@ -165,9 +164,9 @@ export default function GlobalModal(props: GlobalModalProps) {
                   type="button"
                   aria-label={closeLabel}
                   onClick={handleClose}
-                  className="absolute top-3 right-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-black/5 text-[var(--foreground)] hover:cursor-pointer hover:bg-black/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
+                  className="absolute top-3 right-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-black/5 hover:cursor-pointer hover:bg-black/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]"
                 >
-                  <IoMdClose size={20} color="var(--white-main)" />
+                  <IoMdClose size={20} color="var(--global-modal-close)" />
                 </button>
               )}
               {!!content.info && (
@@ -220,7 +219,7 @@ export default function GlobalModal(props: GlobalModalProps) {
                 <motion.div
                   className="pointer-events-auto absolute inset-0 h-full w-full"
                   style={{
-                    backgroundColor: 'var(--black-main)',
+                    backgroundColor: 'var(--global-modal-overlay)',
                     opacity: backdropOpacity,
                   }}
                   onClick={closeOnBackdrop ? handleInfo : undefined}
@@ -251,17 +250,16 @@ export default function GlobalModal(props: GlobalModalProps) {
                       aria-label={closeLabel}
                       onClick={handleInfo}
                       className={cn(
-                        'absolute -top-4 -right-4 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-black/5 text-[var(--foreground)] hover:cursor-pointer hover:bg-black/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]'
+                        'absolute -top-4 -right-4 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-black/5 hover:cursor-pointer hover:bg-black/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--focus)]'
                       )}
                     >
-                      <IoMdClose size={20} color="var(--white-main)" />
+                      <IoMdClose size={20} color="var(--global-modal-close)" />
                     </button>
                     <div className="flex max-h-[calc(90dvh-2.5rem)] w-full items-center p-5">
                       <Text
                         variant="text"
                         size={deviceType === 'mobile' ? 'small' : 'body'}
                         scale={deviceType === 'mobile' ? 0.85 : 1}
-                        colors={MAIN_TEXT_COLORS[resolvedTheme ?? 'light']}
                         weightDelta={resolvedTheme === 'light' ? 100 : -100}
                       >
                         {getObjectValueByPath(dict, content.info)}

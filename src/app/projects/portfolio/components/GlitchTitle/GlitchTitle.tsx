@@ -1,11 +1,10 @@
 'use client';
 
 import { hexRadiusAtom } from '@portfolio/atoms/hexGridAtoms';
+import { useAtomValue } from '@portfolio/lib/jotai';
 import { usePerformance } from '@portfolio/providers/PerformanceProvider';
 import '@portfolio/styles/glitch-core.css';
 import cn from 'classnames';
-import { useAtomValue } from '@portfolio/lib/jotai';
-import { useTheme } from 'next-themes';
 import type { CSSProperties, HTMLAttributes, ReactElement } from 'react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './glitch-title.css';
@@ -58,7 +57,6 @@ export default function GlitchTitle({
   style,
   ...rest
 }: GlitchTitleProps): ReactElement | null {
-  const { resolvedTheme } = useTheme();
   const R = useAtomValue(hexRadiusAtom);
   const { enableAnimations } = usePerformance(3);
 
@@ -107,19 +105,16 @@ export default function GlitchTitle({
       top: position?.top,
       left: position?.left,
       fontSize,
-      '--gl-color-main': 'var(--white-main)',
-      '--gl-color-a': 'var(--green-main)',
-      '--gl-color-b': 'var(--gray-dark)',
+      '--gl-color-main': 'var(--glitch-main)',
+      '--gl-color-a': 'var(--glitch-a)',
+      '--gl-color-b': 'var(--glitch-b)',
       '--gl-shimmy': '5',
       '--gl-ampmul': '1',
       '--gl-shimmymul': '1',
-      '--text-shadow-color':
-        resolvedTheme === 'dark'
-          ? 'var(--foreground-shine)'
-          : 'var(--foreground-main)',
+      '--text-shadow-color': 'var(--glitch-title-shadow)',
       ...style,
     } as CSSProperties;
-  }, [position?.top, position?.left, fontSize, style, resolvedTheme]);
+  }, [position?.top, position?.left, fontSize, style]);
 
   const clearTimers = useCallback(() => {
     for (const t of timeouts.current) clearTimeout(t);

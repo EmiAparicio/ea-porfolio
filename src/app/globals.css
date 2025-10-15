@@ -1,52 +1,203 @@
 @import 'tailwindcss';
 
 :root {
-  --green-main: #09a27a;
-  --white-main: #f2f5f4;
-  --black-main: #000a0a;
-  --gray-light: #a0b0ad;
-  --gray-dark: #383c3c;
-  --red-main: #a20830;
-  --green-strong-shine: #37fb8690;
-  --green-shine: #23ffab;
-  --green-dark: #067c57;
+  --light-main: #f2f5f4;
+  --dark-main: #000a0a;
+  --neutral-light: #a0b0ad;
+  --neutral-dark: #383c3c;
+  --danger-main: #a20830;
+  --color-main: #09a27a;
+  --color-shine: #23ffab;
+  --color-dark: #067c57;
 
-  --background: var(--green-main);
-  --foreground-color-contrast: var(--gray-dark);
-  --foreground-color-dark: var(--green-dark);
-  --foreground-contrast: var(--white-main);
-  --foreground-main: var(--black-main);
-  --foreground-mid: var(--gray-dark);
-  --foreground-extreme: var(--gray-light);
-  --foreground-danger: var(--red-main);
-  --foreground-shine: var(--green-shine);
-  --glass-background: color-mix(in oklab, var(--background), transparent 0%);
-  --glass-shine: color-mix(in oklab, var(--green-dark), transparent 0%);
-  --glass-text-shadow: var(--green-dark);
-  --modal-glass: var(--green-shine);
+  --background: var(--color-main);
+
+  --hx-grid-spotlight-bg: var(--dark-main);
+  --hx-grid-reveal-spotlight: var(--light-main);
+
+  --toast-text: var(--dark-main);
+  --toast-shine: var(--color-dark);
+  --toast-background: var(--background);
+
+  --modal-glass: var(--color-shine);
+  --modal-solid-glass: var(--background);
+
+  --togglebar-carousel-background: var(--background);
+  --togglebar-carousel-arrow: var(--light-main);
+
+  --glitch-main: var(--light-main);
+  --glitch-a: var(--color-main);
+  --glitch-b: var(--neutral-dark);
+
+  --glitch-title-shadow: var(--dark-main);
+
+  --hx-button-border-color-off: var(--light-main);
+  --hx-button-border-color-on: var(--neutral-dark);
+  --hx-button-icon-color-off: var(--neutral-dark);
+  --hx-button-icon-color-on: var(--neutral-dark);
+  --hx-button-icon-shadow-color-off: var(--light-main);
+  --hx-button-icon-shadow-color-on: var(--neutral-light);
+  --hx-button-glitch-label-shadow: var(--neutral-light);
+  --hx-button-glitch-main: var(--dark-main);
+  --hx-button-glitch-a: var(--neutral-dark);
+  --hx-button-glitch-b: var(--neutral-light);
+
+  --text-token-text: var(--dark-main);
+  --text-token-bold: var(--dark-main);
+  --text-token-text-shadow: var(--neutral-light);
+  --text-token-bold-shadow: var(--light-main);
+  --text-token-selection-text: var(--neutral-dark);
+  --text-token-selection-bold: var(--color-dark);
+  --text-token-selection-text-shadow: var(--color-shine);
+  --text-token-selection-bold-shadow: var(--color-shine);
+  --text-token-hover-text: var(--neutral-dark);
+  --text-token-hover-bold: var(--color-dark);
+  --text-token-hover-shadow: var(--color-shine);
+
+  --landing-title-text: var(--neutral-dark);
+  --landing-title-text-shadow: var(--color-shine);
+  --landing-title-hover-text: var(--light-main);
+  --landing-title-hover-shadow: var(--neutral-dark);
+
+  --global-loader-overlay: var(--light-main);
+  --global-modal-overlay: var(--dark-main);
+  --global-modal-close: var(--light-main);
+
+  --link-svg: var(--neutral-dark);
+
+  --spinner-stroke: var(--color-shine);
+  --spinner-overlay: var(--dark-main);
+
+  --cursor-main: var(--dark-main);
+  --cursor-accent: var(--neutral-dark);
+  --cursor-danger: var(--danger-main);
+  --cursor-contrast: var(--light-main);
 }
 
 [data-theme='dark'] {
-  --background: var(--black-main);
-  --foreground-color-contrast: var(--green-main);
-  --foreground-color-dark: var(--green-dark);
-  --foreground-contrast: var(--black-main);
-  --foreground-main: var(--white-main);
-  --foreground-mid: var(--gray-light);
-  --foreground-extreme: var(--gray-dark);
-  --foreground-danger: var(--red-main);
-  --foreground-shine: var(--green-shine);
-  --glass-background: color-mix(in oklab, var(--background), transparent 0%);
-  --glass-shine: color-mix(in oklab, var(--green-main), transparent 0%);
-  --glass-text-shadow: var(--black-main);
-  --modal-glass: var(--green-main);
+  --background: var(--dark-main);
+
+  --hx-grid-spotlight-bg: var(--light-main);
+  --hx-grid-reveal-spotlight: var(--light-main);
+
+  --toast-text: var(--light-main);
+  --toast-shine: var(--color-main);
+  --toast-background: var(--background);
+
+  --modal-glass: var(--color-main);
+  --modal-solid-glass: var(--background);
+
+  --togglebar-carousel-background: var(--background);
+  --togglebar-carousel-arrow: var(--light-main);
+
+  --glitch-main: var(--light-main);
+  --glitch-a: var(--color-main);
+  --glitch-b: var(--neutral-dark);
+
+  --glitch-title-shadow: var(--color-shine);
+
+  --hx-button-border-color-off: var(--color-main);
+  --hx-button-border-color-on: var(--neutral-light);
+  --hx-button-icon-color-off: var(--color-main);
+  --hx-button-icon-color-on: var(--neutral-light);
+  --hx-button-icon-shadow-color-off: var(--neutral-light);
+  --hx-button-icon-shadow-color-on: var(--color-main);
+  --hx-button-glitch-label-shadow: var(--dark-main);
+  --hx-button-glitch-main: var(--light-main);
+  --hx-button-glitch-a: var(--color-main);
+  --hx-button-glitch-b: var(--neutral-dark);
+
+  --text-token-text: var(--light-main);
+  --text-token-bold: var(--color-main);
+  --text-token-text-shadow: var(--neutral-dark);
+  --text-token-bold-shadow: var(--neutral-dark);
+  --text-token-selection-text: var(--dark-main);
+  --text-token-selection-bold: var(--neutral-dark);
+  --text-token-selection-text-shadow: var(--color-shine);
+  --text-token-selection-bold-shadow: var(--color-shine);
+  --text-token-hover-text: var(--neutral-light);
+  --text-token-hover-bold: var(--color-dark);
+  --text-token-hover-shadow: var(--color-shine);
+
+  --landing-title-text: var(--light-main);
+  --landing-title-text-shadow: var(--neutral-dark);
+  --landing-title-hover-text: var(--dark-main);
+  --landing-title-hover-shadow: var(--color-shine);
+
+  --global-loader-overlay: var(--dark-main);
+  --global-modal-overlay: var(--dark-main);
+  --global-modal-close: var(--light-main);
+
+  --link-svg: var(--neutral-light);
+
+  --spinner-stroke: var(--color-shine);
+  --spinner-overlay: var(--dark-main);
+
+  --cursor-main: var(--light-main);
+  --cursor-accent: var(--color-main);
+  --cursor-danger: var(--danger-main);
+  --cursor-contrast: var(--dark-main);
 }
 
 @theme inline {
+  --font-russo: var(--font-russo-one);
+  --font-mono: var(--font-ubuntu);
+
   --color-background: var(--background);
-  --color-foreground-contrast: var(--foreground-contrast);
-  --color-foreground-main: var(--foreground-main);
-  --color-foreground-mid: var(--foreground-mid);
+  --color-hx-grid-spotlight-bg: var(--hx-grid-spotlight-bg);
+  --color-hx-grid-reveal-spotlight: var(--hx-grid-reveal-spotlight);
+  --color-toast-text: var(--toast-text);
+  --color-toast-shine: var(--toast-shine);
+  --color-toast-background: var(--toast-background);
+  --color-modal-glass: var(--modal-glass);
+  --color-modal-solid-glass: var(--modal-solid-glass);
+  --color-togglebar-carousel-background: var(--togglebar-carousel-background);
+  --color-togglebar-carousel-arrow: var(--togglebar-carousel-arrow);
+  --color-glitch-main: var(--glitch-main);
+  --color-glitch-a: var(--glitch-a);
+  --color-glitch-b: var(--glitch-b);
+  --color-glitch-title-shadow: var(--glitch-title-shadow);
+  --color-hx-button-border-color-off: var(--hx-button-border-color-off);
+  --color-hx-button-border-color-on: var(--hx-button-border-color-on);
+  --color-hx-button-icon-color-off: var(--hx-button-icon-color-off);
+  --color-hx-button-icon-color-on: var(--hx-button-icon-color-on);
+  --color-hx-button-icon-shadow-color-off: var(
+    --hx-button-icon-shadow-color-off
+  );
+  --color-hx-button-icon-shadow-color-on: var(--hx-button-icon-shadow-color-on);
+  --color-hx-button-glitch-label-shadow: var(--hx-button-glitch-label-shadow);
+  --color-hx-button-glitch-main: var(--hx-button-glitch-main);
+  --color-hx-button-glitch-a: var(--hx-button-glitch-a);
+  --color-hx-button-glitch-b: var(--hx-button-glitch-b);
+  --color-text-token-text: var(--text-token-text);
+  --color-text-token-bold: var(--text-token-bold);
+  --color-text-token-text-shadow: var(--text-token-text-shadow);
+  --color-text-token-bold-shadow: var(--text-token-bold-shadow);
+  --color-text-token-selection-text: var(--text-token-selection-text);
+  --color-text-token-selection-bold: var(--text-token-selection-bold);
+  --color-text-token-selection-text-shadow: var(
+    --text-token-selection-text-shadow
+  );
+  --color-text-token-selection-bold-shadow: var(
+    --text-token-selection-bold-shadow
+  );
+  --color-text-token-hover-text: var(--text-token-hover-text);
+  --color-text-token-hover-bold: var(--text-token-hover-bold);
+  --color-text-token-hover-shadow: var(--text-token-hover-shadow);
+  --color-landing-title-text: var(--landing-title-text);
+  --color-landing-title-text-shadow: var(--landing-title-text-shadow);
+  --color-landing-title-hover-text: var(--landing-title-hover-text);
+  --color-landing-title-hover-shadow: var(--landing-title-hover-shadow);
+  --color-global-loader-overlay: var(--global-loader-overlay);
+  --color-global-modal-overlay: var(--global-modal-overlay);
+  --color-global-modal-close: var(--global-modal-close);
+  --color-link-svg: var(--link-svg);
+  --color-spinner-stroke: var(--spinner-stroke);
+  --color-spinner-overlay: var(--spinner-overlay);
+  --color-cursor-main: var(--cursor-main);
+  --color-cursor-accent: var(--cursor-accent);
+  --color-cursor-danger: var(--cursor-danger);
+  --color-cursor-contrast: var(--cursor-contrast);
 }
 
 body {

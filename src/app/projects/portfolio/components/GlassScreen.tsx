@@ -36,6 +36,7 @@ import {
 
 const DEFAULTS = {
   tint: 'var(--modal-glass)',
+  solidTint: 'var(--modal-solid-glass)',
   blurPx: 12,
   glassOpacity: { dark: 0.18, light: 0.5 } as Record<string, number>,
   borderOpacity: { dark: 0.22, light: 0.1 } as Record<string, number>,
@@ -78,6 +79,10 @@ export type GlassHexBackdropProps = {
    * The color tint of the glass. Defaults to a CSS variable.
    */
   tint?: string;
+  /**
+   * The color tint of the glass without blur applied. Defaults to a CSS variable.
+   */
+  solidTint?: string;
   /**
    * The blur amount in pixels. Defaults to `DEFAULTS.blurPx`.
    */
@@ -190,6 +195,7 @@ export default function GlassScreen({
   screenClassName,
   screenStyle,
   tint = DEFAULTS.tint,
+  solidTint = DEFAULTS.solidTint,
   blur: blurFromProps = DEFAULTS.blurPx,
   density = 1,
   hexStrokeWidth = 4,
@@ -518,9 +524,7 @@ export default function GlassScreen({
               '--shine-op': DEFAULTS.shineOpacity.toString(),
               background: enableBlur
                 ? (colorWithOpacity(tint, glassOpacity) as string)
-                : resolvedTheme === 'light'
-                  ? 'var(--green-main)'
-                  : 'var(--black-main)',
+                : solidTint,
               backdropFilter:
                 blur > 0 ? `saturate(130%) blur(${blur}px)` : 'none',
               WebkitBackdropFilter:

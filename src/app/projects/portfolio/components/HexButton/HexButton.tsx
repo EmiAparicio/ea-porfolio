@@ -15,12 +15,10 @@ import { useHexSounds } from '@portfolio/hooks/useHexSounds';
 import { usePrefersReducedMotion } from '@portfolio/hooks/usePrefersReducedMotion';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
 import { useAtomValue } from '@portfolio/lib/jotai';
-import { ThemeMode } from '@portfolio/providers/AppThemeProvider';
 import { PixelPos } from '@portfolio/types/buttons-panel';
 import { CSSVarName } from '@portfolio/types/css';
 import { toCssPx } from '@portfolio/utils/hexgrid/math';
 import cn from 'classnames';
-import { useTheme } from 'next-themes';
 import type {
   ButtonHTMLAttributes,
   CSSProperties,
@@ -44,10 +42,10 @@ import './hex-button.css';
  */
 export type Palette = { main: CSSVarName; a: CSSVarName; b: CSSVarName };
 
-export const DEFAULT_PALETTE: Palette = {
-  main: '--foreground-main',
-  a: '--foreground-color-contrast',
-  b: '--foreground-extreme',
+const DEFAULT_PALETTE: Palette = {
+  main: '--hx-button-glitch-main',
+  a: '--hx-button-glitch-a',
+  b: '--hx-button-glitch-b',
 } as const;
 
 export const HIDDEN_BORDERS_OPACITY = 0.2;
@@ -178,8 +176,6 @@ const HexButtonBase = (
   ref: React.ForwardedRef<HTMLButtonElement>
 ) => {
   const { deviceType } = useWindowSize();
-  const { resolvedTheme } = useTheme();
-  const theme = (resolvedTheme ?? 'dark') as ThemeMode;
   const isDisabled = !!disabled;
   const baseRadius = useAtomValue(hexRadiusAtom) ?? 32;
   const { width, height, rScaled } = useHexDimensions(
@@ -475,11 +471,7 @@ const HexButtonBase = (
                         !showLabel || isDisabled ? 0 : GLITCH_INTERVAL_MS
                       }
                       speed={1}
-                      shadowColorVar={
-                        theme === 'dark'
-                          ? '--foreground-contrast'
-                          : '--foreground-extreme'
-                      }
+                      shadowColorVar="--hx-button-glitch-label-shadow"
                       className={size === 'small' ? 'font-bold' : ''}
                     />
                   </div>
@@ -508,11 +500,7 @@ const HexButtonBase = (
                         !showLabel || isDisabled ? 0 : GLITCH_INTERVAL_MS
                       }
                       speed={1}
-                      shadowColorVar={
-                        theme === 'dark'
-                          ? '--foreground-contrast'
-                          : '--foreground-extreme'
-                      }
+                      shadowColorVar="--hx-button-glitch-label-shadow"
                       className={size === 'small' ? 'font-bold' : ''}
                     />
                   </div>
@@ -536,11 +524,7 @@ const HexButtonBase = (
                       !showLabel || isDisabled ? 0 : GLITCH_INTERVAL_MS
                     }
                     speed={1}
-                    shadowColorVar={
-                      theme === 'dark'
-                        ? '--foreground-contrast'
-                        : '--foreground-extreme'
-                    }
+                    shadowColorVar="--hx-button-glitch-label-shadow"
                   />
                 </div>
               </div>

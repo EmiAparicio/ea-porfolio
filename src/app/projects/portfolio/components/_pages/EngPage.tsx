@@ -4,7 +4,6 @@ import { useLang } from '@i18n/client';
 import { hexRadiusAtom } from '@portfolio/atoms/hexGridAtoms';
 import { globalModalItemsAtom } from '@portfolio/atoms/modalAtoms';
 import { activeKeyAtom } from '@portfolio/atoms/sectionsAtoms';
-import { MAIN_TEXT_COLORS } from '@portfolio/components/_pages/LandingPage';
 import BackgroundedElement from '@portfolio/components/BackgroundedElement';
 import HexToggleBar, {
   HexToggleItem,
@@ -17,10 +16,10 @@ import { useGlobalPositions } from '@portfolio/hooks/hexgrid/useGlobalPositions'
 import { useQrToCenter } from '@portfolio/hooks/hexgrid/useQrToCenter';
 import { useGlobalModal } from '@portfolio/hooks/useGlobalModal';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
+import { useAtomValue, useSetAtom } from '@portfolio/lib/jotai';
 import { PixelPos } from '@portfolio/types/buttons-panel';
 import cn from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useAtomValue, useSetAtom } from '@portfolio/lib/jotai';
 import { useTheme } from 'next-themes';
 import { useEffect, useMemo, useState } from 'react';
 import { FaFileDownload } from 'react-icons/fa';
@@ -269,7 +268,6 @@ export default function EngPageClient() {
               scale={content.textScale}
               boldColorOnly={content.boldColorOnly}
               className={content.textClassName}
-              colors={MAIN_TEXT_COLORS[resolvedTheme ?? 'light']}
               weightDelta={resolvedTheme === 'light' ? 100 : 0}
             >
               {content.text}

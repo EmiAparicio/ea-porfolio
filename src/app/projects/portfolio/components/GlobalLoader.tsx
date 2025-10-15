@@ -95,7 +95,7 @@ export default function GlobalLoader(props: GlobalLoaderProps) {
           <div
             className="absolute inset-0 backdrop-blur-sm"
             style={{
-              backgroundColor: 'var(--foreground-contrast)',
+              backgroundColor: 'var(--global-loader-overlay)',
               opacity: backdropOpacity,
             }}
           />

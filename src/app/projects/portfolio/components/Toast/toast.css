@@ -6,22 +6,22 @@
   place-items: center;
   gap: 0.25rem;
   line-height: 1.25rem;
-  color: var(--foreground-main);
+  color: var(--toast-text);
   pointer-events: auto;
   width: max-content;
   max-width: calc(100vw - 32px);
   border-radius: 0.125rem;
-  border-color: var(--glass-shine);
+  border-color: var(--toast-shine);
   padding: 6% 10%;
   filter: drop-shadow(
-    0 0 5px color-mix(in oklab, var(--glass-shine), transparent 70%)
+    0 0 5px color-mix(in oklab, var(--toast-shine), transparent 70%)
   );
 }
 
 .app-toast--glass {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  background: var(--glass-background);
+  background: var(--toast-background);
 }
 
 .app-toast__title {
@@ -82,7 +82,10 @@
 
 /* Swipe feedback */
 .app-toast[data-swipe='move'] {
-  transform: translate(var(--radix-toast-swipe-move-x), var(--radix-toast-swipe-move-y));
+  transform: translate(
+    var(--radix-toast-swipe-move-x),
+    var(--radix-toast-swipe-move-y)
+  );
 }
 .app-toast[data-swipe='cancel'] {
   transform: translate(0, 0);

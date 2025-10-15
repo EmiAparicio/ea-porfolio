@@ -24,7 +24,7 @@ import { useCallback, useEffect, useId, useMemo, type RefObject } from 'react';
  * @param {Axial[]} [opts.qrs] - An array of axial coordinates for a multi-spotlight effect.
  * @param {string} [opts.id] - An optional unique ID for the spotlight.
  * @param {ReadonlyArray<unknown>} [opts.deps] - Additional dependencies for the effect.
- * @param {string} [opts.color='var(--foreground-main)'] - The color of the spotlight effect.
+ * @param {string} [opts.color='var(--hx-grid-reveal-spotlight)'] - The color of the spotlight effect.
  * @param {number} [opts.stroke=2] - The stroke width of the spotlight effect.
  * @param {string} [opts.baseId] - The base ID for the multi-spotlight group.
  */
@@ -48,7 +48,7 @@ export function useHexRevealSpotlight<
     qrs,
     id,
     deps = [],
-    color = 'var(--foreground-main)',
+    color = 'var(--hx-grid-reveal-spotlight)',
     stroke = 2,
     baseId,
   } = opts;

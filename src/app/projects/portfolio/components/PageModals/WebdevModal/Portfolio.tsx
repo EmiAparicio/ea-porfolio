@@ -5,10 +5,9 @@ import HexButton from '@portfolio/components/HexButton/HexButton';
 import Text from '@portfolio/components/Text/Text';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
 import cn from 'classnames';
+import { useTheme } from 'next-themes';
 import { FC } from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { MAIN_TEXT_COLORS } from '../../_pages/LandingPage';
-import { useTheme } from 'next-themes';
 
 export type PortfolioProps = {
   /** Optional CSS class for the container */
@@ -28,7 +27,6 @@ const Portfolio: FC<PortfolioProps> = ({ className }) => {
         <Text
           variant="text"
           size="body"
-          colors={MAIN_TEXT_COLORS[resolvedTheme ?? 'light']}
           className={cn(
             'absolute left-1/2 -translate-1/2 text-center',
             {

@@ -49,7 +49,7 @@ export default function Spinner(props: SpinnerProps) {
     durationSec = 1.8,
     className,
     style,
-    stroke = 'var(--green-shine)',
+    stroke = 'var(--spinner-stroke)',
     hasOverlay = false,
   } = props;
   const R = useAtomValue(hexRadiusAtom);
@@ -78,7 +78,7 @@ export default function Spinner(props: SpinnerProps) {
       {hasOverlay && (
         <div
           aria-hidden
-          className="absolute top-1/2 left-1/2 h-[600%] w-[600%] -translate-1/2 bg-[var(--black-main)]/60"
+          className="bg-spinner-overlay/60 absolute top-1/2 left-1/2 h-[600%] w-[600%] -translate-1/2"
           style={{
             WebkitMaskImage:
               'radial-gradient(circle at center, white 0%, transparent 40%)',

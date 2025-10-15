@@ -2,7 +2,6 @@
 
 import { hexRadiusAtom } from '@portfolio/atoms/hexGridAtoms';
 import { carouselActiveIdxAtom } from '@portfolio/atoms/sectionsAtoms';
-import { MAIN_TEXT_COLORS } from '@portfolio/components/_pages/LandingPage';
 import HexButton, {
   type HexButtonProps,
   type HexOrientation,
@@ -15,7 +14,6 @@ import { useAtomValue } from '@portfolio/lib/jotai';
 import { mod } from '@portfolio/utils/hexgrid/math';
 import { range } from '@portfolio/utils/math';
 import { useAtom } from 'jotai';
-import { useTheme } from 'next-themes';
 import {
   CSSProperties,
   useCallback,
@@ -87,7 +85,6 @@ export default function Carousel({
   className,
 }: CarouselProps) {
   const n = items.length;
-  const { resolvedTheme } = useTheme();
   const { deviceType } = useWindowSize();
   const R = useAtomValue(hexRadiusAtom);
   const qrToCenter = useQrToCenter();
@@ -284,26 +281,26 @@ export default function Carousel({
         <button
           type="button"
           aria-label="prev"
-          className="pointer-events-auto absolute top-1/2 left-0 z-20 -translate-x-[80%] -translate-y-[45%] cursor-pointer rounded-full outline-[color:var(--white-main)] focus:outline"
+          className="outline-toggle-bar-carousel-arrow pointer-events-auto absolute top-1/2 left-0 z-20 -translate-x-[75%] -translate-y-[45%] cursor-pointer rounded-full p-0.5 focus:outline"
           onClick={() => requestJump(1)}
           data-animating={animating ? 'true' : 'false'}
         >
           <CgArrowLongLeftR
             size={arrowsSize}
-            color="var(--white-main)"
+            color="var(--togglebar-carousel-arrow)"
             style={{ opacity: animating ? 0.6 : 1 }}
           />
         </button>
         <button
           type="button"
           aria-label="next"
-          className="pointer-events-auto absolute top-1/2 right-0 z-20 translate-x-[82%] -translate-y-[45%] cursor-pointer rounded-full outline-[color:var(--white-main)] focus:outline"
+          className="outline-togglebar-carousel-arrow pointer-events-auto absolute top-1/2 right-0 z-20 translate-x-[79%] -translate-y-[45%] cursor-pointer rounded-full p-0.5 focus:outline"
           onClick={() => requestJump(-1)}
           data-animating={animating ? 'true' : 'false'}
         >
           <CgArrowLongRightR
             size={arrowsSize}
-            color="var(--white-main)"
+            color="var(--togglebar-carousel-arrow)"
             style={{ opacity: animating ? 0.6 : 1 }}
           />
         </button>
@@ -382,7 +379,7 @@ export default function Carousel({
                 style={{
                   background:
                     i === 0
-                      ? 'color-mix(in srgb, var(--background) 60%, transparent)'
+                      ? 'color-mix(in srgb, var(--togglebar-carousel-background) 60%, transparent)'
                       : 'transparent',
                   backdropFilter: `blur(${backdropBlurPx}px)`,
                   WebkitBackdropFilter: `blur(${backdropBlurPx}px)`,
@@ -411,7 +408,7 @@ export default function Carousel({
                 style={{
                   background:
                     i === 0
-                      ? 'color-mix(in srgb, var(--background) 60%, transparent)'
+                      ? 'color-mix(in srgb, var(--togglebar-carousel-background) 60%, transparent)'
                       : 'transparent',
                   backdropFilter: `blur(${backdropBlurPx}px)`,
                   WebkitBackdropFilter: `blur(${backdropBlurPx}px)`,
@@ -431,8 +428,7 @@ export default function Carousel({
           size="small"
           scale={deviceType === 'mobile' ? 0.5 : 1}
           aria-live="polite"
-          className="absolute bottom-0 left-1/2 -translate-x-1/2 ![font-family:var(--font-russo)]"
-          colors={MAIN_TEXT_COLORS[resolvedTheme ?? 'light']}
+          className="!font-russo absolute bottom-0 left-1/2 -translate-x-1/2"
         >
           {displayIndex} / {n}
         </Text>

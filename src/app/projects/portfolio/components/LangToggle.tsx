@@ -232,18 +232,13 @@ const LangToggleButton = ({
       <GloballyPositionedHexButton
         {...commonProps}
         globalPosition={globalPosition!}
-        labelClassname="[font-family:var(--font-russo)]"
+        labelClassname="font-russo"
         className="absolute z-60"
       />
     );
   }
 
-  return (
-    <HexButton
-      {...commonProps}
-      labelClassname="[font-family:var(--font-russo)]"
-    />
-  );
+  return <HexButton {...commonProps} labelClassname="font-russo" />;
 };
 
 /**

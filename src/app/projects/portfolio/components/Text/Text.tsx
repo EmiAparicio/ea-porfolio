@@ -22,17 +22,17 @@ export const INTERACTIVE_TEXT_SHADOW_FACTOR = 3;
 export const STROKE_FALLBACK_MAX_PX = 22;
 
 const DEFAULT_COLORS: TextColorTokens = {
-  text: 'var(--foreground-contrast)',
-  bold: 'var(--foreground-mid)',
-  textShadow: 'var(--foreground-mid)',
-  boldShadow: 'var(--foreground-mid)',
-  selectionText: 'var(--foreground-mid)',
-  selectionBold: 'var(--foreground-color-dark)',
-  selectionTextShadow: 'var(--foreground-shine)',
-  selectionBoldShadow: 'var(--foreground-shine)',
-  hoverText: 'var(--foreground-mid)',
-  hoverBold: 'var(--foreground-color-dark)',
-  hoverShadow: 'var(--foreground-shine)',
+  text: 'var(--text-token-text)',
+  bold: 'var(--text-token-bold)',
+  textShadow: 'var(--text-token-text-shadow)',
+  boldShadow: 'var(--text-token-bold-shadow)',
+  selectionText: 'var(--text-token-selection-text)',
+  selectionBold: 'var(--text-token-selection-bold)',
+  selectionTextShadow: 'var(--text-token-selection-text-shadow)',
+  selectionBoldShadow: 'var(--text-token-selection-bold-shadow)',
+  hoverText: 'var(--text-token-hover-text)',
+  hoverBold: 'var(--text-token-hover-bold)',
+  hoverShadow: 'var(--text-token-hover-shadow)',
 };
 
 /**
