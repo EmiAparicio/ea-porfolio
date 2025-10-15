@@ -23,6 +23,7 @@ import {
   useState,
 } from 'react';
 import { CgArrowLongLeftR, CgArrowLongRightR } from 'react-icons/cg';
+import { globalModalOpenAtom } from '../../../atoms/modalAtoms';
 
 /**
  * Props for the Carousel component.
@@ -84,6 +85,8 @@ export default function Carousel({
   blurredCurtains = false,
   className,
 }: CarouselProps) {
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isModalOpen = useAtomValue(globalModalOpenAtom);
   const n = items.length;
   const { deviceType } = useWindowSize();
   const R = useAtomValue(hexRadiusAtom);
@@ -150,13 +153,35 @@ export default function Carousel({
 
   const commitJump = useCallback(
     (visualDelta: number) => {
+      if (visualDelta === 0) {
+        setAnimating(false);
+        setTrackDx(0);
+        setTrackDy(0);
+        return;
+      }
+
       const indexDelta = -visualDelta;
-      setCenter(mod(centerIndex + indexDelta, n));
+      const newIndex = mod(centerIndex + indexDelta, n);
+
+      setCenter(newIndex);
+
       setAnimating(false);
       setTrackDx(0);
       setTrackDy(0);
+
+      if (isModalOpen) {
+        const newItem = items[newIndex];
+        if (
+          newItem &&
+          typeof (newItem as HexButtonProps).onClick === 'function'
+        ) {
+          (newItem as HexButtonProps).onClick?.(
+            {} as React.MouseEvent<HTMLButtonElement>
+          );
+        }
+      }
     },
-    [centerIndex, n, setCenter]
+    [centerIndex, n, setCenter, isModalOpen, items]
   );
 
   const requestJump = useCallback(
@@ -188,9 +213,27 @@ export default function Carousel({
 
   const dominantIsX = Math.abs(stepLeft) >= Math.abs(stepTop);
   const [isPointerDown, setIsPointerDown] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
   const [dragCommitted, setDragCommitted] = useState(false);
   const startXRef = useRef(0);
   const startYRef = useRef(0);
+  const pointerIdRef = useRef<number | null>(null);
+
+  const endInteraction = useCallback(() => {
+    if (!isPointerDown) return;
+    if (pointerIdRef.current !== null) {
+      carouselRef.current?.releasePointerCapture(pointerIdRef.current);
+      pointerIdRef.current = null;
+    }
+    setIsPointerDown(false);
+    if (isDragging) {
+      if (!dragCommitted && (trackDx !== 0 || trackDy !== 0)) {
+        setAnimating(true);
+        setTrackDx(0);
+        setTrackDy(0);
+      }
+    }
+  }, [isPointerDown, isDragging, dragCommitted, trackDx, trackDy]);
 
   if (n === 0) return null;
 
@@ -201,6 +244,7 @@ export default function Carousel({
         .join(' ')}
     >
       <div
+        ref={carouselRef}
         className="relative outline-none select-none"
         style={{
           width: widthPx,
@@ -224,14 +268,26 @@ export default function Carousel({
         onPointerDown={(e) => {
           if (!enabled || animating) return;
           setIsPointerDown(true);
+          setIsDragging(false);
           setDragCommitted(false);
           startXRef.current = e.clientX;
           startYRef.current = e.clientY;
+          pointerIdRef.current = e.pointerId;
         }}
         onPointerMove={(e) => {
-          if (!isPointerDown || animating || dragCommitted) return;
+          if (!isPointerDown || dragCommitted) return;
           const dx = e.clientX - startXRef.current;
           const dy = e.clientY - startYRef.current;
+
+          if (!isDragging) {
+            if (Math.sqrt(dx * dx + dy * dy) > 5) {
+              setIsDragging(true);
+              carouselRef.current?.setPointerCapture(e.pointerId);
+            } else {
+              return;
+            }
+          }
+
           if (dominantIsX) {
             setTrackDx(dx);
             setTrackDy(0);
@@ -250,39 +306,16 @@ export default function Carousel({
             }
           }
         }}
-        onPointerUp={() => {
-          if (!isPointerDown) return;
-          setIsPointerDown(false);
-          if (!dragCommitted && (trackDx !== 0 || trackDy !== 0)) {
-            setAnimating(true);
-            setTrackDx(0);
-            setTrackDy(0);
-          }
-        }}
-        onPointerCancel={() => {
-          if (!isPointerDown) return;
-          setIsPointerDown(false);
-          if (!dragCommitted && (trackDx !== 0 || trackDy !== 0)) {
-            setAnimating(true);
-            setTrackDx(0);
-            setTrackDy(0);
-          }
-        }}
-        onPointerLeave={() => {
-          if (!isPointerDown) return;
-          setIsPointerDown(false);
-          if (!dragCommitted && (trackDx !== 0 || trackDy !== 0)) {
-            setAnimating(true);
-            setTrackDx(0);
-            setTrackDy(0);
-          }
-        }}
+        onPointerUp={endInteraction}
+        onPointerCancel={endInteraction}
+        onPointerLeave={endInteraction}
       >
         <button
           type="button"
           aria-label="prev"
-          className="outline-toggle-bar-carousel-arrow pointer-events-auto absolute top-1/2 left-0 z-20 -translate-x-[75%] -translate-y-[45%] cursor-pointer rounded-full p-0.5 focus:outline"
+          className="outline-togglebar-carousel-arrow pointer-events-auto absolute top-1/2 left-0 z-20 -translate-x-[75%] -translate-y-[45%] cursor-pointer rounded-full p-0.5 focus:outline"
           onClick={() => requestJump(1)}
+          onPointerDown={(e) => e.stopPropagation()}
           data-animating={animating ? 'true' : 'false'}
         >
           <CgArrowLongLeftR
@@ -296,6 +329,7 @@ export default function Carousel({
           aria-label="next"
           className="outline-togglebar-carousel-arrow pointer-events-auto absolute top-1/2 right-0 z-20 translate-x-[79%] -translate-y-[45%] cursor-pointer rounded-full p-0.5 focus:outline"
           onClick={() => requestJump(-1)}
+          onPointerDown={(e) => e.stopPropagation()}
           data-animating={animating ? 'true' : 'false'}
         >
           <CgArrowLongRightR
@@ -339,6 +373,9 @@ export default function Carousel({
                   className="absolute"
                   style={{ transform: `translate(${left}px, ${top}px)` }}
                   onClick={(e) => {
+                    if (isDragging) {
+                      return;
+                    }
                     if (offset !== 0) {
                       e.stopPropagation();
                       requestJump(Math.sign(-offset));
@@ -354,6 +391,10 @@ export default function Carousel({
                     toggled={false}
                     onToggle={() => {}}
                     onClick={(e) => {
+                      if (isDragging) {
+                        e.stopPropagation();
+                        return;
+                      }
                       (btnProps as HexButtonProps).onClick?.(e);
                     }}
                     className={(btnProps as HexButtonProps).className}
