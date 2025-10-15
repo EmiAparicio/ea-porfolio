@@ -1,15 +1,15 @@
-import type { PerformanceTier } from '@portfolio/providers/PerformanceProvider';
+import type { FeatureKey } from '@portfolio/providers/PerformanceProvider';
 import { atomWithStorage } from 'jotai/utils';
 
 export type PersistedPerformanceState = {
-  tier: PerformanceTier;
+  enabledFeatures: FeatureKey[];
   timestamp: number;
 };
 
-const STORAGE_KEY = 'performance-tier';
+const STORAGE_KEY = 'performance-features';
 
 const initialValue: PersistedPerformanceState = {
-  tier: 'off',
+  enabledFeatures: [],
   timestamp: 0,
 };
 

@@ -108,7 +108,7 @@ export default function GlitchIcon({
   const id = useId();
   const wrapRef = useRef<HTMLSpanElement | null>(null);
 
-  const { enableAnimations } = usePerformance(2);
+  const { enableAnimations } = usePerformance("glitches");
   const prefersReducedMotion = usePrefersReducedMotion(respectReducedMotion);
   const isReduced = !enableAnimations || prefersReducedMotion;
   const rng = useRNG(`${title || ''}|${size}|icon|${id}`);

@@ -1,5 +1,6 @@
 'use client';
 
+import { globalModalOpenAtom } from '@portfolio/atoms/modalAtoms';
 import HexGridClickRipple from '@portfolio/components/HexGridBackground/components/HexGridClickRipple';
 import HexGridCursorReveal from '@portfolio/components/HexGridBackground/components/HexGridCursorReveal';
 import { HexGridDebugOverlay } from '@portfolio/components/HexGridBackground/components/HexGridDebugOverlay';
@@ -13,6 +14,7 @@ import useWindowSize from '@portfolio/hooks/useWindowSize';
 import { usePerformance } from '@portfolio/providers/PerformanceProvider';
 import { OmitSafe } from '@portfolio/types/hexgrid';
 import cn from 'classnames';
+import { useAtomValue } from 'jotai';
 
 /**
  * Type to safely omit properties from a given type T.
@@ -86,6 +88,7 @@ export default function HexGridBackground({
     perimeterProps,
   } = useHexBgProps();
 
+  const isModalOpen = useAtomValue(globalModalOpenAtom);
   const { deviceType } = useWindowSize();
   const centerModeByDevType =
     centerMode ??
@@ -93,8 +96,20 @@ export default function HexGridBackground({
       deviceType
     ] as CenterMode);
 
-  const { enableAnimations: enableAnimationsTier2 } = usePerformance(2);
-  const { enableAnimations: enableAnimationsTier1 } = usePerformance(1);
+  const { enableAnimations: enableAnimationsCursorReveal } = usePerformance(
+    'hx-bg-cursor-reveal'
+  );
+  const { enableAnimations: enableAnimationsClickRipple } =
+    usePerformance('hx-bg-click-ripple');
+  const { enableAnimations: enableAnimationsPerimeterLight } = usePerformance(
+    'hx-bg-perimeter-light'
+  );
+  const { enableAnimations: enableAnimationsSpotlight } =
+    usePerformance('hx-bg-spotlight');
+  const { enableAnimations: enableAnimationsLight } =
+    usePerformance('hx-bg-light');
+  const { enableAnimations: enableAnimationsDragSparks } =
+    usePerformance('hx-bg-drag-sparks');
 
   const {
     ref,
@@ -137,43 +152,44 @@ export default function HexGridBackground({
             boundsD={debugBoundsD}
           />
 
-          {enableAnimationsTier2 && (
-            <>
-              <HexGridCursorReveal
-                zIndex={10}
-                {...hexGridBasicValues}
-                {...cursorRevealProps}
-              />
-
-              <HexGridClickRipple
-                zIndex={20}
-                {...hexGridBasicValues}
-                {...clickRippleProps}
-              />
-
-              <HexGridPerimeterLight
-                zIndex={23}
-                {...hexGridBasicValues}
-                {...perimeterProps}
-              />
-
-              <HexGridSpotlightBg zIndex={23} {...hexGridBasicValues} />
-            </>
+          {enableAnimationsCursorReveal && !isModalOpen && (
+            <HexGridCursorReveal
+              zIndex={10}
+              {...hexGridBasicValues}
+              {...cursorRevealProps}
+            />
           )}
-          {enableAnimationsTier1 && (
-            <>
-              <HexGridLight
-                zIndex={12}
-                {...hexGridBasicValues}
-                {...lightProps}
-              />
 
-              <HexGridDragSparks
-                zIndex={17}
-                {...hexGridBasicValues}
-                {...dragSparksProps}
-              />
-            </>
+          {enableAnimationsClickRipple && !isModalOpen && (
+            <HexGridClickRipple
+              zIndex={20}
+              {...hexGridBasicValues}
+              {...clickRippleProps}
+            />
+          )}
+
+          {enableAnimationsPerimeterLight && !isModalOpen && (
+            <HexGridPerimeterLight
+              zIndex={23}
+              {...hexGridBasicValues}
+              {...perimeterProps}
+            />
+          )}
+
+          {enableAnimationsSpotlight && !isModalOpen && (
+            <HexGridSpotlightBg zIndex={23} {...hexGridBasicValues} />
+          )}
+
+          {enableAnimationsLight && !isModalOpen && (
+            <HexGridLight zIndex={12} {...hexGridBasicValues} {...lightProps} />
+          )}
+
+          {enableAnimationsDragSparks && !isModalOpen && (
+            <HexGridDragSparks
+              zIndex={17}
+              {...hexGridBasicValues}
+              {...dragSparksProps}
+            />
           )}
         </>
       )}

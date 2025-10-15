@@ -218,7 +218,7 @@ export default function GlassScreen({
   const uid = useId();
   const { ref: wrapRef, size: wrapSize } = useElementSize<HTMLDivElement>();
 
-  const { enableAnimations: enableBlur } = usePerformance(2);
+  const { enableAnimations: enableBlur } = usePerformance("glass-screen");
   const blur = enableBlur ? blurFromProps : 0;
 
   const theme = resolvedTheme ?? 'dark';

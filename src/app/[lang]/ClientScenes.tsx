@@ -72,7 +72,7 @@ const baseEnterExit = {
 export default function ClientScenes() {
   const { lang } = useLang();
   const { current } = useUrlChange();
-  const { enableAnimations } = usePerformance(2);
+  const { enableAnimations } = usePerformance("client-scenes");
 
   const targetKey = useMemo<SceneKey>(
     () => resolveScene(current.pathname),

@@ -80,7 +80,7 @@ export function TechCursor({
   },
   onlyFinePointer = true,
 }: TechCursorProps) {
-  const { enableAnimations } = usePerformance(2);
+  const { enableAnimations } = usePerformance('tech-cursor');
   const { deviceType } = useWindowSize();
   const prefersFine = useMediaQuery('(any-pointer: fine)');
   const prefersReduce = useMediaQuery('(prefers-reduced-motion: reduce)');
