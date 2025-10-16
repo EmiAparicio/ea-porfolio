@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useLang } from '@i18n/client';
@@ -6,9 +5,7 @@ import HexButton from '@portfolio/components/HexButton/HexButton';
 import Spinner from '@portfolio/components/Spinner';
 import UnivearthSvg from '@portfolio/components/Svg/UnivearthSvg';
 import useWindowSize from '@portfolio/hooks/useWindowSize';
-import { DeviceType } from '@portfolio/types/window';
 import cn from 'classnames';
-import { useTheme } from 'next-themes';
 import { FC, useEffect, useRef, useState } from 'react';
 
 export type UnivearthProps = {
@@ -18,27 +15,11 @@ export type UnivearthProps = {
   loaderDelayMs?: number;
 };
 
-const IMAGES: Record<DeviceType, Record<string, string>> = {
-  web: {
-    dark: '/images/UvE-Dark-Web.webp',
-    light: '/images/UvE-Light-Web.webp',
-  },
-  medium: {
-    dark: '/images/UvE-Dark-Medium.webp',
-    light: '/images/UvE-Light-Medium.webp',
-  },
-  mobile: {
-    dark: '/images/UvE-Dark-Mobile.webp',
-    light: '/images/UvE-Light-Mobile.webp',
-  },
-};
-
 const SPINNER_HIDE_AFTER_LOAD_MS = 500;
 const IFRAME_SHOW_AFTER_LOAD_MS = 1000;
 
 const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
   const { deviceType } = useWindowSize();
-  const { resolvedTheme } = useTheme();
   const { dict, lang } = useLang();
 
   const [loaded, setLoaded] = useState<boolean>(false);
@@ -91,10 +72,16 @@ const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
       <div
         className={cn('pointer-events-none relative h-full w-full', className)}
       >
-        <img
-          src={IMAGES[deviceType][resolvedTheme ?? 'dark']}
-          title="Univearth"
-          alt="Univearth"
+        <iframe
+          src={
+            lang === 'es'
+              ? 'https://www.youtube.com/embed/6L0vg49os5g?list=PLma5G-s8ZIuVMfYoz-ltEFancyW1kzPNz'
+              : 'https://www.youtube.com/embed/L2WMuPQEEVw?list=PLma5G-s8ZIuVMfYoz-ltEFancyW1kzPNz'
+          }
+          title="Univearth - Game Lore Cinematic"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
           style={{
             visibility: loaded ? 'visible' : 'hidden',
             opacity: iframeVisible ? 1 : 0,
@@ -104,9 +91,10 @@ const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
           onLoad={onReady}
           onError={onReady}
           className={cn(
-            'no-custom-cursor pointer-events-none absolute left-1/2 -translate-1/2 border-none',
-            deviceType === 'web' && 'top-1/2 w-[75%]',
-            deviceType !== 'web' && 'top-[45%] w-[90%]',
+            'no-custom-cursor pointer-events-auto absolute top-1/2 left-1/2 aspect-video -translate-1/2 border-none',
+            !iframeVisible && 'pointer-events-none',
+            deviceType === 'web' && 'h-[60%]',
+            deviceType !== 'web' && 'h-[calc(min(40dvh,40vw))]',
             deviceType === 'mobile' && '!top-1/2'
           )}
         />

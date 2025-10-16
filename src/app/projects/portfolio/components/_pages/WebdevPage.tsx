@@ -31,6 +31,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { BiSolidBriefcase } from 'react-icons/bi';
 import { FaFileDownload, FaPlane } from 'react-icons/fa';
 import { GoProjectSymlink } from 'react-icons/go';
+import Univearth from '../PageModals/WebdevModal/Univearth';
+import UnivearthSvg from '../Svg/UnivearthSvg';
 
 const ACTIVE_CONTENT = ['landing', 'experience'];
 type ActiveContent = (typeof ACTIVE_CONTENT)[number];
@@ -169,6 +171,28 @@ export default function WebdevPageClient() {
                   <Portfolio />
                 </PageModal>
               ),
+            });
+          },
+        },
+        {
+          id: 'univearth',
+          title: 'Univearth',
+          label: 'Univearth',
+          sizeFactor: 1,
+          icon: UnivearthSvg,
+          iconScale: '60%',
+          labelSizeFactor: 1,
+          soundMuted: 'hover',
+          hiddenBorders: false,
+          showLabelOnToggled: true,
+          onClick: () => {
+            modalFunction({
+              child: (
+                <PageModal>
+                  <Univearth />
+                </PageModal>
+              ),
+              info: 'pages.gaming.univearthInfo',
             });
           },
         },

@@ -19,13 +19,13 @@ import Text, { TextSize } from '@portfolio/components/Text/Text';
 import { useGlobalPositions } from '@portfolio/hooks/hexgrid/useGlobalPositions';
 import { useQrToCenter } from '@portfolio/hooks/hexgrid/useQrToCenter';
 import { useGlobalModal } from '@portfolio/hooks/useGlobalModal';
+import useWindowSize from '@portfolio/hooks/useWindowSize';
 import { useAtomValue, useSetAtom } from '@portfolio/lib/jotai';
 import { PixelPos } from '@portfolio/types/buttons-panel';
 import cn from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useEffect, useMemo, useState } from 'react';
-import useWindowSize from '../../hooks/useWindowSize';
 
 const ACTIVE_CONTENT = ['landing', 'oblivion'];
 type ActiveContent = (typeof ACTIVE_CONTENT)[number];

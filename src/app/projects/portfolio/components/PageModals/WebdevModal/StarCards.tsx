@@ -87,11 +87,11 @@ const StarCards: FC<StarCardsProps> = ({ className, loaderDelayMs = 180 }) => {
           onLoad={onReady}
           onError={onReady}
           className={cn(
-            'no-custom-cursor pointer-events-auto absolute top-[40%] left-1/2 aspect-video -translate-1/2 border-none',
+            'no-custom-cursor pointer-events-auto absolute left-1/2 aspect-video -translate-1/2 border-none',
             !iframeVisible && 'pointer-events-none',
-            deviceType === 'web' && 'h-[60%]',
-            deviceType !== 'web' && 'w-[90%]',
-            deviceType === 'mobile' && '!top-1/2'
+            deviceType === 'web' && 'top-[40%] h-[60%]',
+            deviceType === 'medium' && 'top-[38%] w-[calc(min(75dvh,75vw))]',
+            deviceType === 'mobile' && 'top-1/2 w-[90%]'
           )}
         />
 
@@ -117,7 +117,8 @@ const StarCards: FC<StarCardsProps> = ({ className, loaderDelayMs = 180 }) => {
         className={cn(
           'pointer-events-auto !absolute',
           deviceType === 'web' && 'top-1/2 left-[5%]',
-          deviceType !== 'web' && '-bottom-[2.5%] left-1/2'
+          deviceType === 'medium' && 'bottom-[10%] left-1/2',
+          deviceType === 'mobile' && '-bottom-[2.5%] left-1/2'
         )}
       />
     </div>

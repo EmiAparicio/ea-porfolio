@@ -467,7 +467,7 @@ export default function Carousel({
         <Text
           variant="text"
           size="small"
-          scale={deviceType === 'mobile' ? 0.5 : 1}
+          scale={deviceType !== 'web' ? R / 35 : 1}
           aria-live="polite"
           className="!font-russo absolute bottom-0 left-1/2 -translate-x-1/2"
         >

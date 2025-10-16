@@ -183,7 +183,8 @@ export default function GlobalModal(props: GlobalModalProps) {
                   className={cn(
                     'pointer-events-auto absolute',
                     deviceType === 'web' && 'right-[1%] bottom-[2%]',
-                    deviceType === 'medium' && 'top-[3rem] left-[3rem]',
+                    deviceType === 'medium' &&
+                      'top-[2.5%] left-[2.5%] translate-1/2',
                     deviceType === 'mobile' && 'top-[2rem] left-[2rem]'
                   )}
                 />

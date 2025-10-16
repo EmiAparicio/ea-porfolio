@@ -31,7 +31,7 @@ export const PageModal: FC<PageModalProps> = ({ children }) => {
           items={items}
           className={cn(
             deviceType === 'web' && '-bottom-[5%] left-1/2',
-            deviceType === 'medium' && '-bottom-[2%] left-1/2'
+            deviceType === 'medium' && '-bottom-[7%] left-1/2'
           )}
           initialIndex={carouselActiveIdx}
         />
