@@ -101,7 +101,7 @@ const Section = memo(({ position }: SectionProps) => {
 
   return (
     <motion.div
-      className="absolute flex -translate-1/2 flex-col items-end"
+      className="-translate-1/2 absolute flex flex-col items-end"
       style={{
         left: position.left,
         top: position.top,
@@ -120,16 +120,16 @@ const Section = memo(({ position }: SectionProps) => {
     >
       <Text
         colors={{
-          text: '--landing-title-text',
-          textShadow: 'landing-title-text-shadow',
+          text: 'var(--landing-title-text)',
+          textShadow: 'var(--landing-title-text-shadow)',
           hoverText: 'var(--landing-title-hover-text)',
-          hoverShadow: '--landing-title-hover-shadow',
+          hoverShadow: 'var(--landing-title-hover-shadow)',
         }}
         hoverable
         size="title"
         variant="title"
         scale={TEXT_SCALE_BY_DEVICETYPE[deviceType] * R}
-        className="!font-russo leading-[100%] whitespace-nowrap !select-none"
+        className="!font-russo !select-none whitespace-nowrap leading-[100%]"
         weightDelta={0}
       >
         Emiliano Aparicio
