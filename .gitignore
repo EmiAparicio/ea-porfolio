@@ -82,3 +82,5 @@ coverage
 
 # SSL certificates
 *.pem
+*storybook.log
+storybook-static
