@@ -4,7 +4,8 @@
   "scripts": {
     "dev:portfolio": "pnpm --filter portfolio dev",
     "build:portfolio": "pnpm --filter portfolio build",
-    "sb:uipkg": "pnpm --filter ui-pkg build-storybook"
+    "sb:uipkg": "pnpm --filter ui-pkg build-storybook",
+    "build": "pnpm build:storybook && pnpm build:portfolio"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
