@@ -70,6 +70,16 @@ export function useHexSounds(opts: {
   const lastHoverAt = useRef(0);
   const suppressHoverUntil = useRef(0);
 
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
+
   useEffect(() => {
     wireGlobalActivationListener();
   }, []);
@@ -82,6 +92,11 @@ export function useHexSounds(opts: {
    */
   const play = useCallback(
     (key: SoundKey, options?: { tailSec?: number }) => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+        hoverTimeoutRef.current = null;
+      }
+
       if (isDisabled || isMutedKey(key, muteMode)) {
         return;
       }
@@ -100,6 +115,10 @@ export function useHexSounds(opts: {
    */
   const maybePlayHover = useCallback(
     (hasMouse: boolean) => {
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+
       if (isDisabled || !hasMouse || isMutedKey('hover', muteMode)) {
         return;
       }
@@ -112,7 +131,10 @@ export function useHexSounds(opts: {
         return;
       }
 
-      play('hover', { tailSec: 0.2 });
+      hoverTimeoutRef.current = setTimeout(() => {
+        play('hover', { tailSec: 0.2 });
+        hoverTimeoutRef.current = null;
+      }, 50);
     },
     [isDisabled, muteMode, play]
   );
@@ -121,6 +143,11 @@ export function useHexSounds(opts: {
    * Notifies the hook that a pointer-down event occurred, suppressing subsequent hover sounds for a short period.
    */
   const notifyPointerDown = useCallback(() => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+
     suppressHoverUntil.current = Date.now() + 220;
   }, []);
 
