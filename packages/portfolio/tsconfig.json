@@ -21,6 +21,7 @@
       }
     ],
     "paths": {
+      "@shared-constants": ["../shared-constants/index.ts"],
       "@/*": ["./src/*"],
       "@app/*": ["./src/app/*"],
       "@i18n/*": ["src/app/i18n/*"],

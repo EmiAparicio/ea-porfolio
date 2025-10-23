@@ -1,0 +1,246 @@
+@use 'sass:map';
+
+$sizes: (
+  sm: (
+    font-size: 0.875rem,
+    padding: 0.375rem 0.75rem,
+  ),
+  md: (
+    font-size: 1rem,
+    padding: 0.5rem 1rem,
+  ),
+  lg: (
+    font-size: 1.125rem,
+    padding: 0.625rem 1.25rem,
+  ),
+);
+
+$color-schemes: (
+  primary: (
+    main-bg: var(--color-accent),
+    main-text: var(--color-accent-text),
+    main-hover-bg: var(--color-accent-hover),
+    main-hover-text: var(--color-accent-text),
+    main-active-bg: var(--color-accent-active),
+    subtle-text: var(--color-accent),
+    subtle-border: var(--color-accent),
+    subtle-hover-bg: var(--primary-50),
+    subtle-active-bg: var(--primary-100),
+    focus-ring: var(--color-focus-ring),
+  ),
+  neutral: (
+    main-bg: var(--color-neutral-default),
+    main-text: var(--text-primary),
+    main-hover-bg: var(--color-neutral-hover),
+    main-hover-text: var(--text-primary),
+    main-active-bg: var(--color-neutral-active),
+    subtle-text: var(--text-primary),
+    subtle-border: var(--border-default),
+    subtle-hover-bg: var(--bg-hover),
+    subtle-active-bg: var(--neutral-300),
+    focus-ring: var(--text-primary),
+  ),
+  danger: (
+    main-bg: var(--semantic-danger-default),
+    main-text: var(--semantic-text-on-color),
+    main-hover-bg: var(--danger-600),
+    main-hover-text: var(--semantic-text-on-color),
+    main-active-bg: var(--danger-700),
+    subtle-text: var(--semantic-danger-default),
+    subtle-border: var(--semantic-danger-default),
+    subtle-hover-bg: var(--semantic-danger-subtle-bg),
+    subtle-active-bg: var(--danger-100),
+    focus-ring: var(--semantic-danger-default),
+  ),
+  warning: (
+    main-bg: var(--semantic-warning-default),
+    main-text: var(--semantic-text-on-color),
+    main-hover-bg: var(--warning-600),
+    main-hover-text: var(--semantic-text-on-color),
+    main-active-bg: var(--warning-700),
+    subtle-text: var(--semantic-warning-default),
+    subtle-border: var(--semantic-warning-default),
+    subtle-hover-bg: var(--semantic-warning-subtle-bg),
+    subtle-active-bg: var(--warning-100),
+    focus-ring: var(--semantic-warning-default),
+  ),
+);
+
+.button {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+  border: 1px solid transparent;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &:focus-visible {
+    outline: 2px solid var(--btn-focus-ring, var(--color-focus-ring));
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.rippleContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+
+  background-color: currentColor;
+
+  transform: translate(-50%, -50%) scale(0);
+
+  animation: ripple-effect 600ms linear;
+  opacity: 0;
+}
+
+@keyframes ripple-effect {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.2;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@each $name, $map in $sizes {
+  .size-#{$name} {
+    user-select: none;
+    font-size: map.get($map, font-size);
+    padding: map.get($map, padding);
+  }
+}
+
+.variant-fill {
+  background-color: var(--btn-main-bg);
+  color: var(--btn-main-text);
+  border-color: var(--btn-main-bg);
+
+  &:not(:disabled):hover {
+    background-color: var(--btn-main-hover-bg);
+    color: var(--btn-main-hover-text);
+    border-color: var(--btn-main-hover-bg);
+  }
+
+  &:not(:disabled):active {
+    background-color: var(--btn-main-active-bg);
+    color: var(--btn-main-hover-text);
+    border-color: var(--btn-main-active-bg);
+  }
+
+  &:disabled {
+    background-color: var(--bg-disabled);
+    color: var(--text-disabled);
+    border-color: var(--border-disabled);
+  }
+}
+
+.variant-outlined {
+  background-color: transparent;
+  color: var(--btn-subtle-text);
+  border-color: var(--btn-subtle-border);
+
+  &:not(:disabled):hover {
+    background-color: var(--btn-subtle-hover-bg);
+  }
+
+  &:not(:disabled):active {
+    background-color: var(--btn-subtle-active-bg);
+  }
+
+  &:not(:disabled):focus-visible {
+    background-color: var(--btn-subtle-hover-bg);
+  }
+
+  &:disabled {
+    background-color: transparent;
+    color: var(--text-disabled);
+    border-color: var(--border-disabled);
+  }
+}
+
+.variant-content {
+  background-color: transparent;
+  color: var(--btn-subtle-text);
+  border-color: transparent;
+
+  &:not(:disabled):hover {
+    background-color: var(--btn-subtle-hover-bg);
+  }
+
+  &:not(:disabled):active {
+    background-color: var(--btn-subtle-active-bg);
+  }
+
+  &:not(:disabled):focus-visible {
+    background-color: var(--btn-subtle-hover-bg);
+  }
+
+  &:disabled {
+    background-color: transparent;
+    color: var(--text-disabled);
+    border-color: transparent;
+  }
+}
+
+@each $name, $map in $color-schemes {
+  .color-#{$name} {
+    --btn-main-bg: #{map.get($map, main-bg)};
+    --btn-main-text: #{map.get($map, main-text)};
+    --btn-main-hover-bg: #{map.get($map, main-hover-bg)};
+    --btn-main-hover-text: #{map.get($map, main-hover-text)};
+    --btn-main-active-bg: #{map.get($map, main-active-bg)};
+    --btn-subtle-text: #{map.get($map, subtle-text)};
+    --btn-subtle-border: #{map.get($map, subtle-border)};
+    --btn-subtle-hover-bg: #{map.get($map, subtle-hover-bg)};
+    --btn-subtle-active-bg: #{map.get($map, subtle-active-bg)};
+    --btn-focus-ring: #{map.get($map, focus-ring)};
+  }
+}
+
+[data-theme='dark'] {
+  .color-primary {
+    --btn-subtle-hover-bg: var(--primary-900);
+    --btn-subtle-active-bg: var(--primary-800);
+  }
+  .color-neutral {
+    --btn-subtle-active-bg: var(--neutral-800);
+  }
+  .color-danger {
+    --btn-main-hover-bg: var(--danger-300);
+    --btn-main-active-bg: var(--danger-500);
+    --btn-subtle-hover-bg: var(--danger-900);
+    --btn-subtle-active-bg: var(--danger-800);
+  }
+  .color-warning {
+    --btn-main-hover-bg: var(--warning-300);
+    --btn-main-active-bg: var(--warning-500);
+    --btn-subtle-hover-bg: var(--warning-900);
+    --btn-subtle-active-bg: var(--warning-800);
+  }
+}

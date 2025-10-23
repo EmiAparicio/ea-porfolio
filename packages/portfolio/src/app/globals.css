@@ -37,7 +37,7 @@
   --hx-button-icon-color-on: var(--neutral-dark);
   --hx-button-icon-shadow-color-off: var(--light-main);
   --hx-button-icon-shadow-color-on: var(--neutral-light);
-  --hx-button-glitch-label-shadow: var(--neutral-light);
+  --hx-button-glitch-label-shadow: var(--light-main);
   --hx-button-glitch-main: var(--dark-main);
   --hx-button-glitch-a: var(--neutral-dark);
   --hx-button-glitch-b: var(--neutral-light);
@@ -62,6 +62,7 @@
   --global-loader-overlay: var(--light-main);
   --global-modal-overlay: var(--dark-main);
   --global-modal-close: var(--light-main);
+  --global-modal-content-border: var(--dark-main);
 
   --link-svg: var(--neutral-dark);
 
@@ -127,6 +128,7 @@
   --global-loader-overlay: var(--dark-main);
   --global-modal-overlay: var(--dark-main);
   --global-modal-close: var(--light-main);
+  --global-modal-content-border: var(--color-main);
 
   --link-svg: var(--neutral-light);
 
@@ -142,6 +144,15 @@
 @theme inline {
   --font-russo: var(--font-russo-one);
   --font-mono: var(--font-ubuntu);
+
+  --color-light-main: #f2f5f4;
+  --color-dark-main: #000a0a;
+  --color-neutral-light: #a0b0ad;
+  --color-neutral-dark: #383c3c;
+  --color-danger-main: #a20830;
+  --color-main: #09a27a;
+  --color-shine: #23ffab;
+  --color-dark: #067c57;
 
   --color-background: var(--background);
   --color-hx-grid-spotlight-bg: var(--hx-grid-spotlight-bg);
@@ -191,6 +202,7 @@
   --color-global-loader-overlay: var(--global-loader-overlay);
   --color-global-modal-overlay: var(--global-modal-overlay);
   --color-global-modal-close: var(--global-modal-close);
+  --color-global-modal-content-border: var(--global-modal-content-border);
   --color-link-svg: var(--link-svg);
   --color-spinner-stroke: var(--spinner-stroke);
   --color-spinner-overlay: var(--spinner-overlay);

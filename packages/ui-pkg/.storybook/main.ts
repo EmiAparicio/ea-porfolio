@@ -22,6 +22,13 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           ...config.resolve?.alias,
+          '@/': path.resolve(__dirname, '../src/'),
+          '@components/': path.resolve(__dirname, '../src/components/'),
+          '@i18n': path.resolve(__dirname, '../src/i18n.ts'),
+          'shared-constants': path.resolve(
+            __dirname,
+            '../../shared-constants/index.ts'
+          ),
         },
       },
     });

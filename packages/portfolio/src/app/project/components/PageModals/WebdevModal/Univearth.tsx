@@ -104,7 +104,7 @@ const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
           onLoad={onReady}
           onError={onReady}
           className={cn(
-            'no-custom-cursor pointer-events-none absolute left-1/2 -translate-1/2 border-none',
+            'no-custom-cursor -translate-1/2 outline-global-modal-content-border pointer-events-none absolute left-1/2 rounded-[5px] outline-2',
             deviceType === 'web' && 'top-[42%] w-[75%]',
             deviceType === 'medium' && 'top-[45%] w-[calc(min(45dvh,55vw))]',
             deviceType === 'mobile' && 'top-1/2 w-[90%]'
@@ -114,7 +114,7 @@ const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
         {showLoader && (
           <Spinner
             hasOverlay
-            className="absolute top-1/2 left-1/2 -translate-1/2"
+            className="-translate-1/2 absolute left-1/2 top-[40%]"
           />
         )}
       </div>
@@ -132,8 +132,8 @@ const Univearth: FC<UnivearthProps> = ({ className, loaderDelayMs = 180 }) => {
         showLabelOnToggled={true}
         className={cn(
           'pointer-events-auto !absolute',
-          deviceType === 'web' && 'top-1/2 left-[5%]',
-          deviceType === 'medium' && 'top-1/2 left-[2.5%] translate-x-1/2',
+          deviceType === 'web' && 'left-[5%] top-1/2',
+          deviceType === 'medium' && 'left-[2.5%] top-1/2 translate-x-1/2',
           deviceType === 'mobile' && '-bottom-[2.5%] left-1/2'
         )}
       />

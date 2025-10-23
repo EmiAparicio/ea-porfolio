@@ -88,6 +88,21 @@ export default async function WebdevPage(props: PageParams) {
               juego con ranking, historial y chat público, que soportaba
               partidas en tiempo real.
             </p>
+            <p>
+              Demo de Storybook
+              <br />
+              Este proyecto es una demo interactiva de una librería de
+              componentes de UI personalizada. El objetivo principal es
+              demostrar el desarrollo de componentes escalables, accesibles y
+              bien documentados, listos para ser utilizados en cualquier
+              aplicación React. Se utiliza Storybook para la documentación
+              interactiva y las pruebas visuales de la API de cada componente.
+              <br />
+              <br />
+              Actualmente, esta demo explora el estilizado de componentes con
+              SCSS (Sass) y la implementación de pruebas unitarias con Vitest y
+              React Testing Library.
+            </p>
           </article>
         </div>
       ) : (
@@ -167,6 +182,20 @@ export default async function WebdevPage(props: PageParams) {
               inventory and private chats, admin moderation, and a playroom with
               ranking, game history, and public chat supporting real-time
               gameplay.
+            </p>
+            <p>
+              Storybook Demo
+              <br />
+              This project is an interactive demo of a custom UI component
+              library. Its main goal is to showcase the development of scalable,
+              accessible, and well-documented components ready for use in any
+              React application. Storybook is used for interactive documentation
+              and visual testing of each component's API.
+              <br />
+              <br />
+              Currently, this demo explores component styling using SCSS (Sass)
+              and the implementation of unit tests with Vitest and React Testing
+              Library.
             </p>
           </article>
         </div>

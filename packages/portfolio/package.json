@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "shared-constants": "workspace:*",
     "@formatjs/intl-localematcher": "^0.6.1",
     "@radix-ui/react-toast": "^1.2.15",
     "accept-language-parser": "^1.5.0",
