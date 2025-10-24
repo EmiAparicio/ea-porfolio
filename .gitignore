@@ -84,3 +84,6 @@ coverage
 *.pem
 *storybook.log
 storybook-static
+
+# AI
+.gemini
