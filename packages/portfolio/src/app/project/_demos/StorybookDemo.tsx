@@ -133,7 +133,7 @@ export const StorybookDemo: FC<StorybookDemoProps> = ({
       {showLoader && (
         <Spinner
           hasOverlay
-          className="-translate-1/2 absolute left-1/2 top-[40%]"
+          className="-translate-1/2 absolute left-1/2 top-1/2"
         />
       )}
     </div>

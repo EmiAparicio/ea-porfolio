@@ -46,13 +46,12 @@ const slideLeftAndFade = keyframes`
 `;
 
 const contentStyles = css`
+  font-family: 'Nunito', sans-serif;
   min-width: 220px;
-  background-color: var(--bg-surface);
+  background-color: var(--bg-popover, var(--bg-surface));
   border-radius: 6px;
   padding: 5px;
-  box-shadow:
-    0px 10px 38px -10px rgba(22, 23, 24, 0.35),
-    0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+  box-shadow: var(--shadow-popover, 0px 10px 38px -10px rgba(22, 23, 24, 0.35));
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
@@ -82,7 +81,47 @@ export const StyledSubContent = styled(RadixDropdownMenu.SubContent)`
 `;
 
 export const StyledArrow = styled(RadixDropdownMenu.Arrow)`
-  fill: var(--bg-surface);
+  fill: var(--bg-popover, var(--bg-surface));
+`;
+
+export const StyledTrigger = styled(RadixDropdownMenu.Trigger)`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--border-strong, var(--border-strong));
+  }
+
+  &[data-state='open'] {
+    background-color: var(--bg-hover);
+    border-color: var(--border-strong, var(--border-strong));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  &[data-disabled] {
+    color: var(--text-disabled);
+    background-color: var(--bg-disabled);
+    border-color: var(--border-disabled);
+    cursor: not-allowed;
+  }
 `;
 
 const itemStyles = css`
@@ -109,17 +148,35 @@ const itemStyles = css`
   }
 `;
 
-export const StyledItem = styled(RadixDropdownMenu.Item)<{ danger?: boolean }>`
+export const StyledRightSlot = styled.div`
+  margin-left: auto;
+  padding-left: 20px;
+  color: var(--text-secondary);
+
+  [data-highlighted] > & {
+    color: var(--color-accent-text);
+  }
+
+  [data-disabled] > & {
+    color: var(--text-disabled);
+  }
+`;
+
+export const StyledItem = styled(RadixDropdownMenu.Item)<{ $danger?: boolean }>`
   ${itemStyles}
 
   ${(props) =>
-    props.danger &&
+    props.$danger &&
     css`
       color: var(--semantic-danger-default);
 
       &[data-highlighted] {
         background-color: var(--semantic-danger-default);
         color: var(--semantic-text-on-color);
+
+        & ${StyledRightSlot} {
+          color: var(--semantic-text-on-color);
+        }
       }
     `}
 `;
@@ -161,22 +218,4 @@ export const StyledItemIndicator = styled(RadixDropdownMenu.ItemIndicator)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-`;
-
-export const StyledRightSlot = styled.div`
-  margin-left: auto;
-  padding-left: 20px;
-  color: var(--text-secondary);
-
-  [data-highlighted] > & {
-    color: var(--color-accent-text);
-  }
-
-  [data-disabled] > & {
-    color: var(--text-disabled);
-  }
-
-  [data-highlighted][data-danger] > & {
-    color: var(--semantic-text-on-color);
-  }
 `;

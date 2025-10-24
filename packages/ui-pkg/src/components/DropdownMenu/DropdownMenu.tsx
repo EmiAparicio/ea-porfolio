@@ -5,13 +5,76 @@ import {
   DotFilledIcon,
 } from '@radix-ui/react-icons';
 import React, { type ComponentRef } from 'react';
+import { Button, type ButtonProps } from '../Button';
 import * as S from './DropdownMenu.styles';
 
-export const DropdownMenu = RadixDropdownMenu.Root;
-export const DropdownMenuTrigger = RadixDropdownMenu.Trigger;
-export const DropdownMenuPortal = RadixDropdownMenu.Portal;
-export const DropdownMenuSub = RadixDropdownMenu.Sub;
-export const DropdownMenuRadioGroup = RadixDropdownMenu.RadioGroup;
+/**
+ * The root component for the dropdown menu.
+ */
+const DropdownMenu = RadixDropdownMenu.Root;
+
+/**
+ * Props for the DropdownMenuTrigger, extending Radix's trigger props and the custom Button props.
+ */
+type DropdownMenuTriggerProps = ButtonProps &
+  RadixDropdownMenu.DropdownMenuTriggerProps;
+
+/**
+ * A button that toggles the dropdown menu's open state.
+ * It uses the custom Button component by default and accepts all ButtonProps.
+ */
+const DropdownMenuTrigger = React.forwardRef<
+  HTMLButtonElement,
+  DropdownMenuTriggerProps
+>(
+  (
+    {
+      children,
+      variant = 'fill',
+      color = 'neutral',
+      size = 'md',
+      className,
+      onClick,
+      asChild,
+      disabled,
+      ...rest
+    },
+    ref
+  ) => {
+    return (
+      <RadixDropdownMenu.Trigger asChild disabled={disabled}>
+        <Button
+          ref={ref}
+          variant={variant}
+          color={color}
+          size={size}
+          className={className}
+          onClick={onClick}
+          disabled={disabled}
+          {...rest}
+        >
+          {children}
+        </Button>
+      </RadixDropdownMenu.Trigger>
+    );
+  }
+);
+DropdownMenuTrigger.displayName = 'DropdownMenuTrigger';
+
+/**
+ * Portals the dropdown content to the end of the document body.
+ */
+const DropdownMenuPortal = RadixDropdownMenu.Portal;
+
+/**
+ * The root component for a submenu.
+ */
+const DropdownMenuSub = RadixDropdownMenu.Sub;
+
+/**
+ * A container for DropdownMenuRadioItem components.
+ */
+const DropdownMenuRadioGroup = RadixDropdownMenu.RadioGroup;
 
 type DropdownMenuContentProps = React.ComponentPropsWithoutRef<
   typeof S.StyledContent
@@ -21,7 +84,7 @@ type DropdownMenuContentProps = React.ComponentPropsWithoutRef<
  * Container for all dropdown items.
  * Recommended to be wrapped in DropdownMenuPortal for better z-index management.
  */
-export const DropdownMenuContent = React.forwardRef<
+const DropdownMenuContent = React.forwardRef<
   ComponentRef<typeof S.StyledContent>,
   DropdownMenuContentProps
 >(({ children, ...props }, ref) => (
@@ -43,12 +106,12 @@ type DropdownMenuItemProps = React.ComponentPropsWithoutRef<
 /**
  * A standard, clickable dropdown item.
  */
-export const DropdownMenuItem = React.forwardRef<
+const DropdownMenuItem = React.forwardRef<
   ComponentRef<typeof S.StyledItem>,
   DropdownMenuItemProps
->(({ children, ...props }, ref) => {
+>(({ children, danger, ...props }, ref) => {
   return (
-    <S.StyledItem {...props} ref={ref}>
+    <S.StyledItem {...props} $danger={danger} ref={ref}>
       {children}
     </S.StyledItem>
   );
@@ -62,7 +125,7 @@ type DropdownMenuCheckboxItemProps = React.ComponentPropsWithoutRef<
 /**
  * A dropdown item that can be checked or unchecked.
  */
-export const DropdownMenuCheckboxItem = React.forwardRef<
+const DropdownMenuCheckboxItem = React.forwardRef<
   ComponentRef<typeof S.StyledCheckboxItem>,
   DropdownMenuCheckboxItemProps
 >(({ children, ...props }, ref) => (
@@ -82,7 +145,7 @@ type DropdownMenuRadioItemProps = React.ComponentPropsWithoutRef<
 /**
  * A dropdown item that is part of a DropdownMenuRadioGroup.
  */
-export const DropdownMenuRadioItem = React.forwardRef<
+const DropdownMenuRadioItem = React.forwardRef<
   ComponentRef<typeof S.StyledRadioItem>,
   DropdownMenuRadioItemProps
 >(({ children, ...props }, ref) => (
@@ -102,7 +165,7 @@ type DropdownMenuSubTriggerProps = React.ComponentPropsWithoutRef<
 /**
  * An item that opens a submenu when hovered or clicked.
  */
-export const DropdownMenuSubTrigger = React.forwardRef<
+const DropdownMenuSubTrigger = React.forwardRef<
   ComponentRef<typeof S.StyledSubTrigger>,
   DropdownMenuSubTriggerProps
 >(({ children, ...props }, ref) => (
@@ -122,7 +185,7 @@ type DropdownMenuSubContentProps = React.ComponentPropsWithoutRef<
 /**
  * Container for submenu items.
  */
-export const DropdownMenuSubContent = React.forwardRef<
+const DropdownMenuSubContent = React.forwardRef<
   ComponentRef<typeof S.StyledSubContent>,
   DropdownMenuSubContentProps
 >(({ children, ...props }, ref) => (
@@ -139,7 +202,7 @@ type DropdownMenuLabelProps = React.ComponentPropsWithoutRef<
 /**
  * A non-interactive label or title within the dropdown.
  */
-export const DropdownMenuLabel = React.forwardRef<
+const DropdownMenuLabel = React.forwardRef<
   ComponentRef<typeof S.StyledLabel>,
   DropdownMenuLabelProps
 >((props, ref) => <S.StyledLabel {...props} ref={ref} />);
@@ -152,7 +215,7 @@ type DropdownMenuSeparatorProps = React.ComponentPropsWithoutRef<
 /**
  * A horizontal line to separate groups of items.
  */
-export const DropdownMenuSeparator = React.forwardRef<
+const DropdownMenuSeparator = React.forwardRef<
   ComponentRef<typeof S.StyledSeparator>,
   DropdownMenuSeparatorProps
 >((props, ref) => <S.StyledSeparator {...props} ref={ref} />);
@@ -165,7 +228,7 @@ type DropdownMenuShortcutProps = React.ComponentPropsWithoutRef<
 /**
  * A container for text, typically a keyboard shortcut, aligned to the right.
  */
-export const DropdownMenuShortcut = React.forwardRef<
+const DropdownMenuShortcut = React.forwardRef<
   ComponentRef<typeof S.StyledRightSlot>,
   DropdownMenuShortcutProps
 >(({ children, ...props }, ref) => {
@@ -176,3 +239,27 @@ export const DropdownMenuShortcut = React.forwardRef<
   );
 });
 DropdownMenuShortcut.displayName = 'DropdownMenuShortcut';
+
+/**
+ * An optional arrow to visually connect the trigger and content.
+ * Should be placed inside DropdownMenuContent.
+ */
+const DropdownMenuArrow = S.StyledArrow;
+
+export {
+  DropdownMenu,
+  DropdownMenuArrow,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+};

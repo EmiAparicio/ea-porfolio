@@ -115,6 +115,9 @@
   --semantic-danger-default: var(--danger-500);
   --semantic-danger-subtle-bg: var(--danger-50);
   --semantic-danger-subtle-text: var(--danger-700);
+
+  --bg-popover: var(--bg-surface);
+  --shadow-popover: 0px 10px 38px -10px rgba(22, 23, 24, 0.35);
 }
 
 [data-theme='dark'] {
@@ -163,4 +166,7 @@
   --semantic-danger-default: var(--danger-400);
   --semantic-danger-subtle-bg: var(--neutral-1000);
   --semantic-danger-subtle-text: var(--danger-300);
+
+  --bg-popover: var(--bg-surface-elevated);
+  --shadow-popover: 0px 10px 38px -10px rgba(0, 0, 0, 0.6);
 }

@@ -47,7 +47,7 @@ const en = {
       visitWeb: 'Visit<br/>Website',
       uiPkgButton: 'Demo<br/>UI Package',
       uiPkgInfo:
-        "This project is an interactive demo of a custom UI component library. Its main goal is to showcase the development of scalable, accessible, and well-documented components ready for use in any React application. <b>Storybook</b> is used for interactive documentation and visual testing of each component's API.<br/><br/>Currently, this demo explores component styling using <b>SCSS (Sass)</b> and the implementation of unit tests with <b>Vitest</b> and <b>React Testing Library</b>.",
+        "This project is an interactive demo of a custom UI component library. Its main goal is to showcase the development of scalable and well-documented components, using <b>Radix UI</b> as a foundation for accessibility and behavior, ready for use in any React application. <b>Storybook</b> is used for interactive documentation and visual testing of each component's API.<br/><br/>Currently, this demo explores various styling techniques, combining <b>SCSS (Sass)</b> and <b>Styled Components (CSS-in-JS)</b>, and the implementation of unit tests with <b>Vitest</b> and <b>React Testing Library</b>.",
     },
     gaming: {
       text: 'Indie <b>game designer</b> focused on creating mechanics with <b>economy</b> components and <b>self-balancing dynamic systems</b>. My goal is to build strategic, replayable experiences with player-driven markets as an essential part of the design; through my company: <i>Oblivion Mechanics</i>.',

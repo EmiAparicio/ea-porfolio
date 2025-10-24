@@ -47,7 +47,7 @@ const es = {
       visitWeb: 'Ir al Sitio',
       uiPkgButton: 'Demo<br/>Paquete UI',
       uiPkgInfo:
-        'Este proyecto es una demo interactiva de una librería de componentes de UI personalizada. El objetivo principal es demostrar el desarrollo de componentes escalables, accesibles y bien documentados, listos para ser utilizados en cualquier aplicación React. Se utiliza <b>Storybook</b> para la documentación interactiva y las pruebas visuales de la API de cada componente.<br/><br/>Actualmente, esta demo explora el estilizado de componentes con <b>SCSS (Sass)</b> y la implementación de pruebas unitarias con <b>Vitest</b> y <b>React Testing Library</b>.',
+        'Este proyecto es una demo interactiva de una librería de componentes de UI personalizada. El objetivo principal es demostrar el desarrollo de componentes escalables y bien documentados, utilizando <b>Radix UI</b> como base para la accesibilidad y el comportamiento, listos para ser utilizados en cualquier aplicación React. Se utiliza <b>Storybook</b> para la documentación interactiva y las pruebas visuales de la API de cada componente.<br/><br/>Actualmente, esta demo explora diversas técnicas de estilizado, combinando <b>SCSS (Sass)</b> y <b>Styled Components (CSS-in-JS)</b>, y la implementación de pruebas unitarias con <b>Vitest</b> y <b>React Testing Library</b>.',
     },
     gaming: {
       text: '<b>Diseñador de juegos</b> Indie enfocado en la creación de mecánicas con componentes de <b>economía</b> y <b>sistemas dinámicos auto-balanceados</b>. Mi objetivo es construir experiencias estratégicas, rejugables y con mercados entre jugadores como parte esencial del diseño; a través de mi empresa: <i>Oblivion Mechanics</i>.',

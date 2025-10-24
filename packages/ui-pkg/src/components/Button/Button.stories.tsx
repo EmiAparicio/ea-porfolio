@@ -23,6 +23,7 @@ const ThemeDecorator: Decorator<ButtonStoryProps> = (Story, context) => {
         background: 'var(--bg-surface)',
         paddingTop: '2rem',
         paddingBottom: '2rem',
+        transition: 'background-color 0.3s ease',
       }}
     >
       <Story />
@@ -67,7 +68,7 @@ const meta: Meta<ButtonStoryProps> = {
     storyTheme: {
       control: 'inline-radio',
       options: ['light', 'dark'],
-      description: i18n.t('button.argTypes.storyTheme.description'),
+      description: i18n.t('storyTheme.description'),
       table: { category: 'Story Config', type: { summary: undefined } },
     },
     variant: {
@@ -130,6 +131,7 @@ const meta: Meta<ButtonStoryProps> = {
     },
   },
   args: {
+    storyTheme: 'light',
     children: i18n.t('button.stories.primary.children'),
   },
 };

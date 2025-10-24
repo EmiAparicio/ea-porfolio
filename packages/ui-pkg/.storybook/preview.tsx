@@ -9,10 +9,12 @@ const preview: Preview = {
       defaultValue: 'dark',
     },
   },
-
   parameters: {
     backgrounds: {
       disable: true,
+    },
+    a11y: {
+      test: 'todo',
     },
   },
 };

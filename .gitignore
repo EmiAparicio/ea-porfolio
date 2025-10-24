@@ -87,3 +87,6 @@ storybook-static
 
 # AI
 .gemini
+
+# Testing
+vitest-report.json
