@@ -270,7 +270,7 @@ ${i18n.t('dropdownMenu.radixNote')}`,
     side: 'bottom',
     align: 'center',
     sideOffset: 5,
-    modal: false,
+    modal: true,
     avoidCollisions: false,
   },
 };

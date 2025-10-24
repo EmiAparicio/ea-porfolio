@@ -222,6 +222,11 @@ body {
   user-select: none;
 }
 
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 #server-content-landing,
 #server-content-webdev,
 #server-content-gaming,

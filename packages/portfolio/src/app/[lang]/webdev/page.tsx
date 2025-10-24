@@ -94,14 +94,16 @@ export default async function WebdevPage(props: PageParams) {
               Este proyecto es una demo interactiva de una librería de
               componentes de UI personalizada. El objetivo principal es
               demostrar el desarrollo de componentes escalables, accesibles y
-              bien documentados, listos para ser utilizados en cualquier
-              aplicación React. Se utiliza Storybook para la documentación
-              interactiva y las pruebas visuales de la API de cada componente.
+              bien documentados, utilizando Radix UI como base para la
+              accesibilidad y el comportamiento, listos para ser utilizados en
+              cualquier aplicación React. Se utiliza Storybook para la
+              documentación interactiva y las pruebas visuales de la API de cada
+              componente.
               <br />
               <br />
               Actualmente, esta demo explora el estilizado de componentes con
-              SCSS (Sass) y la implementación de pruebas unitarias con Vitest y
-              React Testing Library.
+              SCSS (Sass) y Styled Components (CSS-in-JS), y la implementación
+              de pruebas unitarias con Vitest y React Testing Library.
             </p>
           </article>
         </div>
@@ -189,13 +191,14 @@ export default async function WebdevPage(props: PageParams) {
               This project is an interactive demo of a custom UI component
               library. Its main goal is to showcase the development of scalable,
               accessible, and well-documented components ready for use in any
-              React application. Storybook is used for interactive documentation
-              and visual testing of each component's API.
+              React application, using Radix UI as a foundation for
+              accessibility and behavior. Storybook is used for interactive
+              documentation and visual testing of each component's API.
               <br />
               <br />
               Currently, this demo explores component styling using SCSS (Sass)
-              and the implementation of unit tests with Vitest and React Testing
-              Library.
+              and Styled Components (CSS-in-JS), and the implementation of unit
+              tests with Vitest and React Testing Library.
             </p>
           </article>
         </div>
