@@ -140,6 +140,75 @@ const resources = {
           },
         },
       },
+      advancedAnalyticsChart: {
+        meta: {
+          description:
+            'A composite chart (Bar + Line) with dual Y-axes, using D3 for advanced formatting and calculations. Ideal for complex analytics dashboards.',
+        },
+        argTypes: {
+          data: {
+            description:
+              'The data array is now set automatically in the "render" function based on xAxisKey.',
+          },
+          xAxisKey: {
+            description:
+              'The key in data to use for the X-axis. This will also swap the dataset.',
+          },
+          barDataKey: {
+            description: 'The key in data to use for the Bar chart data.',
+          },
+          lineDataKey: {
+            description: 'The key in data to use for the Line chart data.',
+          },
+          barName: {
+            description: 'A human-readable label for the Bar chart data.',
+          },
+          lineName: {
+            description: 'A human-readable label for the Line chart data.',
+          },
+          yAxisLeftLabel: {
+            description: 'Descriptive label for the left Y-axis (Line).',
+          },
+          yAxisRightLabel: {
+            description: 'Descriptive label for the right Y-axis (Bar).',
+          },
+          enableDataBrush: {
+            description:
+              'If true, enables a data brush slider at the bottom to navigate large datasets while keeping Y-axes static.',
+          },
+          xAxisFormatType: {
+            description:
+              'Specifies if the X-axis data is time-based or categorical.',
+          },
+          yAxisLeftFormat: {
+            description: 'A d3-format string for the left Y-axis ticks.',
+          },
+          yAxisRightFormat: {
+            description: 'A d3-format string for the right Y-axis ticks.',
+          },
+          tooltipDateFormat: {
+            description:
+              'A d3-time-format string for the tooltip label (if time).',
+          },
+          tooltipValueFormat: {
+            description: 'A d3-format string for the tooltip values.',
+          },
+          xAxisTickFormat: {
+            description: 'A d3-format string for the X-axis ticks (if time).',
+          },
+        },
+        args: {
+          barName: 'Units Sold',
+          lineName: 'Revenue',
+          yAxisLeftLabel: 'Revenue (USD)',
+          yAxisRightLabel: 'Units',
+        },
+        stories: {
+          primary: {
+            name: 'Controllable Chart',
+          },
+        },
+      },
     },
   },
   es: {
@@ -277,6 +346,84 @@ const resources = {
               subItem2: 'Extraer a Hook',
               subItem3: 'Envolver con Memo',
             },
+          },
+        },
+      },
+      advancedAnalyticsChart: {
+        meta: {
+          description:
+            'Un gráfico compuesto (Barra + Línea) con ejes Y duales, que utiliza D3 para formateo y cálculos avanzados. Ideal para dashboards de analítica complejos.',
+        },
+        argTypes: {
+          data: {
+            description:
+              'El array de datos se establece automáticamente en la función "render" según el xAxisKey.',
+          },
+          xAxisKey: {
+            description:
+              'La clave en los datos a usar para el eje X. Esto también cambiará el conjunto de datos.',
+          },
+          barDataKey: {
+            description:
+              'La clave en los datos a usar para los datos del gráfico de Barras.',
+          },
+          lineDataKey: {
+            description:
+              'La clave en los datos a usar para los datos del gráfico de Línea.',
+          },
+          barName: {
+            description:
+              'Una etiqueta legible para los datos del gráfico de Barras.',
+          },
+          lineName: {
+            description:
+              'Una etiqueta legible para los datos del gráfico de Línea.',
+          },
+          yAxisLeftLabel: {
+            description:
+              'Etiqueta descriptiva para el eje Y izquierdo (Línea).',
+          },
+          yAxisRightLabel: {
+            description: 'Etiqueta descriptiva para el eje Y derecho (Barra).',
+          },
+          enableDataBrush: {
+            description:
+              'Si es verdadero, activa un deslizador (brush) en la parte inferior para navegar grandes conjuntos de datos manteniendo los ejes Y estáticos.',
+          },
+          xAxisFormatType: {
+            description:
+              'Especifica si los datos del eje X se basan en el tiempo o en categorías.',
+          },
+          yAxisLeftFormat: {
+            description:
+              'Un string de formato d3 para las marcas del eje Y izquierdo.',
+          },
+          yAxisRightFormat: {
+            description:
+              'Un string de formato d3 para las marcas del eje Y derecho.',
+          },
+          tooltipDateFormat: {
+            description:
+              'Un string de formato d3-time para la etiqueta del tooltip (si es de tiempo).',
+          },
+          tooltipValueFormat: {
+            description:
+              'Un string de formato d3 para los valores del tooltip.',
+          },
+          xAxisTickFormat: {
+            description:
+              'Un string de formato d3 para las marcas del eje X (si es de tiempo).',
+          },
+        },
+        args: {
+          barName: 'Unidades Vendidas',
+          lineName: 'Ingresos',
+          yAxisLeftLabel: 'Ingresos (USD)',
+          yAxisRightLabel: 'Unidades',
+        },
+        stories: {
+          primary: {
+            name: 'Gráfico Controlable',
           },
         },
       },

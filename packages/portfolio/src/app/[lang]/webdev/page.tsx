@@ -102,8 +102,9 @@ export default async function WebdevPage(props: PageParams) {
               <br />
               <br />
               Actualmente, esta demo explora el estilizado de componentes con
-              SCSS (Sass) y Styled Components (CSS-in-JS), y la implementación
-              de pruebas unitarias con Vitest y React Testing Library.
+              SCSS (Sass) y Styled Components (CSS-in-JS), visualización de
+              datos avanzada con Recharts y D3.js, y la implementación de
+              pruebas unitarias con Vitest y React Testing Library.
             </p>
           </article>
         </div>
@@ -197,8 +198,9 @@ export default async function WebdevPage(props: PageParams) {
               <br />
               <br />
               Currently, this demo explores component styling using SCSS (Sass)
-              and Styled Components (CSS-in-JS), and the implementation of unit
-              tests with Vitest and React Testing Library.
+              and Styled Components (CSS-in-JS), advanced data visualization
+              with Recharts and D3.js, and the implementation of unit tests with
+              Vitest and React Testing Library.
             </p>
           </article>
         </div>
