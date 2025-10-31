@@ -350,7 +350,7 @@ export default function HexGridDragSparks({
       hits.push({ x, y, t: performance.now() });
       while (hits.length > 64) hits.shift();
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [randn]
   );
 
@@ -413,7 +413,7 @@ export default function HexGridDragSparks({
           emit(hit.x, hit.y, ux, uy, base);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [emit, tooRecentHit, edges]
   );
 

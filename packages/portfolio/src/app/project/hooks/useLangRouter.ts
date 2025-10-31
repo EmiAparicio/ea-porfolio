@@ -98,7 +98,9 @@ export function useLangRouter() {
     (target: string | null) => {
       try {
         prefetch(buildWithLang(target));
-      } catch {}
+      } catch {
+        /* empty */
+      }
     },
     [buildWithLang, prefetch]
   );
@@ -126,7 +128,9 @@ export function useLangRouter() {
           currentSearch = window.location.search || '';
           currentHash = window.location.hash || '';
         }
-      } catch {}
+      } catch {
+        /* empty */
+      }
 
       const subpath =
         opts?.intentSubpath != null && opts.intentSubpath !== ''
@@ -139,7 +143,9 @@ export function useLangRouter() {
       if (opts?.setCookie !== false) {
         try {
           document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
-        } catch {}
+        } catch {
+          /* empty */
+        }
       }
 
       navigateImmediate(targetPath, { scroll: false });
@@ -164,7 +170,9 @@ export function useLangRouter() {
           currentSearch = window.location.search || '';
           currentHash = window.location.hash || '';
         }
-      } catch {}
+      } catch {
+        /* empty */
+      }
 
       const subpath =
         intentSubpath != null && intentSubpath !== ''
@@ -177,7 +185,9 @@ export function useLangRouter() {
 
       try {
         prefetch(href);
-      } catch {}
+      } catch {
+        /* empty */
+      }
     },
     [pathnameFromHook, lang, prefetch]
   );

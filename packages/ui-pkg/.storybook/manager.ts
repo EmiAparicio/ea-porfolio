@@ -9,8 +9,6 @@ addons.setConfig({
   },
 });
 
-const channel = addons.getChannel();
-
 setTimeout(() => {
   window.parent.postMessage({ type: STORYBOOK_READY_EVENT }, '*');
 }, 50);

@@ -76,7 +76,9 @@ function useLangToggleState() {
         if (pending && pending === lang) {
           safeRemoveSessionItem(LANG_SWITCH_KEY);
         }
-      } catch {}
+      } catch {
+        /* empty */
+      }
 
       const minMs = minMsRef.current ?? 2000;
       const startedAt = startAtRef.current ?? Date.now();
@@ -233,7 +235,7 @@ const LangToggleButton = ({
         {...commonProps}
         globalPosition={globalPosition!}
         labelClassname="font-russo"
-        className="absolute z-60"
+        className="z-60 absolute"
       />
     );
   }

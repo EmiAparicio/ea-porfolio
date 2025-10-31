@@ -70,7 +70,9 @@ export function useRasterizedSvgImage(
                 const bmp = await cib(blob);
                 return bmp as CanvasImageSource;
               }
-            } catch {}
+            } catch {
+              /* empty */
+            }
             const url = URL.createObjectURL(blob);
             try {
               const img = new Image();

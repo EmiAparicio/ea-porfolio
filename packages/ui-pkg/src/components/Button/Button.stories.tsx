@@ -158,7 +158,7 @@ export const AllVariantsInBothThemes: Story = {
   decorators: [],
   parameters: { controls: { hideNoControlsWarning: true } },
   render: (args) => {
-    const { children, ...restArgs } = args;
+    const { children: _children, ...restArgs } = args;
     return (
       <BothThemesWrapper>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -182,7 +182,7 @@ export const AllColorsInBothThemes: Story = {
   decorators: [],
   parameters: { controls: { hideNoControlsWarning: true } },
   render: (args) => {
-    const { children, ...restArgs } = args;
+    const { children: _children, ...restArgs } = args;
     return (
       <BothThemesWrapper>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

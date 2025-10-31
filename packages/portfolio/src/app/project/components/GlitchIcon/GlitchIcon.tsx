@@ -182,7 +182,7 @@ export default function GlitchIcon({
       data-animate={animatePulse ? '1' : '0'}
       className={cn(
         'glitch-icon',
-        'relative inline-block overflow-visible select-none',
+        'relative inline-block select-none overflow-visible',
         '[contain:layout_style]',
         className
       )}

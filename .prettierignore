@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+dist
+storybook-static
+pnpm-lock.yaml
+pnpm-workspace.yaml
+README.md
+
+packages/portfolio/public/storybook

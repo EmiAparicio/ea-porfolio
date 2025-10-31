@@ -70,7 +70,7 @@ export default function HexChildrenCarouselCore({
       as="div"
       type="perimeter"
       className={cn(
-        'absolute -translate-1/2 has-[>div:focus]:[&>button]:outline',
+        '-translate-1/2 absolute has-[>div:focus]:[&>button]:outline',
         className
       )}
       style={style}

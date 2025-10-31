@@ -329,7 +329,6 @@ function SinglePerimeterLight({
 
     ctx.globalCompositeOperation = 'source-over';
     schedule();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status, totalLen, targetRect, loops, bbox, getRoi, hexSizePx]);
 
   /**

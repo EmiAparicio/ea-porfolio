@@ -206,7 +206,9 @@ export function HexButtonsPanel<P extends HexButtonProps = HexButtonProps>({
       if (pending && pending === lang) {
         sessionStorage.removeItem(LANG_SWITCH_KEY);
       }
-    } catch {}
+    } catch {
+      /* empty */
+    }
   }, [lang]);
 
   useLayoutEffect(() => {
@@ -245,11 +247,10 @@ export function HexButtonsPanel<P extends HexButtonProps = HexButtonProps>({
         });
       }
     } catch {
+      /* empty */
     } finally {
       setRestored(true);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storageKey, legacyStorageKey, placeTree.nodes, routeIdSet.size]);
 
   useEffect(() => {
@@ -262,7 +263,9 @@ export function HexButtonsPanel<P extends HexButtonProps = HexButtonProps>({
         if (typeof v !== 'undefined') out[n.id] = v;
       }
       sessionStorage.setItem(storageKey, JSON.stringify(out));
-    } catch {}
+    } catch {
+      /* empty */
+    }
   }, [restored, toggles, placeTree.nodes, routeIdSet, storageKey]);
 
   useEffect(() => {
@@ -398,7 +401,9 @@ export function HexButtonsPanel<P extends HexButtonProps = HexButtonProps>({
       const subpath = raw as string;
       const target = buildPath(subpath);
       if (currentPath !== target) setNavTo(target);
-    } catch {}
+    } catch {
+      /* empty */
+    }
   }, [intentKey, currentPath, buildPath, legacyIntentKeys, lang]);
 
   const buttons = useMemo(() => {

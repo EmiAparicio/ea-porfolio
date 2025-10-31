@@ -60,7 +60,9 @@ export function useImmediateRouter(): ImmediateRouter {
       if (typeof window !== 'undefined') {
         try {
           window.history.pushState({}, '', href);
-        } catch {}
+        } catch {
+          /* empty */
+        }
       }
 
       startTransition(() => {
@@ -74,7 +76,9 @@ export function useImmediateRouter(): ImmediateRouter {
     (href: string) => {
       try {
         router.prefetch(href);
-      } catch {}
+      } catch {
+        /* empty */
+      }
     },
     [router]
   );

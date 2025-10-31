@@ -232,7 +232,6 @@ export default function EngPageClient() {
     const modalItems = items.find((it) => it.id === activeCarouselId)?.children;
 
     if (modalItems) setModalItems(modalItems);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang, activeCarouselId, setModalItems]);
 
   if (!qrToCenter) return null;
@@ -253,7 +252,7 @@ export default function EngPageClient() {
           <BackgroundedElement
             as="article"
             className={cn(
-              'absolute -translate-1/2 px-[0%] py-[0%] text-center',
+              '-translate-1/2 absolute px-[0%] py-[0%] text-center',
               content.className
             )}
             style={{

@@ -20,7 +20,9 @@ export function safeGetSessionItem(key: string) {
 export function safeSetSessionItem(key: string, val: string) {
   try {
     sessionStorage.setItem(key, val);
-  } catch {}
+  } catch {
+    /* empty */
+  }
 }
 
 /**
@@ -30,7 +32,9 @@ export function safeSetSessionItem(key: string, val: string) {
 export function safeRemoveSessionItem(key: string) {
   try {
     sessionStorage.removeItem(key);
-  } catch {}
+  } catch {
+    /* empty */
+  }
 }
 
 /**

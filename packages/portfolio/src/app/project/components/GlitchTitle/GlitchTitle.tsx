@@ -255,7 +255,6 @@ export default function GlitchTitle({
     }
 
     return clearTimers;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [titlesKey, count, clearTimers]);
 
   useEffect(() => {
@@ -276,7 +275,6 @@ export default function GlitchTitle({
     if (count > 1) idle();
 
     return clearTimers;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count, minInterval, isReduced, idle, clearTimers]);
 
   if (count === 0) return null;
@@ -284,7 +282,7 @@ export default function GlitchTitle({
   return (
     <span
       className={cn(
-        'glitch-title inline-block text-center whitespace-nowrap select-none',
+        'glitch-title inline-block select-none whitespace-nowrap text-center',
         isPositioned && '-translate-x-1/2 -translate-y-1/2',
         isReduced && 'grm-pause',
         className

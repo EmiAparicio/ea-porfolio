@@ -43,18 +43,22 @@ const DropdownMenuTrigger = React.forwardRef<
   ) => {
     return (
       <RadixDropdownMenu.Trigger asChild disabled={disabled}>
-        <Button
-          ref={ref}
-          variant={variant}
-          color={color}
-          size={size}
-          className={className}
-          onClick={onClick}
-          disabled={disabled}
-          {...rest}
-        >
-          {children}
-        </Button>
+        {asChild ? (
+          children
+        ) : (
+          <Button
+            ref={ref}
+            variant={variant}
+            color={color}
+            size={size}
+            className={className}
+            onClick={onClick}
+            disabled={disabled}
+            {...rest}
+          >
+            {children}
+          </Button>
+        )}
       </RadixDropdownMenu.Trigger>
     );
   }

@@ -121,7 +121,6 @@ export default function HexToggleBar({
       const t = i - mid;
       return { left: t * stepLeft, top: t * stepTop };
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items.length, stepLeft, stepTop]);
 
   const handleToggle = useCallback(
@@ -131,7 +130,7 @@ export default function HexToggleBar({
         return newIndex;
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [items]
   );
 
@@ -152,7 +151,7 @@ export default function HexToggleBar({
   return (
     <Fragment>
       <div
-        className={cn('absolute -translate-1/2', className)}
+        className={cn('-translate-1/2 absolute', className)}
         style={{
           left: anchor.left,
           top: anchor.top,

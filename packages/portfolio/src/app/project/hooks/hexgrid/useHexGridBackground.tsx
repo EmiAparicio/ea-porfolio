@@ -205,7 +205,6 @@ export function useHexGridBackground({
       qOffset,
       rOffset,
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     box.width,
     box.height,

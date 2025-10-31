@@ -51,7 +51,9 @@ export function setThemeCookieClient(theme: ThemeMode) {
     document.cookie = `theme=${theme}; path=/; max-age=${
       60 * 60 * 24 * 365
     }; samesite=lax`;
-  } catch {}
+  } catch {
+    /* empty */
+  }
 }
 
 /**

@@ -29,7 +29,9 @@ function clearHexPanelIntentKeys(maxKeys = 128) {
     for (const k of keysToDelete) {
       sessionStorage.removeItem(k);
     }
-  } catch {}
+  } catch {
+    /* empty */
+  }
 }
 
 /**

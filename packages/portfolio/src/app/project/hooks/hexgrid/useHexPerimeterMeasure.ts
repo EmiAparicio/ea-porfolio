@@ -269,7 +269,6 @@ export function useHexPerimeterMeasure(opts: {
       const [q, r] = k.split('|').map(Number);
       return { q, r };
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     version,
     trig,

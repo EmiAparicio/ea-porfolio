@@ -138,7 +138,6 @@ export function useHexRevealSpotlight<
       });
     }
     replaceGroup({ groupId: groupIdMulti, items });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     metrics,
     qrToCenter,
@@ -178,7 +177,7 @@ export function useHexRevealSpotlight<
     removeGroup,
     groupIdSingle,
     groupIdMulti,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     ...deps,
   ]);
 

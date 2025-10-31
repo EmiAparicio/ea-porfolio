@@ -28,7 +28,7 @@ const Portfolio: FC<PortfolioProps> = ({ className }) => {
           variant="text"
           size="body"
           className={cn(
-            'absolute left-1/2 -translate-1/2 text-center',
+            '-translate-1/2 absolute left-1/2 text-center',
             {
               web: 'top-[40%] w-[60%]',
               medium: 'top-[35%] w-[85%] !text-[calc(min(2.2vw,1.5dvh))]',
@@ -55,7 +55,7 @@ const Portfolio: FC<PortfolioProps> = ({ className }) => {
         showLabelOnToggled={true}
         className={cn(
           'pointer-events-auto !absolute',
-          deviceType === 'web' && 'top-1/2 left-[5%]',
+          deviceType === 'web' && 'left-[5%] top-1/2',
           deviceType === 'medium' && 'bottom-[15%] left-1/2',
           deviceType === 'mobile' && '-bottom-[2.5%] left-1/2'
         )}

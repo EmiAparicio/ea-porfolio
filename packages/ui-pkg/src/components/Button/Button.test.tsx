@@ -78,8 +78,7 @@ describe('Button', () => {
     const buttonElement = screen.getByRole('button');
     expect(buttonElement).toBeDisabled();
 
-    await user.click(buttonElement).catch(() => {
-    });
+    await user.click(buttonElement).catch(() => {});
 
     expect(handleClick).not.toHaveBeenCalled();
   });

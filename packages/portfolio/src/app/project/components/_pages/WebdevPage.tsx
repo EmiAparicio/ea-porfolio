@@ -276,7 +276,6 @@ export default function WebdevPageClient() {
     const modalItems = items.find((it) => it.id === activeCarouselId)?.children;
 
     if (modalItems) setModalItems(modalItems);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang, activeCarouselId, setModalItems]);
 
   if (!qrToCenter) return null;

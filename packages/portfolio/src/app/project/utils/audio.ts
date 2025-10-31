@@ -100,7 +100,9 @@ class AudioManager {
       const arrayBuffer = await response.arrayBuffer();
       const audioBuffer = await this.audioContext.decodeAudioData(arrayBuffer);
       this.audioBuffers[key] = audioBuffer;
-    } catch (_error) {}
+    } catch (_error) {
+      /* empty */
+    }
   }
 
   /**

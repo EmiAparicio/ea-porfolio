@@ -440,7 +440,9 @@ const getInitialLanguage = () => {
     ) {
       return langFromStorage;
     }
-  } catch (_e) {}
+  } catch (_e) {
+    /* empty */
+  }
   return 'en';
 };
 

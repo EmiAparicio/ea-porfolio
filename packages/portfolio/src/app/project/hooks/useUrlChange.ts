@@ -200,7 +200,7 @@ export function useUrlChange(opts: UseUrlChangeOptions = {}): {
 
   const current = useMemo<UrlSnapshot>(
     () => snapshotFromLocation(queryKeys),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
     [storeValue, queryKeys]
   );
 
@@ -217,7 +217,6 @@ export function useUrlChange(opts: UseUrlChangeOptions = {}): {
 
   useEffect(() => {
     prevRef.current = current;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [current.pathname, current.search, querySignature]);
 
   return { current, previous, pathChanged, queryChanged, querySignature };

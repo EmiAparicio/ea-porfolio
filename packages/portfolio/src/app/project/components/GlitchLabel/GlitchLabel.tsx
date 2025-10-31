@@ -99,10 +99,8 @@ function useFormattedTitle(raw: string) {
       if (i < parts.length - 1) out.push(<br key={`br-${i}`} />);
     });
     return out;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [raw]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const data = useMemo(() => raw.replace(BR_RE, '\n'), [raw]);
 
   return { nodes, data };
@@ -217,7 +215,7 @@ export default function GlitchLabel({
       data-animate={animatePulse ? '1' : '0'}
       className={cn(
         'glitch-label',
-        'relative flex justify-center overflow-visible text-center whitespace-nowrap select-none',
+        'relative flex select-none justify-center overflow-visible whitespace-nowrap text-center',
         '[contain:layout_style]',
         className
       )}
