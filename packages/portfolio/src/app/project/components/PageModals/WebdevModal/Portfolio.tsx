@@ -30,9 +30,10 @@ const Portfolio: FC<PortfolioProps> = ({ className }) => {
           className={cn(
             '-translate-1/2 absolute left-1/2 text-center',
             {
-              web: 'top-[40%] w-[60%]',
-              medium: 'top-[35%] w-[85%] !text-[calc(min(2.2vw,1.5dvh))]',
-              mobile: 'top-[45%] w-[85%] !text-[3.4vw]',
+              web: 'top-[43%] w-[700px]',
+              medium:
+                'top-[38%] w-[calc(min(600px,85%))] !text-[calc(min(2.2vw,1.2dvh))]',
+              mobile: 'top-[48%] w-[85%] !text-[3.4vw]',
             }[deviceType],
             resolvedTheme === 'light' && 'tracking-[-0.015rem]'
           )}
@@ -56,7 +57,7 @@ const Portfolio: FC<PortfolioProps> = ({ className }) => {
         className={cn(
           'pointer-events-auto !absolute',
           deviceType === 'web' && 'left-[5%] top-1/2',
-          deviceType === 'medium' && 'bottom-[15%] left-1/2',
+          deviceType === 'medium' && 'bottom-[12%] left-1/2',
           deviceType === 'mobile' && '-bottom-[2.5%] left-1/2'
         )}
       />

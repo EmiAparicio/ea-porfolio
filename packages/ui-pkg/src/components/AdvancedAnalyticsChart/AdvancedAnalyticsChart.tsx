@@ -3,12 +3,12 @@ import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
 import React, {
   useCallback,
+  useEffect,
+  useLayoutEffect,
   useMemo,
-  type FC,
   useRef,
   useState,
-  useLayoutEffect,
-  useEffect,
+  type FC,
 } from 'react';
 import {
   Bar,

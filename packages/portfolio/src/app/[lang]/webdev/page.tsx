@@ -45,6 +45,34 @@ export default async function WebdevPage(props: PageParams) {
               NetLogo, MATLAB, LaTeX, FoamExplorer (desarrollo propio)
             </p>
             <p>
+              Este portafolio es un proyecto en sí mismo, diseñado para
+              demostrar un conjunto de habilidades en el desarrollo web.
+              Construido con Next.js, prioriza la optimización para motores de
+              búsqueda (SEO) mediante el server-side rendering (SSR),
+              complementado con un enrutamiento del lado del cliente para una
+              navegación fluida y sin esperas. La experiencia del usuario está
+              enriquecida con elementos interactivos, desde audio dinámico en
+              los botones hasta animaciones con Framer Motion, y efectos
+              visuales generados con Canvas y SVG. La arquitectura del proyecto
+              está pensada para ser robusta y escalable. Para la gestión del
+              estado global, se utiliza Jotai, incluyendo la persistencia con
+              sessionStorage. La estilización es una combinación de CSS nativo y
+              Tailwind v4. La mayoría de los componentes se construyeron desde
+              cero, mientras que algún otro usa la librería Radix UI. La
+              estructura multilingüe se implementa de forma nativa, inspirada en
+              i18n, para un control total del contenido. Adicionalmente, el
+              proyecto demuestra un enfoque en la medición de rendimiento en
+              tiempo real y la mejora continua. Para garantizar la calidad y
+              estabilidad del código, integra Husky para pre-commit hooks y un
+              pipeline de CI/CD. Estos mecanismos de control automatizados
+              ejecutan validaciones de Eslint y Prettier, junto con los tests de
+              Vitest y Storybook, antes de que cualquier código pueda ser
+              integrado (commit) o desplegado (deploy). Esta metodología,
+              apalancada en la inteligencia artificial para resolver problemas
+              complejos, me permite acelerar el ciclo de desarrollo y crear
+              soluciones más eficientes y de alta calidad.
+            </p>
+            <p>
               Invasion Tours
               <br />
               Este proyecto individual fue una aplicación web académica que
@@ -143,6 +171,30 @@ export default async function WebdevPage(props: PageParams) {
               <br />
               -Languages: Python, C++, Batch/Bash -Scientific software: LAMMPS,
               NetLogo, MATLAB, LaTeX, FoamExplorer (own development)
+            </p>
+            <p>
+              This portfolio is a project in its own, designed to showcase a set
+              of web development skills. Built with Next.js, it prioritizes
+              search engine optimization (SEO) through server-side rendering
+              (SSR), complemented by client-side routing for a seamless,
+              wait-free navigation experience. The user journey is enriched with
+              interactive elements, from dynamic button audio and Framer Motion
+              animations to custom visual effects crafted with Canvas and SVG.
+              The project's architecture is built to be robust and scalable. For
+              global state management, it leverages Jotai, including persistence
+              with sessionStorage to optimize the user experience. Styling
+              combines both native CSS and Tailwind v4. Most components were
+              build from scratch, while some use the Radix UI library. The
+              multilingual structure is natively implemented, inspired by i18n
+              for full content control. Additionally, the project demonstrates a
+              focus on real-time performance measurement and continuous
+              improvement. To guarantee code quality and stability, it
+              integrates Husky for pre-commit hooks and a full CI/CD pipeline.
+              These automated guardrails run Eslint, Prettier, Vitest, and
+              Storybook tests before any new code can be committed or deployed.
+              This methodology, combined with leveraging artificial intelligence
+              to solve complex problems, accelerates the development cycle and
+              allows me to create more efficient and high-quality solutions.
             </p>
             <p>
               Invasion Tours

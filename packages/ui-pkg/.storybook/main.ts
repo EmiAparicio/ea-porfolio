@@ -31,6 +31,9 @@ const config: StorybookConfig = {
           ),
         },
       },
+      optimizeDeps: {
+        include: ['react/jsx-dev-runtime', '@mdx-js/react', 'markdown-to-jsx'],
+      },
     });
   },
 };

@@ -1,1 +1,23 @@
+echo "Running lint-staged check..."
 npx lint-staged
+
+if [ $? -ne 0 ]; then
+  echo "Lint-staged failed."
+  exit 1
+fi
+
+echo "Checking for modified files in 'ui-pkg'..."
+
+if git diff --cached --name-only | grep -q "packages/ui-pkg/"; then
+  echo "UI package files were modified. Running UI package tests..."
+  pnpm run test:uipkg
+
+  if [ $? -ne 0 ]; then
+    echo "UI package tests failed."
+    exit 1
+  fi
+else
+  echo "No UI package files modified. Skipping UI package tests."
+fi
+
+exit 0

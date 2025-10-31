@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -31,8 +33,24 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check for changes in ui-pkg
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            ui_pkg:
+              - 'packages/ui-pkg/**'
+
+      - name: Install Playwright browsers for ui-pkg
+        if: steps.filter.outputs.ui_pkg == 'true'
+        run: pnpm --filter ui-pkg exec playwright install --with-deps chromium
+
       - name: Run Quality Check (ESLint and Prettier)
         run: pnpm run check-quality
+
+      - name: Run Unit Tests for UI Package
+        if: steps.filter.outputs.ui_pkg == 'true'
+        run: pnpm run test:uipkg
 
       - name: Install Vercel CLI
         run: pnpm add -g vercel

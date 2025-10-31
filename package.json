@@ -5,17 +5,22 @@
     "dev:portfolio": "pnpm --filter portfolio dev",
     "build:portfolio": "pnpm --filter portfolio build",
     "sb:uipkg": "pnpm --filter ui-pkg build-storybook",
-    "lint-check": "eslint --max-warnings=0",
-    "format-check": "prettier --check",
-    "format": "prettier --write",
-    "check-quality": "pnpm run format-check && pnpm run lint-check",
-    "prepare": "husky",
-    "lint-check:all": "eslint --max-warnings=0 .",
-    "format:all": "prettier --write ."
+    "test:uipkg": "pnpm --filter ui-pkg test",
+    "lint-check:all": "eslint --max-warnings=0",
+    "lint-check": "eslint --max-warnings=0 .",
+    "format-check": "prettier --check .",
+    "format": "prettier --write .",
+    "check-quality": "pnpm run format-check && pnpm run lint-check:all",
+    "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": ["pnpm run format", "pnpm run lint-check"],
-    "*.{json,css,md}": ["prettier --write --parser json", "git add"]
+    "**/*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "**/*.{json,css,md,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
