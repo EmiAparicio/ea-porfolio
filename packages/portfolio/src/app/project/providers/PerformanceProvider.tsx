@@ -101,7 +101,6 @@ export function PerformanceProvider({ children }: { children: ReactNode }) {
     } else {
       setIsInitialized(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

@@ -7,12 +7,14 @@
     "sb:uipkg": "pnpm --filter ui-pkg build-storybook",
     "lint-check": "eslint --max-warnings=0",
     "format-check": "prettier --check",
-    "format": "prettier --write && eslint --fix",
+    "format": "prettier --write",
     "check-quality": "pnpm run format-check && pnpm run lint-check",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint-check:all": "eslint --max-warnings=0 .",
+    "format:all": "prettier --write ."
   },
   "lint-staged": {
-    "*.{js,ts,jsx,tsx}": ["pnpm run format", "pnpm run check-quality"],
+    "*.{js,ts,jsx,tsx}": ["pnpm run format", "pnpm run lint-check"],
     "*.{json,css,md}": ["prettier --write --parser json", "git add"]
   },
   "devDependencies": {
